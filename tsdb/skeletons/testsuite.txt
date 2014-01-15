@@ -1,0 +1,73 @@
+Language: Marathi
+Language code: mar
+Lines: orth translit translit-seg gloss translat
+Author: Antariksh Bothale, Andrew Baer
+Date: January 14, 2014
+Source a: Marathi by Rajeshwari Pandharipande http://books.google.com/books/about/Marathi.html?id=v5UOAAAAQAAJ
+
+#1
+Source: {a:288}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {word order}
+dummy orth
+polis tsoraalaa maar-t-o
+polis tsor-aalaa maar-t-o
+policeman thief-ACC beat-PRES-3.S.M
+The policeman beats the thief
+
+#2
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {word order}
+dummy orth
+maar-t-o polis tsoraalaa 
+maar-t-o polis tsor-aalaa
+beat-PRES-3.S.M policeman thief-ACC 
+The policeman beats the thief
+
+#3
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {word order}
+dummy orth
+maar-t-o tsoraalaa polis
+maar-t-o tsor-aalaa polis
+beat-PRES-3.S.M thief-ACC policeman
+The policeman beats the thief
+
+#4
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {word order}
+dummy orth
+tsoraalaa maar-t-o polis
+tsor-aalaa maar-t-o polis
+thief-ACC beat-PRES-3.S.M policeman
+The policeman beats the thief
+
+#5
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {word order}
+dummy orth
+tsoraalaa polis maar-t-o
+tsor-aalaa polis maar-t-o
+thief-ACC policeman beat-PRES-3.S.M
+The policeman beats the thief
+
+#6
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {word order}
+dummy orth
+polis maar-t-o tsoraalaa 
+polis maar-t-o tsor-aalaa 
+policeman beat-PRES-3.S.M thief-ACC
+The policeman beats the thief
+

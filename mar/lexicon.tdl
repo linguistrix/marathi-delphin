@@ -1,0 +1,38 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Nouns
+
+polis := common_noun_lxm-noun-lex &
+  [ STEM < "polis" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_police_n_rel" ].
+
+tsor := common_noun_lxm-noun-lex &
+  [ STEM < "tsor" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_thief_n_rel" ].
+
+tsoraalaa := common_noun_lxm-noun-lex &
+  [ STEM < "tsoraalaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_thiefacc_n_rel" ].
+
+;;; Verbs
+
+maar := trans_verb_lxm-verb-lex &
+  [ STEM < "maar" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_beat_v_rel" ].
+
+maarto := trans_verb_lxm-verb-lex &
+  [ STEM < "maarto" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_beats_v_rel" ].
+
+zhoplaa := intrans_verb_lxm-verb-lex &
+  [ STEM < "zhoplaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_slept_v_rel" ].
+
+;;; Determiners
+
+tii := determiner_lxm-determiner-lex &
+  [ STEM < "tii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_that_q_rel" ].
+
+to := determiner_lxm-determiner-lex &
+  [ STEM < "to" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_that_q_rel" ].

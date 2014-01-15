@@ -1,0 +1,69 @@
+
+version=27
+
+section=general
+language=Marathi
+iso-code=mar
+punctuation-chars=discard-all
+archive=yes
+email=antariksh.bothale@gmail.com
+affiliation=University of Washington
+motivation=For a class (LING 567)
+comment=Marathi by Rajeshwari Pandharipande and Native Speaker (Author)
+vcs=hg
+
+section=word-order
+word-order=sov
+has-dets=yes
+noun-det-order=det-noun
+has-aux=no
+aux-comp-order=after
+aux-comp=vp
+
+section=number
+  number1_name=SG
+  number2_name=PL
+
+section=person
+person=1-2-3
+first-person=incl-excl
+incl-excl-number=PL
+  person-subtype1_name=EXCL
+  person-subtype1_number=PL
+  person-subtype2_name=INCL
+  person-subtype2_number=PL
+
+section=gender
+  gender1_name=M
+  gender2_name=F
+  gender3_name=N
+
+section=case
+
+section=direct-inverse
+
+section=tense-aspect-mood
+
+section=other-features
+
+section=sentential-negation
+
+section=coordination
+
+section=matrix-yes-no
+
+section=info-str
+
+section=arg-opt
+
+section=lexicon
+
+section=morphology
+
+section=toolbox-import
+
+section=test-sentences
+
+section=gen-options
+
+section=ToolboxLexicon
