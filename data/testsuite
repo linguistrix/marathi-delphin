@@ -44,7 +44,7 @@ Vetted: {t}
 Judgment: {u}
 Phenomena: {word order}
 dummy orth
-tsoraalaa maar-t-o polis
+tsoraalaa maarto polis
 tsor-aalaa maar-t-o polis
 thief-ACC beat-PRES-3.SG.M policeman
 The policeman beats the thief
@@ -55,7 +55,7 @@ Vetted: {t}
 Judgment: {u}
 Phenomena: {word order}
 dummy orth
-tsoraalaa polis maar-t-o
+tsoraalaa polis maarto
 tsor-aalaa polis maar-t-o
 thief-ACC policeman beat-PRES-3.SG.M
 The policeman beats the thief
@@ -66,7 +66,7 @@ Vetted: {t}
 Judgment: {u}
 Phenomena: {word order}
 dummy orth
-polis maar-t-o tsoraalaa 
+polis maarto tsoraalaa 
 polis maar-t-o tsor-aalaa 
 policeman beat-PRES-3.SG.M thief-ACC
 The policeman beats the thief
