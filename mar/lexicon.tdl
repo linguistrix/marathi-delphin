@@ -5,13 +5,77 @@ polis := common_noun_lxm-noun-lex &
   [ STEM < "polis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_police_n_rel" ].
 
+polisaalaa := common_noun_lxm-noun-lex &
+  [ STEM < "polisaalaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_policeacc_n_rel" ].
+
+polisaalaa := common_noun_lxm-noun-lex &
+  [ STEM < "polisaalaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_policedat_n_rel" ].
+
+polisaatsaa := common_noun_lxm-noun-lex &
+  [ STEM < "polisaatsaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_policeposs_n_rel" ].
+
+polisaakadduun := common_noun_lxm-noun-lex &
+  [ STEM < "polisaakadduun" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_policeabl_n_rel" ].
+
 tsor := common_noun_lxm-noun-lex &
   [ STEM < "tsor" >,
     SYNSEM.LKEYS.KEYREL.PRED "_thief_n_rel" ].
 
+tsor := common_noun-lxm-nounlex &
+  [ STEM < "tsoraa >,
+    SYNSYEM.LKEYS.KEYREL.PRED "_thiefpl_n_rel" ].
+
 tsoraalaa := common_noun_lxm-noun-lex &
   [ STEM < "tsoraalaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_thiefacc_n_rel" ].
+
+tsoraalaa := common_noun_lxm-noun-lex &
+  [ STEM < "tsoraalaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_thiefdat_n_rel" ].
+
+kutraa := common_noun_lxm-noun-lex &
+  [ STEM < "kutraa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_dog_n_rel" ].
+
+mul := common_noun_lxm-noun-lex &
+  [ STEM < "mul" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
+
+mulaalaa := common_noun_lxm-noun-lex &
+  [ STEM < "polis" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_boydat_n_rel" ].
+
+dukhkha := common_noun_lxm-noun-lex &
+  [ STEM < "dukhka" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sadness_n_rel" ].
+
+mii := 1sg-nom-pronoun-noun-lex &
+  [ STEM < "mii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+
+aamhi := 1pl-nom-pronoun-noun-lex &
+  [ STEM < "aamhi" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+
+aapann := 1incl-nom-pronoun-noun-lex &
+  [ STEM < "aapann" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+
+tuu := 2sg-nom-pronoun-noun-lex &
+  [ STEM < "tuu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+
+tumhii := 2pl-nom-pronoun-noun-lex &
+  [ STEM < "tumhii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+
+aapann := 2excl-nom-pronoun-noun-lex &
+  [ STEM < "aapaan" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
 
 ;;; Verbs
 
@@ -25,7 +89,43 @@ maarto := trans_verb_lxm-verb-lex &
 
 zhoplaa := intrans_verb_lxm-verb-lex &
   [ STEM < "zhoplaa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_slept_v_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_sleptm_v_rel" ].
+
+zhoplii := intrans_verb_lxm-verb-lex &
+  [ STEM < "zhoplii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sleptfem_v_rel" ].
+
+zhople := intrans_verb_lxm-verb-lex &
+  [ STEM < "zhople" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sleptmpl_v_rel" ].
+
+zhoplyaa := intrans_verb_lxm-verb-lex &
+  [ STEM < "zhoplyaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sleptfempl_v_rel" ].
+
+zhoplo := intrans_verb_lxm-verb-lex &
+  [ STEM < "zhoplo" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sleptfirstperpl_v_rel" ].
+
+zhoplaas := intrans_verb_lxm-verb-lex &
+  [ STEM < "zhoplaas" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sleptsecondper_v_rel" ].
+
+zhoplat := intrans_verb_lxm-verb-lex &
+  [ STEM < "zhoplat" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sleptsecondperpl_v_rel" ].
+
+maagitle := trans_verb_lxm-verb-lex &
+  [ STEM < "maagitle" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
+
+dilaa := trans_verb_lxm-verb-lex &
+  [ STEM < "dilaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_gave_v_rel" ].
+
+dzhaala := trans_verb_lxm-verb-lex &
+  [ STEM < "dzhaala" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_happened_v_rel" ].
 
 ;;; Determiners
 
@@ -36,3 +136,9 @@ tii := determiner_lxm-determiner-lex &
 to := determiner_lxm-determiner-lex &
   [ STEM < "to" >,
     SYNSEM.LKEYS.KEYREL.PRED "_that_q_rel" ].
+
+tyaa := determiner_lxm-determiner-lex &
+  [ STEM < "to" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_those_q_rel" ].
+
+
