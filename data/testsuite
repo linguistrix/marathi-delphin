@@ -277,7 +277,7 @@ Phenomena: {pn,agr}
 dummy orth
 mii zhople
 mii zhop-le
-I.1.S.F slept-PST.1.S.F
+I.1.S slept-PST.1.S.F
 I(fem) slept
 
 #39
@@ -288,7 +288,7 @@ Phenomena: {pn,agr}
 dummy orth
 mii zhoplo
 mii zhop-lo
-I.1.S.M slept-PST.1.S.M
+I.1.S slept-PST.1.S.M
 I(masc) slept
 
 #40
@@ -314,6 +314,42 @@ we.1.EXCL slept-PST.1.EXCL
 we(exclusive) slept
 
 #41
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+tuu zhoplaas
+tuu zhop-laas
+you.2.S slept-PST.2.S.M
+you(masc) slept
+
+#42
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+tuu zhopliis
+tuu zhop-liis
+you.2.S slept-PST.2.S.F
+you(fem) slept
+
+#43
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+tumhii zhoplat
+tumhii zhop-lat
+you.2.PL slept-PST.2.PL
+you slept
+
+
+
+
+
 
 
 
