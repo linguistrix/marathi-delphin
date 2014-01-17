@@ -71,7 +71,7 @@ polis maar-t-o tsor-aalaa
 policeman beat-PRES-3.S.M thief-ACC
 The policeman beats the thief
 
-#6
+#7
 Source: {author}
 Vetted: {t}
 Judgment: {g}
@@ -79,18 +79,7 @@ Phenomena: {c, wo}
 dummy orth
 to tsor zhoplaa 
 to tsor zhop-laa 
-that thief.NOM slept.PST.3.S.M
-That thief slept
-
-#7
-Source: {author}
-Vetted: {f}
-Judgment: {u}
-Phenomena: {wo}
-dummy orth
-to zhoplaa tsor
-to zhop-laa tsor
-that slept.PST.3.S.M thief.NOM
+that.S.M thief.NOM slept-PST.3.S.M
 That thief slept
 
 #8
@@ -99,9 +88,9 @@ Vetted: {f}
 Judgment: {u}
 Phenomena: {wo}
 dummy orth
-zhoplaa to tsor
-zhop-laa to tsor
-slept.PST.3.S.M that thief.NOM
+to zhoplaa tsor
+to zhop-laa tsor
+that.S.M slept-PST.3.S.M thief.NOM
 That thief slept
 
 #9
@@ -110,9 +99,9 @@ Vetted: {f}
 Judgment: {u}
 Phenomena: {wo}
 dummy orth
-tsor to zhoplaa
-tsor to zhop-laa
-thief.NOM that slept.PST.3.S.M 
+zhoplaa to tsor
+zhop-laa to tsor
+slept-PST.3.S.M that.S.M thief.NOM
 That thief slept
 
 #10
@@ -121,9 +110,9 @@ Vetted: {f}
 Judgment: {u}
 Phenomena: {wo}
 dummy orth
-tsor zhoplaa to 
-tsor zhop-laa to
-thief.NOM slept.PST.3.S.M that
+tsor to zhoplaa
+tsor to zhop-laa
+thief.NOM that.S.M slept-PST.3.S.M 
 That thief slept
 
 #11
@@ -132,12 +121,23 @@ Vetted: {f}
 Judgment: {u}
 Phenomena: {wo}
 dummy orth
-zhoplaa tsor to 
-zhop-laa tsor to
-slept.PST.3.S.M thief.NOM that
-that thief slept
+tsor zhoplaa to 
+tsor zhop-laa to
+thief.NOM slept-PST.3.S.M that.S.M
+That thief slept
 
 #12
+Source: {author}
+Vetted: {f}
+Judgment: {u}
+Phenomena: {wo}
+dummy orth
+zhoplaa tsor to 
+zhop-laa tsor to
+slept-PST.3.S.M thief.NOM that.S.M
+that thief slept
+
+#13
 Source: {author}
 Vetted: {t}
 Judgment: {g}
@@ -145,10 +145,10 @@ Phenomena: {pn, agr}
 dummy orth
 haa zhoplaa
 haa zhop-laa 
-he.3.S.M slept.PST.3.S.M
+he.3.S.M slept-PST.3.S.M
 he slept
 
-#12
+#14
 Source: {author}
 Vetted: {t}
 Judgment: {u}
@@ -156,10 +156,10 @@ Phenomena: {pn,agr}
 dummy orth
 zhoplaa haa 
 zhop-laa haa
-slept.PST.3.S.M he.3.S.M 
+slept-PST.3.S.M he.3.S.M 
 he slept
 
-#13
+#15
 Source: {author}
 Vetted: {t}
 Judgment: {u}
@@ -167,32 +167,33 @@ Phenomena: {pn,agr}
 dummy orth
 he zhoplaa
 he zhop-laa
-she.3.S.F slept.PST.3.S.M 
-she slept
-
-#14
-Source: {author}
-Vetted: {t}
-Judgment: {g}
-Phenomena: {pn,agr}
-dummy orth
-he zhoplii
-he zhop-lii
-she.3.S.F slept.PST.3.S.M 
-she slept
-
-#15
-Source: {author}
-Vetted: {t}
-Judgment: {g}
-Phenomena: {pn,agr}
-dummy orth
-he zhoplii
-he zhop-lii
-she.3.S.F slept.PST.3.S.M 
+she.3.S.F slept-PST.3.S.M 
 she slept
 
 #16
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+hii zhoplii
+hii zhop-lii
+she.3.S.F slept-PST.3.S.M 
+she slept
+
+#17
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+he zhoplii
+he zhop-lii
+she.3.S.F slept-PST.3.S.M 
+she slept
+
+#18
+
 
 
 
