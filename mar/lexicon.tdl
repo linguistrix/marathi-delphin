@@ -25,10 +25,6 @@ tsor := common_noun_lxm-noun-lex &
   [ STEM < "tsor" >,
     SYNSEM.LKEYS.KEYREL.PRED "_thief_n_rel" ].
 
-tsor := common_noun-lxm-noun-lex &
-  [ STEM < "tsoraa" >,
-    SYNSYEM.LKEYS.KEYREL.PRED "_thiefpl_n_rel" ].
-
 tsoraalaa := common_noun_lxm-noun-lex &
   [ STEM < "tsoraalaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_thiefacc_n_rel" ].
@@ -87,8 +83,8 @@ zhoplaas := intrans_verb_lxm-verb-lex &
   [ STEM < "zhoplaas" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sleptsecondper_v_rel" ].
 
-zhoplat := intrans_verb_lxm-verb-lex &
-  [ STEM < "zhoplat" >,
+zhoplaat := intrans_verb_lxm-verb-lex &
+  [ STEM < "zhoplaat" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sleptsecondperpl_v_rel" ].
 
 maagitle := trans_verb_lxm-verb-lex &
@@ -114,7 +110,7 @@ to := determiner_lxm-determiner-lex &
     SYNSEM.LKEYS.KEYREL.PRED "_that_q_rel" ].
 
 tyaa := determiner_lxm-determiner-lex &
-  [ STEM < "to" >,
+  [ STEM < "tyaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_those_q_rel" ].
 
 
