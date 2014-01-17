@@ -152,7 +152,7 @@ he slept
 Source: {author}
 Vetted: {t}
 Judgment: {u}
-Phenomena: {pn,agr}
+Phenomena: {pn,wo}
 dummy orth
 zhoplaa haa 
 zhop-laa haa
@@ -165,8 +165,8 @@ Vetted: {t}
 Judgment: {u}
 Phenomena: {pn,agr}
 dummy orth
-he zhoplaa
-he zhop-laa
+hii zhoplaa
+hii zhop-laa
 she.3.S.F slept-PST.3.S.M 
 she slept
 
@@ -187,12 +187,22 @@ Vetted: {t}
 Judgment: {g}
 Phenomena: {pn,agr}
 dummy orth
-he zhoplii
-he zhop-lii
+hii zhoplii
+hii zhop-lii
 she.3.S.F slept-PST.3.S.M 
 she slept
 
 #18
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+he zhoplaa
+he zhop-laa
+she.3.S.F slept-PST.3.S.M 
+she slept
+
 
 
 
