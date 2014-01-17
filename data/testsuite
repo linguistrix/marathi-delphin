@@ -75,7 +75,7 @@ The policeman beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: {g}
-Phenomena: {wo}
+Phenomena: {wo, det}
 dummy orth
 to tsor zhoplaa 
 to tsor zhop-laa 
@@ -86,7 +86,7 @@ That thief slept
 Source: {author}
 Vetted: {t}
 Judgment: {u}
-Phenomena: {wo}
+Phenomena: {wo, det}
 dummy orth
 to zhoplaa tsor
 to zhop-laa tsor
@@ -97,7 +97,7 @@ That thief slept
 Source: {author}
 Vetted: {t}
 Judgment: {u}
-Phenomena: {wo}
+Phenomena: {wo, det}
 dummy orth
 zhoplaa to tsor
 zhop-laa to tsor
@@ -108,7 +108,7 @@ That thief slept
 Source: {author}
 Vetted: {t}
 Judgment: {u}
-Phenomena: {wo}
+Phenomena: {wo, det}
 dummy orth
 tsor to zhoplaa
 tsor to zhop-laa
@@ -119,7 +119,7 @@ That thief slept
 Source: {author}
 Vetted: {t}
 Judgment: {u}
-Phenomena: {wo}
+Phenomena: {wo, det}
 dummy orth
 tsor zhoplaa to 
 tsor zhop-laa to
@@ -130,7 +130,7 @@ That thief slept
 Source: {author}
 Vetted: {t}
 Judgment: {u}
-Phenomena: {wo}
+Phenomena: {wo,det}
 dummy orth
 zhoplaa tsor to 
 zhop-laa tsor to
@@ -467,6 +467,8 @@ polis-aalaa kutraa zhopla
 polis-ACC.3.S dog 3.S sleep-PST.3.S
 The policemans dog slept
 
+
+
 #54
 Source: {author}
 Vetted: {t}
@@ -481,7 +483,7 @@ I asked the policeman for a dog
 #55
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: {g}
 Phenomena: {c}
 dummy orth
 mii polisaalaa kutraa maagitle
@@ -490,6 +492,171 @@ i.1.S police-DAT dog.3.S.M ask-PST-3.PL.M
 I asked the policeman for a dog
 
 #56
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {c}
+dummy orth
+polisaalaa tsoraalaa maar-t-o
+polis-aalaa tsor-aalaa maar-t-o
+policeman.DAT thief-ACC beat-PRES-3.S.M
+The policeman beats the thief
+
+#57
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {c}
+dummy orth
+polis tsoraalaa maar-t-o
+polis tsor-aalaa maar-t-o
+policeman.NOM thief-DAT beat-PRES-3.S.M
+The policeman beats the thief
+
+#58
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {c}
+dummy orth
+polis tsoraalaa kutraa dila
+polis tsor-aalaa kutraa di-l-a
+policeman.NOM thief-ACC dog.3.S.M give-PST-3.S
+The policeman gave the thief a dog
+
+#59
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {c}
+dummy orth
+polisaalaa tsor kutraa dila
+polis-aalaa tsor kutraa di-l-a
+policeman-ACC thief.NOM dog.3.S.M give-PST-3.S
+The policeman gave the thief a dog
+
+#60
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {c}
+dummy orth
+polisaalaa tsor kutraa dilaa
+polis-aalaa tsor kutraa di-l-aa
+policeman-DAT thief.NOM dog.3.S.M give-PST-3.S
+The policeman gave the thief a dog
+
+#61
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {c}
+dummy orth
+polisaalaa tsoraalaa kutraa dila
+polis-aalaa tsor-aalaa kutraa di-l-aa
+policeman-DAT thief-ACC dog.3.S.M give-PST-3.S
+The policeman gave the thief a dog
+
+#62
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {c}
+dummy orth
+polisaalaa tsoraalaa kutraa dilaa
+polis-aalaa tsor-aalaa kutraa di-l-a
+policeman-ACC thief-ACC dog.3.S.M give-PST-3.S
+The policeman gave the thief a dog
+
+#63
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {c}
+dummy orth
+polisaalaa tsoraalaa kutraa dilaa
+polis-aalaa tsor-aalaa kutraa di-l-aa
+policeman-ACC thief-ACC dog.3.S.M give-PST-3.S
+The policeman gave the thief a dog
+
+#64
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {c}
+dummy orth
+polis bhaarataat zhoplat
+polis bhaara-taat zhop-lat
+policeman.NOM india-LOC sleep-PST.3.S
+The policeman gave the thief a dog
+
+#65
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {c}
+dummy orth
+polis bhaaraalaa zhoplat
+polis bhaara-aalaa zhop-lat
+policeman.NOM india-ACC sleep-PST.3.S
+The policeman gave the thief a dog
+
+#65
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {c}
+dummy orth
+polisaalaa bhaarataat zhoplat
+polis-aalaa bhaara-taat zhop-lat
+policeman-ACC india-LOC sleep-PST.3.S
+The policeman gave the thief a dog
+
+#66
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {wo, det}
+dummy orth
+tsor zhoplaa 
+tsor zhop-laa 
+thief.NOM sleep-PST.3.S.M
+the thief slept
+
+#67
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {wo, det}
+dummy orth
+tyaa tsoraa zhoplaa 
+tyaa tsor-aa zhop-laa 
+those.PL.M thief-PL.S.M.NOM sleep-PST.3.S.M
+those thieves slept
+
+#68
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {wo, det}
+dummy orth
+tsoraa tyaa.PL.M zhoplaa 
+tsor-aa tyaa.PL.M zhop-laa 
+thief-PL.S.M.NOM those sleep-PST.3.S.M
+those thieves slept
+
+#69
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {wo, det}
+dummy orth
+tsoraa zhoplaa 
+tsor-aa zhop-laa 
+thief-PL.S.M.NOM sleep-PST.3.S.M
+the thieves slept
+
+
 
 
 
