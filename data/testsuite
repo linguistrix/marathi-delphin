@@ -9,80 +9,204 @@ Source a: Marathi by Rajeshwari Pandharipande http://books.google.com/books/abou
 Source: {a:288}
 Vetted: {t}
 Judgment: {g}
-Phenomena: {word order}
+Phenomena: {wo}
 dummy orth
 polis tsoraalaa maar-t-o
 polis tsor-aalaa maar-t-o
-policeman thief-ACC beat-PRES-3.SG.M
+policeman thief-ACC beat-PRES-3.S.M
 The policeman beats the thief
 
 #2
 Source: {author}
 Vetted: {t}
 Judgment: {u}
-Phenomena: {word order}
+Phenomena: {wo}
 dummy orth
 maar-t-o polis tsoraalaa 
 maar-t-o polis tsor-aalaa
-beat-PRES-3.SG.M policeman thief-ACC 
+beat-PRES-3.S.M policeman thief-ACC 
 The policeman beats the thief
 
 #3
 Source: {author}
 Vetted: {t}
 Judgment: {u}
-Phenomena: {word order}
+Phenomena: {wo}
 dummy orth
 maar-t-o tsoraalaa polis
 maar-t-o tsor-aalaa polis
-beat-PRES-3.SG.M thief-ACC policeman
+beat-PRES-3.S.M thief-ACC policeman
 The policeman beats the thief
 
 #4
 Source: {author}
 Vetted: {t}
 Judgment: {u}
-Phenomena: {word order}
+Phenomena: {wo}
 dummy orth
-tsoraalaa maarto polis
+tsoraalaa maar-t-o polis
 tsor-aalaa maar-t-o polis
-thief-ACC beat-PRES-3.SG.M policeman
+thief-ACC beat-PRES-3.S.M policeman
 The policeman beats the thief
 
 #5
 Source: {author}
 Vetted: {t}
 Judgment: {u}
-Phenomena: {word order}
+Phenomena: {wo}
 dummy orth
-tsoraalaa polis maarto
+tsoraalaa polis maar-t-o
 tsor-aalaa polis maar-t-o
-thief-ACC policeman beat-PRES-3.SG.M
+thief-ACC policeman beat-PRES-3.S.M
 The policeman beats the thief
 
 #6
 Source: {author}
 Vetted: {t}
 Judgment: {u}
-Phenomena: {word order}
+Phenomena: {wo}
 dummy orth
-polis maarto tsoraalaa 
+polis maar-t-o tsoraalaa 
 polis maar-t-o tsor-aalaa 
-policeman beat-PRES-3.SG.M thief-ACC
+policeman beat-PRES-3.S.M thief-ACC
 The policeman beats the thief
 
-#7
-Source: {a:283}
+#6
+Source: {author}
 Vetted: {t}
 Judgment: {g}
-Phenomena: {case}
+Phenomena: {c, wo}
 dummy orth
-to tsor dzoplaa
-to tsor dzop-laa
-that.3.SG.M thief-NOM sleep-PAST-3.SG.M
+to tsor zhoplaa 
+to tsor zhop-laa 
+that thief.NOM slept.PST.3.S.M
+That thief slept
+
+#7
+Source: {author}
+Vetted: {f}
+Judgment: {u}
+Phenomena: {wo}
+dummy orth
+to zhoplaa tsor
+to zhop-laa tsor
+that slept.PST.3.S.M thief.NOM
 That thief slept
 
 #8
+Source: {author}
+Vetted: {f}
+Judgment: {u}
+Phenomena: {wo}
+dummy orth
+zhoplaa to tsor
+zhop-laa to tsor
+slept.PST.3.S.M that thief.NOM
+That thief slept
+
+#9
+Source: {author}
+Vetted: {f}
+Judgment: {u}
+Phenomena: {wo}
+dummy orth
+tsor to zhoplaa
+tsor to zhop-laa
+thief.NOM that slept.PST.3.S.M 
+That thief slept
+
+#10
+Source: {author}
+Vetted: {f}
+Judgment: {u}
+Phenomena: {wo}
+dummy orth
+tsor zhoplaa to 
+tsor zhop-laa to
+thief.NOM slept.PST.3.S.M that
+That thief slept
+
+#11
+Source: {author}
+Vetted: {f}
+Judgment: {u}
+Phenomena: {wo}
+dummy orth
+zhoplaa tsor to 
+zhop-laa tsor to
+slept.PST.3.S.M thief.NOM that
+that thief slept
+
+#12
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn, agr}
+dummy orth
+haa zhoplaa
+haa zhop-laa 
+he.3.S.M slept.PST.3.S.M
+he slept
+
+#12
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {pn,agr}
+dummy orth
+zhoplaa haa 
+zhop-laa haa
+slept.PST.3.S.M he.3.S.M 
+he slept
+
+#13
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {pn,agr}
+dummy orth
+he zhoplaa
+he zhop-laa
+she.3.S.F slept.PST.3.S.M 
+she slept
+
+#14
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+he zhoplii
+he zhop-lii
+she.3.S.F slept.PST.3.S.M 
+she slept
+
+#15
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+he zhoplii
+he zhop-lii
+she.3.S.F slept.PST.3.S.M 
+she slept
+
+#16
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
