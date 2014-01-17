@@ -1,0 +1,96 @@
+Documentation of the phenomena you have added to your testsuite, illustrated with examples from the testsuite.
+Documentation of the choices you made in the customization system, illustrated with examples from your test suite.
+This can be interleaved with the documentation of the phenomena (so you describe each phenomenon and then the choices you used to add an analysis of it to the grammar), but the documentation of the phenomenon and choices should be logically separate. Here's an example of what this should look like. 
+Descriptions of any properties of your language illustrated in your test suite but not covered by your starter grammar and/or the customization system.
+Documentation the coverage of your grammar over the testsuite. This should include both summary numbers, which you can get by using the Analyze | Coverage and Analyze | Overgeneration options in [incr tsdb()], and discussion of specific examples. If there are examples that thare parsed incorrectly (unanalyzed grammatical examples, analyzed ungrammatical examples, or grammatical examples assigned surprising parses), reflect on why that might be.
+Finally, if there are any places where the customization system seems unable to cope with the properties of your language (within the phenomena addressed in this lab), describe them here. 
+
+Documentation of the phenomena you have added to your testsuite, illustrated with examples from the testsuite.
+
+As indicated in the lab2 webpage, we have focussed on the following phenomena in our testsuite:
+
+1. Word Order
+
+Canonical Marathi word order is SOV, with permutations in the word order allowed for specific emphasis, focus or contrast. A typical example of the word order would be (note that that Orthography line right now says dummy orth since we hadn't sorted out the issue with the make_item script yet. It will be deleted later.
+
+Source: {a:288}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {wo}
+dummy orth
+polis tsoraalaa maar-t-o
+polis tsor-aalaa maar-t-o
+policeman thief-ACC beat-PRES-3.S.M
+The policeman beats the thief
+
+The grammar book does not present generic negative examples of changed word order. It addresses word order issues only in the placement of additional modifiers and such where the placement changes the meaning or where only one particular configuration is grammatical. In our version of the test-suite right now, we have chosen to explicitly enter other permutations of the SOV order as UNgrammatical. Due to lack of specific examples from the book, I have used my native judgment for this, on the basis that while these permutations do not sound technically wrong, they are extremely unnatural in the absence of specific context or in the absence of a specific writing style (such as poetry, where they are used quite readily).
+
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {wo}
+dummy orth
+maar-t-o polis tsoraalaa 
+maar-t-o polis tsor-aalaa
+beat-PRES-3.S.M policeman thief-ACC 
+The policeman beats the thief
+
+In NPs, the determiner comes before the Nominal form. Here are a couple of examples that demonstrate this:
+
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {c, wo}
+dummy orth
+to tsor zhoplaa 
+to tsor zhop-laa 
+that.S.M thief.NOM slept-PST.3.S.M
+That thief slept
+
+Source: {author}
+Vetted: {f}
+Judgment: {u}
+Phenomena: {wo}
+dummy orth
+tsor to zhoplaa
+tsor to zhop-laa
+thief.NOM that.S.M slept-PST.3.S.M 
+That thief slepts
+
+2. Pronouns
+
+Marathi has a three-way gender system (M/F/N), three-way person system (1/2/3) and a two-way number system (S/P). Likewise, there are 6 corresponding pronouns, though a couple of them are identical in form. In addition, there is a clusivity distinction in the 1st person plural. The pronouns are marked for gender in the 3rd person.
+
+1st person: mii (S), aamhii (P, excl), aapann (P, incl)
+2nd person: tu (S), tumhii (P/honorific), aapann (P/honorific)
+3rd person (distant): to (M, S), te (M, P), tii (F, S), tyaa (F, P), te (N, S), tii (N, P)
+3rd person (proximal): haa (M, S), he (M, P), hii (F, S), hyaa (F, P), he (N, S), hii (N, P)
+
+Several examples have been added to the test suite to illustrate this.
+
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn}
+dummy orth
+haa zhoplaa
+haa zhop-laa 
+he.3.S.M.P slept-PST.3.S.M
+he slept
+
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+hyaa zhoplyaa
+hyaa zhop-lyaa
+she.3.PL.F.P slept-PST.3.PL.F 
+they(fem) slept
+
+The complete list of examples is present in the test-suite file, examples #13 to #43
+
+3. Case 
+
+Marathi has 8 cases (which correspond quite exactly to the 8 cases in Sanskrit). Case markers are all bound suffixes which are attached to the and they all have distinct case-endings which 
+
