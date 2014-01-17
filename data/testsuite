@@ -141,34 +141,34 @@ that thief slept
 Source: {author}
 Vetted: {t}
 Judgment: {g}
-Phenomena: {pn, agr}
+Phenomena: {pn}
 dummy orth
 haa zhoplaa
 haa zhop-laa 
-he.3.S.M slept-PST.3.S.M
+he.3.S.M.P slept-PST.3.S.M
 he slept
 
 #14
 Source: {author}
 Vetted: {t}
-Judgment: {u}
-Phenomena: {pn,wo}
+Judgment: {g}
+Phenomena: {pn,agr}
 dummy orth
-zhoplaa haa 
-zhop-laa haa
-slept-PST.3.S.M he.3.S.M 
-he slept
+hii zhoplii
+hii zhop-lii
+she.3.S.F.P slept-PST.3.S.F 
+she slept
 
 #15
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: {g}
 Phenomena: {pn,agr}
 dummy orth
-hii zhoplaa
-hii zhop-laa
-she.3.S.F slept-PST.3.S.M 
-she slept
+he zhople
+he zhop-le
+he.3.PL.M.P slept-PST.3.PL.M 
+they(masc) slept 
 
 #16
 Source: {author}
@@ -176,10 +176,10 @@ Vetted: {t}
 Judgment: {g}
 Phenomena: {pn,agr}
 dummy orth
-hii zhoplii
-hii zhop-lii
-she.3.S.F slept-PST.3.S.M 
-she slept
+hyaa zhoplyaa
+hyaa zhop-lyaa
+she.3.PL.F.P slept-PST.3.PL.F 
+they(fem) slept
 
 #17
 Source: {author}
@@ -187,10 +187,10 @@ Vetted: {t}
 Judgment: {g}
 Phenomena: {pn,agr}
 dummy orth
-hii zhoplii
-hii zhop-lii
-she.3.S.F slept-PST.3.S.M 
-she slept
+he zhople
+he zhop-le
+neut.3.S.N.P slept-PST.3.S.N 
+neut slept
 
 #18
 Source: {author}
@@ -198,10 +198,141 @@ Vetted: {t}
 Judgment: {g}
 Phenomena: {pn,agr}
 dummy orth
-he zhoplaa
-he zhop-laa
-she.3.S.F slept-PST.3.S.M 
+hii zhoplii
+hii zhop-lii
+neut.3.PL.N.P slept-PST.3.PL.N 
+neut slept
+
+#32
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+to zhoplaa
+to zhop-laa
+he.3.S.M.R slept-PST.3.S.M 
+he slept
+
+#33
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+tii zhoplii
+tii zhop-lii
+she.3.S.F.R slept-PST.3.F.M 
 she slept
+
+#34
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+te zhople
+te zhop-le
+neut.3.S.N.R slept-PST.3.N.M 
+neut slept
+
+#35
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+te zhople
+te zhop-le
+he.3.PL.M.R slept-PST.3.PL.M 
+they(masc) slept
+
+#36
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+tyaa zhoplyaa
+tyaa zhop-lyaa
+she.3.PL.F.R slept-PST.3.PL.F
+they(fem) slept
+
+#37
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+tii zhoplii
+tii zhop-lii
+she.3.PL.N.R slept-PST.3.PL.N
+they(neut) slept
+
+#38
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+mii zhople
+mii zhop-le
+I.1.S.F slept-PST.1.S.F
+I(fem) slept
+
+#39
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+mii zhoplo
+mii zhop-lo
+I.1.S.M slept-PST.1.S.M
+I(masc) slept
+
+#40
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+aapann zhoplo
+aapann zhop-lo
+we.1.INCL slept-PST.1.INCL
+we(inclusive) slept
+
+#41
+Source: {author}
+Vetted: {t}
+Judgment: {g}
+Phenomena: {pn,agr}
+dummy orth
+aamhii zhoplo
+aamhii zhop-lo
+we.1.EXCL slept-PST.1.EXCL
+we(exclusive) slept
+
+#41
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
 
 
 
