@@ -435,14 +435,14 @@ boy.NOM sadness-3.S happen-PST.3
 The boy became sad
 
 #51
-Source: {a:285}
+Source: {author}
 Vetted: {t}
-Judgment: {g}
-Phenomena: {c}
+Judgment: {u}
+Phenomena: {c, wo}
 dummy orth
-mulaalaa dukhka dzhaala
-mul-aalaa dukhk-ha dzhaa-la
-boy-DAT sadness-3.S happen-PST.3
+dukhka mulaalaa dzhaala
+dukhk-ha mul-aalaa dzhaa-la
+sadness-3.S boy-DAT happen-PST.3
 The boy became sad
 
 #52
@@ -466,8 +466,6 @@ polisaalaa kutraa zhopla
 polis-aalaa kutraa zhopla
 polis-ACC.3.S dog 3.S sleep-PST.3.S
 The policemans dog slept
-
-
 
 #54
 Source: {author}
@@ -655,6 +653,16 @@ tsoraa zhoplaa
 tsor-aa zhop-laa 
 thief-PL.S.M.NOM sleep-PST.3.S.M
 the thieves slept
+
+Source: {author}
+Vetted: {t}
+Judgment: {u}
+Phenomena: {c}
+dummy orth
+mii kutraa polisaakadduun maagitle
+mii kutraa polis-aakadduun maagi-t-le
+i.1.S dog.3.S.M police-ABL  ask-PST-3.PL.M
+I asked the policeman for a dog
 
 
 
