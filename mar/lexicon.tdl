@@ -25,8 +25,8 @@ tsor := common_noun_lxm-noun-lex &
   [ STEM < "tsor" >,
     SYNSEM.LKEYS.KEYREL.PRED "_thief_n_rel" ].
 
-tsor := common_noun-lxm-nounlex &
-  [ STEM < "tsoraa >,
+tsor := common_noun-lxm-noun-lex &
+  [ STEM < "tsoraa" >,
     SYNSYEM.LKEYS.KEYREL.PRED "_thiefpl_n_rel" ].
 
 tsoraalaa := common_noun_lxm-noun-lex &
@@ -52,30 +52,6 @@ mulaalaa := common_noun_lxm-noun-lex &
 dukhkha := common_noun_lxm-noun-lex &
   [ STEM < "dukhka" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sadness_n_rel" ].
-
-mii := 1sg-nom-pronoun-noun-lex &
-  [ STEM < "mii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
-
-aamhi := 1pl-nom-pronoun-noun-lex &
-  [ STEM < "aamhi" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
-
-aapann := 1incl-nom-pronoun-noun-lex &
-  [ STEM < "aapann" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
-
-tuu := 2sg-nom-pronoun-noun-lex &
-  [ STEM < "tuu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
-
-tumhii := 2pl-nom-pronoun-noun-lex &
-  [ STEM < "tumhii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
-
-aapann := 2excl-nom-pronoun-noun-lex &
-  [ STEM < "aapaan" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
 
 ;;; Verbs
 
