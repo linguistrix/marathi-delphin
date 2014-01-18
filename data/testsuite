@@ -374,7 +374,7 @@ Vetted: {t}
 Judgment: {g}
 Phenomena: {c}
 dummy orth
-polis tsoraalaa maar-t-o
+polis tsoraalaa maarto
 polis tsor-aalaa maar-t-o
 policeman.NOM thief-ACC beat-PRES-3.S.M
 The policeman beats the thief
@@ -385,7 +385,7 @@ Vetted: {t}
 Judgment: {u}
 Phenomena: {c}
 dummy orth
-polisaalaa tsor maar-t-o
+polisaalaa tsor maarto
 polis-aalaa tsor maar-t-o
 policeman-ACC thief.NOM beat-PRES-3.S.M
 The policeman beats the thief
@@ -396,8 +396,8 @@ Vetted: {t}
 Judgment: {u}
 Phenomena: {c}
 dummy orth
-polisaalaa tsoraalaa maar-t-o
-polis-aalaa tsoraalaa maar-t-o
+polisaalaa tsoraalaa maarto
+polis-aalaa tsor-aalaa maar-t-o
 policeman-ACC thief-ACC beat-PRES-3.S.M
 The policeman beats the thief
 
@@ -407,7 +407,7 @@ Vetted: {t}
 Judgment: {u}
 Phenomena: {c}
 dummy orth
-polis tsor mar-t-o
+polis tsor marto
 polis tsor maar-t-o
 policeman.NOM thief.NOM beat-PRES-3.S.M
 The policeman beats the thief
@@ -420,7 +420,7 @@ Phenomena: {c}
 dummy orth
 mulaalaa dukhka dzhaala
 mul-aalaa dukhkha dzhaa-la
-boy-DAT sadness-3.S happen-PST.3
+boy-DAT sadness.3.S happen-PST.3
 The boy became sad
 
 #50
@@ -431,7 +431,7 @@ Phenomena: {c}
 dummy orth
 mul dukhka dzhaala
 mul dukhkha dzhaa-la
-boy.NOM sadness-3.S happen-PST.3
+boy.NOM sadness.3.S happen-PST.3
 The boy became sad
 
 #51
@@ -442,7 +442,7 @@ Phenomena: {c, wo}
 dummy orth
 dukhka mulaalaa dzhaala
 dukhkha mul-aalaa dzhaa-la
-sadness-3.S boy-DAT happen-PST.3
+sadness.3.S boy-DAT happen-PST.3
 The boy became sad
 
 #52
@@ -453,7 +453,7 @@ Phenomena: {c}
 dummy orth
 polisaatsaa kutraa zhopla
 polis-aatsaa kutraa zhop-la
-polis-POSS.3.S dog 3.S sleep-PST.3.S
+polis-POSS.3.S dog.3.S sleep-PST.3.S
 The policemans dog slept
 
 #53
@@ -463,8 +463,8 @@ Judgment: {u}
 Phenomena: {c}
 dummy orth
 polisaalaa kutraa zhopla
-polis-aalaa kutraa zhopla
-polis-ACC.3.S dog 3.S sleep-PST.3.S
+polis-aalaa kutraa zhop-la
+polis-ACC.3.S dog.3.S sleep-PST.3.S
 The policemans dog slept
 
 #54
@@ -495,9 +495,9 @@ Vetted: {t}
 Judgment: {u}
 Phenomena: {c}
 dummy orth
-polisaalaa tsoraalaa maar-t-o
+polisaalaa tsoraalaa maarto
 polis-aalaa tsor-aalaa maar-t-o
-policeman.DAT thief-ACC beat-PRES-3.S.M
+policeman-DAT thief-ACC beat-PRES-3.S.M
 The policeman beats the thief
 
 #57
@@ -506,7 +506,7 @@ Vetted: {t}
 Judgment: {u}
 Phenomena: {c}
 dummy orth
-polis tsoraalaa maar-t-o
+polis tsoraalaa maarto
 polis tsor-aalaa maar-t-o
 policeman.NOM thief-DAT beat-PRES-3.S.M
 The policeman beats the thief
@@ -629,7 +629,7 @@ Phenomena: {wo, det}
 dummy orth
 te tsor zhoplaa 
 te tsor zhop-laa 
-those.PL.M thief-PL.S.M.NOM sleep-PST.3.S.M
+those.PL.M thief.PL.S.M.NOM sleep-PST.3.S.M
 those thieves slept
 
 #68
