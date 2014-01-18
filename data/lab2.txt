@@ -92,5 +92,7 @@ The complete list of examples is present in the test-suite file, examples #13 to
 
 3. Case 
 
-Marathi has 8 cases (which correspond quite exactly to the 8 cases in Sanskrit). Case markers are all bound suffixes which are attached to the and they all have distinct case-endings which 
+Marathi has 8 cases (which correspond quite exactly to the 8 cases in Sanskrit). Case markers are all bound suffixes which are attached to the end of the NP and they all have distinct case-endings. 
+
+There is an added complication with case, and that is that the determiner for the noun changes depending on the case of the noun. For instance, 'that thief' is "to tsor" but "that thief's" is "tya tsoraacaa"
 
