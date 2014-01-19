@@ -44,7 +44,7 @@ Vetted: {t}
 Judgment: {u}
 Phenomena: {wo}
 dummy orth
-tsoraalaa maar-t-o polis
+tsoraalaa maarto polis
 tsor-aalaa maar-t-o polis
 thief-ACC beat-PRES-3.S.M policeman.NOM
 The policeman beats the thief
@@ -55,7 +55,7 @@ Vetted: {t}
 Judgment: {u}
 Phenomena: {wo}
 dummy orth
-tsoraalaa polis maar-t-o
+tsoraalaa polis maarto
 tsor-aalaa polis maar-t-o
 thief-ACC policeman.NOM beat-PRES-3.S.M
 The policeman beats the thief
@@ -66,7 +66,7 @@ Vetted: {t}
 Judgment: {u}
 Phenomena: {wo}
 dummy orth
-polis maar-t-o tsoraalaa 
+polis maarto tsoraalaa 
 polis maar-t-o tsor-aalaa 
 policeman.NOM beat-PRES-3.S.M thief-ACC
 The policeman beats the thief
@@ -597,7 +597,7 @@ dummy orth
 polis bhaaraalaa zhoplat
 polis bhaara-aalaa zhop-lat
 policeman.NOM india-ACC sleep-PST.3.S
-The policeman gave the thief a dog
+The policeman sleeps in India
 
 #65
 Source: {author}
@@ -608,7 +608,7 @@ dummy orth
 polisaalaa bhaarataat zhoplat
 polis-aalaa bhaara-taat zhop-lat
 policeman-ACC india-LOC sleep-PST.3.S
-The policeman gave the thief a dog
+The policeman sleeps in India
 
 #66
 Source: {author}
@@ -638,8 +638,8 @@ Vetted: {t}
 Judgment: {u}
 Phenomena: {wo, det}
 dummy orth
-tsoraa tyaa.PL.M zhoplaa 
-tsor-aa tyaa.PL.M zhop-laa 
+tsor-aa te zhoplaa
+tsor-aa te.PL.M zhop-laa 
 thief-PL.S.M.NOM those sleep-PST.3.S.M
 those thieves slept
 
@@ -654,6 +654,7 @@ tsor-aa zhop-laa
 thief-PL.S.M.NOM sleep-PST.3.S.M
 the thieves slept
 
+#70
 Source: {author}
 Vetted: {t}
 Judgment: {u}
