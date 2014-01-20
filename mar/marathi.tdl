@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Grammar of Marathi
 ;;; created at:
-;;;     Wed Jan 15 01:59:58 UTC 2014
+;;;     Sat Jan 18 00:49:48 UTC 2014
 ;;; based on Matrix customization system version of:
 ;;;     Thu Oct 10 18:49:17 UTC 2013
 ;;;
@@ -85,7 +85,22 @@ noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-mod-lex-ite
                            SPEC < > ],
     ARG-ST < #spr > ].
 
+no-spr-noun-lex := noun-lex &
+  [ SYNSEM.LOCAL.CAT.VAL.SPR < [ OPT + ] > ].
+
+; Nouns which cannot take specifiers mark their SPR requirement
+; as OPT +.  Making the non-head daughter OPT - in this rule
+; keeps such nouns out.
+; 
+; Rules for building NPs.  Note that the Matrix uses SPR for
+; the specifier of nouns and SUBJ for the subject (specifier) of verbs.
+
+head-spec-phrase := basic-head-spec-phrase & head-final &
+  [ NON-HEAD-DTR.SYNSEM.OPT - ].
+
 common_noun_lxm-noun-lex := noun-lex.
+
+noun2-noun-lex := no-spr-noun-lex.
 
 ;;; Verbs
 
@@ -158,11 +173,6 @@ comp-head-phrase := basic-head-1st-comp-phrase & head-final.
 
 subj-head-phrase := decl-head-subj-phrase & head-final &
   [ HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
-
-; Rules for building NPs.  Note that the Matrix uses SPR for
-; the specifier of nouns and SUBJ for the subject (specifier) of verbs.
-
-head-spec-phrase := basic-head-spec-phrase & head-final.
 
 ; Bare NP phrase.  Consider modifying the PRED value of the quantifier relation
 ; introduced to match the semantic effect of bare NPs in your language.

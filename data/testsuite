@@ -1,6 +1,6 @@
 Language: Marathi
 Language code: mar
-Lines: orth translit translit-seg gloss translat
+Lines: translit translit-seg gloss translat
 Author: Antariksh Bothale, Andrew Baer
 Date: January 14, 2014
 Source a: Marathi by Rajeshwari Pandharipande http://books.google.com/books/about/Marathi.html?id=v5UOAAAAQAAJ
@@ -8,9 +8,8 @@ Source a: Marathi by Rajeshwari Pandharipande http://books.google.com/books/abou
 #1
 Source: {a:288}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {wo}
-dummy orth
 polis tsoraalaa maarto
 polis tsor-aalaa maar-t-o
 policeman.NOM thief-ACC beat-PRES-3.S.M
@@ -19,9 +18,8 @@ The policeman beats the thief
 #2
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {wo}
-dummy orth
 maarto polis tsoraalaa 
 maar-t-o polis tsor-aalaa
 beat-PRES-3.S.M policeman.NOM thief-ACC 
@@ -30,9 +28,8 @@ The policeman beats the thief
 #3
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {wo}
-dummy orth
 maarto tsoraalaa polis
 maar-t-o tsor-aalaa polis
 beat-PRES-3.S.M thief-ACC policeman.NOM
@@ -41,9 +38,12 @@ The policeman beats the thief
 #4
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {wo}
+<<<<<<< HEAD
 dummy orth
+=======
+>>>>>>> 27cdfe39d496f7a504460d4db5ca9039201c69cc
 tsoraalaa maarto polis
 tsor-aalaa maar-t-o polis
 thief-ACC beat-PRES-3.S.M policeman.NOM
@@ -52,9 +52,12 @@ The policeman beats the thief
 #5
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {wo}
+<<<<<<< HEAD
 dummy orth
+=======
+>>>>>>> 27cdfe39d496f7a504460d4db5ca9039201c69cc
 tsoraalaa polis maarto
 tsor-aalaa polis maar-t-o
 thief-ACC policeman.NOM beat-PRES-3.S.M
@@ -63,9 +66,12 @@ The policeman beats the thief
 #6
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {wo}
+<<<<<<< HEAD
 dummy orth
+=======
+>>>>>>> 27cdfe39d496f7a504460d4db5ca9039201c69cc
 polis maarto tsoraalaa 
 polis maar-t-o tsor-aalaa 
 policeman.NOM beat-PRES-3.S.M thief-ACC
@@ -74,9 +80,8 @@ The policeman beats the thief
 #7
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {wo, det}
-dummy orth
 to tsor zhoplaa 
 to tsor zhop-laa 
 that.S.M thief.NOM sleep-PST.3.S.M
@@ -85,9 +90,8 @@ That thief slept
 #8
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {wo, det}
-dummy orth
 to zhoplaa tsor
 to zhop-laa tsor
 that.S.M sleep-PST.3.S.M thief.NOM
@@ -96,9 +100,8 @@ That thief slept
 #9
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {wo, det}
-dummy orth
 zhoplaa to tsor
 zhop-laa to tsor
 sleep-PST.3.S.M that.S.M thief.NOM
@@ -107,9 +110,8 @@ That thief slept
 #10
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {wo, det}
-dummy orth
 tsor to zhoplaa
 tsor to zhop-laa
 thief.NOM that.S.M sleep-PST.3.S.M 
@@ -118,9 +120,8 @@ That thief slept
 #11
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {wo, det}
-dummy orth
 tsor zhoplaa to 
 tsor zhop-laa to
 thief.NOM sleep-PST.3.S.M that.S.M
@@ -129,9 +130,8 @@ That thief slept
 #12
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {wo,det}
-dummy orth
 zhoplaa tsor to 
 zhop-laa tsor to
 sleep-PST.3.S.M thief.NOM that.S.M
@@ -140,9 +140,8 @@ that thief slept
 #13
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn}
-dummy orth
 haa zhoplaa
 haa zhop-laa 
 he.3.S.M.P sleep-PST.3.S.M
@@ -151,9 +150,8 @@ he slept
 #14
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 hii zhoplii
 hii zhop-lii
 she.3.S.F.P sleep-PST.3.S.F 
@@ -162,9 +160,8 @@ she slept
 #15
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 he zhople
 he zhop-le
 he.3.PL.M.P sleep-PST.3.PL.M 
@@ -173,9 +170,8 @@ they(masc) slept
 #16
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 hyaa zhoplyaa
 hyaa zhop-lyaa
 she.3.PL.F.P sleep-PST.3.PL.F 
@@ -184,9 +180,8 @@ they(fem) slept
 #17
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 he zhople
 he zhop-le
 neut.3.S.N.P sleep-PST.3.S.N 
@@ -195,9 +190,8 @@ neut slept
 #18
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 hii zhoplii
 hii zhop-lii
 neut.3.PL.N.P sleep-PST.3.PL.N 
@@ -206,9 +200,8 @@ neut slept
 #32
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 to zhoplaa
 to zhop-laa
 he.3.S.M.R sleep-PST.3.S.M 
@@ -217,9 +210,8 @@ he slept
 #33
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 tii zhoplii
 tii zhop-lii
 she.3.S.F.R sleep-PST.3.F.M 
@@ -228,9 +220,8 @@ she slept
 #34
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 te zhople
 te zhop-le
 neut.3.S.N.R sleep-PST.3.N.M 
@@ -239,9 +230,8 @@ they(neut) slept
 #35
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 te zhople
 te zhop-le
 he.3.PL.M.R sleep-PST.3.PL.M 
@@ -250,9 +240,8 @@ they(masc) slept
 #36
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 tyaa zhoplyaa
 tyaa zhop-lyaa
 she.3.PL.F.R sleep-PST.3.PL.F
@@ -261,9 +250,8 @@ they(fem) slept
 #37
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 tii zhoplii
 tii zhop-lii
 she.3.PL.N.R sleep-PST.3.PL.N
@@ -272,9 +260,8 @@ they(neut) slept
 #38
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 mii zhople
 mii zhop-le
 I.1.S sleep-PST.1.S.F
@@ -283,9 +270,8 @@ I(fem) slept
 #39
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 mii zhoplo
 mii zhop-lo
 I.1.S sleep-PST.1.S.M
@@ -294,9 +280,8 @@ I(masc) slept
 #40
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 aapann zhoplo
 aapann zhop-lo
 we.1.INCL sleep-PST.1.INCL
@@ -305,9 +290,8 @@ we(inclusive) slept
 #41
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 aamhii zhoplo
 aamhii zhop-lo
 we.1.EXCL sleep-PST.1.EXCL
@@ -316,9 +300,8 @@ we(exclusive) slept
 #41
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 tuu zhoplaas
 tuu zhop-laas
 you.2.S sleep-PST.2.S.M
@@ -327,9 +310,8 @@ you(masc) slept
 #42
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 tuu zhopliis
 tuu zhop-liis
 you.2.S sleep-PST.2.S.F
@@ -338,9 +320,8 @@ you(fem) slept
 #43
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {pn,agr}
-dummy orth
 tumhii zhoplat
 tumhii zhop-lat
 you.2.PL sleep-PST.2.PL
@@ -349,9 +330,8 @@ you slept
 #43
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {c}
-dummy orth
 to tsor zhop-la
 to tsor zhop-la
 that.S.M thief.NOM sleep-PST.3.S
@@ -360,9 +340,8 @@ that thief slept
 #44
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 to tsoralaa zhop-la
 to tsor-aalaa zhop-la
 that.S.M thief-ACC sleep-PST.3.S
@@ -371,9 +350,8 @@ that thief slept
 #45
 Source: {a:288}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {c}
-dummy orth
 polis tsoraalaa maarto
 polis tsor-aalaa maar-t-o
 policeman.NOM thief-ACC beat-PRES-3.S.M
@@ -382,9 +360,8 @@ The policeman beats the thief
 #46
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 polisaalaa tsor maarto
 polis-aalaa tsor maar-t-o
 policeman-ACC thief.NOM beat-PRES-3.S.M
@@ -393,9 +370,8 @@ The policeman beats the thief
 #47
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 polisaalaa tsoraalaa maarto
 polis-aalaa tsor-aalaa maar-t-o
 policeman-ACC thief-ACC beat-PRES-3.S.M
@@ -404,9 +380,8 @@ The policeman beats the thief
 #48
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 polis tsor marto
 polis tsor maar-t-o
 policeman.NOM thief.NOM beat-PRES-3.S.M
@@ -415,9 +390,8 @@ The policeman beats the thief
 #49
 Source: {a:285}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {c}
-dummy orth
 mulaalaa dukhka dzhaala
 mul-aalaa dukhkha dzhaa-la
 boy-DAT sadness.3.S happen-PST.3
@@ -426,9 +400,8 @@ The boy became sad
 #50
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 mul dukhka dzhaala
 mul dukhkha dzhaa-la
 boy.NOM sadness.3.S happen-PST.3
@@ -437,9 +410,8 @@ The boy became sad
 #51
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c, wo}
-dummy orth
 dukhka mulaalaa dzhaala
 dukhkha mul-aalaa dzhaa-la
 sadness.3.S boy-DAT happen-PST.3
@@ -448,9 +420,8 @@ The boy became sad
 #52
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {c}
-dummy orth
 polisaatsaa kutraa zhopla
 polis-aatsaa kutraa zhop-la
 polis-POSS.3.S dog.3.S sleep-PST.3.S
@@ -459,9 +430,8 @@ The policemans dog slept
 #53
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 polisaalaa kutraa zhopla
 polis-aalaa kutraa zhop-la
 polis-ACC.3.S dog.3.S sleep-PST.3.S
@@ -470,9 +440,8 @@ The policemans dog slept
 #54
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: u
 Phenomena: {c}
-dummy orth
 mii polisaakadduun kutraa maagitle
 mii polis-aakadduun kutraa maagi-t-le
 i.1.S police-ABL dog.3.S.M ask-PST-3.PL.M
@@ -481,9 +450,8 @@ I asked the policeman for a dog
 #55
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {c}
-dummy orth
 mii polisaalaa kutraa maagitle
 mii polis-aalaa kutraa maagi-t-le
 i.1.S police-DAT dog.3.S.M ask-PST-3.PL.M
@@ -492,9 +460,8 @@ I asked the policeman for a dog
 #56
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 polisaalaa tsoraalaa maarto
 polis-aalaa tsor-aalaa maar-t-o
 policeman-DAT thief-ACC beat-PRES-3.S.M
@@ -503,9 +470,8 @@ The policeman beats the thief
 #57
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 polis tsoraalaa maarto
 polis tsor-aalaa maar-t-o
 policeman.NOM thief-DAT beat-PRES-3.S.M
@@ -514,20 +480,18 @@ The policeman beats the thief
 #58
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {c}
-dummy orth
-polis tsoraalaa kutraa dila
-polis tsor-aalaa kutraa di-l-a
-policeman.NOM thief-ACC dog.3.S.M give-PST-3.S
+polisne tsoraalaa kutraa dila
+polis-ne tsor-aalaa kutraa di-l-a
+policeman-ERG thief-ACC dog.3.S.M give-PST-3.S
 The policeman gave the thief a dog
 
 #59
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 polisaalaa tsor kutraa dila
 polis-aalaa tsor kutraa di-l-a
 policeman-ACC thief.NOM dog.3.S.M give-PST-3.S
@@ -536,9 +500,8 @@ The policeman gave the thief a dog
 #60
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 polisaalaa tsor kutraa dilaa
 polis-aalaa tsor kutraa di-l-aa
 policeman-DAT thief.NOM dog.3.S.M give-PST-3.S
@@ -547,9 +510,8 @@ The policeman gave the thief a dog
 #61
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 polisaalaa tsoraalaa kutraa dila
 polis-aalaa tsor-aalaa kutraa di-l-aa
 policeman-DAT thief-ACC dog.3.S.M give-PST-3.S
@@ -558,9 +520,8 @@ The policeman gave the thief a dog
 #62
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 polisaalaa tsoraalaa kutraa dilaa
 polis-aalaa tsor-aalaa kutraa di-l-a
 policeman-ACC thief-ACC dog.3.S.M give-PST-3.S
@@ -569,9 +530,8 @@ The policeman gave the thief a dog
 #63
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 polisaalaa tsoraalaa kutraa dilaa
 polis-aalaa tsor-aalaa kutraa di-l-aa
 policeman-ACC thief-ACC dog.3.S.M give-PST-3.S
@@ -580,23 +540,22 @@ The policeman gave the thief a dog
 #64
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {c}
-dummy orth
-polis bhaarataat zhoplat
-polis bhaara-taat zhop-lat
+polis bhaarataat zhoplaa
+polis bhaarat-aat zhop-laa
 policeman.NOM india-LOC sleep-PST.3.S
-The policeman gave the thief a dog
+The policeman slept in India
 
 #65
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
-polis bhaaraalaa zhoplat
-polis bhaara-aalaa zhop-lat
+polis bhaarataalaa zhoplaa
+polis bhaarat-aalaa zhop-laa
 policeman.NOM india-ACC sleep-PST.3.S
+<<<<<<< HEAD
 The policeman sleeps in India
 
 #65
@@ -609,13 +568,15 @@ polisaalaa bhaarataat zhoplat
 polis-aalaa bhaara-taat zhop-lat
 policeman-ACC india-LOC sleep-PST.3.S
 The policeman sleeps in India
+=======
+The policeman slept in India
+>>>>>>> 27cdfe39d496f7a504460d4db5ca9039201c69cc
 
 #66
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: g
 Phenomena: {wo, det}
-dummy orth
 tsor zhoplaa 
 tsor zhop-laa 
 thief.NOM sleep-PST.3.S.M
@@ -624,9 +585,8 @@ the thief slept
 #67
 Source: {author}
 Vetted: {t}
-Judgment: {g}
+Judgment: u
 Phenomena: {wo, det}
-dummy orth
 te tsor zhoplaa 
 te tsor zhop-laa 
 those.PL.M thief.PL.S.M.NOM sleep-PST.3.S.M
@@ -635,6 +595,7 @@ those thieves slept
 #68
 Source: {author}
 Vetted: {t}
+<<<<<<< HEAD
 Judgment: {u}
 Phenomena: {wo, det}
 dummy orth
@@ -647,78 +608,26 @@ those thieves slept
 Source: {author}
 Vetted: {t}
 Judgment: {g}
+=======
+Judgment: u
+>>>>>>> 27cdfe39d496f7a504460d4db5ca9039201c69cc
 Phenomena: {wo, det}
-dummy orth
 tsoraa zhoplaa 
 tsor-aa zhop-laa 
 thief-PL.S.M.NOM sleep-PST.3.S.M
 the thieves slept
 
+<<<<<<< HEAD
 #70
+=======
+#69
+>>>>>>> 27cdfe39d496f7a504460d4db5ca9039201c69cc
 Source: {author}
 Vetted: {t}
-Judgment: {u}
+Judgment: u
 Phenomena: {c}
-dummy orth
 mii kutraa polisaakadduun maagitle
 mii kutraa polis-aakadduun maagi-t-le
 i.1.S dog.3.S.M police-ABL  ask-PST-3.PL.M
 I asked the policeman for a dog
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

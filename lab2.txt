@@ -151,7 +151,25 @@ As indicated in our posts on GoPost, we are having issues getting tsdb++ to corr
 
 As per Browse | Results, 14 sentences are parsed. Please note that since we have not inserted pronouns into the lexicon yet (as explained above), the pronoun examples will not be parsed.
 
-As per the Overgeneration window, there 1.21 distinct analyses, 14 total results, and 23.3% overall coverage. It should be noted here that our test suite currently contains significantly more ungrammatical sentences than grammatical ones in order to illustrate the myriad case and word order restrictions. 
+Analysis | Coverage:
+Total: 58
+Negative: 29
+Word string: 3.21
+Lexical items: 3.30
+Distinct: 1.33
+Total: 9
+Coverage: 31%
+
+Analysis | Overgeneration:
+Total: 58
+Positive: 29
+Word string: 2.38
+Lexical items: 2.45
+Distinct: 1.00
+Total: 5
+Coverage: 17.2%
+
+It should be noted here that our test suite currently contains roughly an equal number of +ve and -ve examples, but a lot of positive examples are in the sentences showing the various pronouns, and which are not currently being parsed. Among the sentences for which the lexicon is ready, there are significantly more ungrammatical sentences than grammatical ones in order to illustrate the myriad case and word order restrictions. 
 
 Currently, since no specific agreement requirements have been fed into the grammar, sentences where the agreement is off often end up being parsed as grammatical. 
 
