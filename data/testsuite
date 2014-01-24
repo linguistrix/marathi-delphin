@@ -40,10 +40,6 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {wo}
-<<<<<<< HEAD
-dummy orth
-=======
->>>>>>> 27cdfe39d496f7a504460d4db5ca9039201c69cc
 tsoraalaa maarto polis
 tsor-laa maar-t-o polis
 thief-ACC beat-PRES-3.S.M policeman.NOM
@@ -54,10 +50,6 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {wo}
-<<<<<<< HEAD
-dummy orth
-=======
->>>>>>> 27cdfe39d496f7a504460d4db5ca9039201c69cc
 tsoraalaa polis maarto
 tsor-laa polis maar-t-o
 thief-ACC policeman.NOM beat-PRES-3.S.M
@@ -68,10 +60,6 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {wo}
-<<<<<<< HEAD
-dummy orth
-=======
->>>>>>> 27cdfe39d496f7a504460d4db5ca9039201c69cc
 polis maarto tsoraalaa 
 polis maar-t-o tsor-laa 
 policeman.NOM beat-PRES-3.S.M thief-ACC
@@ -553,13 +541,8 @@ Vetted: {t}
 Judgment: u
 Phenomena: {c}
 polis bhaarataalaa zhoplaa
-<<<<<<< HEAD
 polis bhaarat-laa zhop-l-aa
 policeman.NOM india-ACC sleep-PST-3.S
-=======
-polis bhaarat-aalaa zhop-laa
-policeman.NOM india-ACC sleep-PST.3.S
-<<<<<<< HEAD
 The policeman sleeps in India
 
 #65
@@ -567,15 +550,10 @@ Source: {author}
 Vetted: {t}
 Judgment: {u}
 Phenomena: {c}
-dummy orth
 polisaalaa bhaarataat zhoplat
 polis-aalaa bhaara-taat zhop-lat
 policeman-ACC india-LOC sleep-PST.3.S
-The policeman sleeps in India
-=======
->>>>>>> fe0ab38bd9f5463b9d03bc641e2956a426b42d36
 The policeman slept in India
->>>>>>> 27cdfe39d496f7a504460d4db5ca9039201c69cc
 
 #66
 Source: {author}
@@ -600,37 +578,24 @@ those thieves slept
 #68
 Source: {author}
 Vetted: {t}
-<<<<<<< HEAD
-Judgment: g
-=======
-<<<<<<< HEAD
-Judgment: {u}
+Judgment: u
 Phenomena: {wo, det}
-dummy orth
-tsor-aa te zhoplaa
-tsor-aa te.PL.M zhop-laa 
-thief-PL.S.M.NOM those sleep-PST.3.S.M
+tsoraa te zhoplaa
+tsor-aa te zhop-laa 
+thief-PL.S.M.NOM those.3.P.M sleep-PST.3.S.M
 those thieves slept
 
 #69
 Source: {author}
 Vetted: {t}
-Judgment: {g}
-=======
-Judgment: u
->>>>>>> 27cdfe39d496f7a504460d4db5ca9039201c69cc
->>>>>>> fe0ab38bd9f5463b9d03bc641e2956a426b42d36
+Judgment: g
 Phenomena: {wo, det}
 te tsor zhople
 te tsor zhop-l-e 
 those.PL.M thief.PL.M.NOM sleep-PST-3.P.M
 those thieves slept
 
-<<<<<<< HEAD
 #70
-=======
-#69
->>>>>>> 27cdfe39d496f7a504460d4db5ca9039201c69cc
 Source: {author}
 Vetted: {t}
 Judgment: u
