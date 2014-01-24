@@ -1,4 +1,6 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
+basic-head-opt-comp := basic-head-opt-comp-phrase.
+
 comp-head := comp-head-phrase.
 
 subj-head := subj-head-phrase.

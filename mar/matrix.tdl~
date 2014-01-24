@@ -149,6 +149,7 @@ synsem := synsem-min &
   [ L-PERIPH luk,
     R-PERIPH luk ].
 
+
 expressed-synsem := synsem.
 
 canonical-synsem := expressed-synsem &

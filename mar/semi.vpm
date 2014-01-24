@@ -61,3 +61,10 @@ PNG.GEND : PNG.GEND
   F <> F
   N <> N
   * <> !
+
+E.TENSE : TENSE
+  present <> present
+  past <> past
+  future <> future
+  present << *
+  present << [e]

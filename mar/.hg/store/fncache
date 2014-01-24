@@ -32,6 +32,7 @@ data/ace/qc.txt.i
 data/lkb/mrsmunge.tdl.i
 data/irules.tdl.i
 data/lkb/script.i
+data/matrix.tdl~.i
 data/pet/marathi-pet.set.i
 data/repp/vanilla.rpp.i
 data/tsdb/skeletons/Index.lisp.i
