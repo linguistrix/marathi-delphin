@@ -123,7 +123,7 @@ dila := trans_verb_lxm-verb-lex &
   [ STEM < "dila" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gave_v_rel" ].
 
-zhop := intrans_verb_lxm-verb-lex &
+zhop := intransitive_verb_lexeme-verb-lex &
   [ STEM < "zhop" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
 
