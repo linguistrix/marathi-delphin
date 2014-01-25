@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Grammar of Marathi
 ;;; created at:
-;;;     Fri Jan 24 22:05:03 UTC 2014
+;;;     Sat Jan 25 01:48:40 UTC 2014
 ;;; based on Matrix customization system version of:
 ;;;     Mon Jan 20 03:51:25 UTC 2014
 ;;;
@@ -23,37 +23,37 @@ noun :+ [ CASE case ].
 head :+ [ AUX bool,
     FORM form ].
 
-inflected :+ [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG luk,
-    COMMON_NOUN_LEXEME-NOUN-FLAG luk,
+inflected :+ [ M_NOUN_LEXEME-NOUN-FLAG luk,
+    INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG luk,
     TOBECOME_AUX_VERB_LEXEME-AUX-FLAG luk,
     F_NOUN_LEXEME-NOUN-FLAG luk,
-    PRONOUN_LEXEME-NOUN-FLAG luk,
-    VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG luk,
-    TOBE_AUX_VERB_LEXEME-AUX-FLAG luk,
-    INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG luk,
-    N_NOUN_LEXEME-NOUN-FLAG luk,
-    PRESENT_LEXICAL_RULE-FLAG luk,
-    M_NOUN_LEXEME-NOUN-FLAG luk,
-    AUX-FLAG luk,
-    TOBE_AUX_INFLECTION-FLAG luk,
     VERB_TENSE-FLAG luk,
-    TOBECOME_AUX_INFLECTION-FLAG luk ].
+    AUX-FLAG luk,
+    VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG luk,
+    FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG luk,
+    COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG luk,
+    N_NOUN_LEXEME-NOUN-FLAG luk,
+    TOBE_AUX_VERB_LEXEME-AUX-FLAG luk,
+    PRESENT_LEXICAL_RULE-FLAG luk,
+    TOBECOME_AUX_INFLECTION-FLAG luk,
+    CASE-FLAG luk,
+    TOBE_AUX_INFLECTION-FLAG luk ].
 
-infl-satisfied :+ [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG na-or-+,
-    COMMON_NOUN_LEXEME-NOUN-FLAG na-or-+,
+infl-satisfied :+ [ M_NOUN_LEXEME-NOUN-FLAG na-or-+,
+    INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG na-or-+,
     TOBECOME_AUX_VERB_LEXEME-AUX-FLAG na-or-+,
     F_NOUN_LEXEME-NOUN-FLAG na-or-+,
-    PRONOUN_LEXEME-NOUN-FLAG na-or-+,
-    VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG na-or-+,
-    TOBE_AUX_VERB_LEXEME-AUX-FLAG na-or-+,
-    INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG na-or-+,
-    N_NOUN_LEXEME-NOUN-FLAG na-or-+,
-    PRESENT_LEXICAL_RULE-FLAG na-or-+,
-    M_NOUN_LEXEME-NOUN-FLAG na-or-+,
-    AUX-FLAG na-or-+,
-    TOBE_AUX_INFLECTION-FLAG na-or-+,
     VERB_TENSE-FLAG na-or-+,
-    TOBECOME_AUX_INFLECTION-FLAG na-or-+ ].
+    AUX-FLAG na-or-+,
+    VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG na-or-+,
+    FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG na-or-+,
+    COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or-+,
+    N_NOUN_LEXEME-NOUN-FLAG na-or-+,
+    TOBE_AUX_VERB_LEXEME-AUX-FLAG na-or-+,
+    PRESENT_LEXICAL_RULE-FLAG na-or-+,
+    TOBECOME_AUX_INFLECTION-FLAG na-or-+,
+    CASE-FLAG na-or-+,
+    TOBE_AUX_INFLECTION-FLAG na-or-+ ].
 
 png :+ [ PERNUM pernum,
     GEND gender ].
@@ -72,16 +72,15 @@ basic-head-mod-phrase-simple :+ [ SYNSEM.LOCAL.CAT.MC #mc,
 
 case := *top*.
 nom := case.  ; nom
+acc := case.  ; acc
 erg := case.  ; erg
 abs := case.  ; abs
 ins := case.  ; inst
+dat := case.  ; dat
 abl := case.  ; abl
 pos := case.  ; poss
 loc := case.  ; loc
 voc := case.  ; voc
-acc+dat := case.
-acc := acc+dat.
-dat := acc+dat.
 
 ;;; Pernum
 
@@ -137,7 +136,8 @@ noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-mod-lex-ite
                            COMPS < >,
                            SUBJ < >,
                            SPEC < > ],
-    ARG-ST < #spr > ].
+    ARG-ST < #spr >,
+    INFLECTED.CASE-FLAG - ].
 
 no-spr-noun-lex := noun-lex &
   [ SYNSEM.LOCAL.CAT.VAL.SPR < [ OPT + ] > ].
@@ -152,169 +152,166 @@ no-spr-noun-lex := noun-lex &
 head-spec-phrase := basic-head-spec-phrase & head-final &
   [ NON-HEAD-DTR.SYNSEM.OPT - ].
 
-common_noun_lexeme-noun-lex := noun-lex & Case-rule-dtr &
-  [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG +,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
-
-pronoun_lexeme-noun-lex := no-spr-noun-lex & Case-rule-dtr &
-  [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                PRONOUN_LEXEME-NOUN-FLAG + ] ].
-
-1sg_noun_lexeme-noun-lex := noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG,
-    INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
-
-2sg_noun_lexeme-noun-lex := noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2SG,
-    INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
-
-3rd_noun_lexeme-noun-lex := noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3SG,
-    INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
-
-m_noun_lexeme-noun-lex := noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND M,
-    INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG +,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
-
-f_noun_lexeme-noun-lex := noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND F,
-    INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG +,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
-
-n_noun_lexeme-noun-lex := noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND N,
-    INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG + ] ].
-
-1sg_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 1sg_noun_lexeme-noun-lex &
-  [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+1sg_pronoun_lexeme-noun-lex := 1sg_noun_lexeme-noun-lex & pronoun_lexeme-noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
 1pl_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_excl,
-    INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+    INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
 1plincl_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_incl,
-    INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+    INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
-2sg_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 2sg_noun_lexeme-noun-lex &
-  [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+2sg_pronoun_lexeme-noun-lex := 2sg_noun_lexeme-noun-lex & pronoun_lexeme-noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
-2pl_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 2pl_noun_lexeme-noun-lex &
-  [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+2pl_pronoun_lexeme-noun-lex := 2pl_noun_lexeme-noun-lex & pronoun_lexeme-noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
-2plh_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 2pl_noun_lexeme-noun-lex &
-  [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+2plh_pronoun_lexeme-noun-lex := 2pl_noun_lexeme-noun-lex & pronoun_lexeme-noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
-3sgm_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 3rd_noun_lexeme-noun-lex & m_noun_lexeme-noun-lex &
-  [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+3sgm_pronoun_lexeme-noun-lex := 3sg_noun_lexeme-noun-lex & m_noun_lexeme-noun-lex & pronoun_lexeme-noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
-3sgf_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 3rd_noun_lexeme-noun-lex & f_noun_lexeme-noun-lex &
-  [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+3sgf_pronoun_lexeme-noun-lex := 3sg_noun_lexeme-noun-lex & f_noun_lexeme-noun-lex & pronoun_lexeme-noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
-3plm_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & m_noun_lexeme-noun-lex & 3pl_noun_lexeme-noun-lex &
-  [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+3plm_pronoun_lexeme-noun-lex := 3pl_noun_lexeme-noun-lex & m_noun_lexeme-noun-lex & pronoun_lexeme-noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
-3plf_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & f_noun_lexeme-noun-lex & 3pl_noun_lexeme-noun-lex &
-  [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+3plf_pronoun_lexeme-noun-lex := 3pl_noun_lexeme-noun-lex & f_noun_lexeme-noun-lex & pronoun_lexeme-noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
-3sgn_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 3rd_noun_lexeme-noun-lex & n_noun_lexeme-noun-lex &
-  [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+3sgn_pronoun_lexeme-noun-lex := 3sg_noun_lexeme-noun-lex & n_noun_lexeme-noun-lex & pronoun_lexeme-noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
-3pln_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 3rd_noun_lexeme-noun-lex & n_noun_lexeme-noun-lex &
-  [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+3pln_pronoun_lexeme-noun-lex := 3pl_noun_lexeme-noun-lex & n_noun_lexeme-noun-lex & pronoun_lexeme-noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
-3m_commonnoun_lexeme-noun-lex := common_noun_lexeme-noun-lex & 3rd_noun_lexeme-noun-lex & m_noun_lexeme-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
-                                       PERNUM 3SG ],
-    INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+3m_commonnoun_lexeme-noun-lex := common_noun_lexeme-noun-lex & 3sg_noun_lexeme-noun-lex & m_noun_lexeme-noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
-3sgf_commonnoun_lexeme-noun-lex := common_noun_lexeme-noun-lex & 3rd_noun_lexeme-noun-lex & f_noun_lexeme-noun-lex &
-  [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+3f_commonnoun_lexeme-noun-lex := common_noun_lexeme-noun-lex & 3sg_noun_lexeme-noun-lex & f_noun_lexeme-noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+
+common_noun_lexeme-noun-lex := noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG +,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+
+1sg_noun_lexeme-noun-lex := noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG,
+    INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+
+2sg_noun_lexeme-noun-lex := noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2SG,
+    INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+
+3sg_noun_lexeme-noun-lex := noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3SG,
+    INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
 1pl_noun_lexeme-noun-lex := noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL,
-    INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+    INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
 2pl_noun_lexeme-noun-lex := noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL,
-    INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+    INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
 3pl_noun_lexeme-noun-lex := noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3PL,
-    INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG na-or--,
-                F_NOUN_LEXEME-NOUN-FLAG na-or--,
-                COMMON_NOUN_LEXEME-NOUN-FLAG na-or--,
-                N_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+    INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+
+m_noun_lexeme-noun-lex := noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND M,
+    INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG +,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+
+f_noun_lexeme-noun-lex := noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND F,
+    INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG + ] ].
+
+n_noun_lexeme-noun-lex := noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND N,
+    INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG +,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG na-or--,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
+
+pronoun_lexeme-noun-lex := no-spr-noun-lex &
+  [ INFLECTED [ N_NOUN_LEXEME-NOUN-FLAG na-or--,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG +,
+                M_NOUN_LEXEME-NOUN-FLAG na-or--,
+                F_NOUN_LEXEME-NOUN-FLAG na-or-- ] ].
 
 ;;; Verbs
 
@@ -332,18 +329,18 @@ main-verb-lex := verb-lex & basic-verb-lex & aspect_inflection-or-verb_tense-rul
                  [ LOCAL [ CAT.VAL [ SPR < >,
                                      COMPS < > ],
                            CONT.HOOK.INDEX #xarg ] ],
-    INFLECTED [ VERB_TENSE-FLAG -,
+    INFLECTED [ VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG -,
+                INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG +,
+                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG na-or--,
                 TOBE_AUX_VERB_LEXEME-AUX-FLAG na-or--,
-                VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG -,
-                INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG +,
-                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG na-or-- ] ].
+                VERB_TENSE-FLAG - ] ].
 
 aux-lex := verb-lex &
   [ SYNSEM.LOCAL.CAT.HEAD.AUX +,
-    INFLECTED [ AUX-FLAG +,
-                TOBE_AUX_VERB_LEXEME-AUX-FLAG na-or--,
+    INFLECTED [ INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG na-or--,
                 TOBECOME_AUX_VERB_LEXEME-AUX-FLAG na-or--,
-                INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG na-or-- ] ].
+                AUX-FLAG +,
+                TOBE_AUX_VERB_LEXEME-AUX-FLAG na-or-- ] ].
 
 intransitive-verb-lex := main-verb-lex & intransitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
@@ -357,12 +354,9 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
                                  COMPS < > ],
                            HEAD noun ] ] > ].
 
-trans_verb_lxm-verb-lex := transitive-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom,
-                           COMPS.FIRST.LOCAL.CAT.HEAD.CASE acc+dat ] ].
+trans_verb_lxm-verb-lex := transitive-verb-lex.
 
-intransitive_verb_lexeme-verb-lex := intransitive-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ].
+intrans_verb_lxm-verb-lex := intransitive-verb-lex.
 
 ;;; Auxiliaries
 
@@ -391,23 +385,23 @@ subj-raise-aux-with-pred := subj-raise-aux & norm-sem-lex-item & trans-first-arg
 
 neg-aux-lex := subj-raise-aux-with-pred &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite,
-    INFLECTED [ TOBECOME_AUX_VERB_LEXEME-AUX-FLAG na-or--,
-                TOBE_AUX_VERB_LEXEME-AUX-FLAG na-or--,
-                INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG na-or-- ] ].
+    INFLECTED [ INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG na-or--,
+                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG na-or--,
+                TOBE_AUX_VERB_LEXEME-AUX-FLAG na-or-- ] ].
 
 tobe_aux_verb_lexeme-aux-lex := subj-raise-aux-with-pred &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite,
-    INFLECTED [ TOBE_AUX_INFLECTION-FLAG -,
-                INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG na-or--,
-                TOBE_AUX_VERB_LEXEME-AUX-FLAG +,
-                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG na-or-- ] ].
+    INFLECTED [ INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG na-or--,
+                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG na-or--,
+                TOBE_AUX_INFLECTION-FLAG -,
+                TOBE_AUX_VERB_LEXEME-AUX-FLAG + ] ].
 
 tobecome_aux_verb_lexeme-aux-lex := subj-raise-aux-with-pred &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite,
-    INFLECTED [ INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG na-or--,
+    INFLECTED [ INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG na-or--,
+                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG +,
                 TOBECOME_AUX_INFLECTION-FLAG -,
-                TOBE_AUX_VERB_LEXEME-AUX-FLAG na-or--,
-                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG + ] ].
+                TOBE_AUX_VERB_LEXEME-AUX-FLAG na-or-- ] ].
 
 ;;; Others
 
@@ -431,16 +425,40 @@ verb_gender_past-rule-dtr := word-or-lexrule.
 aspect_inflection-or-verb_tense-rule-dtr := word-or-lexrule.
 verb_gender_present-rule-dtr := word-or-lexrule.
 verb_gender_future-rule-dtr := word-or-lexrule.
-Case-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
 Case-lex-rule-super := add-only-no-ccont-rule &
-  [ INFLECTED #infl,
-    DTR Case-rule-dtr &
-        [ INFLECTED #infl &
-                    [ COMMON_NOUN_LEXEME-NOUN-FLAG +,
-                      PRONOUN_LEXEME-NOUN-FLAG na ] ] ].
+  [ INFLECTED [ CASE-FLAG +,
+                M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
+                INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb,
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                VERB_TENSE-FLAG #verb_tense,
+                AUX-FLAG #aux,
+                VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
+                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun,
+                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
+                N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ],
+    DTR noun-lex &
+        [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
+                      INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb,
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                      F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                      VERB_TENSE-FLAG #verb_tense,
+                      AUX-FLAG #aux,
+                      VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
+                      TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+                      COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun & +,
+                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                      TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
+                      N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ] ] ].
 
 poss_n_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
   [ DTR.INFLECTED.N_NOUN_LEXEME-NOUN-FLAG +,
@@ -480,31 +498,31 @@ erg_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
 
 verb_tense-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ VERB_TENSE-FLAG +,
-                VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
                 M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
-                COMMON_NOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun,
-                AUX-FLAG #aux,
-                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+                INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb,
                 TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                PRONOUN_LEXEME-NOUN-FLAG #pronoun_lexeme-noun,
+                CASE-FLAG #case,
+                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
                 F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                AUX-FLAG #aux,
+                VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
+                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun,
                 TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
-                INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG #intransitive-verb-or-intransitive_verb_lexeme-verb-or-trans_verb_lxm-verb-or-transitive-verb,
-                N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun,
-                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection ],
+                N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ],
     DTR aspect_inflection-or-verb_tense-rule-dtr &
-        [ INFLECTED [ VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
-                      M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
-                      COMMON_NOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun,
-                      AUX-FLAG #aux & na,
-                      TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+        [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
+                      INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb & +,
                       TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      PRONOUN_LEXEME-NOUN-FLAG #pronoun_lexeme-noun,
+                      CASE-FLAG #case,
+                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
                       F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                      AUX-FLAG #aux & na,
+                      VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
+                      TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+                      COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun,
                       TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
-                      INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG #intransitive-verb-or-intransitive_verb_lexeme-verb-or-trans_verb_lxm-verb-or-transitive-verb & +,
-                      N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun,
-                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection ] ] ].
+                      N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ] ] ].
 
 present_lexical_rule-lex-rule := verb_gender_present-rule-dtr & verb_tense-lex-rule-super &
   [ INFLECTED [ PRESENT_LEXICAL_RULE-FLAG +,
@@ -526,35 +544,35 @@ future_lexical_rule-lex-rule := verb_gender_future-rule-dtr & verb_tense-lex-rul
 
 verb_gender_present-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG +,
-                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
                 M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
-                AUX-FLAG #aux,
-                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
-                F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
-                PRONOUN_LEXEME-NOUN-FLAG #pronoun_lexeme-noun,
-                COMMON_NOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun,
-                TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
-                VERB_TENSE-FLAG #verb_tense,
-                INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG #intransitive-verb-or-intransitive_verb_lexeme-verb-or-trans_verb_lxm-verb-or-transitive-verb,
+                INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb,
                 TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun,
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                CASE-FLAG #case,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule ],
+                F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                VERB_TENSE-FLAG #verb_tense,
+                AUX-FLAG #aux,
+                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun,
+                TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
+                N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ],
     DTR verb_gender_present-rule-dtr &
-        [ INFLECTED [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
-                      AUX-FLAG #aux,
-                      TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
-                      F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
-                      PRONOUN_LEXEME-NOUN-FLAG #pronoun_lexeme-noun,
-                      COMMON_NOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun,
-                      TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
-                      VERB_TENSE-FLAG #verb_tense,
-                      INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG #intransitive-verb-or-intransitive_verb_lexeme-verb-or-trans_verb_lxm-verb-or-transitive-verb,
+        [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
+                      INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb,
                       TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun,
+                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                      CASE-FLAG #case,
                       TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule ] ] ].
+                      F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                      VERB_TENSE-FLAG #verb_tense,
+                      AUX-FLAG #aux,
+                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                      TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+                      COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun,
+                      TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
+                      N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ] ] ].
 
 1sgpresent_masc_lexical_rule-lex-rule := infl-lex-rule & verb_gender_present-lex-rule-super &
   [ DTR.INFLECTED [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG na,
@@ -594,35 +612,35 @@ verb_gender_present-lex-rule-super := add-only-no-ccont-rule &
 
 verb_gender_past-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG +,
-                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
                 M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
-                AUX-FLAG #aux,
-                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
-                F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
-                PRONOUN_LEXEME-NOUN-FLAG #pronoun_lexeme-noun,
-                COMMON_NOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun,
-                TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
-                VERB_TENSE-FLAG #verb_tense,
-                INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG #intransitive-verb-or-intransitive_verb_lexeme-verb-or-trans_verb_lxm-verb-or-transitive-verb,
+                INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb,
                 TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun,
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                CASE-FLAG #case,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule ],
+                F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                VERB_TENSE-FLAG #verb_tense,
+                AUX-FLAG #aux,
+                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun,
+                TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
+                N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ],
     DTR verb_gender_past-rule-dtr &
-        [ INFLECTED [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
-                      AUX-FLAG #aux,
-                      TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
-                      F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
-                      PRONOUN_LEXEME-NOUN-FLAG #pronoun_lexeme-noun,
-                      COMMON_NOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun,
-                      TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
-                      VERB_TENSE-FLAG #verb_tense,
-                      INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG #intransitive-verb-or-intransitive_verb_lexeme-verb-or-trans_verb_lxm-verb-or-transitive-verb,
+        [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
+                      INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb,
                       TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun,
+                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                      CASE-FLAG #case,
                       TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule ] ] ].
+                      F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                      VERB_TENSE-FLAG #verb_tense,
+                      AUX-FLAG #aux,
+                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                      TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+                      COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun,
+                      TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
+                      N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ] ] ].
 
 1sgpast_masc_lexical_rule-lex-rule := verb_gender_past-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
@@ -659,35 +677,35 @@ verb_gender_past-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
 
 verb_gender_future-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG +,
-                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
                 M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
-                AUX-FLAG #aux,
-                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
-                F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
-                PRONOUN_LEXEME-NOUN-FLAG #pronoun_lexeme-noun,
-                COMMON_NOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun,
-                TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
-                VERB_TENSE-FLAG #verb_tense,
-                INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG #intransitive-verb-or-intransitive_verb_lexeme-verb-or-trans_verb_lxm-verb-or-transitive-verb,
+                INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb,
                 TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun,
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                CASE-FLAG #case,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule ],
+                F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                VERB_TENSE-FLAG #verb_tense,
+                AUX-FLAG #aux,
+                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun,
+                TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
+                N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ],
     DTR verb_gender_future-rule-dtr &
-        [ INFLECTED [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
-                      AUX-FLAG #aux,
-                      TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
-                      F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
-                      PRONOUN_LEXEME-NOUN-FLAG #pronoun_lexeme-noun,
-                      COMMON_NOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun,
-                      TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
-                      VERB_TENSE-FLAG #verb_tense,
-                      INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG #intransitive-verb-or-intransitive_verb_lexeme-verb-or-trans_verb_lxm-verb-or-transitive-verb,
+        [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
+                      INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb,
                       TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun,
+                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                      CASE-FLAG #case,
                       TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule ] ] ].
+                      F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                      VERB_TENSE-FLAG #verb_tense,
+                      AUX-FLAG #aux,
+                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                      TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+                      COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun,
+                      TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
+                      N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ] ] ].
 
 1sgfuture_lexical_rule-lex-rule := verb_gender_future-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG ].
@@ -720,35 +738,35 @@ imperfective_lexical_rule-lex-rule := aspect_inflection-lex-rule-super &
 
 tobe_aux_inflection-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG +,
-                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
                 M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
-                AUX-FLAG #aux,
-                TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
-                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
-                F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
-                COMMON_NOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun,
-                PRONOUN_LEXEME-NOUN-FLAG #pronoun_lexeme-noun,
-                VERB_TENSE-FLAG #verb_tense,
-                INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG #intransitive-verb-or-intransitive_verb_lexeme-verb-or-trans_verb_lxm-verb-or-transitive-verb,
-                N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun,
+                INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb,
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                CASE-FLAG #case,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule ],
+                F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                VERB_TENSE-FLAG #verb_tense,
+                AUX-FLAG #aux,
+                VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
+                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun,
+                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
+                N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ],
     DTR tobe_aux_verb_lexeme-aux-lex &
-        [ INFLECTED [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
-                      M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
-                      AUX-FLAG #aux,
-                      TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux & +,
-                      TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux & na,
-                      F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
-                      COMMON_NOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun,
-                      PRONOUN_LEXEME-NOUN-FLAG #pronoun_lexeme-noun,
-                      VERB_TENSE-FLAG #verb_tense,
-                      INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG #intransitive-verb-or-intransitive_verb_lexeme-verb-or-trans_verb_lxm-verb-or-transitive-verb,
-                      N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun,
+        [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
+                      INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb,
+                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                      CASE-FLAG #case,
                       TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule ] ] ].
+                      F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                      VERB_TENSE-FLAG #verb_tense,
+                      AUX-FLAG #aux,
+                      VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
+                      TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux & na,
+                      COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun,
+                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                      TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux & +,
+                      N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ] ] ].
 
 non3sg_lexical_rule-lex-rule := tobe_aux_inflection-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2nd+3PL ].
@@ -758,35 +776,35 @@ to_be_3sg_lexical_rule-lex-rule := tobe_aux_inflection-lex-rule-super &
 
 tobecome_aux_inflection-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG +,
-                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
                 M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
-                AUX-FLAG #aux,
-                TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
-                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
-                F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
-                COMMON_NOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun,
-                PRONOUN_LEXEME-NOUN-FLAG #pronoun_lexeme-noun,
-                VERB_TENSE-FLAG #verb_tense,
-                INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG #intransitive-verb-or-intransitive_verb_lexeme-verb-or-trans_verb_lxm-verb-or-transitive-verb,
+                INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb,
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                CASE-FLAG #case,
                 TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun,
-                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule ],
+                F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                VERB_TENSE-FLAG #verb_tense,
+                AUX-FLAG #aux,
+                VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
+                TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux,
+                COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun,
+                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
+                N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ],
     DTR tobecome_aux_verb_lexeme-aux-lex &
-        [ INFLECTED [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
-                      M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
-                      AUX-FLAG #aux,
-                      TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
-                      TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux & +,
-                      F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
-                      COMMON_NOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun,
-                      PRONOUN_LEXEME-NOUN-FLAG #pronoun_lexeme-noun,
-                      VERB_TENSE-FLAG #verb_tense,
-                      INTRANSITIVE-VERB-OR-INTRANSITIVE_VERB_LEXEME-VERB-OR-TRANS_VERB_LXM-VERB-OR-TRANSITIVE-VERB-FLAG #intransitive-verb-or-intransitive_verb_lexeme-verb-or-trans_verb_lxm-verb-or-transitive-verb,
+        [ INFLECTED [ M_NOUN_LEXEME-NOUN-FLAG #m_noun_lexeme-noun,
+                      INTRANS_VERB_LXM-VERB-OR-TRANS_VERB_LXM-VERB-FLAG #intrans_verb_lxm-verb-or-trans_verb_lxm-verb,
+                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                      CASE-FLAG #case,
                       TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun,
-                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule ] ] ].
+                      F_NOUN_LEXEME-NOUN-FLAG #f_noun_lexeme-noun,
+                      VERB_TENSE-FLAG #verb_tense,
+                      AUX-FLAG #aux,
+                      VERB_GENDER_FUTURE-OR-VERB_GENDER_PAST-OR-VERB_GENDER_PRESENT-FLAG #verb_gender_future-or-verb_gender_past-or-verb_gender_present,
+                      TOBECOME_AUX_VERB_LEXEME-AUX-FLAG #tobecome_aux_verb_lexeme-aux & +,
+                      COMMON_NOUN_LEXEME-NOUN-OR-PRONOUN_LEXEME-NOUN-FLAG #common_noun_lexeme-noun-or-pronoun_lexeme-noun,
+                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                      TOBE_AUX_VERB_LEXEME-AUX-FLAG #tobe_aux_verb_lexeme-aux,
+                      N_NOUN_LEXEME-NOUN-FLAG #n_noun_lexeme-noun ] ] ].
 
 tobecome_3sg_lexical_rule-lex-rule := tobecome_aux_inflection-lex-rule-super.
 

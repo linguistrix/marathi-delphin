@@ -97,11 +97,11 @@ bhaarat := 3m_commonnoun_lexeme-noun-lex &
   [ STEM < "bhaarat" >,
     SYNSEM.LKEYS.KEYREL.PRED "_india_n_rel" ].
 
-gaadii := 3sgf_commonnoun_lexeme-noun-lex &
+gaadii := 3f_commonnoun_lexeme-noun-lex &
   [ STEM < "gaadii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_train_n_rel" ].
 
-baatmii := 3sgf_commonnoun_lexeme-noun-lex &
+baatmii := 3f_commonnoun_lexeme-noun-lex &
   [ STEM < "baatmii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_news_n_rel" ].
 
@@ -123,7 +123,7 @@ dila := trans_verb_lxm-verb-lex &
   [ STEM < "dila" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gave_v_rel" ].
 
-zhop := intransitive_verb_lexeme-verb-lex &
+zhop := intrans_verb_lxm-verb-lex &
   [ STEM < "zhop" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
 
