@@ -19,7 +19,7 @@ The policeman beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo}
+Phenomena: {wo, pro-d}
 maarto polis tsoraalaa 
 maar-t-o polis tsor-laa
 beat-PRES-3.S.M policeman.NOM thief-ACC 
@@ -29,7 +29,7 @@ The policeman beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo}
+Phenomena: {wo, pro-d}
 maarto tsoraalaa polis
 maar-t-o tsor-laa polis
 beat-PRES-3.S.M thief-ACC policeman.NOM
@@ -39,7 +39,7 @@ The policeman beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo}
+Phenomena: {wo, pro-d}
 tsoraalaa maarto polis
 tsor-laa maar-t-o polis
 thief-ACC beat-PRES-3.S.M policeman.NOM
@@ -49,7 +49,7 @@ The policeman beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo}
+Phenomena: {wo, pro-d}
 tsoraalaa polis maarto
 tsor-laa polis maar-t-o
 thief-ACC policeman.NOM beat-PRES-3.S.M
@@ -59,7 +59,7 @@ The policeman beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo}
+Phenomena: {wo, pro-d}
 polis maarto tsoraalaa 
 polis maar-t-o tsor-laa 
 policeman.NOM beat-PRES-3.S.M thief-ACC
@@ -69,7 +69,7 @@ The policeman beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {wo, det}
+Phenomena: {wo, det,agr}
 to tsor zhoplaa 
 to tsor zhop-l-aa 
 that.S.M thief.NOM sleep-PST-3.S.M
@@ -109,7 +109,7 @@ That thief slept
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo, det}
+Phenomena: {wo, det, tam}
 tsor zhoplaa to 
 tsor zhop-l-aa to
 thief.NOM sleep-PST-3.S.M that.S.M
@@ -119,7 +119,7 @@ That thief slept
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo,det}
+Phenomena: {wo,det,tam}
 zhoplaa tsor to 
 zhop-l-aa tsor to
 sleep-PST-3.S.M thief.NOM that.S.M
@@ -139,7 +139,7 @@ he slept
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {pn,agr}
+Phenomena: {pn,agr,tam}
 hii zhoplii
 hii zhop-l-ii
 she.3.S.F.P sleep-PST-3.S.F 
@@ -149,7 +149,7 @@ she slept
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {pn,agr}
+Phenomena: {pn,agr,tam}
 he zhople
 he zhop-l-e
 he.3.PL.M.P sleep-PST-3.PL.M 
@@ -159,7 +159,7 @@ they(masc) slept
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {pn,agr}
+Phenomena: {pn,agr,tam}
 hyaa zhoplyaa
 hyaa zhop-l-yaa
 she.3.PL.F.P sleep-PST-3.PL.F 
@@ -169,7 +169,7 @@ they(fem) slept
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {pn,agr}
+Phenomena: {pn,agr,tam}
 he zhople
 he zhop-l-e
 neut.3.S.N.P sleep-PST-3.S.N 
@@ -179,73 +179,73 @@ neut slept
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {pn,agr}
+Phenomena: {pn,agr,tam}
 hii zhoplii
 hii zhop-l-ii
 neut.3.PL.N.P sleep-PST-3.PL.N 
 neut slept
 
-#32
+#19
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {pn,agr}
+Phenomena: {pn,agr,tam}
 to zhoplaa
 to zhop-l-aa
 he.3.S.M.R sleep-PST-3.S.M 
 he slept
 
-#33
+#20
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {pn,agr}
+Phenomena: {pn,agr,tam}
 tii zhoplii
 tii zhop-l-ii
 she.3.S.F.R sleep-PST-3.F.M 
 she slept
 
-#34
+#21
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {pn,agr}
+Phenomena: {pn,agr,tam}
 te zhople
 te zhop-l-e
 neut.3.S.N.R sleep-PST-3.N.M 
 they(neut) slept
 
-#35
+#22
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {pn,agr}
+Phenomena: {pn,agr,tam}
 te zhople
 te zhop-l-e
 he.3.PL.M.R sleep-PST-3.PL.M 
 they(masc) slept
 
-#36
+#23
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {pn,agr}
+Phenomena: {pn,agr,tam}
 tyaa zhoplyaa
 tyaa zhop-l-yaa
 she.3.PL.F.R sleep-PS-3.PL.F
 they(fem) slept
 
-#37
+#24
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {pn,agr}
+Phenomena: {pn,agr,tam}
 tii zhoplii
 tii zhop-l-ii
 she.3.PL.N.R sleep-PST-3.PL.N
 they(neut) slept
 
-#38
+#25
 Source: {author}
 Vetted: {t}
 Judgment: g
@@ -255,7 +255,7 @@ mii zhop-l-e
 I.1.S sleep-PST-1.S.F
 I(fem) slept
 
-#39
+#26
 Source: {author}
 Vetted: {t}
 Judgment: g
@@ -265,7 +265,7 @@ mii zhop-l-o
 I.1.S sleep-PST-1.S.M
 I(masc) slept
 
-#40
+#25
 Source: {author}
 Vetted: {t}
 Judgment: g
@@ -275,7 +275,7 @@ aapann zhop-l-o
 we.1.INCL sleep-PST-1.INCL
 we(inclusive) slept
 
-#41
+#26
 Source: {author}
 Vetted: {t}
 Judgment: g
@@ -285,7 +285,7 @@ aamhii zhop-l-o
 we.1.EXCL sleep-PST-1.EXCL
 we(exclusive) slept
 
-#41
+#27
 Source: {author}
 Vetted: {t}
 Judgment: g
@@ -295,7 +295,7 @@ tuu zhop-l-aas
 you.2.S sleep-PST-2.S.M
 you(masc) slept
 
-#42
+#28
 Source: {author}
 Vetted: {t}
 Judgment: g
@@ -305,7 +305,7 @@ tuu zhop-l-iis
 you.2.S sleep-PST-2.S.F
 you(fem) slept
 
-#43
+#29
 Source: {author}
 Vetted: {t}
 Judgment: g
@@ -315,87 +315,87 @@ tumhii zhop-l-aat
 you.2.PL sleep-PST-2.PL
 you slept
 
-#43
+#30
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {c}
+Phenomena: {c,agr}
 to tsor zhop-la
 to tsor zhop-l-aa
 that.S.M thief.NOM sleep-PST-3.S
 that thief slept
 
-#44
+#31
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 to tsoralaa zhop-la
 to tsor-laa zhop-l-aa
 that.S.M thief-ACC sleep-PST-3.S
 that thief slept
 
-#45
+#32
 Source: {a:288}
 Vetted: {t}
 Judgment: g
-Phenomena: {c}
+Phenomena: {c,agr}
 polis tsoraalaa maarto
 polis tsor-laa maar-t-o
 policeman.NOM thief-ACC beat-PRES-3.S.M
 The policeman beats the thief
 
-#46
+#33
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr,agr}
 polisaalaa tsor maarto
 polis-laa tsor maar-t-o
 policeman-ACC thief.NOM beat-PRES-3.S.M
 The policeman beats the thief
 
-#47
+#34
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 polisaalaa tsoraalaa maarto
 polis-laa tsor-laa maar-t-o
 policeman-ACC thief-ACC beat-PRES-3.S.M
 The policeman beats the thief
 
-#48
+#35
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 polis tsor marto
 polis tsor maar-t-o
 policeman.NOM thief.NOM beat-PRES-3.S.M
 The policeman beats the thief
 
-#49
+#36
 Source: {a:285}
 Vetted: {t}
 Judgment: g
-Phenomena: {c}
+Phenomena: {c,agr}
 mulaalaa dukhka dzhaala
 mul-laa dukhkha dzhaa-l-a
 boy-DAT sadness.3.S.N happen-PST-3.S.N
 The boy became sad
 
-#50
+#37
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 mul dukhka dzhaala
 mul dukhkha dzhaa-l-a
 boy.NOM sadness.3.S.N happen-PST-3.S.N
 The boy became sad
 
-#51
+#38
 Source: {author}
 Vetted: {t}
 Judgment: u
@@ -405,57 +405,57 @@ dukhkha mul-laa dzhaa-l-a
 sadness.3.S.N boy-DAT happen-PST-3.S.N
 The boy became sad
 
-#52
+#39
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {c}
+Phenomena: {c,agr}
 polisaatsaa kutraa zhoplaa
 polis-tsaa kutraa zhop-l-aa
 polis-POSS.3.S dog.3.S sleep-PST-3.S
 The policeman's dog slept
 
-#53
+#40
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 polisaalaa kutraa zhoplaa
 polis-laa kutraa zhop-l-aa
 polis-ACC.3.S dog.3.S sleep-PST-3.S
 The policemans dog slept
 
-#54
+#41
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 mii polisaakadduun kutraa maagitle
 mii polis-kadduun kutraa maag-t-le
 i.1.S police-ABL dog.3.S.M ask-PST-3.PL.M
 I asked the policeman for a dog
 
-#55
+#42
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {c}
+Phenomena: {c,agr}
 mii polisaalaa kutraa maagitle
 mii polis-laa kutraa maag-t-le
 i.1.S police-DAT dog.3.S.M ask-PST-3.PL.M
 I asked the policeman for a dog
 
-#56
+#43
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 polisaalaa tsoraalaa maarto
 polis-laa tsor-laa maar-t-o
 policeman-DAT thief-ACC beat-PRES-3.S.M
 The policeman beats the thief
 
-#57
+#44
 Source: {author}
 Vetted: {t}
 Judgment: u
@@ -465,97 +465,97 @@ polis tsor-laa maar-t-o
 policeman.NOM thief-DAT beat-PRES-3.S.M
 The policeman beats the thief
 
-#58
+#45
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {c}
+Phenomena: {c,agr}
 polisne tsoraalaa kutraa dilaa
 polis-ne tsor-laa kutraa di-l-aa
 policeman-ERG thief-ACC dog.3.S.M give-PST-3.S
 The policeman gave the thief a dog
 
-#59
+#46
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 polisaalaa tsor kutraa dilaa
 polis-laa tsor kutraa di-l-aa
 policeman-ACC thief.NOM dog.3.S.M give-PST-3.S
 The policeman gave the thief a dog
 
-#60
+#47
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 polisaalaa tsor kutraa dilaa
 polis-laa tsor kutraa di-l-aa
 policeman-DAT thief.NOM dog.3.S.M give-PST-3.S
 The policeman gave the thief a dog
 
-#61
+#48
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 polisaalaa tsoraalaa kutraa dila
 polis-laa tsor-laa kutraa di-l-aa
 policeman-DAT thief-ACC dog.3.S.M give-PST-3.S
 The policeman gave the thief a dog
 
-#62
+#49
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 polisaalaa tsoraalaa kutraa dilaa
 polis-laa tsor-laa kutraa di-l-aa
 policeman-ACC thief-ACC dog.3.S.M give-PST-3.S
 The policeman gave the thief a dog
 
-#63
+#50
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 polisaalaa tsoraalaa kutraa dilaa
 polis-laa tsor-laa kutraa di-l-aa
 policeman-ACC thief-ACC dog.3.S.M give-PST-3.S
 The policeman gave the thief a dog
 
-#64
+#51
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {c}
+Phenomena: {c,agr}
 polis bhaarataat zhoplaa
 polis bhaarat-t zhop-l-aa
 policeman.NOM india-LOC sleep-PST-3.S
 The policeman slept in India
 
-#65
+#52
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 polis bhaarataalaa zhoplaa
 polis bhaarat-laa zhop-l-aa
 policeman.NOM india-ACC sleep-PST-3.S
 The policeman sleeps in India
 
-#65
+#52
 Source: {author}
 Vetted: {t}
 Judgment: {u}
-Phenomena: {c}
+Phenomena: {c,agr}
 polisaalaa bhaarataat zhoplat
 polis-aalaa bhaara-taat zhop-lat
 policeman-ACC india-LOC sleep-PST.3.S
 The policeman slept in India
 
-#66
+#53
 Source: {author}
 Vetted: {t}
 Judgment: g
@@ -565,43 +565,338 @@ tsor zhop-l-aa
 thief.NOM.S.M sleep-PST-3.S.M
 the thief slept
 
-#67
+#54
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo, det}
+Phenomena: {wo, det,agr,tam}
 te tsor zhoplaa 
 te tsor zhop-l-aa 
 those.PL.M thief.PL.M.NOM sleep-PST-3.S.M
 those thieves slept
 
-#68
+#55
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo, det}
+Phenomena: {wo, det, tam}
 tsoraa te zhoplaa
 tsor-aa te zhop-laa 
 thief-PL.S.M.NOM those.3.P.M sleep-PST.3.S.M
 those thieves slept
 
-#69
+#56
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {wo, det}
+Phenomena: {wo, det,tam}
 te tsor zhople
 te tsor zhop-l-e 
 those.PL.M thief.PL.M.NOM sleep-PST-3.P.M
 those thieves slept
 
-#70
+#57
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c}
+Phenomena: {c,agr}
 mii kutraa polisaakadduun maagitle
 mii kutraa polis-kadduun maagi-t-le
 i.1.S dog.3.S.M police-ABL  ask-PST-3.PL.M
 I asked the policeman for a dog
+
+#58
+Source: {a:125}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo}
+te itha aahet
+te itha aa-het
+they here are-3.PL
+They are here
+
+#59
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo}
+te aahet itha
+te aa-het itha 
+they are-3.PL here 
+They are here
+
+#60
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo}
+itha te aahet
+itha te aa-het
+here they are-3.PL here 
+They are here
+
+#61
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo}
+to tsor hotaa
+to tsor ho-taa
+he thief.NOM was-3.S.M.
+he was a thief
+
+#62
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo}
+hotaa to tsor
+ho-taa to tsor 
+was-3.S.M he thief.NOM 
+he was a thief
+
+#63
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo,agr}
+to tsor ho
+to tsor ho
+he thief.NOM was
+he was a thief
+
+#64
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo,neg}
+te tsor naahiit
+te tsor naahiit
+they thief.pl are not.NEG.PL
+they are not thieves
+
+#65
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo,neg}
+naahiit te tsor 
+naahiit te tsor
+not.neg.pl they thief.PL are
+they are not thieves
+
+#66
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo,neg,agr}
+to tsor naahiit
+to tsor naahiit
+he thief.PL are not.NEG.PL
+he are not thieves
+
+#67
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo,neg}
+te tsor naahiit
+te tsor naahiit
+he thief.pl are not.NEG.PL
+they are not thieves
+
+#68
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo, det,tam,agr}
+to tsor zhople
+to tsor zhop-l-e 
+that.SG.M thief.PL.M.NOM sleep-PST-3.P.M
+that thieves slept
+
+#69
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo, det, agr}
+to tsor zhoplii 
+to tsor zhop-l-ii 
+that.S.M thief.NOM sleep-PST-3.S.F
+That thief slept
+
+#70
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo}
+polis tsoraalaa maarto
+polis tsor-laa maar-t-o
+policeman.NOM thief-ACC beat-PRES-3.S.M
+The policeman beats the thief
+
+#71
+Source: {a:288}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo}
+polis tsoraalaa maartii
+polis tsor-laa maar-t-ii
+policeman.NOM thief-ACC beat-PRES-3.S.F
+The policeman beats the thief
+
+#72
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {c,agr}
+to polisne tsoraalaa kutraa dilaa
+to polis-ne tsor-laa kutraa di-l-aa
+that policeman-ERG thief-ACC dog.3.S.M give-PST-3.S
+That policeman gave the thief a dog
+
+#73
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {c,agr}
+to polisne tsoraalaa kutraa dilaa
+to polis-ne tsor-laa kutraa di-l-aa
+those policeman-ERG thief-ACC dog.3.S.M give-PST-3.S
+Those policeman gave the thief a dog
+
+#74
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {pn,agr}
+haa zhoplii
+haa zhop-l-ii 
+he.3.S.M.P sleep-PST-3.S.F
+he slept
+
+#75
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {pn,agr}
+hii zhoplaa
+hii zhop-l-aa 
+she.3.S.F.P sleep-PST-3.S.M
+she slept
+
+#76
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {pn,agr}
+he zhoplaa
+he zhop-l-aa 
+he.3.S.M.Pl sleep-PST-3.S.M
+he slept
+
+#77
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {pn,agr}
+h zhoplaa
+he zhop-l-aa 
+he.3.S.M.Pl sleep-PST-3.S.M
+he slept
+
+#78
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {pn,agr}
+he zhoplii
+he zhop-l-ii 
+he.3.S.M.Pl sleep-PST-3.PL.F
+he slept
+
+#79
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {pn,agr}
+tumhii zhoplaas
+tumhii zhop-l-aas
+you.2.S.F sleep-PST-2.S.M
+you(fem) slept
+
+#80
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {pn,agr}
+tuu zhopliis
+tuu zhop-l-iis
+you.2.S.M sleep-PST-2.S.F
+you(masc) slept
+
+#81
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {pn,agr}
+mii zhople
+mii zhop-l-iis
+I.1.S sleep-PST-1.PL.F
+I(fem) slept
+
+#82
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo, pro-d}
+haa tsoraalaa maarto
+haa tsor-laa maar-t-o
+haa thief-ACC beat-PRES-3.S.M
+he beats the thief
+
+#83
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo, pro-d}
+tsoraalaa maarto
+tsor-laa maar-t-o
+thief-ACC beat-PRES-3.S.M
+he beats the thief
+
+#84
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo, pro-d}
+haa maarto
+haa maar-t-o
+haa thief-ACC beat-PRES-3.S.M
+he beats the thief
+
+#85
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo, pro-d}
+haa tsoraalaa maarto
+haa tsor-laa maar-t-o
+haa thief-ACC beat-PRES-3.S.M
+he beats the thief
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
