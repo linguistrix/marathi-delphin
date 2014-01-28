@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Grammar of Marathi
 ;;; created at:
-;;;     Tue Jan 28 20:29:02 UTC 2014
+;;;     Tue Jan 28 21:19:23 UTC 2014
 ;;; based on Matrix customization system version of:
 ;;;     Tue Jan 28 19:17:59 UTC 2014
 ;;;
@@ -25,15 +25,15 @@ head :+ [ AUX bool,
 
 inflected :+ [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG luk,
     TOBECOME_AUX_INFLECTION-FLAG luk,
-    CASE-FLAG luk,
     TOBE_AUX_INFLECTION-FLAG luk,
-    VERB_TENSE_ASPECT-FLAG luk ].
+    VERB_TENSE_ASPECT-FLAG luk,
+    CASE-FLAG luk ].
 
 infl-satisfied :+ [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG na-or-+,
     TOBECOME_AUX_INFLECTION-FLAG na-or-+,
-    CASE-FLAG na-or-+,
     TOBE_AUX_INFLECTION-FLAG na-or-+,
-    VERB_TENSE_ASPECT-FLAG na-or-+ ].
+    VERB_TENSE_ASPECT-FLAG na-or-+,
+    CASE-FLAG na-or-+ ].
 
 png :+ [ PERNUM pernum,
     GEND gender ].
@@ -206,7 +206,8 @@ aux-lex := verb-lex &
 
 intransitive-verb-lex := main-verb-lex & intransitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
-    ARG-ST.FIRST.LOCAL.CAT.HEAD noun ].
+    ARG-ST.FIRST.LOCAL.CAT.HEAD noun,
+    INFLECTED.VERB_TENSE_ASPECT-FLAG - ].
 
 transitive-verb-lex := main-verb-lex & transitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps >,
@@ -214,16 +215,15 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
              #comps &
              [ LOCAL.CAT [ VAL [ SPR < >,
                                  COMPS < > ],
-                           HEAD noun ] ] > ].
+                           HEAD noun ] ] >,
+    INFLECTED.VERB_TENSE_ASPECT-FLAG - ].
 
 trans_verb_lxm-verb-lex := transitive-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom,
-                           COMPS.FIRST.LOCAL.CAT.HEAD.CASE acc+dat ],
-    INFLECTED.VERB_TENSE_ASPECT-FLAG - ].
+                           COMPS.FIRST.LOCAL.CAT.HEAD.CASE acc+dat ] ].
 
 intrans_verb_lxm-verb-lex := intransitive-verb-lex &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom,
-    INFLECTED.VERB_TENSE_ASPECT-FLAG - ].
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ].
 
 ;;; Auxiliaries
 
@@ -279,9 +279,9 @@ determiner_lxm-determiner-lex := determiner-lex & no-icons-lex-item.
 
 ;;; Intermediate rule types
 
-verb_gender_future-rule-dtr := word-or-lexrule.
 verb_gender_past-rule-dtr := word-or-lexrule.
 verb_gender_present-rule-dtr := word-or-lexrule.
+verb_gender_future-rule-dtr := word-or-lexrule.
 verb_tense_aspect-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
@@ -468,13 +468,13 @@ tobe_aux_inflection-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG +,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
                 FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                CASE-FLAG #case,
-                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect ],
+                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                CASE-FLAG #case ],
     DTR tobe_aux_verb_lexeme-aux-lex &
         [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
                       FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      CASE-FLAG #case,
-                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect ] ] ].
+                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                      CASE-FLAG #case ] ] ].
 
 non3sg_lexical_rule-lex-rule := tobe_aux_inflection-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2nd+3PL ].
@@ -486,13 +486,13 @@ tobecome_aux_inflection-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule
   [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG +,
                 TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
                 FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                CASE-FLAG #case,
-                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect ],
+                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                CASE-FLAG #case ],
     DTR tobecome_aux_verb_lexeme-aux-lex &
         [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
                       FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      CASE-FLAG #case,
-                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect ] ] ].
+                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                      CASE-FLAG #case ] ] ].
 
 tobecome_3sg_lexical_rule-lex-rule := tobecome_aux_inflection-lex-rule-super.
 
