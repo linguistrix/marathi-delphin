@@ -1,7 +1,7 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
 ;;; Nouns
 
-mii := 1sg_pronoun_lexeme-noun-lex &
+mii := 1st_pronoun_lexeme-noun-lex &
   [ STEM < "mii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_i_n_rel" ].
 
@@ -9,8 +9,8 @@ aamhii := 1pl_pronoun_lexeme-noun-lex &
   [ STEM < "aamhii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_we_n_rel" ].
 
-aapann_1 := 1plincl_pronoun_lexeme-noun-lex &
-  [ STEM < "aapann" >,
+aapaann := 1plincl_pronoun_lexeme-noun-lex &
+  [ STEM < "aapaann" >,
     SYNSEM.LKEYS.KEYREL.PRED "_we_n_rel" ].
 
 tuu := 2sg_pronoun_lexeme-noun-lex &
@@ -19,11 +19,11 @@ tuu := 2sg_pronoun_lexeme-noun-lex &
 
 tumhii := 2pl_pronoun_lexeme-noun-lex &
   [ STEM < "tumhii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_you_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_we_n_rel" ].
 
-aapann_2 := 2plh_pronoun_lexeme-noun-lex &
+aapann := 2plh_pronoun_lexeme-noun-lex &
   [ STEM < "aapann" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_you_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_we_n_rel" ].
 
 to_1 := 3sgm_pronoun_lexeme-noun-lex &
   [ STEM < "to" >,
@@ -73,35 +73,35 @@ hii_2 := 3pln_pronoun_lexeme-noun-lex &
   [ STEM < "hii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_they_n_rel" ].
 
-polis := 3m_commonnoun_lexeme-noun-lex &
+polis := malenoun_lexeme-noun-lex &
   [ STEM < "polis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_police_n_rel" ].
 
-tsor := 3m_commonnoun_lexeme-noun-lex &
+tsor := malenoun_lexeme-noun-lex &
   [ STEM < "tsor" >,
     SYNSEM.LKEYS.KEYREL.PRED "_thief_n_rel" ].
 
-kutraa := 3m_commonnoun_lexeme-noun-lex &
+kutraa := malenoun_lexeme-noun-lex &
   [ STEM < "kutraa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_dog_n_rel" ].
 
-mul := 3m_commonnoun_lexeme-noun-lex &
+mul := malenoun_lexeme-noun-lex &
   [ STEM < "mul" >,
     SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
 
-duhkha := 3m_commonnoun_lexeme-noun-lex &
+duhkha := malenoun_lexeme-noun-lex &
   [ STEM < "duhkha" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sadness_n_rel" ].
 
-bhaarat := 3m_commonnoun_lexeme-noun-lex &
+bhaarat := malenoun_lexeme-noun-lex &
   [ STEM < "bhaarat" >,
     SYNSEM.LKEYS.KEYREL.PRED "_india_n_rel" ].
 
-gaadii := 3f_commonnoun_lexeme-noun-lex &
+gaadii := femalenoun_lexeme-noun-lex &
   [ STEM < "gaadii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_train_n_rel" ].
 
-baatmii := 3f_commonnoun_lexeme-noun-lex &
+baatmii := femalenoun_lexeme-noun-lex &
   [ STEM < "baatmii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_news_n_rel" ].
 

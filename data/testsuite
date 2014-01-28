@@ -852,7 +852,7 @@ Judgment: g
 Phenomena: {wo, pro-d}
 haa tsoraalaa maarto
 haa tsor-laa maar-t-o
-haa thief-ACC beat-PRES-3.S.M
+he.NOM thief-ACC beat-PRES-3.S.M
 he beats the thief
 
 #83
@@ -872,7 +872,7 @@ Judgment: u
 Phenomena: {wo, pro-d}
 haa maarto
 haa maar-t-o
-haa thief-ACC beat-PRES-3.S.M
+he.NOM thief-ACC beat-PRES-3.S.M
 he beats the thief
 
 #85
@@ -882,8 +882,197 @@ Judgment: g
 Phenomena: {wo, pro-d}
 haa tsoraalaa maarto
 haa tsor-laa maar-t-o
-haa thief-ACC beat-PRES-3.S.M
+he.NOM thief-ACC beat-PRES-3.S.M
 he beats the thief
+
+#86
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo, pro-d}
+hii tsoraalaa maarto
+hii tsor-laa maar-t-o
+she.NOM thief-ACC beat-PRES-3.S.M
+she beats the thief
+
+#87
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo, pro-d,arg}
+hii tsoraalaa maartii
+hii tsor-laa maar-t-ii
+she.NOM thief-ACC beat-PRES-3.S.F
+she beats the thief
+
+#88
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo, pro-d,agr}
+haa tsoraalaa maartii
+haa tsor-laa maar-t-ii
+he.NOM thief-ACC beat-PRES-3.S.F
+he beats the thief
+
+#89
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo, pro-d,agr}
+tsoraalaa maartii
+tsor-laa maar-t-ii
+she.NOM thief-ACC beat-PRES-3.S.F
+she beats the thief
+
+#90
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo,agr}
+te tsoraalaa maarte
+te tsor-laa maar-t-e
+they.NOM.M thief-ACC beat-PRES-3.PL.M
+they beat the thief
+
+#91
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo,agr}
+tyaa tsoraalaa maartaat
+tyaa tsor-laa maar-t-aat
+they.NOM.F thief-ACC beat-PRES-3.PL.M
+they beat the thief
+
+#92
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo,arg}
+tyaa tsoraalaa maartaat
+tyaa tsor-laa maar-t-aat
+they.NOM.F thief-ACC beat-PRES-3.S.M
+they beat the thief
+
+#93
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo,arg}
+tsor haalaa maarto
+tsor haalaa maar-t-o
+thief.NOM he.ACC beat-PRES-3.S.M
+the thief beat him
+
+#94
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo,arg}
+tsor haalaa maartii
+tsor haa-laa maar-t-ii
+thief.NOM he.ACC beat-PRES-3.S.F
+the thief beat him
+
+#95
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo,arg,c}
+tsoralaa haalaa maarto
+tsor-laa haa-laa maar-t-o
+thief.ACC he.ACC beat-PRES-3.S.M
+the thief beat him
+
+#96
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {tam,agr}
+to zhopto
+to zhop-t-o
+he.NOM.R sleep-PRES-3.S.M
+he sleeps
+
+#97
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {tam}
+haa zhopto
+thaa zhop-t-o
+he.NOM.P sleep-PRES-3.S.M
+he sleeps
+
+#98
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {tam,agr}
+to zhoplo
+to zhop-l-o
+he.NOM.R sleep-PAST-3.S.M
+he slept
+
+#99
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {tam,agr}
+to zhoplo
+to zhop-l-o
+he.NOM.R sleep-FUT-3.S.M
+he will sleep
+
+#100
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {tam,agr}
+tii zhoplii
+tii zhop-l-ii
+she.NOM.R sleep-PAST-3.S.M
+she sleeps
+
+#101
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {pn,agr}
+tumhii zhop-liis
+tumhii zhop-l-liis
+you.2.S.F sleep-PST-3.PL.F
+you(fem) slept
+
+#102
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo,agr}
+te tsoraalaa maarto
+tyaa tsor-laa maar-t-o
+he.NOM.M thief-ACC beat-PRES-3.S.M
+he beat the thief
+
+#103
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo, pro-d}
+itha aahet
+itha aa-het
+they here are-3.PL
+They are here
+
+
+
+
+
+
+
+
+
 
 
 

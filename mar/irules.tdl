@@ -55,6 +55,14 @@ future_lexical_rule-suffix2 :=
 %suffix (* -n)
 future_lexical_rule-lex-rule.
 
+perfective_lexical_rule-suffix :=
+%suffix (* -l)
+perfective_lexical_rule-lex-rule.
+
+imperfective_lexical_rule-suffix :=
+%suffix (* -t)
+imperfective_lexical_rule-lex-rule.
+
 1sgpresent_masc_lexical_rule-suffix :=
 %suffix (* -o)
 1sgpresent_masc_lexical_rule-lex-rule.
@@ -146,14 +154,6 @@ future_lexical_rule-lex-rule.
 3plfuture_lexical_rule-suffix :=
 %suffix (* -tiil)
 3plfuture_lexical_rule-lex-rule.
-
-perfective_lexical_rule-suffix :=
-%suffix (* -l)
-perfective_lexical_rule-lex-rule.
-
-imperfective_lexical_rule-suffix :=
-%suffix (* -t)
-imperfective_lexical_rule-lex-rule.
 
 non3sg_lexical_rule-suffix :=
 %suffix (* -het)
