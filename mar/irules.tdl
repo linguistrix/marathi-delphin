@@ -166,3 +166,11 @@ to_be_3sg_lexical_rule-lex-rule.
 tobecome_3sg_lexical_rule-suffix :=
 %suffix (* -taa)
 tobecome_3sg_lexical_rule-lex-rule.
+
+give_d_present_lexical_rule-suffix :=
+%suffix (* -il)
+give_d_present_lexical_rule-lex-rule.
+
+give_d_past_lexical_rule-suffix :=
+%suffix (* -et)
+give_d_past_lexical_rule-lex-rule.

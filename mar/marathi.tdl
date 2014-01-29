@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Grammar of Marathi
 ;;; created at:
-;;;     Tue Jan 28 21:19:23 UTC 2014
+;;;     Wed Jan 29 20:40:46 UTC 2014
 ;;; based on Matrix customization system version of:
 ;;;     Tue Jan 28 19:17:59 UTC 2014
 ;;;
@@ -24,15 +24,17 @@ head :+ [ AUX bool,
     FORM form ].
 
 inflected :+ [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG luk,
+    IRREG_INTRANS_VERB_TENSE-FLAG luk,
+    VERB_TENSE_ASPECT-FLAG luk,
     TOBECOME_AUX_INFLECTION-FLAG luk,
     TOBE_AUX_INFLECTION-FLAG luk,
-    VERB_TENSE_ASPECT-FLAG luk,
     CASE-FLAG luk ].
 
 infl-satisfied :+ [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG na-or-+,
+    IRREG_INTRANS_VERB_TENSE-FLAG na-or-+,
+    VERB_TENSE_ASPECT-FLAG na-or-+,
     TOBECOME_AUX_INFLECTION-FLAG na-or-+,
     TOBE_AUX_INFLECTION-FLAG na-or-+,
-    VERB_TENSE_ASPECT-FLAG na-or-+,
     CASE-FLAG na-or-+ ].
 
 png :+ [ PERNUM pernum,
@@ -225,6 +227,9 @@ trans_verb_lxm-verb-lex := transitive-verb-lex &
 intrans_verb_lxm-verb-lex := intransitive-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ].
 
+irreg_trans_verb1-verb-lex := trans_verb_lxm-verb-lex &
+  [ INFLECTED.IRREG_INTRANS_VERB_TENSE-FLAG - ].
+
 ;;; Auxiliaries
 
 subj-raise-aux := aux-lex & trans-first-arg-raising-lex-item &
@@ -273,6 +278,45 @@ determiner-lex := basic-determiner-lex & basic-zero-arg & non-mod-lex-item &
 
 determiner_lxm-determiner-lex := determiner-lex & no-icons-lex-item.
 
+infostr-marking-mod-lex := no-rels-hcons-lex-item & one-icons-lex-item &
+  [ SYNSEM.LOCAL [ CAT [ HEAD adv &
+                              [ MOD < [ LIGHT -,
+                                        LOCAL.CONT.HOOK [ INDEX #target,
+                                                          ICONS-KEY #icons ] ] > ],
+                         VAL [ SUBJ < >,
+                               COMPS < >,
+                               SPR < >,
+                               SPEC < > ] ],
+                   CONT.ICONS <! #icons &
+                                 [ TARGET #target ] !> ] ].
+
+topic-marking-mod-lex := infostr-marking-mod-lex &
+  [ SYNSEM.LOCAL.CAT [ MKG tp,
+                       HEAD.MOD < [ L-PERIPH luk,
+                                    LOCAL [ CAT.HEAD noun,
+                                            CONT.HOOK.ICONS-KEY topic ] ] > ] ].
+
+; We treat question particles as complementizers.
+; Here is the lexical type for complementizers.
+
+complementizer-lex-item := raise-sem-lex-item & basic-one-arg &
+  [ SYNSEM.LOCAL.CAT [ HEAD comp &
+                            [ MOD < > ],
+                       VAL [ SPR < >,
+                             SUBJ < >,
+                             COMPS < #comp > ] ],
+    ARG-ST < #comp &
+             [ LOCAL.CAT [ MC +,
+                           HEAD verb,
+                           VAL [ SUBJ < >,
+                                 COMPS < > ] ] ] > ].
+
+; Subtype for question particles. Constrains SF to ques.
+
+qpart-lex-item := complementizer-lex-item &
+  [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF ques,
+                   CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite ] ].
+
 ;;;;;;;;;;;;;;;;;;;
 ;;; Lexical Rules
 ;;;;;;;;;;;;;;;;;;;
@@ -280,23 +324,25 @@ determiner_lxm-determiner-lex := determiner-lex & no-icons-lex-item.
 ;;; Intermediate rule types
 
 verb_gender_past-rule-dtr := word-or-lexrule.
-verb_gender_present-rule-dtr := word-or-lexrule.
 verb_gender_future-rule-dtr := word-or-lexrule.
+verb_gender_present-rule-dtr := word-or-lexrule.
 verb_tense_aspect-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
 Case-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ CASE-FLAG +,
+                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
                 FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect ],
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ],
     DTR noun-lex &
-        [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+        [ INFLECTED [ VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
                       FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect ] ] ].
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ] ] ].
 
 nom_lexical_rule-lex-rule := Case-lex-rule-super & const-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE nom ].
@@ -333,12 +379,14 @@ erg_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
 
 verb_tense_aspect-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
-                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
                 CASE-FLAG #case ],
     DTR verb_tense_aspect-rule-dtr &
-        [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+        [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
                       CASE-FLAG #case ] ] ].
 
 past_lexical_rule-lex-rule := verb_gender_past-rule-dtr & verb_tense_aspect-lex-rule-super &
@@ -466,14 +514,16 @@ verb_gender_future-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
 
 tobe_aux_inflection-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG +,
+                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
                 FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
                 CASE-FLAG #case ],
     DTR tobe_aux_verb_lexeme-aux-lex &
-        [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+        [ INFLECTED [ VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
                       FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
                       CASE-FLAG #case ] ] ].
 
 non3sg_lexical_rule-lex-rule := tobe_aux_inflection-lex-rule-super &
@@ -484,17 +534,37 @@ to_be_3sg_lexical_rule-lex-rule := tobe_aux_inflection-lex-rule-super &
 
 tobecome_aux_inflection-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG +,
-                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
                 VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
                 CASE-FLAG #case ],
     DTR tobecome_aux_verb_lexeme-aux-lex &
-        [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+        [ INFLECTED [ VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                       FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
                       CASE-FLAG #case ] ] ].
 
 tobecome_3sg_lexical_rule-lex-rule := tobecome_aux_inflection-lex-rule-super.
+
+irreg_intrans_verb_tense-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule & verb_gender_future-rule-dtr & verb_gender_past-rule-dtr & verb_gender_present-rule-dtr &
+  [ INFLECTED [ IRREG_INTRANS_VERB_TENSE-FLAG +,
+                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                CASE-FLAG #case ],
+    DTR irreg_trans_verb1-verb-lex &
+        [ INFLECTED [ VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                      CASE-FLAG #case ] ] ].
+
+give_d_present_lexical_rule-lex-rule := irreg_intrans_verb_tense-lex-rule-super.
+
+give_d_past_lexical_rule-lex-rule := irreg_intrans_verb_tense-lex-rule-super.
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Phrasal Types
@@ -513,3 +583,84 @@ subj-head-phrase := decl-head-subj-phrase & head-final &
 
 bare-np-phrase := basic-bare-np-phrase &
   [ C-CONT.RELS <! [ PRED "exist_q_rel" ] !> ].
+
+;;;;;;;;;;;;;;;;;;
+;;; Coordination
+;;;;;;;;;;;;;;;;;;
+
+;;; Coordination Strategy 1
+
+n1-top-coord-rule := basic-n-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "1" ].
+
+n1-mid-coord-rule := basic-n-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "1" ].
+
+n1-bottom-coord-rule := conj-first-bottom-coord-rule & n-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "1" ].
+
+;;; Coordination Strategy 1
+
+np1-top-coord-rule := basic-np-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "1" ].
+
+np1-mid-coord-rule := basic-np-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "1" ].
+
+np1-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "1" ].
+
+;;; Coordination Strategy 2
+
+s2-top-coord-rule := basic-s-top-coord-rule & apoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "2" ].
+
+s2-bottom-coord-rule := unary-bottom-coord-rule & s-bottom-coord-phrase &
+  [ SYNSEM.LOCAL [ COORD-STRAT "2",
+                   COORD-REL.PRED "_and_coord_rel" ] ].
+
+;;; Coordination Strategy 3
+
+n3-top-coord-rule := basic-n-top-coord-rule & apoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "3" ].
+
+n3-bottom-coord-rule := conj-first-bottom-coord-rule & n-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "3" ].
+
+;;; Coordination Strategy 3
+
+np3-top-coord-rule := basic-np-top-coord-rule & apoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "3" ].
+
+np3-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "3" ].
+
+;;; Coordination Strategy 3
+
+vp3-top-coord-rule := basic-vp-top-coord-rule & apoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "3" ].
+
+vp3-bottom-coord-rule := conj-first-bottom-coord-rule & vp-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "3" ].
+
+;;; Coordination Strategy 4
+
+n4-top-coord-rule := basic-n-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "4" ].
+
+n4-mid-coord-rule := basic-n-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "4" ].
+
+n4-bottom-coord-rule := conj-first-bottom-coord-rule & n-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "4" ].
+
+;;; Coordination Strategy 4
+
+np4-top-coord-rule := basic-np-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "4" ].
+
+np4-mid-coord-rule := basic-np-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "4" ].
+
+np4-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "4" ].

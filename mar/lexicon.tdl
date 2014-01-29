@@ -89,8 +89,8 @@ mul := malenoun_lexeme-noun-lex &
   [ STEM < "mul" >,
     SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
 
-duhkha := malenoun_lexeme-noun-lex &
-  [ STEM < "duhkha" >,
+dukhkha := malenoun_lexeme-noun-lex &
+  [ STEM < "dukhkha" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sadness_n_rel" ].
 
 bhaarat := malenoun_lexeme-noun-lex &
@@ -113,19 +113,19 @@ maar := trans_verb_lxm-verb-lex &
 
 dzhaa := trans_verb_lxm-verb-lex &
   [ STEM < "dzhaa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_happened_v_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_happen_v_rel" ].
 
 maag := trans_verb_lxm-verb-lex &
   [ STEM < "maag" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
 
-dila := trans_verb_lxm-verb-lex &
-  [ STEM < "dila" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_gave_v_rel" ].
-
 zhop := intrans_verb_lxm-verb-lex &
   [ STEM < "zhop" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
+
+d := irreg_trans_verb1-verb-lex &
+  [ STEM < "d" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_give_v_rel" ].
 
 ;;; Auxiliaries
 
@@ -154,3 +154,26 @@ to_2 := determiner_lxm-determiner-lex &
 te_3 := determiner_lxm-determiner-lex &
   [ STEM < "te" >,
     SYNSEM.LKEYS.KEYREL.PRED "_those_q_rel" ].
+
+kaa := qpart-lex-item &
+  [ STEM < "kaa" > ].
+
+;;; Modifiers of expressing information structure
+
+tar-marker := topic-marking-mod-lex &
+  [ STEM < "tar" > ].
+
+aanni1 := conj-lex &
+  [ STEM < "aanni" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
+    CFORM "1" ].
+
+kimwaa3 := conj-lex &
+  [ STEM < "kimwaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
+    CFORM "3" ].
+
+pann4 := conj-lex &
+  [ STEM < "pann" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
+    CFORM "4" ].
