@@ -550,8 +550,8 @@ Source: {author}
 Vetted: {t}
 Judgment: {u}
 Phenomena: {c,agr}
-polisaalaa bhaarataat zhoplat
-polis-aalaa bhaara-taat zhop-lat
+polisaalaa bhaarataat zhoplaa
+polis-laa bhaarat-aat zhop-laa
 policeman-ACC india-LOC sleep-PST.3.S
 The policeman slept in India
 
@@ -632,7 +632,7 @@ Judgment: u
 Phenomena: {wo}
 itha te aahet
 itha te aa-het
-here they are-3.PL here 
+here they are-3.PL
 They are here
 
 #61
@@ -672,7 +672,7 @@ Judgment: g
 Phenomena: {wo,neg}
 te tsor naahiit
 te tsor naahiit
-they thief.pl are not.NEG.PL
+they thief.PL are.NEG.PL
 they are not thieves
 
 #65
@@ -682,7 +682,7 @@ Judgment: u
 Phenomena: {wo,neg}
 naahiit te tsor 
 naahiit te tsor
-not.neg.pl they thief.PL are
+are.NEG.PL they thief.PL
 they are not thieves
 
 #66
@@ -692,7 +692,7 @@ Judgment: u
 Phenomena: {wo,neg,agr}
 to tsor naahiit
 to tsor naahiit
-he thief.PL are not.NEG.PL
+he thief.PL are.NEG.PL
 he are not thieves
 
 #67
@@ -702,7 +702,7 @@ Judgment: g
 Phenomena: {wo,neg}
 te tsor naahiit
 te tsor naahiit
-he thief.pl are not.NEG.PL
+he thief.pl are.NEG.PL
 they are not thieves
 
 #68
@@ -872,7 +872,7 @@ Judgment: u
 Phenomena: {wo, pro-d}
 haa maarto
 haa maar-t-o
-he.NOM thief-ACC beat-PRES-3.S.M
+he.NOM beat-PRES-3.S.M
 he beats the thief
 
 #85
@@ -918,11 +918,11 @@ he beats the thief
 #89
 Source: {author}
 Vetted: {t}
-Judgment: u
-Phenomena: {wo, pro-d,agr}
-tsoraalaa maartii
-tsor-laa maar-t-ii
-she.NOM thief-ACC beat-PRES-3.S.F
+Judgment: g
+Phenomena: {wo,pro-d,agr}
+tsoraalaa maarte
+tsor-laa maar-t-e
+thief-ACC beat-PRES-3.S.F
 she beats the thief
 
 #90
@@ -961,8 +961,8 @@ Vetted: {t}
 Judgment: g
 Phenomena: {wo,arg}
 tsor haalaa maarto
-tsor haalaa maar-t-o
-thief.NOM he.ACC beat-PRES-3.S.M
+tsor haa-laa maar-t-o
+thief.NOM he-ACC beat-PRES-3.S.M
 the thief beat him
 
 #94
@@ -972,7 +972,7 @@ Judgment: u
 Phenomena: {wo,arg}
 tsor haalaa maartii
 tsor haa-laa maar-t-ii
-thief.NOM he.ACC beat-PRES-3.S.F
+thief.NOM he-ACC beat-PRES-3.S.F
 the thief beat him
 
 #95
@@ -982,7 +982,7 @@ Judgment: u
 Phenomena: {wo,arg,c}
 tsoralaa haalaa maarto
 tsor-laa haa-laa maar-t-o
-thief.ACC he.ACC beat-PRES-3.S.M
+thief-ACC he-ACC beat-PRES-3.S.M
 the thief beat him
 
 #96
@@ -1040,8 +1040,8 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {pn,agr}
-tumhii zhop-liis
-tumhii zhop-l-liis
+tumhii zhop-l-iis
+tumhii zhop-l-iis
 you.2.S.F sleep-PST-3.PL.F
 you(fem) slept
 
@@ -1062,7 +1062,7 @@ Judgment: g
 Phenomena: {wo, pro-d}
 itha aahet
 itha aa-het
-they here are-3.PL
+here are-3.PL
 They are here
 
 
