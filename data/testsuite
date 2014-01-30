@@ -392,7 +392,7 @@ Judgment: u
 Phenomena: {c,agr}
 mul dukhka dzhaala
 mul dukhkha dzhaa-l-a
-boy.NOM sadness.3.S.N happen-PST-3.S.N
+boy sadness.3.S.N happen-PST-3.S.N
 The boy became sad
 
 #38
@@ -1064,6 +1064,322 @@ itha aahet
 itha aa-het
 here are-3.PL
 They are here
+
+#104
+Source: {a:7}
+Vetted: {t}
+Judgment: g
+Phenomena: {q}
+to kaal parat aalaa kaa
+to kaal parat aa-l-aa kaa
+he yesterday back came-PST-3.S.M Q
+Did he come yesterday?
+
+#105
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {q, wo}
+to kaal parat aalaa kaa
+to kaal parat kaa aa-l-aa kaa
+he yesterday back Q came-PST-3.S.M 
+Did he come yesterday?
+
+#106
+Source: {a:10}
+Vetted: {t}
+Judgment: g
+Phenomena: {q, wo}
+to aalaa naahii kaa
+to aa-l-aa naahii kaa
+he came-PST-3.S.M neg Q 
+He came, didn't he?
+
+#107
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {q, wo}
+to aalaa kaa naahii kaa
+to aa-l-aa kaa naahii kaa
+he came-PST-3.S.M Q neg 
+He came, didn't he?
+
+#108
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {q, wo}
+to aalaa naahii naahii kaa
+to aa-l-aa naahii naahii kaa
+he came-PST-3.S.M neg neg Q 
+he did not come, did he?
+
+#109
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {q, wo}
+to aalaa naahii kaa naahii
+to aa-l-aa naahii kaa naahii
+he came-PST-3.S.M neg Q neg  
+he did not come, did he?
+
+#110
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {q, wo}
+to aalaa kaa naahii naahii
+to aa-l-aa kaa naahii naahii
+he came-PST-3.S.M Q neg neg  
+he did not come, did he?
+
+#111
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {q}
+to aalaa naahii naahii
+to aa-l-aa naahii naahii
+he came-PST-3.S.M neg neg  
+he did not come, did he?
+
+#112
+Source: {a:159}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa gharii gelii mii badzaaraat gelo
+miitaa ghar-ii ge-l-ii mii badzaar-aat ge-l-o
+Mita home-LOC go-PST-3SF I market-LOC go-PST-3.S.M
+Meeta went home and I went to the market
+
+#113
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa gharii gelii aanni mii badzaaraat gelo
+miitaa ghar-ii ge-l-ii aani mii badzaar-aat ge-l-o
+Mita home-LOC go-PST-3SF and I market-LOC go-PST-3.S.M
+Meeta went home and I went to the market
+
+#114
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+polis tsorlaa aanni kutraalaa maarto 
+polis tsor-laa aanni kutraalaa maarto
+Policeman thief-ACC and dog-ACC beat-PRES-3.S.M
+The policeman beat the thief and the dog
+
+#115
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd}
+polis tsorlaa kutraalaa maarto 
+polis tsor-laa kutraalaa maarto
+Policeman thief-ACC dog-ACC beat-PRES-3.S.M
+The policeman beat the thief and the dog
+
+#116
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+polis aanni tsor kutraalaa maarto 
+polis aanni tsor kutraalaa maarto
+Policeman and thief dog-ACC beat-PRES-3.S.M
+The policeman and the thief beat the dog
+
+#117
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd, wo}
+aanni polis tsor kutraalaa maarto 
+paanni polis tsor kutraalaa maarto
+and policeman thief dog-ACC beat-PRES-3.S.M
+The policeman and the thief beat the dog
+
+#118
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+mii gharii aale aanni zhople
+mii ghar-ii aa-l-e aanni zhop-l-e
+I home-LOC come-PST-1.S.F and sleep-PST-1.S.F
+I came home and slept
+
+#119
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd}
+mii gharii aale zhople
+mii ghar-ii aa-l-e zhop-l-e
+I home-LOC come-PST-1.S.F sleep-PST-1.S.F
+I came home and slept
+
+#120
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd, wo}
+mii gharii aale zhople
+mii ghar-ii aa-l-e zhop-l-e aanni
+I home-LOC come-PST-1.S.F sleep-PST-1.S.F and
+I came home and slept
+
+#121
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd, wo}
+mii gharii aanni aale zhople
+mii ghar-ii aanni aa-l-e zhop-l-e
+I home-LOC and come-PST-1.S.F sleep-PST-1.S.F
+I came home and slept
+
+#122
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa kimwaa mii badzaaraat gelo
+miitaa kimwaa mii badzaar-aat ge-l-o badzaar-aat
+Mita or I market-LOC go-PST-3.S.M
+Meeta or I went to the market
+
+#123
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd}
+miitaa mii badzaaraat gelo
+miitaa mii badzaar-aat ge-l-o badzaar-aat
+Mita I market-LOC go-PST-3.S.M
+Meeta I went to the market
+
+#124
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa kimwaa aanu kimwaa mii badzaaraat gelo
+miitaa kimwaa aanu kimwaa mii badzaar-aat ge-l-o badzaar-aat
+Mita or Anu or I market-LOC go-PST-3.S.M
+Meeta Anu or I went to the market
+
+#125
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa aanu kimwaa mii badzaaraat gelo
+miitaa aanu kimwaa mii badzaar-aat ge-l-o badzaar-aat
+Mita Anu or I market-LOC go-PST-3.S.M
+Meeta, Anu or I went to the market
+
+#126
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd}
+miitaa kimwaa aanu mii badzaaraat gelo
+miitaa kimwaa aanu mii badzaar-aat ge-l-o badzaar-aat
+Mita or Anu I market-LOC go-PST-3.S.M
+Meeta, Anu or I went to the market
+
+#127
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd}
+miitaa aanu mii badzaaraat gelo
+miitaa aanu mii badzaar-aat ge-l-o badzaar-aat
+Mita Anu I market-LOC go-PST-3.S.M
+Meeta, Anu or I went to the market
+
+#128
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa gharii gelii pann mii badzaaraat gelo
+miitaa ghar-ii ge-l-ii pann mii badzaar-aat ge-l-o
+Mita home-LOC go-PST-3SF but I market-LOC go-PST-3.S.M
+Meeta went home but I went to the market
+
+#129
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd, wo}
+miitaa gharii pann gelii mii badzaaraat gelo
+miitaa ghar-ii pann ge-l-ii mii badzaar-aat ge-l-o
+Mita home-LOC go-PST-3SF but I market-LOC go-PST-3.S.M
+Meeta went home but I went to the market
+
+#130
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa pann aanu naahii badzaaraat gelo
+miitaa pann aanu naahii badzaar-aat ge-l-o
+Mita but Anu neg market-LOC go-PST-3.S.M
+Meeta but not Anu went to the market
+
+#131
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa naahii pann aanu badzaaraat gelo
+miitaa naahii pann aanu badzaar-aat ge-l-o
+Mita neg but Anu market-LOC go-PST-3.S.M
+Not Mita but Anu went to the market
+
+#132
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd}
+miitaa pann aanu badzaaraat gelo
+miitaa pann aanu badzaar-aat ge-l-o
+Mita but Anu market-LOC go-PST-3.S.M
+Mita but Anu went to the market
+
+#133
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd, wo}
+miitaa naahii aanu pann badzaaraat gelo
+miitaa naahii aanu pann badzaar-aat ge-l-o
+Mita neg Anu but market-LOC go-PST-3.S.M
+Mita but not Anu went to the market
+
+#134
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
