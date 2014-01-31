@@ -1101,8 +1101,8 @@ Vetted: {t}
 Judgment: u
 Phenomena: {q, wo}
 to aalaa kaa naahii kaa
-to aa-l-aa kaa naahii kaa
-he came-PST-3.S.M Q NEG Q	
+to aa-l-aa kaa naahii
+he came-PST-3.S.M Q NEG	
 Did he not come?
 
 #108 # TODO
@@ -1584,6 +1584,90 @@ to tsalto lawkar
 to tsal-t-o lawkar 
 He walk-PRES-3.S.M quickly 
 He walks quickly
+
+#156
+Source: {a:251}
+Vetted: {t}
+Judgment: g
+Phenomena: {info}
+maazda kaam tuu udyaa karsiil kaa
+maa-d-za kaam tuu udyaa kar-s-iil kaa
+I-POSS-3.S.N work you tomorrow do-FUT-3.S.N Q
+Will you do my work tomorrow?
+
+#157
+Source: {a:251}
+Vetted: {t}
+Judgment: g
+Phenomena: {info}
+tuu udyaa maadza kaam karsiil kaa
+tuu udyaa maa-d-za kaam tuu kar-s-iil kaa
+You tomorrow my work do-FUT-2.S Q
+Will you do my work tomorrow?
+
+#158
+Source: {a:252}
+Vetted: {t}
+Judgment: g
+Phenomena: {info}
+tyaaatshii bahiinn he bara dzhaala kii amerikelaa gelii naahii
+tyaa-tshii bahiinn he bara dzhaa-la kii amerike-laa ge-lii naahii
+He-POSS.3.S.F sister this good happen-PST.3.S.N comp America-ACC go
+PST.3.S.F neg
+His sister, it was good she did not go to America
+
+#159
+Source: {a:253}
+Vetted: {t}
+Judgment: g
+Phenomena: {info}
+tyaatsa naagpuurlaa dzaanna tar aawasyak hota
+tyaa-tsa naagpuur-laa dzaa-nna tar aawasyak hota
+He-POSS.3.S.N nagpur-DAT dzaa-INF.3.S.N emph necessary was
+As for his going to Napur, it was necessary
+
+#160
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {info}
+tar tyaatsa naagpuurlaa dzaanna aawasyak hota
+tar tyaa-tsa naagpuur-laa dzaa-nna aawasyak hota
+tar he-POSS.3.S.N nagpur-DAT dzaa-INF.3.S.N necessary was
+As for his going to Napur, it was necessary
+
+#161
+Source: {a:253}
+Vetted: {t}
+Judgment: g
+Phenomena: {info}
+tyaatsa naagpuurlaa dzaanna tar aawasyak hota
+tyaa-tsa naagpuur-laa dzaa-nna tar aawasyak hota
+He-POSS.3.S.N nagpur-DAT dzaa-INF.3.S.N emph necessary was
+As for his going to Napur, it was necessary
+
+#162
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo}
+to kaal parat aalaa
+to kaal parat aa-l-aa
+he yesterday back came-PST-3.S.M 
+He came back yesterday
+
+#163
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {q}
+kaa to kaal parat aalaa
+kaato kaal parat aa-l-aa
+Q he yesterday back came-PST-3.S.M 
+Did he come back yesterday?
+
+
+
 
 
 
