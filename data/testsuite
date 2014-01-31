@@ -1001,14 +1001,14 @@ Vetted: {t}
 Judgment: g
 Phenomena: {tam}
 haa zhopto
-thaa zhop-t-o
+haa zhop-t-o
 he.NOM.P sleep-PRES-3.S.M
 he sleeps
 
 #98
 Source: {author}
 Vetted: {t}
-Judgment: g
+Judgment: u
 Phenomena: {tam,agr}
 to zhoplo
 to zhop-l-o
@@ -1018,7 +1018,7 @@ he slept
 #99
 Source: {author}
 Vetted: {t}
-Judgment: g
+Judgment: u
 Phenomena: {tam,agr}
 to zhoplo
 to zhop-l-o
@@ -1051,7 +1051,7 @@ Vetted: {t}
 Judgment: u
 Phenomena: {wo,agr}
 te tsoraalaa maarto
-tyaa tsor-laa maar-t-o
+te tsor-laa maar-t-o
 he.NOM.M thief-ACC beat-PRES-3.S.M
 he beat the thief
 
@@ -1073,17 +1073,17 @@ Phenomena: {q}
 to kaal parat aalaa kaa
 to kaal parat aa-l-aa kaa
 he yesterday back came-PST-3.S.M Q
-Did he come yesterday?
+Did he come back yesterday?
 
 #105
 Source: {author}
 Vetted: {t}
-Judgment: u
+Judgment: g
 Phenomena: {q, wo}
-to kaal parat aalaa kaa
-to kaal parat kaa aa-l-aa kaa
-he yesterday back Q came-PST-3.S.M 
-Did he come yesterday?
+to kaal parat kaa aalaa 
+to kaal parat kaa aa-l-aa
+he yesterday back why came-PST-3.S.M 
+Why did he come back yesterday?
 
 #106
 Source: {a:10}
@@ -1092,8 +1092,8 @@ Judgment: g
 Phenomena: {q, wo}
 to aalaa naahii kaa
 to aa-l-aa naahii kaa
-he came-PST-3.S.M neg Q 
-He came, didn't he?
+he came-PST-3.S.M NEG Q 
+Did he not come?
 
 #107
 Source: {author}
@@ -1102,10 +1102,10 @@ Judgment: u
 Phenomena: {q, wo}
 to aalaa kaa naahii kaa
 to aa-l-aa kaa naahii kaa
-he came-PST-3.S.M Q neg 
-He came, didn't he?
+he came-PST-3.S.M Q NEG Q	
+Did he not come?
 
-#108
+#108 # TODO
 Source: {author}
 Vetted: {t}
 Judgment: g
@@ -1115,7 +1115,7 @@ to aa-l-aa naahii naahii kaa
 he came-PST-3.S.M neg neg Q 
 he did not come, did he?
 
-#109
+#109 # TODO 
 Source: {author}
 Vetted: {t}
 Judgment: u
@@ -1138,12 +1138,12 @@ he did not come, did he?
 #111
 Source: {author}
 Vetted: {t}
-Judgment: u
+Judgment: g
 Phenomena: {q}
-to aalaa naahii naahii
-to aa-l-aa naahii naahii
-he came-PST-3.S.M neg neg  
-he did not come, did he?
+tii aalii naahii kaa
+tii aa-l-ii naahii kaa
+she came-PST-3.S.F NEG Q
+Did she not come?
 
 #112
 Source: {a:159}
@@ -1170,8 +1170,8 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-polis tsorlaa aanni kutraalaa maarto 
-polis tsor-laa aanni kutraalaa maarto
+polis tsorlaa aanni kutryaalaa maarto 
+polis tsor-laa aanni kutraa-laa maar-t-o
 Policeman thief-ACC and dog-ACC beat-PRES-3.S.M
 The policeman beat the thief and the dog
 
@@ -1180,8 +1180,8 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd}
-polis tsorlaa kutraalaa maarto 
-polis tsor-laa kutraalaa maarto
+polis tsorlaa kutryaalaa maarto 
+polis tsor-laa kutraa-laa maar-t-o
 Policeman thief-ACC dog-ACC beat-PRES-3.S.M
 The policeman beat the thief and the dog
 
@@ -1190,9 +1190,9 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-polis aanni tsor kutraalaa maarto 
-polis aanni tsor kutraalaa maarto
-Policeman and thief dog-ACC beat-PRES-3.S.M
+polis aanni tsor kutryaalaa maartaat 
+polis aanni tsor kutraa-laa maar-t-aat
+Policeman and thief dog-ACC beat-PRES-3.PL.M
 The policeman and the thief beat the dog
 
 #117
@@ -1200,8 +1200,8 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd, wo}
-aanni polis tsor kutraalaa maarto 
-paanni polis tsor kutraalaa maarto
+aanni polis tsor kutryaalaa maarto 
+aanni polis tsor kutraa-laa maar-t-o
 and policeman thief dog-ACC beat-PRES-3.S.M
 The policeman and the thief beat the dog
 
@@ -1251,7 +1251,7 @@ Vetted: {t}
 Judgment: g
 Phenomena: {crd}
 miitaa kimwaa mii badzaaraat gelo
-miitaa kimwaa mii badzaar-aat ge-l-o badzaar-aat
+miitaa kimwaa mii badzaar-aat ge-l-o
 Mita or I market-LOC go-PST-3.S.M
 Meeta or I went to the market
 
@@ -1261,17 +1261,17 @@ Vetted: {t}
 Judgment: u
 Phenomena: {crd}
 miitaa mii badzaaraat gelo
-miitaa mii badzaar-aat ge-l-o badzaar-aat
+miitaa mii badzaar-aat ge-l-o
 Mita I market-LOC go-PST-3.S.M
-Meeta I went to the market
+Meeta and I went to the market
 
 #124
 Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa kimwaa aanu kimwaa mii badzaaraat gelo
-miitaa kimwaa aanu kimwaa mii badzaar-aat ge-l-o badzaar-aat
+miitaa kimwaa anuu kimwaa mii badzaaraat gelo
+miitaa kimwaa anuu kimwaa mii badzaar-aat ge-l-o
 Mita or Anu or I market-LOC go-PST-3.S.M
 Meeta Anu or I went to the market
 
@@ -1280,8 +1280,8 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa aanu kimwaa mii badzaaraat gelo
-miitaa aanu kimwaa mii badzaar-aat ge-l-o badzaar-aat
+miitaa anuu kimwaa mii badzaaraat gelo
+miitaa anuu kimwaa mii badzaar-aat ge-l-o
 Mita Anu or I market-LOC go-PST-3.S.M
 Meeta, Anu or I went to the market
 
@@ -1290,8 +1290,8 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd}
-miitaa kimwaa aanu mii badzaaraat gelo
-miitaa kimwaa aanu mii badzaar-aat ge-l-o badzaar-aat
+miitaa kimwaa anuu mii badzaaraat gelo
+miitaa kimwaa anuu mii badzaar-aat ge-l-o
 Mita or Anu I market-LOC go-PST-3.S.M
 Meeta, Anu or I went to the market
 
@@ -1300,8 +1300,8 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd}
-miitaa aanu mii badzaaraat gelo
-miitaa aanu mii badzaar-aat ge-l-o badzaar-aat
+miitaa anu mii badzaaraat gelo
+miitaa anu mii badzaar-aat ge-l-o 
 Mita Anu I market-LOC go-PST-3.S.M
 Meeta, Anu or I went to the market
 
@@ -1322,7 +1322,7 @@ Judgment: u
 Phenomena: {crd, wo}
 miitaa gharii pann gelii mii badzaaraat gelo
 miitaa ghar-ii pann ge-l-ii mii badzaar-aat ge-l-o
-Mita home-LOC go-PST-3SF but I market-LOC go-PST-3.S.M
+Mita home-LOC but go-PST-3SF I market-LOC go-PST-3.S.M
 Meeta went home but I went to the market
 
 #130
@@ -1330,8 +1330,8 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa pann aanu naahii badzaaraat gelo
-miitaa pann aanu naahii badzaar-aat ge-l-o
+miitaa pann anuu naahii badzaaraat gelo
+miitaa pann anuu naahii badzaar-aat ge-l-o
 Mita but Anu neg market-LOC go-PST-3.S.M
 Meeta but not Anu went to the market
 
@@ -1340,8 +1340,8 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa naahii pann aanu badzaaraat gelo
-miitaa naahii pann aanu badzaar-aat ge-l-o
+miitaa naahii pann anuu badzaaraat gelo
+miitaa naahii pann anuu badzaar-aat ge-l-o
 Mita neg but Anu market-LOC go-PST-3.S.M
 Not Mita but Anu went to the market
 
@@ -1350,8 +1350,8 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd}
-miitaa pann aanu badzaaraat gelo
-miitaa pann aanu badzaar-aat ge-l-o
+miitaa pann anuu badzaaraat gelo
+miitaa pann anuu badzaar-aat ge-l-o
 Mita but Anu market-LOC go-PST-3.S.M
 Mita but Anu went to the market
 
@@ -1360,15 +1360,200 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd, wo}
-miitaa naahii aanu pann badzaaraat gelo
-miitaa naahii aanu pann badzaar-aat ge-l-o
+miitaa naahii anuu pann badzaaraat gelo
+miitaa naahii anuu pann badzaar-aat ge-l-o
 Mita neg Anu but market-LOC go-PST-3.S.M
 Mita but not Anu went to the market
 
 #134
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj}
+motthaa mulgaa zhopto
+motth-aa mulgaa zhop-t-o
+big-S.M. boy sleep-PRES-3.S.M
+(The) big boy sleeps
 
+#135
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {adj,wo}
+mulgaa motthaa zhopto
+mulgaa motth-aa zhop-t-o
+boy big-S.M sleep-PRES-3.S.M
+(The) big boy sleeps
 
+#136
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj}
+motthii mulgii zhopte
+motth-ii mulgii zhop-t-e
+big-S.F girl sleep-PRES-3.S.F
+(The) big girl sleeps
 
+#137
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {adj,wo}
+mulgii motthii zhopte
+mulgii motth-ii zhop-t-e
+girl big-S.F sleep-PRES-3.S.F
+(The) big girl sleeps
+
+#138
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj}
+laal gaadii gelii
+laal gaadii ge-l-ii
+red train go-PAST-3.S.F
+(The) red train went
+
+#139
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {adj}
+motthaa mulgii zhopte
+motth-aa mulgii zhop-t-e
+big-S.M girl sleep-PRES-3.S.F
+(The) big girl sleeps
+
+#140
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj}
+dzunii gaadii aalii
+dzun-ii gaadii aa-l-ii
+old-S.F train.S.F come-PAST-3.S.F
+(The) old train came
+
+#141
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {adj}
+dzunaa gaadii aalii
+dzun-aa gaadii aa-l-ii
+old-S.M train.S.F come-PAST-3.S.F
+(The) old train came
+
+#142
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-d}
+polis anuulaa mhannto kii to tsoraalaa maarto
+polis anuu-laa mhann-t-o kii to tsor-laa maar-t-o
+police anu-DAT say-PRES-3.S.M that he thief-ACC beat-PRES-3.S.M
+(The) police says to Anu that he beats the thief
+
+#143
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-d}
+anuu meetalaa mhannte kii tii dzunii gaadii aalii
+anuu meeta-laa mhann-t-e kii tii dzun-ii gaadii aa-l-ii
+anu meeta-DAT say-PRES-3.S.F that that old-3.S.F train come-PAST-3.S.F
+Anu says to Meeta that that old train came
+
+#144
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {emb-d}
+anuu meetalaa mhannte tii dzunii gaadii aalii
+anuu meeta-laa mhann-t-e tii dzun-ii gaadii aa-l-ii
+anu meeta-DAT say-PRES-3.S.F that old-3.S.F train come-PAST-3.S.F
+Anu says to Meeta that that old train came
+
+#145
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-q}
+polis malaa vicaarto kii mii zhopto kaa
+polis malaa vicaar-t-o kii mii zhop-t-o kaa
+police I.DAT ask-PRES-3.S.M that I sleep-PRES-1.S.M Q
+(The) police asks me if I sleep
+
+#146
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {emb-q}
+to zhopto kaa kii polis tsoraalaa vicaarto 
+to zhop-t-o kaa kii polis tsor-laa vicaar-t-o
+he sleep-PRES-3.S.M Q that police thief-DAT ask-PRES-3.S.M
+(The) police asks the thief if he sleeps
+
+#147
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-q}
+tuu zhopto kaa asa polis malaa vicaarto 
+tuu zhop-t-o kaa asa polis malaa vicaar-t-o
+you sleep-PRES-2.S.M Q QUOT police I.DAT ask-PRES-3.S.M
+"Do you sleep?" the police asks me.
+
+#148
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {cop}
+to tsor aahe
+to tsor aa-he
+he thief be-3.S.M
+He is (a) thief
+
+#149
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {cop}
+tii gaadii dzunii aahe
+tii gaadii dzun-ii aa-he
+that train.S.F old-S.F be-3.S.F
+That train is old
+
+#150
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {cop,wo}
+tii aahe dzunii gaadii
+tii aa-he dzun-ii gaadii
+that be-3.S.F old-S.F car
+That car is old
+
+#151
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {cop}
+tyaacii tsaal manda aahe
+tyaa-chii tsaal manda aa-he
+he-POSS.S.F gait slow be-3.S.F
+His gait is slow
+
+#152
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {cop}
+tyaacii aahe tsaal manda
+tyaa-cii aa-he tsaal manda
+he-POSS.S.F be-3.S.F gait slow 
+His gait is slow
 
 
 
