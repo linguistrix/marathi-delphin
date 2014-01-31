@@ -2,7 +2,7 @@ Language: Marathi
 Language code: mar
 Lines: translit translit-seg gloss translat
 Author: Antariksh Bothale, Andrew Baer
-Date: January 22, 2014
+Date: JRaviary 22, 2014
 Source a: Marathi by Rajeshwari Pandharipande http://books.google.com/books/about/Marathi.html?id=v5UOAAAAQAAJ
 
 #1
@@ -740,10 +740,10 @@ Source: {a:288}
 Vetted: {t}
 Judgment: u
 Phenomena: {wo}
-polis tsoraalaa maartii
-polis tsor-laa maar-t-ii
-policeman.NOM thief-ACC beat-PRES-3.S.F
-The policeman beats the thief
+tsor ravilaa maarto
+tsor ravi-laa maar-t-o
+thief.NOM ravi-ACC beat-PRES-3.S.M
+The thief beats Ravi
 
 #72
 Source: {author}
@@ -879,7 +879,7 @@ he beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {wo, pro-d}
+Phenomena: {pro-d}
 haa tsoraalaa maarto
 haa tsor-laa maar-t-o
 he.NOM thief-ACC beat-PRES-3.S.M
@@ -888,30 +888,30 @@ he beats the thief
 #86
 Source: {author}
 Vetted: {t}
-Judgment: u
-Phenomena: {wo, pro-d}
-hii tsoraalaa maarto
-hii tsor-laa maar-t-o
-she.NOM thief-ACC beat-PRES-3.S.M
+Judgment: g
+Phenomena: {pro-d}
+tsoraalaa maarte
+tsor-laa maar-t-e
+thief-ACC beat-PRES-3.S.F
 she beats the thief
 
 #87
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {wo, pro-d,arg}
-hii tsoraalaa maartii
-hii tsor-laa maar-t-ii
-she.NOM thief-ACC beat-PRES-3.S.F
-she beats the thief
+Phenomena: {agr,crd}
+ravi tsoraalaa maarto aanni mii polisaalaa maarte
+ravi tsor-laa maar-t-o aanni mii polis-laa maar-t-e
+ravi.NOM thief-ACC beat-PRES-3.S.M and I police-ACC beat-PRES-3.S.F
+Ravi beats the thief and I beat the police
 
 #88
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo, pro-d,agr}
-haa tsoraalaa maartii
-haa tsor-laa maar-t-ii
+Phenomena: {agr}
+haa tsoraalaa maarte
+haa tsor-laa maar-t-e
 he.NOM thief-ACC beat-PRES-3.S.F
 he beats the thief
 
@@ -919,7 +919,7 @@ he beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {wo,pro-d,agr}
+Phenomena: {agr}
 tsoraalaa maarte
 tsor-laa maar-t-e
 thief-ACC beat-PRES-3.S.F
@@ -942,16 +942,16 @@ Judgment: g
 Phenomena: {wo,agr}
 tyaa tsoraalaa maartaat
 tyaa tsor-laa maar-t-aat
-they.NOM.F thief-ACC beat-PRES-3.PL.M
+they.NOM.P.F thief-ACC beat-PRES-3.PL.M
 they beat the thief
 
 #92
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo,arg}
-tyaa tsoraalaa maartaat
-tyaa tsor-laa maar-t-aat
+Phenomena: {agr}
+tyaa tsoraalaa maarto
+tyaa tsor-laa maar-t-o
 they.NOM.F thief-ACC beat-PRES-3.S.M
 they beat the thief
 
@@ -959,19 +959,19 @@ they beat the thief
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {wo,arg}
+Phenomena: {wo,agr}
 tsor haalaa maarto
-tsor haa-laa maar-t-o
+tsor hyaa-laa maar-t-o
 thief.NOM he-ACC beat-PRES-3.S.M
-the thief beat him
+the thief beats him
 
 #94
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo,arg}
-tsor haalaa maartii
-tsor haa-laa maar-t-ii
+Phenomena: {agr}
+tsor hyaalaa maarte
+tsor hyaa-laa maar-t-e
 thief.NOM he-ACC beat-PRES-3.S.F
 the thief beat him
 
@@ -979,9 +979,9 @@ the thief beat him
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo,arg,c}
+Phenomena: {c}
 tsoralaa haalaa maarto
-tsor-laa haa-laa maar-t-o
+tsor-laa hyaa-laa maar-t-o
 thief-ACC he-ACC beat-PRES-3.S.M
 the thief beat him
 
@@ -1012,18 +1012,18 @@ Judgment: u
 Phenomena: {tam,agr}
 to zhoplo
 to zhop-l-o
-he.NOM.R sleep-PAST-3.S.M
+he.NOM.R sleep-PAST-1.S.M
 he slept
 
 #99
 Source: {author}
 Vetted: {t}
-Judgment: u
+Judgment: g
 Phenomena: {tam,agr}
-to zhoplo
-to zhop-l-o
-he.NOM.R sleep-FUT-3.S.M
-he will sleep
+te zhoptiil
+te zhop-tiil
+they.NOM.R sleep-FUT.3.P.M
+they will sleep
 
 #100
 Source: {author}
@@ -1033,7 +1033,7 @@ Phenomena: {tam,agr}
 tii zhoplii
 tii zhop-l-ii
 she.NOM.R sleep-PAST-3.S.M
-she sleeps
+she slept
 
 #101
 Source: {author}
@@ -1042,18 +1042,18 @@ Judgment: u
 Phenomena: {pn,agr}
 tumhii zhop-l-iis
 tumhii zhop-l-iis
-you.2.S.F sleep-PST-3.PL.F
-you(fem) slept
+you.2.P sleep-PST-2.S.F
+you slept
 
 #102
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo,agr}
+Phenomena: {agr}
 te tsoraalaa maarto
 te tsor-laa maar-t-o
-he.NOM.M thief-ACC beat-PRES-3.S.M
-he beat the thief
+he.NOM.3.P thief-ACC beat-PRES-3.S.M
+They beat the thief
 
 #103
 Source: {author}
@@ -1069,7 +1069,7 @@ They are here
 Source: {a:7}
 Vetted: {t}
 Judgment: g
-Phenomena: {q}
+Phenomena: {adv,q}
 to kaal parat aalaa kaa
 to kaal parat aa-l-aa kaa
 he yesterday back came-PST-3.S.M Q
@@ -1105,17 +1105,17 @@ to aa-l-aa kaa naahii
 he came-PST-3.S.M Q NEG	
 Did he not come?
 
-#108 # TODO
+#108
 Source: {author}
 Vetted: {t}
-Judgment: g
-Phenomena: {q, wo}
+Judgment: u
+Phenomena: {q}
 to aalaa naahii naahii kaa
 to aa-l-aa naahii naahii kaa
 he came-PST-3.S.M neg neg Q 
-he did not come, did he?
+Did he come?
 
-#109 # TODO 
+#109
 Source: {author}
 Vetted: {t}
 Judgment: u
@@ -1123,17 +1123,17 @@ Phenomena: {q, wo}
 to aalaa naahii kaa naahii
 to aa-l-aa naahii kaa naahii
 he came-PST-3.S.M neg Q neg  
-he did not come, did he?
+Why did he not come?
 
 #110
 Source: {author}
 Vetted: {t}
-Judgment: u
-Phenomena: {q, wo}
-to aalaa kaa naahii naahii
-to aa-l-aa kaa naahii naahii
-he came-PST-3.S.M Q neg neg  
-he did not come, did he?
+Judgment: g
+Phenomena: {q,neg,agr}
+te aale naahiit kaa
+te aa-l-e naahiit kaa
+they come-PST-3.S.P neg.P Q
+Did they not come?
 
 #111
 Source: {author}
@@ -1219,18 +1219,18 @@ I came home and slept
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {crd}
-mii gharii aale zhople
-mii ghar-ii aa-l-e zhop-l-e
-I home-LOC come-PST-1.S.F sleep-PST-1.S.F
-I came home and slept
+Phenomena: {crd,agr}
+mii gharii gelaa aani zhople
+mii ghar-ii ge-l-aa aanni zhop-l-e
+I home-LOC go-PST-1.S.M and sleep-PST-1.S.F
+I went home and slept
 
 #120
 Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd, wo}
-mii gharii aale zhople
+mii gharii aale zhople aanni
 mii ghar-ii aa-l-e zhop-l-e aanni
 I home-LOC come-PST-1.S.F sleep-PST-1.S.F and
 I came home and slept
@@ -1239,21 +1239,22 @@ I came home and slept
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {crd, wo}
-mii gharii aanni aale zhople
-mii ghar-ii aanni aa-l-e zhop-l-e
-I home-LOC and come-PST-1.S.F sleep-PST-1.S.F
-I came home and slept
+Phenomena: {crd}
+ravi kimwaa miitaa gharii aalaa
+ravi kimwaa miitaa ghar-ii aa-l-aa
+ravi.M or mita.F house-LOC come-PAST-3.S.M
+Ravi or Mita came home.
+
 
 #122
 Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa kimwaa mii badzaaraat gelo
-miitaa kimwaa mii badzaar-aat ge-l-o
-Mita or I market-LOC go-PST-3.S.M
-Meeta or I went to the market
+ravi kimwaa miitaa gharii aalii
+ravi kimwaa miitaa ghar-ii aa-l-ii
+ravi or mita house-LOC come-PAST-3.S.F
+Ravi or Mita came home.
 
 #123
 Source: {author}
@@ -1270,40 +1271,40 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa kimwaa anuu kimwaa mii badzaaraat gelo
-miitaa kimwaa anuu kimwaa mii badzaar-aat ge-l-o
-Mita or Anu or I market-LOC go-PST-3.S.M
-Meeta Anu or I went to the market
+miitaa kimwaa ravi kimwaa mii badzaaraat gelo
+miitaa kimwaa ravi kimwaa mii badzaar-aat ge-l-o
+Mita or Ravi or I market-LOC go-PST-3.S.M
+Meeta Ravi or I went to the market
 
 #125
 Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa anuu kimwaa mii badzaaraat gelo
-miitaa anuu kimwaa mii badzaar-aat ge-l-o
-Mita Anu or I market-LOC go-PST-3.S.M
-Meeta, Anu or I went to the market
+miitaa ravi kimwaa mii badzaaraat gelo
+miitaa ravi kimwaa mii badzaar-aat ge-l-o
+Mita Ravi or I market-LOC go-PST-3.S.M
+Meeta, Ravi or I went to the market
 
 #126
 Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd}
-miitaa kimwaa anuu mii badzaaraat gelo
-miitaa kimwaa anuu mii badzaar-aat ge-l-o
-Mita or Anu I market-LOC go-PST-3.S.M
-Meeta, Anu or I went to the market
+miitaa kimwaa ravi mii badzaaraat gelo
+miitaa kimwaa ravi mii badzaar-aat ge-l-o
+Mita or Ravi I market-LOC go-PST-3.S.M
+Meeta, Ravi or I went to the market
 
 #127
 Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd}
-miitaa anu mii badzaaraat gelo
-miitaa anu mii badzaar-aat ge-l-o 
-Mita Anu I market-LOC go-PST-3.S.M
-Meeta, Anu or I went to the market
+miitaa Ravi mii badzaaraat gelo
+miitaa Ravi mii badzaar-aat ge-l-o 
+Mita Ravi I market-LOC go-PST-3.S.M
+Meeta, Ravi or I went to the market
 
 #128
 Source: {author}
@@ -1330,40 +1331,40 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa pann anuu naahii badzaaraat gelo
-miitaa pann anuu naahii badzaar-aat ge-l-o
-Mita but Anu neg market-LOC go-PST-3.S.M
-Meeta but not Anu went to the market
+mii tsoraalaa maar-t-o pann gharii gelo naahii
+mii tsor-laa maar-t-o pann ghar-ii ge-l-o naahii
+I thief-ACC beat-PRES-3.S.M but house-LOC go-PAST-3.S.M not
+I beat the thief but did not go home
 
 #131
 Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa naahii pann anuu badzaaraat gelo
-miitaa naahii pann anuu badzaar-aat ge-l-o
-Mita neg but Anu market-LOC go-PST-3.S.M
-Not Mita but Anu went to the market
+miitaa naahii pann ravi badzaaraat gelaa
+miitaa naahii pann ravi badzaar-aat ge-l-aa
+Mita neg but Ravi market-LOC go-PST-3.S.M
+Not Mita but Ravi went to the market
 
 #132
 Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd}
-miitaa pann anuu badzaaraat gelo
-miitaa pann anuu badzaar-aat ge-l-o
-Mita but Anu market-LOC go-PST-3.S.M
-Mita but Anu went to the market
+miitaa pann ravi badzaaraat gelo
+miitaa pann ravi badzaar-aat ge-l-o
+Mita but Ravi market-LOC go-PST-3.S.M
+Mita but Ravi went to the market
 
 #133
 Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd, wo}
-miitaa naahii anuu pann badzaaraat gelo
-miitaa naahii anuu pann badzaar-aat ge-l-o
-Mita neg Anu but market-LOC go-PST-3.S.M
-Mita but not Anu went to the market
+miitaa naahii ravi pann badzaaraat gelo
+miitaa naahii ravi pann badzaar-aat ge-l-o
+Mita neg Ravi but market-LOC go-PST-3.S.M
+Mita but not Ravi went to the market
 
 #134
 Source: {author}
@@ -1450,30 +1451,30 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {emb-d}
-polis anuulaa mhannto kii to tsoraalaa maarto
-polis anuu-laa mhann-t-o kii to tsor-laa maar-t-o
-police anu-DAT say-PRES-3.S.M that he thief-ACC beat-PRES-3.S.M
-(The) police says to Anu that he beats the thief
+polis ravilaa mhannto kii to tsoraalaa maarto
+polis ravi-laa mhann-t-o kii to tsor-laa maar-t-o
+police Ravi-DAT say-PRES-3.S.M that he thief-ACC beat-PRES-3.S.M
+(The) police says to Ravi that he beats the thief
 
 #143
 Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {emb-d}
-anuu meetalaa mhannte kii tii dzunii gaadii aalii
-anuu meeta-laa mhann-t-e kii tii dzun-ii gaadii aa-l-ii
-anu meeta-DAT say-PRES-3.S.F that that old-3.S.F train come-PAST-3.S.F
-Anu says to Meeta that that old train came
+ravi meetalaa mhannte kii tii dzunii gaadii aalii
+ravi meeta-laa mhann-t-e kii tii dzun-ii gaadii aa-l-ii
+Ravi meeta-DAT say-PRES-3.S.F that that old-3.S.F train come-PAST-3.S.F
+Ravi says to Meeta that that old train came
 
 #144
 Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {emb-d}
-anuu meetalaa mhannte tii dzunii gaadii aalii
-anuu meeta-laa mhann-t-e tii dzun-ii gaadii aa-l-ii
-anu meeta-DAT say-PRES-3.S.F that old-3.S.F train come-PAST-3.S.F
-Anu says to Meeta that that old train came
+ravi meetalaa mhannte tii dzunii gaadii aalii
+ravi meeta-laa mhann-t-e tii dzun-ii gaadii aa-l-ii
+Ravi meeta-DAT say-PRES-3.S.F that old-3.S.F train come-PAST-3.S.F
+Ravi says to Meeta that that old train came
 
 #145
 Source: {author}
@@ -1560,39 +1561,39 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {adv}
-lawkar to tsalto 
-lawkar to tsal-t-o
-Quickly he walk-PRES-3.S.M
-He walks quickly
+lawkar to aalaa 
+lawkar to aa-l-aa
+Quickly he come-PAST-3.S.M
+He came quickly
 
 #154
 Source: {author}
 Vetted: {t}
-Judgment: u
+Judgment: g
 Phenomena: {adv}
-to lawkar tsalto
-to lawkar tsal-t-o
-He quickly walk-PRES-3.S.M
-He walks quickly
+to lawkar aalaa
+to lawkar aa-l-aa
+He early come-PAST-3.S.M
+He came quickly
 
 #155
 Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {adv}
-to tsalto lawkar 
-to tsal-t-o lawkar 
-He walk-PRES-3.S.M quickly 
-He walks quickly
+to aalaa lawkar 
+to aa-l-aa lawkar 
+He come-PAST-3.S.M early 
+He came quickly
 
 #156
 Source: {a:251}
 Vetted: {t}
 Judgment: g
 Phenomena: {info}
-maazda kaam tuu udyaa karsiil kaa
-maa-d-za kaam tuu udyaa kar-s-iil kaa
-I-POSS-3.S.N work you tomorrow do-FUT-3.S.N Q
+maadza kaam tuu udyaa karshiil kaa
+maa-dza kaam tuu udyaa kar-shiil kaa
+I-POSS3.S.N work.N you tomorrow do-FUT2.S Q
 Will you do my work tomorrow?
 
 #157
@@ -1600,9 +1601,9 @@ Source: {a:251}
 Vetted: {t}
 Judgment: g
 Phenomena: {info}
-tuu udyaa maadza kaam karsiil kaa
-tuu udyaa maa-d-za kaam tuu kar-s-iil kaa
-You tomorrow my work do-FUT-2.S Q
+tuu udyaa maadza kaam karshiil kaa
+tuu udyaa maa-dza kaam kar-shiil kaa
+You tomorrow I-POSS.3.S.N work.N do-FUT.2.S Q
 Will you do my work tomorrow?
 
 #158
@@ -1610,10 +1611,9 @@ Source: {a:252}
 Vetted: {t}
 Judgment: g
 Phenomena: {info}
-tyaaatshii bahiinn he bara dzhaala kii amerikelaa gelii naahii
-tyaa-tshii bahiinn he bara dzhaa-la kii amerike-laa ge-lii naahii
-He-POSS.3.S.F sister this good happen-PST.3.S.N comp America-ACC go
-PST.3.S.F neg
+tyaaacii bahiinn he bara dzhaala kii amerikelaa gelii naahii
+tyaa-cii bahiinn he bara dzhaa-la kii amerikaa-laa ge-l-ii naahii
+He-POSS.3.S.F sister this good happen-PST.3.S.N comp America-ACC go-PST-3.S.F neg
 His sister, it was good she did not go to America
 
 #159
@@ -1621,10 +1621,10 @@ Source: {a:253}
 Vetted: {t}
 Judgment: g
 Phenomena: {info}
-tyaatsa naagpuurlaa dzaanna tar aawasyak hota
-tyaa-tsa naagpuur-laa dzaa-nna tar aawasyak hota
-He-POSS.3.S.N nagpur-DAT dzaa-INF.3.S.N emph necessary was
-As for his going to Napur, it was necessary
+tyaatsa naagpuurlaa dzaanna tar aawashyak hota
+tyaa-tsa naagpuur-laa dzaa-nna tar aawashyak hota
+He-POSS.3.S.N nagpur-DAT go-INF.3.S.N emph necessary was
+As for his going to Nagpur, it was necessary
 
 #160
 Source: {author}
@@ -1637,16 +1637,6 @@ tar he-POSS.3.S.N nagpur-DAT dzaa-INF.3.S.N necessary was
 As for his going to Napur, it was necessary
 
 #161
-Source: {a:253}
-Vetted: {t}
-Judgment: g
-Phenomena: {info}
-tyaatsa naagpuurlaa dzaanna tar aawasyak hota
-tyaa-tsa naagpuur-laa dzaa-nna tar aawasyak hota
-He-POSS.3.S.N nagpur-DAT dzaa-INF.3.S.N emph necessary was
-As for his going to Napur, it was necessary
-
-#162
 Source: {author}
 Vetted: {t}
 Judgment: g
@@ -1656,13 +1646,13 @@ to kaal parat aa-l-aa
 he yesterday back came-PST-3.S.M 
 He came back yesterday
 
-#163
+#162
 Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {q}
 kaa to kaal parat aalaa
-kaato kaal parat aa-l-aa
+kaa to kaal parat aa-l-aa
 Q he yesterday back came-PST-3.S.M 
 Did he come back yesterday?
 
