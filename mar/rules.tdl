@@ -1,5 +1,5 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
-adj-head-int := adj-head-int-phrase.
+head-adj-int := head-adj-int-phrase.
 
 basic-head-opt-comp := basic-head-opt-comp-phrase.
 
@@ -23,6 +23,18 @@ np1-mid-coord := np1-mid-coord-rule.
 
 np1-bottom-coord := np1-bottom-coord-rule.
 
+vp1-top-coord := vp1-top-coord-rule.
+
+vp1-mid-coord := vp1-mid-coord-rule.
+
+vp1-bottom-coord := vp1-bottom-coord-rule.
+
+s1-top-coord := s1-top-coord-rule.
+
+s1-mid-coord := s1-mid-coord-rule.
+
+s1-bottom-coord := s1-bottom-coord-rule.
+
 s2-top-coord := s2-top-coord-rule.
 
 s2-bottom-coord := s2-bottom-coord-rule.
@@ -39,6 +51,10 @@ vp3-top-coord := vp3-top-coord-rule.
 
 vp3-bottom-coord := vp3-bottom-coord-rule.
 
+s3-top-coord := s3-top-coord-rule.
+
+s3-bottom-coord := s3-bottom-coord-rule.
+
 n4-top-coord := n4-top-coord-rule.
 
 n4-mid-coord := n4-mid-coord-rule.
@@ -50,3 +66,15 @@ np4-top-coord := np4-top-coord-rule.
 np4-mid-coord := np4-mid-coord-rule.
 
 np4-bottom-coord := np4-bottom-coord-rule.
+
+vp4-top-coord := vp4-top-coord-rule.
+
+vp4-mid-coord := vp4-mid-coord-rule.
+
+vp4-bottom-coord := vp4-bottom-coord-rule.
+
+s4-top-coord := s4-top-coord-rule.
+
+s4-mid-coord := s4-mid-coord-rule.
+
+s4-bottom-coord := s4-bottom-coord-rule.

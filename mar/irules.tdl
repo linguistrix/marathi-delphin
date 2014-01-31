@@ -63,6 +63,10 @@ imperfective_lexical_rule-suffix :=
 %suffix (* -t)
 imperfective_lexical_rule-lex-rule.
 
+infinitive_lexical_rule-suffix :=
+%suffix (* -nna)
+infinitive_lexical_rule-lex-rule.
+
 1sgpresent_masc_lexical_rule-suffix :=
 %suffix (* -o)
 1sgpresent_masc_lexical_rule-lex-rule.

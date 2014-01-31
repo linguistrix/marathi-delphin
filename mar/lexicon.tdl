@@ -73,37 +73,69 @@ hii_2 := 3pln_pronoun_lexeme-noun-lex &
   [ STEM < "hii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_they_n_rel" ].
 
-polis := malenoun_lexeme-noun-lex &
+polis := malenounsg_lexeme-noun-lex &
   [ STEM < "polis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_police_n_rel" ].
 
-tsor := malenoun_lexeme-noun-lex &
+tsor := malenounsg_lexeme-noun-lex &
   [ STEM < "tsor" >,
     SYNSEM.LKEYS.KEYREL.PRED "_thief_n_rel" ].
 
-kutraa := malenoun_lexeme-noun-lex &
+kutraa := malenounsg_lexeme-noun-lex &
   [ STEM < "kutraa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_dog_n_rel" ].
 
-mul := malenoun_lexeme-noun-lex &
+mul := malenounsg_lexeme-noun-lex &
   [ STEM < "mul" >,
     SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
 
-dukhkha := malenoun_lexeme-noun-lex &
+dukhkha := malenounsg_lexeme-noun-lex &
   [ STEM < "dukhkha" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sadness_n_rel" ].
 
-bhaarat := malenoun_lexeme-noun-lex &
+bhaarat := malenounsg_lexeme-noun-lex &
   [ STEM < "bhaarat" >,
     SYNSEM.LKEYS.KEYREL.PRED "_india_n_rel" ].
 
-gaadii := femalenoun_lexeme-noun-lex &
+kaal := malenounsg_lexeme-noun-lex &
+  [ STEM < "kaal" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_yesterday_n_rel" ].
+
+baadzaar := malenounsg_lexeme-noun-lex &
+  [ STEM < "baadzaar" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_market_n_rel" ].
+
+ghaar := malenounsg_lexeme-noun-lex &
+  [ STEM < "ghaar" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_home_n_rel" ].
+
+mulgaa := malenounsg_lexeme-noun-lex &
+  [ STEM < "mulgaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
+
+kaam := malenounsg_lexeme-noun-lex &
+  [ STEM < "kaam" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_work_n_rel" ].
+
+tsaal := malenounsg_lexeme-noun-lex &
+  [ STEM < "tsaal" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_gait_n_rel" ].
+
+gaadii := femalenounsg_lexeme-noun-lex &
   [ STEM < "gaadii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_train_n_rel" ].
 
-baatmii := femalenoun_lexeme-noun-lex &
+baatmii := femalenounsg_lexeme-noun-lex &
   [ STEM < "baatmii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_news_n_rel" ].
+
+Aanu := male_proper_noun_lexeme-noun-lex &
+  [ STEM < "Aanu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_Aanu_n_rel" ].
+
+Miitaa := female_proper_noun_lexeme-noun-lex &
+  [ STEM < "Miitaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_Miitaa_n_rel" ].
 
 ;;; Verbs
 
@@ -119,9 +151,33 @@ maag := trans_verb_lxm-verb-lex &
   [ STEM < "maag" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
 
+vicaar := trans_verb_lxm-verb-lex &
+  [ STEM < "vicaar" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
+
 zhop := intrans_verb_lxm-verb-lex &
   [ STEM < "zhop" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
+
+aa_1 := intrans_verb_lxm-verb-lex &
+  [ STEM < "aa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_come_v_rel" ].
+
+ge := intrans_verb_lxm-verb-lex &
+  [ STEM < "ge" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_went_v_rel" ].
+
+tsa := intrans_verb_lxm-verb-lex &
+  [ STEM < "tsa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_walk_v_rel" ].
+
+mhann := intrans_verb_lxm-verb-lex &
+  [ STEM < "mhann" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
+
+dzaa := intrans_verb_lxm-verb-lex &
+  [ STEM < "dzaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_go_v_rel" ].
 
 d := irreg_trans_verb1-verb-lex &
   [ STEM < "d" >,
@@ -133,7 +189,7 @@ naahii := neg-aux-lex &
   [ STEM < "naahii" >,
     SYNSEM.LKEYS.KEYREL.PRED "neg_rel" ].
 
-aa := tobe_aux_verb_lexeme-aux-lex &
+aa_2 := tobe_aux_verb_lexeme-aux-lex &
   [ STEM < "aa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_tobe_v_rel" ].
 

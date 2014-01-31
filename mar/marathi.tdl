@@ -2,9 +2,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Grammar of Marathi
 ;;; created at:
-;;;     Wed Jan 29 20:40:46 UTC 2014
+;;;     Fri Jan 31 20:08:37 UTC 2014
 ;;; based on Matrix customization system version of:
-;;;     Tue Jan 28 19:17:59 UTC 2014
+;;;     Fri Jan 31 10:06:37 UTC 2014
 ;;;
 ;;; Marathi by Rajeshwari Pandharipande and Native Speaker (Author)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -23,19 +23,19 @@ noun :+ [ CASE case ].
 head :+ [ AUX bool,
     FORM form ].
 
-inflected :+ [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG luk,
+inflected :+ [ CASE-FLAG luk,
     IRREG_INTRANS_VERB_TENSE-FLAG luk,
-    VERB_TENSE_ASPECT-FLAG luk,
+    FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG luk,
     TOBECOME_AUX_INFLECTION-FLAG luk,
-    TOBE_AUX_INFLECTION-FLAG luk,
-    CASE-FLAG luk ].
+    VERB_TENSE_ASPECT-FLAG luk,
+    TOBE_AUX_INFLECTION-FLAG luk ].
 
-infl-satisfied :+ [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG na-or-+,
+infl-satisfied :+ [ CASE-FLAG na-or-+,
     IRREG_INTRANS_VERB_TENSE-FLAG na-or-+,
-    VERB_TENSE_ASPECT-FLAG na-or-+,
+    FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG na-or-+,
     TOBECOME_AUX_INFLECTION-FLAG na-or-+,
-    TOBE_AUX_INFLECTION-FLAG na-or-+,
-    CASE-FLAG na-or-+ ].
+    VERB_TENSE_ASPECT-FLAG na-or-+,
+    TOBE_AUX_INFLECTION-FLAG na-or-+ ].
 
 png :+ [ PERNUM pernum,
     GEND gender ].
@@ -181,11 +181,15 @@ pronoun_lexeme-noun-lex := no-spr-noun-lex.
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3PL,
                                        GEND N ] ].
 
-malenoun_lexeme-noun-lex := common_noun_lexeme-noun-lex &
+malenounsg_lexeme-noun-lex := common_noun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND M ].
 
-femalenoun_lexeme-noun-lex := common_noun_lexeme-noun-lex &
+femalenounsg_lexeme-noun-lex := common_noun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND F ].
+
+male_proper_noun_lexeme-noun-lex := pronoun_lexeme-noun-lex.
+
+female_proper_noun_lexeme-noun-lex := pronoun_lexeme-noun-lex.
 
 ;;; Verbs
 
@@ -323,8 +327,8 @@ qpart-lex-item := complementizer-lex-item &
 
 ;;; Intermediate rule types
 
-verb_gender_past-rule-dtr := word-or-lexrule.
 verb_gender_future-rule-dtr := word-or-lexrule.
+verb_gender_past-rule-dtr := word-or-lexrule.
 verb_gender_present-rule-dtr := word-or-lexrule.
 verb_tense_aspect-rule-dtr := word-or-lexrule.
 
@@ -332,17 +336,17 @@ verb_tense_aspect-rule-dtr := word-or-lexrule.
 
 Case-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ CASE-FLAG +,
+                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
                 VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ],
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ],
     DTR noun-lex &
-        [ INFLECTED [ VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+        [ INFLECTED [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                       TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ] ] ].
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ] ] ].
 
 nom_lexical_rule-lex-rule := Case-lex-rule-super & const-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE nom ].
@@ -379,15 +383,15 @@ erg_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
 
 verb_tense_aspect-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
-                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
                 TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                CASE-FLAG #case ],
+                CASE-FLAG #case,
+                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ],
     DTR verb_tense_aspect-rule-dtr &
-        [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
-                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      CASE-FLAG #case ] ] ].
+        [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                      CASE-FLAG #case,
+                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ] ] ].
 
 past_lexical_rule-lex-rule := verb_gender_past-rule-dtr & verb_tense_aspect-lex-rule-super &
   [ INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG +,
@@ -411,6 +415,11 @@ imperfective_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
   [ INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
     DTR.INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
+
+infinitive_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
+  [ INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+    DTR.INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+    SYNSEM.LOCAL.CAT.HEAD.FORM nonfinite ].
 
 verb_gender_present-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED #infl,
@@ -514,17 +523,17 @@ verb_gender_future-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
 
 tobe_aux_inflection-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG +,
+                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                CASE-FLAG #case,
                 VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
-                CASE-FLAG #case ],
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ],
     DTR tobe_aux_verb_lexeme-aux-lex &
-        [ INFLECTED [ VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+        [ INFLECTED [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                      CASE-FLAG #case,
+                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                       TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
-                      CASE-FLAG #case ] ] ].
+                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ] ] ].
 
 non3sg_lexical_rule-lex-rule := tobe_aux_inflection-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2nd+3PL ].
@@ -534,33 +543,33 @@ to_be_3sg_lexical_rule-lex-rule := tobe_aux_inflection-lex-rule-super &
 
 tobecome_aux_inflection-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG +,
-                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                 FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                CASE-FLAG #case,
                 TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
-                CASE-FLAG #case ],
+                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ],
     DTR tobecome_aux_verb_lexeme-aux-lex &
-        [ INFLECTED [ VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
-                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+        [ INFLECTED [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                      CASE-FLAG #case,
                       TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
-                      CASE-FLAG #case ] ] ].
+                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ] ] ].
 
 tobecome_3sg_lexical_rule-lex-rule := tobecome_aux_inflection-lex-rule-super.
 
 irreg_intrans_verb_tense-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule & verb_gender_future-rule-dtr & verb_gender_past-rule-dtr & verb_gender_present-rule-dtr &
   [ INFLECTED [ IRREG_INTRANS_VERB_TENSE-FLAG +,
+                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                CASE-FLAG #case,
                 VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                CASE-FLAG #case ],
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ],
     DTR irreg_trans_verb1-verb-lex &
-        [ INFLECTED [ VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+        [ INFLECTED [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+                      CASE-FLAG #case,
+                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                       TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      CASE-FLAG #case ] ] ].
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ] ] ].
 
 give_d_present_lexical_rule-lex-rule := irreg_intrans_verb_tense-lex-rule-super.
 
@@ -610,6 +619,28 @@ np1-mid-coord-rule := basic-np-mid-coord-rule & monopoly-mid-coord-rule &
 np1-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
   [ SYNSEM.LOCAL.COORD-STRAT "1" ].
 
+;;; Coordination Strategy 1
+
+vp1-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "1" ].
+
+vp1-mid-coord-rule := basic-vp-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "1" ].
+
+vp1-bottom-coord-rule := conj-first-bottom-coord-rule & vp-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "1" ].
+
+;;; Coordination Strategy 1
+
+s1-top-coord-rule := basic-s-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "1" ].
+
+s1-mid-coord-rule := basic-s-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "1" ].
+
+s1-bottom-coord-rule := conj-first-bottom-coord-rule & s-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "1" ].
+
 ;;; Coordination Strategy 2
 
 s2-top-coord-rule := basic-s-top-coord-rule & apoly-top-coord-rule &
@@ -643,6 +674,14 @@ vp3-top-coord-rule := basic-vp-top-coord-rule & apoly-top-coord-rule &
 vp3-bottom-coord-rule := conj-first-bottom-coord-rule & vp-bottom-coord-phrase &
   [ SYNSEM.LOCAL.COORD-STRAT "3" ].
 
+;;; Coordination Strategy 3
+
+s3-top-coord-rule := basic-s-top-coord-rule & apoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "3" ].
+
+s3-bottom-coord-rule := conj-first-bottom-coord-rule & s-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "3" ].
+
 ;;; Coordination Strategy 4
 
 n4-top-coord-rule := basic-n-top-coord-rule & monopoly-top-coord-rule &
@@ -663,4 +702,26 @@ np4-mid-coord-rule := basic-np-mid-coord-rule & monopoly-mid-coord-rule &
   [ SYNSEM.LOCAL.COORD-STRAT "4" ].
 
 np4-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "4" ].
+
+;;; Coordination Strategy 4
+
+vp4-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "4" ].
+
+vp4-mid-coord-rule := basic-vp-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "4" ].
+
+vp4-bottom-coord-rule := conj-first-bottom-coord-rule & vp-bottom-coord-phrase &
+  [ SYNSEM.LOCAL.COORD-STRAT "4" ].
+
+;;; Coordination Strategy 4
+
+s4-top-coord-rule := basic-s-top-coord-rule & monopoly-top-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "4" ].
+
+s4-mid-coord-rule := basic-s-mid-coord-rule & monopoly-mid-coord-rule &
+  [ SYNSEM.LOCAL.COORD-STRAT "4" ].
+
+s4-bottom-coord-rule := conj-first-bottom-coord-rule & s-bottom-coord-phrase &
   [ SYNSEM.LOCAL.COORD-STRAT "4" ].
