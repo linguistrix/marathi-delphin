@@ -260,16 +260,6 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {pn,agr}
-mii zhoplo
-mii zhop-l-o
-I.1.S sleep-PST-1.S.M
-I(masc) slept
-
-#25
-Source: {author}
-Vetted: {t}
-Judgment: g
-Phenomena: {pn,agr}
 aapann zhoplo
 aapann zhop-l-o
 we.1.INCL sleep-PST-1.INCL
@@ -390,7 +380,7 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {c,agr}
-mul dukhka dzhaala
+mul dukhkha dzhaala
 mul dukhkha dzhaa-l-a
 boy sadness.3.S.N happen-PST-3.S.N
 The boy became sad
@@ -399,8 +389,8 @@ The boy became sad
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {c, wo}
-dukhka mulaalaa dzhaala
+Phenomena: {c,wo}
+dukhkha mulaalaa dzhaala
 dukhkha mul-laa dzhaa-l-a
 sadness.3.S.N boy-DAT happen-PST-3.S.N
 The boy became sad
@@ -471,7 +461,7 @@ Vetted: {t}
 Judgment: g
 Phenomena: {c,agr}
 polisne tsoraalaa kutraa dilaa
-polis-ne tsor-laa kutraa di-l-aa
+polis-ne tsor-laa kutraa d-l-aa
 policeman-ERG thief-ACC dog.3.S.M give-PST-3.S
 The policeman gave the thief a dog
 
@@ -481,7 +471,7 @@ Vetted: {t}
 Judgment: u
 Phenomena: {c,agr}
 polisaalaa tsor kutraa dilaa
-polis-laa tsor kutraa di-l-aa
+polis-laa tsor kutraa d-l-aa
 policeman-ACC thief.NOM dog.3.S.M give-PST-3.S
 The policeman gave the thief a dog
 
@@ -491,7 +481,7 @@ Vetted: {t}
 Judgment: u
 Phenomena: {c,agr}
 polisaalaa tsor kutraa dilaa
-polis-laa tsor kutraa di-l-aa
+polis-laa tsor kutraa d-l-aa
 policeman-DAT thief.NOM dog.3.S.M give-PST-3.S
 The policeman gave the thief a dog
 
@@ -501,7 +491,7 @@ Vetted: {t}
 Judgment: u
 Phenomena: {c,agr}
 polisaalaa tsoraalaa kutraa dila
-polis-laa tsor-laa kutraa di-l-aa
+polis-laa tsor-laa kutraa d-l-aa
 policeman-DAT thief-ACC dog.3.S.M give-PST-3.S
 The policeman gave the thief a dog
 
@@ -511,7 +501,7 @@ Vetted: {t}
 Judgment: u
 Phenomena: {c,agr}
 polisaalaa tsoraalaa kutraa dilaa
-polis-laa tsor-laa kutraa di-l-aa
+polis-laa tsor-laa kutraa d-l-aa
 policeman-ACC thief-ACC dog.3.S.M give-PST-3.S
 The policeman gave the thief a dog
 
@@ -521,7 +511,7 @@ Vetted: {t}
 Judgment: u
 Phenomena: {c,agr}
 polisaalaa tsoraalaa kutraa dilaa
-polis-laa tsor-laa kutraa di-l-aa
+polis-laa tsor-laa kutraa d-l-aa
 policeman-ACC thief-ACC dog.3.S.M give-PST-3.S
 The policeman gave the thief a dog
 
@@ -1593,7 +1583,7 @@ Judgment: g
 Phenomena: {info}
 maadza kaam tuu udyaa karshiil kaa
 maa-dza kaam tuu udyaa kar-shiil kaa
-I-POSS3.S.N work.N you tomorrow do-FUT2.S Q
+I-POSS.3.S.N work.N you tomorrow do-FUT2.S Q
 Will you do my work tomorrow?
 
 #157
@@ -1655,6 +1645,20 @@ kaa to kaal parat aalaa
 kaa to kaal parat aa-l-aa
 Q he yesterday back came-PST-3.S.M 
 Did he come back yesterday?
+
+#163
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {pn,agr}
+mii zhoplo
+mii zhop-l-o
+I.1.S sleep-PST-1.S.M
+I(masc) slept
+
+
+
+
 
 
 
