@@ -29,7 +29,7 @@ to_1 := 3sgm_pronoun_lexeme-noun-lex &
   [ STEM < "to" >,
     SYNSEM.LKEYS.KEYREL.PRED "_he_n_1_rel" ].
 
-haa := 3sgm_pronoun_lexeme-noun-lex &
+haa_1 := 3sgm_pronoun_lexeme-noun-lex &
   [ STEM < "haa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_he_n_2_rel" ].
 
@@ -89,17 +89,9 @@ mul := malenounsg_lexeme-noun-lex &
   [ STEM < "mul" >,
     SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
 
-dukhkha := malenounsg_lexeme-noun-lex &
-  [ STEM < "dukhkha" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_sadness_n_rel" ].
-
 bhaarat := malenounsg_lexeme-noun-lex &
   [ STEM < "bhaarat" >,
     SYNSEM.LKEYS.KEYREL.PRED "_india_n_rel" ].
-
-kaal := malenounsg_lexeme-noun-lex &
-  [ STEM < "kaal" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_yesterday_n_rel" ].
 
 baadzaar := malenounsg_lexeme-noun-lex &
   [ STEM < "baadzaar" >,
@@ -129,23 +121,23 @@ baatmii := femalenounsg_lexeme-noun-lex &
   [ STEM < "baatmii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_news_n_rel" ].
 
-Aanu := male_proper_noun_lexeme-noun-lex &
-  [ STEM < "Aanu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_Aanu_n_rel" ].
+ravi := male_proper_noun_lexeme-noun-lex &
+  [ STEM < "ravi" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_ravi_n_rel" ].
 
 Miitaa := female_proper_noun_lexeme-noun-lex &
   [ STEM < "Miitaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Miitaa_n_rel" ].
+
+dukhkha := neuternounsg_lexeme-noun-lex &
+  [ STEM < "dukhkha" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sadness_n_rel" ].
 
 ;;; Verbs
 
 maar := trans_verb_lxm-verb-lex &
   [ STEM < "maar" >,
     SYNSEM.LKEYS.KEYREL.PRED "_beat_v_rel" ].
-
-dzhaa := trans_verb_lxm-verb-lex &
-  [ STEM < "dzhaa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_happen_v_rel" ].
 
 maag := trans_verb_lxm-verb-lex &
   [ STEM < "maag" >,
@@ -199,16 +191,12 @@ ho := tobecome_aux_verb_lexeme-aux-lex &
 
 ;;; Determiners
 
-tii_3 := determiner_lxm-determiner-lex &
-  [ STEM < "tii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_that_q_rel" ].
-
 to_2 := determiner_lxm-determiner-lex &
   [ STEM < "to" >,
     SYNSEM.LKEYS.KEYREL.PRED "_that_q_rel" ].
 
-te_3 := determiner_lxm-determiner-lex &
-  [ STEM < "te" >,
+haa_2 := determiner_lxm-determiner-lex &
+  [ STEM < "haa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_those_q_rel" ].
 
 kaa := qpart-lex-item &
