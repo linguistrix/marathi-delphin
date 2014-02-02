@@ -1,0 +1,21 @@
+Why is polis tsor maarto parsing?
+
+Te tsor zhoplaa ought not to parse. Why is te not agreeing with tsor?
+
+naahi v/s naahit agreement has to be matched
+
+We have quite a few repeating examples in the test-suite. We need to remove them.
+
+Removed kaal from nouns. It's an adverb = yesterday
+
+Moved dukhkha from malecommon noun to neutercommonnoun. created a new noun type for this
+
+Trying to give determiners their proper categories. Right now they are all lumped into one.
+
+
+Removed dzaa (happen) from the trans verb list. We can discuss this out if needed
+
+femalenoun tsor-laa maar-t-o is parsing. It should not
+malenoun tsor-laa maar-t-e is parsing. It should not.
+
+We have just -tse as the poss case ending. we need a way to make it change as per the gender
