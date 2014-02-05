@@ -733,3 +733,25 @@ s4-mid-coord-rule := basic-s-mid-coord-rule & monopoly-mid-coord-rule &
 
 s4-bottom-coord-rule := conj-first-bottom-coord-rule & s-bottom-coord-phrase &
   [ SYNSEM.LOCAL.COORD-STRAT "4" ].
+
+;;; Adjective Rules, 2014/02/04, AVB, AB
+
+adjective-lex := basic-adjective-lex & intersective-mod-lex &
+	      norm-ltop-lex-item &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD.MOD < [ LOCAL.CAT [ HEAD noun,
+                                                    VAL.SPR cons ]]>,
+			   VAL [ SPR < >,
+				 SUBJ < >,
+				 COMPS < >,
+				 SPEC < > ],
+			   POSTHEAD - ]]]].
+
+;;; Adjective Rules, 2014/02/04, AVB, AB
+
+adverb-lex := basic-adverb-lex & intersective-mod-lex &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD.MOD < [ LOCAL.CAT.HEAD verb ]>,
+			   VAL [ SPR < >,
+				 SUBJ < >,
+				 COMPS < >,
+				 SPEC < > ],
+			   POSTHEAD - ]]]].

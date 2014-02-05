@@ -19,3 +19,8 @@ femalenoun tsor-laa maar-t-o is parsing. It should not
 malenoun tsor-laa maar-t-e is parsing. It should not.
 
 We have just -tse as the poss case ending. we need a way to make it change as per the gender
+
+dukhkha dzaa-l-a Is happen intrans or trans??
+
+Accusative unmarked for inanimate object?
+

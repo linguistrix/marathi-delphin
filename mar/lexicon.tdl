@@ -221,3 +221,16 @@ pann4 := conj-lex &
   [ STEM < "pann" >,
     SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
     CFORM "4" ].
+
+;;; Adjectives, 2014/02/04, AVB, AB
+
+laal := adjective-lex &
+  [ STEM < "laal" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_red_adj_rel" ].
+
+;;; Adverbs, 2014/02/04, AVB, AB
+
+lawkar := adverb-lex &
+  [ STEM < "lawkar" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_early_adv_rel" ].
+
