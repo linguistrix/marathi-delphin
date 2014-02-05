@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Grammar of Marathi
 ;;; created at:
-;;;     Sun Feb 02 22:04:05 UTC 2014
+;;;     Wed Feb 05 01:06:22 UTC 2014
 ;;; based on Matrix customization system version of:
 ;;;     Fri Jan 31 10:06:37 UTC 2014
 ;;;
@@ -25,17 +25,23 @@ head :+ [ AUX bool,
 
 inflected :+ [ TOBECOME_AUX_INFLECTION-FLAG luk,
     VERB_TENSE_ASPECT-FLAG luk,
-    FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG luk,
+    VERB_GENDER_PERNUM-FLAG luk,
+    PRESENT_LEXICAL_RULE-FLAG luk,
+    IRREG_INTRANS_VERB_TENSE-FLAG luk,
+    FUTURE_LEXICAL_RULE-FLAG luk,
+    PAST_LEXICAL_RULE-FLAG luk,
     CASE-FLAG luk,
-    TOBE_AUX_INFLECTION-FLAG luk,
-    IRREG_INTRANS_VERB_TENSE-FLAG luk ].
+    TOBE_AUX_INFLECTION-FLAG luk ].
 
 infl-satisfied :+ [ TOBECOME_AUX_INFLECTION-FLAG na-or-+,
     VERB_TENSE_ASPECT-FLAG na-or-+,
-    FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG na-or-+,
+    VERB_GENDER_PERNUM-FLAG na-or-+,
+    PRESENT_LEXICAL_RULE-FLAG na-or-+,
+    IRREG_INTRANS_VERB_TENSE-FLAG na-or-+,
+    FUTURE_LEXICAL_RULE-FLAG na-or-+,
+    PAST_LEXICAL_RULE-FLAG na-or-+,
     CASE-FLAG na-or-+,
-    TOBE_AUX_INFLECTION-FLAG na-or-+,
-    IRREG_INTRANS_VERB_TENSE-FLAG na-or-+ ].
+    TOBE_AUX_INFLECTION-FLAG na-or-+ ].
 
 png :+ [ PERNUM pernum,
     GEND gender ].
@@ -201,9 +207,12 @@ neuternounsg_lexeme-noun-lex := common_noun_lexeme-noun-lex &
 ;;; Verbs
 
 verb-lex := non-mod-lex-item &
-  [ SYNSEM.LOCAL.CAT.HEAD verb ].
+  [ SYNSEM.LOCAL.CAT.HEAD verb,
+    INFLECTED [ PAST_LEXICAL_RULE-FLAG na-or--,
+                PRESENT_LEXICAL_RULE-FLAG na-or--,
+                FUTURE_LEXICAL_RULE-FLAG na-or-- ] ].
 
-main-verb-lex := verb-lex & basic-verb-lex & verb_gender_future-rule-dtr & verb_gender_past-rule-dtr & verb_gender_present-rule-dtr & verb_tense_aspect-rule-dtr &
+main-verb-lex := verb-lex & basic-verb-lex & verb_gender_pernum-rule-dtr & verb_tense_aspect-rule-dtr &
   [ SYNSEM.LOCAL [ CAT [ HEAD.AUX -,
                          VAL [ SPR < >,
                                SPEC < >,
@@ -212,15 +221,16 @@ main-verb-lex := verb-lex & basic-verb-lex & verb_gender_future-rule-dtr & verb_
     ARG-ST.FIRST #subj &
                  [ LOCAL [ CAT.VAL [ SPR < >,
                                      COMPS < > ],
-                           CONT.HOOK.INDEX #xarg ] ] ].
+                           CONT.HOOK.INDEX #xarg ] ],
+    INFLECTED [ VERB_TENSE_ASPECT-FLAG -,
+                VERB_GENDER_PERNUM-FLAG - ] ].
 
 aux-lex := verb-lex &
   [ SYNSEM.LOCAL.CAT.HEAD.AUX + ].
 
 intransitive-verb-lex := main-verb-lex & intransitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
-    ARG-ST.FIRST.LOCAL.CAT.HEAD noun,
-    INFLECTED.VERB_TENSE_ASPECT-FLAG - ].
+    ARG-ST.FIRST.LOCAL.CAT.HEAD noun ].
 
 transitive-verb-lex := main-verb-lex & transitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps >,
@@ -228,8 +238,7 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
              #comps &
              [ LOCAL.CAT [ VAL [ SPR < >,
                                  COMPS < > ],
-                           HEAD noun ] ] >,
-    INFLECTED.VERB_TENSE_ASPECT-FLAG - ].
+                           HEAD noun ] ] > ].
 
 trans_verb_lxm-verb-lex := transitive-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg+nom,
@@ -335,26 +344,30 @@ qpart-lex-item := complementizer-lex-item &
 
 ;;; Intermediate rule types
 
-verb_gender_past-rule-dtr := word-or-lexrule.
-verb_gender_future-rule-dtr := word-or-lexrule.
+verb_gender_pernum-rule-dtr := word-or-lexrule.
 verb_tense_aspect-rule-dtr := word-or-lexrule.
-verb_gender_present-rule-dtr := word-or-lexrule.
 
 ;;; Lexical rule types
 
 Case-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ CASE-FLAG +,
-                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
-                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ],
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ],
     DTR noun-lex &
-        [ INFLECTED [ VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
-                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ] ] ].
+        [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                      VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                      FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                      PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ] ] ].
 
 nom_lexical_rule-lex-rule := Case-lex-rule-super & const-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE nom ].
@@ -389,159 +402,215 @@ voc_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
 erg_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE erg ].
 
-verb_tense_aspect-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
+verb_tense_aspect-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule & verb_gender_pernum-rule-dtr &
   [ INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
                 TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                CASE-FLAG #case,
-                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ],
+                CASE-FLAG #case ],
     DTR verb_tense_aspect-rule-dtr &
-        [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+        [ INFLECTED [ IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                      VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
                       TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      CASE-FLAG #case,
-                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ] ] ].
+                      CASE-FLAG #case ] ] ].
 
-past_lexical_rule-lex-rule := verb_gender_past-rule-dtr & verb_tense_aspect-lex-rule-super &
-  [ INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG +,
-    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE past ].
-
-future_lexical_rule-lex-rule := verb_gender_future-rule-dtr & verb_tense_aspect-lex-rule-super &
-  [ INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG +,
-    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE future ].
-
-present_lexical_rule-lex-rule := verb_gender_present-rule-dtr & verb_tense_aspect-lex-rule-super &
-  [ INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-    DTR.INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+present_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
+  [ INFLECTED [ PRESENT_LEXICAL_RULE-FLAG +,
+                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
+    DTR.INFLECTED [ FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                    PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE present ].
 
+past_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
+  [ INFLECTED [ PAST_LEXICAL_RULE-FLAG +,
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
+    DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                    FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE past ].
+
+future_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
+  [ INFLECTED [ FUTURE_LEXICAL_RULE-FLAG +,
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
+    DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                    PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE future ].
+
 perfective_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
-  [ INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-    DTR.INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+  [ INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
+    DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                    PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                    FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT perfective ].
 
 imperfective_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
-  [ INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-    DTR.INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+  [ INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
+    DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                    PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                    FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
 
 infinitive_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
-  [ INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-    DTR.INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+  [ INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
+    DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                    PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                    FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
     SYNSEM.LOCAL.CAT.HEAD.FORM nonfinite ].
 
-verb_gender_present-lex-rule-super := add-only-no-ccont-rule &
-  [ INFLECTED #infl,
-    DTR verb_gender_present-rule-dtr &
-        [ INFLECTED #infl ] ].
+verb_gender_pernum-lex-rule-super := add-only-no-ccont-rule &
+  [ INFLECTED [ VERB_GENDER_PERNUM-FLAG +,
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                CASE-FLAG #case,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ],
+    DTR verb_gender_pernum-rule-dtr &
+        [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                      PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                      FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                      CASE-FLAG #case,
+                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ] ] ].
 
-1sgpresent_fem_lexical_rule-lex-rule := infl-lex-rule & verb_gender_present-lex-rule-super &
-  [ DTR.INFLECTED.FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG na,
+1sgpast_masc_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 1SG,
+                                                                GEND M ] ].
+
+2sg_past_masc_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 2SG,
+                                                                GEND M ] ].
+
+1sgpast_fem_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 1SG,
+                                                                GEND F ] ].
+
+3sgpast_masc_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3SG,
+                                                                GEND M ] ].
+
+2sgpast_fem_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 2SG,
+                                                                GEND F ] ].
+
+1pl_past_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL ].
+
+3sg_past_fem_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3SG,
+                                                                GEND F ] ].
+
+3pl_past_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3PL ].
+
+2pl_past_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
+
+1sgpresent_masc_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PRESENT_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
+                                                                PERNUM 1SG ] ].
+
+2sgpresent_masc_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PRESENT_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
+                                                                PERNUM 2SG ] ].
+
+1sgpresent_fem_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PRESENT_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND F,
                                                                 PERNUM 1SG ] ].
 
-1sgpresent_masc_lexical_rule-lex-rule := infl-lex-rule & verb_gender_present-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
-                                                                PERNUM 1SG ] ].
-
-2sgpresent_masc_lexical_rule-lex-rule := infl-lex-rule & verb_gender_present-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
-                                                                PERNUM 2SG ] ].
-
-2sgpresent_fem_lexical_rule-lex-rule := infl-lex-rule & verb_gender_present-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND F,
-                                                                PERNUM 2SG ] ].
-
-3sgpresent_masc_lexical_rule-lex-rule := infl-lex-rule & verb_gender_present-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
+3sgpresent_masc_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PRESENT_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
                                                                 PERNUM 3SG ] ].
 
-3sgpresent_fem_lexical_rule-lex-rule := infl-lex-rule & verb_gender_present-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND F,
+2sgpresent_fem_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PRESENT_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND F,
+                                                                PERNUM 2SG ] ].
+
+3sgpresent_fem_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PRESENT_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND F,
                                                                 PERNUM 3SG ] ].
 
-1plpresent_lexical_rule-lex-rule := const-lex-rule & verb_gender_present-lex-rule-super &
+2pl_future_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.FUTURE_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
+
+3pl_future_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.FUTURE_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3PL ].
+
+1sgfuture_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.FUTURE_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG ].
+
+2sgfuture_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.FUTURE_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2SG ].
+
+3sg_future_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.FUTURE_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3SG ].
+
+1pl_future_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.FUTURE_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL ].
+
+1plpresent_lexical_rule-lex-rule := const-lex-rule & verb_gender_pernum-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL ].
 
-2plpresent_lexical_rule-lex-rule := infl-lex-rule & verb_gender_present-lex-rule-super &
+2plpresent_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
 
-3plpresent_lexical_rule-lex-rule := infl-lex-rule & verb_gender_present-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3PL ].
-
-verb_gender_past-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
-  [ INFLECTED #infl,
-    DTR verb_gender_past-rule-dtr &
-        [ INFLECTED #infl ] ].
-
-1sgpast_masc_lexical_rule-lex-rule := verb_gender_past-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
-                                                                PERNUM 1SG ] ].
-
-1sgpast_fem_lexical_rule-lex-rule := verb_gender_past-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
-                                                                PERNUM 1SG ] ].
-
-2sgpast_masc_lexical_rule-lex-rule := verb_gender_past-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
-                                                                PERNUM 2SG ] ].
-
-2sgpast_fem_lexical_rule-lex-rule := verb_gender_past-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND F,
-                                                                PERNUM 2SG ] ].
-
-3sgpast_masc_lexical_rule-lex-rule := verb_gender_past-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
-                                                                PERNUM 3SG ] ].
-
-3sgpast_fem_lexical_rule-lex-rule := verb_gender_past-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND F,
-                                                                PERNUM 3SG ] ].
-
-1plpast_lexical_rule-lex-rule := verb_gender_past-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL ].
-
-2plpast_lexical_rule-lex-rule := verb_gender_past-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
-
-3plpast_lexical_rule-lex-rule := verb_gender_past-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3PL ].
-
-verb_gender_future-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
-  [ INFLECTED #infl,
-    DTR verb_gender_future-rule-dtr &
-        [ INFLECTED #infl ] ].
-
-1sgfuture_lexical_rule-lex-rule := verb_gender_future-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG ].
-
-2psgfuture_lexical_rule-lex-rule := verb_gender_future-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2SG ].
-
-3sgfuture_lexical_rule-lex-rule := verb_gender_future-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3SG ].
-
-1plfuture_lexical_rule-lex-rule := verb_gender_future-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL ].
-
-2plfuture_lexical_rule-lex-rule := verb_gender_future-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
-
-3plfuture_lexical_rule-lex-rule := verb_gender_future-lex-rule-super &
+3plpresent_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3PL ].
 
 tobe_aux_inflection-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG +,
-                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
-                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                CASE-FLAG #case,
-                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ],
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                CASE-FLAG #case ],
     DTR tobe_aux_verb_lexeme-aux-lex &
-        [ INFLECTED [ VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
-                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                      CASE-FLAG #case,
-                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ] ] ].
+        [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                      VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                      FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                      PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                      CASE-FLAG #case ] ] ].
 
 non3sg_lexical_rule-lex-rule := tobe_aux_inflection-lex-rule-super &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2nd+3PL ].
@@ -551,33 +620,45 @@ to_be_3sg_lexical_rule-lex-rule := tobe_aux_inflection-lex-rule-super &
 
 tobecome_aux_inflection-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG +,
-                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                 TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
                 CASE-FLAG #case,
                 IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ],
     DTR tobecome_aux_verb_lexeme-aux-lex &
-        [ INFLECTED [ FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
+        [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
                       VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
-                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                      VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                      PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                      FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
                       CASE-FLAG #case,
                       IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ] ] ].
 
 tobecome_3sg_lexical_rule-lex-rule := tobecome_aux_inflection-lex-rule-super.
 
-irreg_intrans_verb_tense-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule & verb_gender_future-rule-dtr & verb_gender_past-rule-dtr & verb_gender_present-rule-dtr &
+irreg_intrans_verb_tense-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule & verb_gender_pernum-rule-dtr &
   [ INFLECTED [ IRREG_INTRANS_VERB_TENSE-FLAG +,
-                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
-                FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                CASE-FLAG #case ],
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                CASE-FLAG #case,
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ],
     DTR irreg_trans_verb1-verb-lex &
-        [ INFLECTED [ VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
-                      FUTURE_LEXICAL_RULE-OR-PAST_LEXICAL_RULE-FLAG #future_lexical_rule-or-past_lexical_rule,
-                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      CASE-FLAG #case ] ] ].
+        [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                      VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+                      PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                      FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                      CASE-FLAG #case,
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ] ] ].
 
 give_d_present_lexical_rule-lex-rule := irreg_intrans_verb_tense-lex-rule-super.
 
