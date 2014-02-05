@@ -107,9 +107,9 @@ infinitive_lexical_rule-lex-rule.
 %suffix (* -e)
 1sgpast_fem_lexical_rule-lex-rule.
 
-2sgpast_masc_lexical_rule-suffix :=
+2sg_past_masc_lexical_rule-suffix :=
 %suffix (* -aas)
-2sgpast_masc_lexical_rule-lex-rule.
+2sg_past_masc_lexical_rule-lex-rule.
 
 2sgpast_fem_lexical_rule-suffix :=
 %suffix (* -iis)
@@ -119,45 +119,45 @@ infinitive_lexical_rule-lex-rule.
 %suffix (* -aa)
 3sgpast_masc_lexical_rule-lex-rule.
 
-3sgpast_fem_lexical_rule-suffix :=
+3sg_past_fem_lexical_rule-suffix :=
 %suffix (* -ii)
-3sgpast_fem_lexical_rule-lex-rule.
+3sg_past_fem_lexical_rule-lex-rule.
 
-1plpast_lexical_rule-suffix :=
+1pl_past_lexical_rule-suffix :=
 %suffix (* -o)
-1plpast_lexical_rule-lex-rule.
+1pl_past_lexical_rule-lex-rule.
 
-2plpast_lexical_rule-suffix :=
+2pl_past_lexical_rule-suffix :=
 %suffix (* -aat)
-2plpast_lexical_rule-lex-rule.
+2pl_past_lexical_rule-lex-rule.
 
-3plpast_lexical_rule-suffix :=
+3pl_past_lexical_rule-suffix :=
 %suffix (* -yaa)
-3plpast_lexical_rule-lex-rule.
+3pl_past_lexical_rule-lex-rule.
 
 1sgfuture_lexical_rule-suffix :=
 %suffix (* -iin)
 1sgfuture_lexical_rule-lex-rule.
 
-2psgfuture_lexical_rule-suffix :=
+2sgfuture_lexical_rule-suffix :=
 %suffix (* -shiil)
-2psgfuture_lexical_rule-lex-rule.
+2sgfuture_lexical_rule-lex-rule.
 
-3sgfuture_lexical_rule-suffix :=
+3sg_future_lexical_rule-suffix :=
 %suffix (* -iil)
-3sgfuture_lexical_rule-lex-rule.
+3sg_future_lexical_rule-lex-rule.
 
-1plfuture_lexical_rule-suffix :=
+1pl_future_lexical_rule-suffix :=
 %suffix (* -uu)
-1plfuture_lexical_rule-lex-rule.
+1pl_future_lexical_rule-lex-rule.
 
-2plfuture_lexical_rule-suffix :=
+2pl_future_lexical_rule-suffix :=
 %suffix (* -aal)
-2plfuture_lexical_rule-lex-rule.
+2pl_future_lexical_rule-lex-rule.
 
-3plfuture_lexical_rule-suffix :=
+3pl_future_lexical_rule-suffix :=
 %suffix (* -tiil)
-3plfuture_lexical_rule-lex-rule.
+3pl_future_lexical_rule-lex-rule.
 
 non3sg_lexical_rule-suffix :=
 %suffix (* -het)
