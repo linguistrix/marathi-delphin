@@ -114,6 +114,12 @@ future := tense.
 perfective := aspect.
 imperfective := aspect.
 
+;;; Demonstratives
+
+demonstrative_a_rel := predsort.
+proximal+dem_a_rel := demonstrative_a_rel. ; close to speaker
+distal+dem_a_rel := demonstrative_a_rel.   ; away from speaker
+
 ;;;;;;;;;;;;;;;;;;;
 ;;; Lexical Types
 ;;;;;;;;;;;;;;;;;;;
@@ -840,8 +846,8 @@ adverb-lex := basic-adverb-lex & intersective-mod-lex &
 adjective_gender_num-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ ADJECTIVE_GENDER_PERNUM-FLAG +,
 		PERNUM #num ],
-;;;                CASE-FLAG #case Can be looked at later!
+                CASE-FLAG #case Can be looked at later!
   DTR adjective-lex  &
         [ INFLECTED.PERNUM #num ] ] .
-;;;                      CASE-FLAG #case,
+                      CASE-FLAG #case,
 		     

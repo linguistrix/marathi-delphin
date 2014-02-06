@@ -3074,6 +3074,20 @@ basic-determiner-lex := norm-hook-lex-item &
 		   [ ARG0 #ind,
 		     RSTR #harg ] ] ].
 
+determiner-lex-supertype := norm-hook-lex-item & basic-zero-arg &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD det,
+			   VAL[ SPEC.FIRST.LOCAL.CONT.HOOK [ INDEX #ind,
+				  			     LTOP #larg ],
+                                SPR < >,
+                                SUBJ < >,
+                                COMPS < >]],
+		     CONT.HCONS < ! qeq &
+				 [ HARG #harg,
+				   LARG #larg ] ! > ], 
+	     LKEYS.KEYREL quant-relation &
+		   [ ARG0 #ind,
+		     RSTR #harg ] ] ].
+
 ; SSH 2013-12-07: Some determiners mark information structure.
 infostr-marking-determiner-lex := basic-determiner-lex & one-icons-lex-item & 
   [ SYNSEM.LOCAL [ CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK [ INDEX #target,
