@@ -229,11 +229,11 @@ laal := non-infl-adjective-lex &
     SYNSEM.LKEYS.KEYREL.PRED "_red_adj_rel" ].
 
 motth := infl-adjective-lex &
-  [ STEM < "motth" >
+  [ STEM < "motth" >,
     SYNSEM.LKEYS.KEYREL.PRED "_big_adj_rel" ].
 
 dzuun := infl-adjective-lex &
-  [ STEM < "dzuun" >
+  [ STEM < "dzuun" >,
     SYNSEM.LKEYS.KEYREL.PRED "old_adj_rel" ].
 
 ;;; Adverbs, 2014/02/04, AVB, AB
