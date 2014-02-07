@@ -208,8 +208,10 @@ femalenounsg_lexeme-noun-lex := common_noun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND F ].
 
 male_proper_noun_lexeme-noun-lex := pronoun_lexeme-noun-lex.
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND m ].
 
 female_proper_noun_lexeme-noun-lex := pronoun_lexeme-noun-lex.
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND f ].
 
 neuternounsg_lexeme-noun-lex := common_noun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND N ].
