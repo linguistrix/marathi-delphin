@@ -329,6 +329,42 @@ dist_dem_determiner-lex := dem_determiner-lex &
 male_sg_dist_dem_determiner-lex := dist_dem_determiner-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM SG] ].
 
+male_pl_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM PL] ].
+
+fem_sg_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM SG] ].
+
+fem_pl_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM PL] ].
+
+neutral_sg_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM SG] ].
+
+neutral_pl_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM PL] ].
+
+male_sg_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM SG] ].
+
+male_pl_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM PL] ].
+
+fem_sg_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM SG] ].
+
+fem_pl_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM PL] ].
+
+neutral_sg_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM SG] ].
+
+neutral_pl_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM PL] ].
+
+
+
+
 
 infostr-marking-mod-lex := no-rels-hcons-lex-item & one-icons-lex-item &
   [ SYNSEM.LOCAL [ CAT [ HEAD adv &
