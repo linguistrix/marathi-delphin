@@ -224,9 +224,17 @@ pann4 := conj-lex &
 
 ;;; Adjectives, 2014/02/04, AVB, AB
 
-laal := adjective-lex &
+laal := non-infl-adjective-lex &
   [ STEM < "laal" >,
     SYNSEM.LKEYS.KEYREL.PRED "_red_adj_rel" ].
+
+motth := infl-adjective-lex &
+  [ STEM < "motth" >
+    SYNSEM.LKEYS.KEYREL.PRED "_big_adj_rel" ].
+
+dzuun := infl-adjective-lex &
+  [ STEM < "dzuun" >
+    SYNSEM.LKEYS.KEYREL.PRED "old_adj_rel" ].
 
 ;;; Adverbs, 2014/02/04, AVB, AB
 
