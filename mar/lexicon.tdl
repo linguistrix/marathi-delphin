@@ -25,51 +25,51 @@ aapann := 2plh_pronoun_lexeme-noun-lex &
   [ STEM < "aapann" >,
     SYNSEM.LKEYS.KEYREL.PRED "_we_n_rel" ].
 
-to_1 := 3sgm_pronoun_lexeme-noun-lex & dist_dem_determiner-lex &
+to_1 := 3sgm_pronoun_lexeme-noun-lex & 
   [ STEM < "to" >,
     SYNSEM.LKEYS.KEYREL.PRED "_he_n_1_rel" ].
 
-haa_1 := 3sgm_pronoun_lexeme-noun-lex & prox_dem_determiner-lex &
+haa_1 := 3sgm_pronoun_lexeme-noun-lex & 
   [ STEM < "haa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_he_n_2_rel" ].
 
-tii_1 := 3sgf_pronoun_lexeme-noun-lex & dist_dem_determiner-lex&
+tii_1 := 3sgf_pronoun_lexeme-noun-lex & 
   [ STEM < "tii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_she_n_rel" ].
 
-hii_1 := 3sgf_pronoun_lexeme-noun-lex & prox_dem_determiner-lex &
+hii_1 := 3sgf_pronoun_lexeme-noun-lex & 
   [ STEM < "hii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_she_n_rel" ].
 
-te_1 := 3plm_pronoun_lexeme-noun-lex & dist_dem_determiner-lex &
+te_1 := 3plm_pronoun_lexeme-noun-lex & 
   [ STEM < "te" >,
     SYNSEM.LKEYS.KEYREL.PRED "_they_n_rel" ].
 
-he_1 := 3plm_pronoun_lexeme-noun-lex & prox_dem_determiner-lex &
+he_1 := 3plm_pronoun_lexeme-noun-lex & 
   [ STEM < "he" >,
     SYNSEM.LKEYS.KEYREL.PRED "_they_n_3_rel" ].
 
-tyaa := 3plf_pronoun_lexeme-noun-lex & dist_dem_determiner-lex &
+tyaa := 3plf_pronoun_lexeme-noun-lex & 
   [ STEM < "tyaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_they_n_rel" ].
 
-hyaa := 3plf_pronoun_lexeme-noun-lex & prox_dem_determiner-lex & 
+hyaa := 3plf_pronoun_lexeme-noun-lex &  
   [ STEM < "hyaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_they_n_rel" ].
 
-te_2 := 3sgn_pronoun_lexeme-noun-lex & dist_dem_determiner-lex &
+te_2 := 3sgn_pronoun_lexeme-noun-lex & 
   [ STEM < "te" >,
     SYNSEM.LKEYS.KEYREL.PRED "_it_n_rel" ].
 
-he_2 := 3sgn_pronoun_lexeme-noun-lex & prox_dem_determiner-lex &
+he_2 := 3sgn_pronoun_lexeme-noun-lex & 
   [ STEM < "he" >,
     SYNSEM.LKEYS.KEYREL.PRED "_it_n_3_rel" ].
 
-tii_2 := 3pln_pronoun_lexeme-noun-lex & dist_dem_determiner-lex &
+tii_2 := 3pln_pronoun_lexeme-noun-lex & 
   [ STEM < "tii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_they_n_rel" ].
 
-hii_2 := 3pln_pronoun_lexeme-noun-lex & prox_dem_determiner-lex &
+hii_2 := 3pln_pronoun_lexeme-noun-lex &
   [ STEM < "hii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_they_n_rel" ].
 
@@ -192,7 +192,52 @@ ho := tobecome_aux_verb_lexeme-aux-lex &
 ;;; Determiners
 
 to_2 := male_sg_dist_dem_determiner-lex &
-  [ STEM < "to" > ].
+  [STEM < "to" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_that_det_rel" ].
+
+tii_2 := fem_sg_dist_dem_determiner-lex &
+  [ STEM < "tii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "that_det_rel" ].
+
+te_2 := neutral_sg_dist_dem_determiner-lex &
+  [ STEM < "te" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_that_det_rel" ].
+
+haa_2 := male_sg_dist_dem_determiner-lex &
+  [ STEM < "haa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_this_det_rel" ]. 
+
+hii_2 := fem_sg_dist_dem_determiner-lex &
+  [ STEM < "hii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_this_det_rel" ].
+
+he_2 := neutral_sg_dist_dem_determiner-lex &
+  [ STEM < "he" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_this_det_rel" ].
+
+te_3 := male_pl_prox_dem_determiner-lex &
+  [ STEM < "te" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_these_det_rel" ].
+
+tyaa_2 := fem_pl_prox_dem_determiner-lex &
+  [ STEM < "tyaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_these_det_rel" ].
+
+tii_4 := neutral_pl_prox_determiner-lex &
+  [ STEM < "tii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_these_det_rel" ].
+
+he_3 := male_pl_dist_dem_determiner-lex &
+  [ STEM < "he" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_those_det_rel" ].
+
+hyaa_3 := fem_pl_dist_dem_determiner-lex &
+  [ STEM < "hyaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_those_det_rel" ].
+
+hii_3 := neutral_pl_dist_dem_determiner-lex &
+  [ STEM < "hii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_those_det_rel" ].
 
 ;;;haa_2 := determiner_lxm-determiner-lex &
 ;;;  [ STEM < "haa" >,
