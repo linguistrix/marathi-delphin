@@ -177,27 +177,30 @@ pronoun_lexeme-noun-lex := no-spr-noun-lex.
 2plh_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
 
-3sgm_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+active_status_pronoun_lexeme := pronoun_lexeme-noun-lex & 
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI + ]].
+
+3sgm_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
                                        PERNUM 3SG ] ].
 
-3sgf_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+3sgf_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3SG,
                                        GEND F ] ].
 
-3plm_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+3plm_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3PL,
                                        GEND M ] ].
 
-3plf_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+3plf_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3PL,
                                        GEND F ] ].
 
-3sgn_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+3sgn_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3SG,
                                        GEND N ] ].
 
-3pln_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+3pln_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3PL,
                                        GEND N ] ].
 
@@ -207,11 +210,11 @@ malenounsg_lexeme-noun-lex := common_noun_lexeme-noun-lex &
 femalenounsg_lexeme-noun-lex := common_noun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND F ].
 
-male_proper_noun_lexeme-noun-lex := pronoun_lexeme-noun-lex.
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND m ].
+male_proper_noun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND M ].
 
-female_proper_noun_lexeme-noun-lex := pronoun_lexeme-noun-lex.
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND f ].
+female_proper_noun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND F ].
 
 neuternounsg_lexeme-noun-lex := common_noun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND N ].
@@ -300,16 +303,32 @@ tobecome_aux_verb_lexeme-aux-lex := subj-raise-aux-with-pred &
 
 ;;; Others
 
+
 ;;; Determiners
 ;;; SPEC is non-empty, and already specified by basic-determiner-lex.
 
-determiner-lex := basic-determiner-lex & basic-zero-arg & non-mod-lex-item &
-  [ SYNSEM.LOCAL.CAT.VAL [ SPR < >,
-                           COMPS < >,
-                           SUBJ < > ] ].
+;;;determiner-lex := basic-determiner-lex & basic-zero-arg & non-mod-lex-item &
+;;;  [ SYNSEM.LOCAL.CAT.VAL [ SPR < >,
+;;;                           COMPS < >,
+;;;                           SUBJ < > ] ].
 
-determiner_lxm-determiner-lex := determiner-lex & no-icons-lex-item &
-  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.GEND M ].
+;;;determiner_lxm-determiner-lex := determiner-lex & no-icons-lex-item &
+;;;  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.GEND M ].
+
+dem_determiner-lex := determiner-lex-supertype &
+  [SYNSEM [LOCAL [CONT [RELS <! [ PRED "exist_q_rel" ],
+		 #altkeyrel & arg1-ev-relation & [LBL #ltop, ARG1 #index]  !> ],
+   CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK [INDEX [COG-ST activ+fam], LTOP #ltop, INDEX #index]], LKEYS.ALTKEYREL #altkeyrel ]].
+
+prox_dem_determiner-lex := dem_determiner-lex & 
+  [ SYNSEM.LKEYS.ALTKEYREL.PRED proximal+dem_a_rel ].
+
+dist_dem_determiner-lex := dem_determiner-lex & 
+  [ SYNSEM.LKEYS.ALTKEYREL.PRED distal+dem_a_rel ].
+
+male_sg_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM SG] ].
+
 
 infostr-marking-mod-lex := no-rels-hcons-lex-item & one-icons-lex-item &
   [ SYNSEM.LOCAL [ CAT [ HEAD adv &

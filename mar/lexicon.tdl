@@ -191,13 +191,12 @@ ho := tobecome_aux_verb_lexeme-aux-lex &
 
 ;;; Determiners
 
-to_2 := determiner_lxm-determiner-lex &
-  [ STEM < "to" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_that_q_rel" ].
+to_2 := male_sg_dist_dem_determiner-lex &
+  [ STEM < "to" > ].
 
-haa_2 := determiner_lxm-determiner-lex &
-  [ STEM < "haa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_those_q_rel" ].
+;;;haa_2 := determiner_lxm-determiner-lex &
+;;;  [ STEM < "haa" >,
+;;;    SYNSEM.LKEYS.KEYREL.PRED "_those_q_rel" ].
 
 kaa := qpart-lex-item &
   [ STEM < "kaa" > ].
