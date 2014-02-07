@@ -23,7 +23,9 @@ noun :+ [ CASE case ].
 head :+ [ AUX bool,
     FORM form ].
 
-inflected :+ [ TOBECOME_AUX_INFLECTION-FLAG luk,
+inflected :+ [ 
+    ADJECTIVE_INFLECTION-FLAG luk,
+    TOBECOME_AUX_INFLECTION-FLAG luk,
     VERB_TENSE_ASPECT-FLAG luk,
     VERB_GENDER_PERNUM-FLAG luk,
     PRESENT_LEXICAL_RULE-FLAG luk,
@@ -33,7 +35,9 @@ inflected :+ [ TOBECOME_AUX_INFLECTION-FLAG luk,
     CASE-FLAG luk,
     TOBE_AUX_INFLECTION-FLAG luk ].
 
-infl-satisfied :+ [ TOBECOME_AUX_INFLECTION-FLAG na-or-+,
+infl-satisfied :+ [ 
+    ADJECTIVE_INFLECTION-FLAG na-or-+,
+    TOBECOME_AUX_INFLECTION-FLAG na-or-+,
     VERB_TENSE_ASPECT-FLAG na-or-+,
     VERB_GENDER_PERNUM-FLAG na-or-+,
     PRESENT_LEXICAL_RULE-FLAG na-or-+,
@@ -833,6 +837,11 @@ adjective-lex := basic-adjective-lex & intersective-mod-lex &
 				 SPEC < > ],
 			   POSTHEAD - ]]]].
 
+;;; For adjectives which inflect. e.g. motthaa (big.M) motthii (big.F)
+infl-adjective-lex := adjective-lex & [ INFLECTED.ADJECTIVE_INFLECTION-FLAG - ].
+;;; Adjectives which do not that inflect. e.g. laal (red)
+non-infl-adjective-lex := adjective-lex & [ INFLECTED.ADJECTIVE_INFLECTION-FLAG +].
+
 ;;; Adverb Rules, 2014/02/04, AVB, AB
 
 adverb-lex := basic-adverb-lex & intersective-mod-lex &
@@ -844,10 +853,32 @@ adverb-lex := basic-adverb-lex & intersective-mod-lex &
 			   POSTHEAD - ]]]].
 
 adjective_gender_num-lex-rule-super := add-only-no-ccont-rule &
-  [ INFLECTED [ ADJECTIVE_GENDER_PERNUM-FLAG +,
-		PERNUM #num ],
-                CASE-FLAG #case Can be looked at later!
-  DTR adjective-lex  &
-        [ INFLECTED.PERNUM #num ] ] .
-                      CASE-FLAG #case,
-		     
+  [ INFLECTED.ADJECTIVE_INFLECTION-FLAG + ,
+    DTR infl-adjective-lex & [ INFLECTED.ADJECTIVE_INFLECTION-FLAG -]] .  	     
+
+masc_sg_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
+  [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND M, 
+								  PERNUM SG]] > ]].
+
+masc_pl_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
+  [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND M, 
+								  PERNUM PL]] > ]].
+
+fem_sg_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
+  [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND F, 
+								  PERNUM SG]] > ]].
+
+fem_pl_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
+  [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND F, 
+								  PERNUM PL]] > ]].
+
+neut_sg_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
+  [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND N, 
+								  PERNUM SG]] > ]].
+
+neut_pl_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
+  [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND N, 
+								  PERNUM PL]] > ]].
+
+
+
