@@ -1,3 +1,10 @@
+Language: Marathi
+Language code: mar
+Lines: translit translit-seg gloss translat
+Author: Antariksh Bothale, Andrew Baer
+Date: February 06, 2014
+Source a: Wikipedia
+
 #1
 Source: {a}
 Vetted: {t}
@@ -23,7 +30,6 @@ Source: {a}
 Vetted: {t}
 Judgment: g
 Phenomena: {}
-मुंबईचा कारभार बृहन्मुंबई महानगरपालिका चालवते.
 mumbaiitsaa kaarbhaar bruhannmumbaii mahaanagarpaalikaa tsaalavte
 mumbaii-tsaa kaarbhaar bruhannmumbaii mahaanagar paalika tsaalav-t-e
 mumbai-POSS.S.M workload.M bruhannmumbaii Muninicipal Corporation run-PRES-3.S.F
@@ -34,14 +40,67 @@ Source: {a}
 Vetted: {t}
 Judgment: g
 Phenomena: {}
-मुंबई पोलिसांचा प्रमुख पोलिस आयुक्त असतो.
-mumbai polisaancaa pramukh polis aayukt asto
+mumbai polisaantsaa pramukh polis aayukt asto
+mumbai polis-aan-tsaa pramukh polis aayukt asto
+Mumbai police-PL-POSS.M.S chief police commissioner be.HABITUAL.3.S.M
+The chief of Mumbai police is the police commissioner
 
+#5
+Source: {a}
+Vetted: {t}
+Judgment: g
+Phenomena: {}
+haa raajyaacyaa gruha mantralayaane niyukt kelelaa ek adhikaarii asto
+haa raajya-cyaa gruha mantralaya-ne niyukt ke-l-e-laa ek adhikaarii asto 
+He state-POSS.Oblique Home Ministry-ERG apppoint do-PAST-3.S.N-3.S.M one officer be.HABITUAL.3.S.M 
+He is an officer appointed by the home ministry of the state
 
+#6
+Source: {a}
+Vetted: {t}
+Judgment: g
+Phenomena: {}
+chhatrapatii shivaajii aantarraasshttriiya vimaantall mumbaitiil mahatvaatse hawaai pravaas kendrasthaan aahe va deshaatiil sarvaat vyasta vimaantall aahe
+chhatrapatii shivaajii aantarraasshttriiya vimaantall mumbaii-tiil mahatva-tse hawaai pravaas kendrasthaan aahe va desh-tiil sarvaat vyasta vimaantall aahe
+Chhatrapati Shivaji International Airport Mumbai-LOC importance-POSS.3.N aerial travel center be.3.S.N and country-LOC most busy airport be.3.S.N
+Chhatrapati Shivaji International Airport is a major air transit hub in Mumbai and is the busiest airport in the country.
 
-हा राज्याच्या गृह मंत्रालयाने नियुक्त केलेला एक अधिकारी असतो.
-छत्रपती शिवाजी आंतरराष्ट्रीय विमानतळ मुंबईतील महत्त्वाचे हवाई प्रवास केंद्रस्थान आहे व देशातील सर्वांत व्यस्त विमानतळ आहे.
-आपल्या घरात पु.ल.देशपांडे यांना खूप वाचन करायला आणि रेडिओवरील संगीत ऐकायला मिळाले.
-वाहन उद्योग हा अमेरिकेतील सर्वांत मोठा उद्योग आहे.
-बराक ओबामांनी आत्तापर्यंत २ पुस्तके लिहिली आहेत.
-ओबामांची लोकप्रियता केवळ अमेरिका देशापुरतीच सीमित नाही.
+#7
+Source: {a}
+Vetted: {t}
+Judgment: g
+Phenomena: {}
+aaplyaa gharaat pu.la.deshpaanndde yaanna khoop vaachan karaaylaa aanni rediovariil sangeet aaikaaylaa millaale
+aaplyaa ghar-aat pu.la.deshpaanndde yaanna khoop vaachan kar-aaylaa aanni redio-variil sangeet aaik-aaylaa mill-l-e
+their house-LOC pu.la.deshpande they.DAT much reading do-INF and radio-on music listen-INF get-PAST-3.S.N
+In his house, Pu La Deshpande got to read listen to music on the radio a lot
+
+#8
+Source: {a}
+Vetted: {t}
+Judgment: g
+Phenomena: {}
+baraak obaamaannii aattaaparyanta don pustake lihilii aahet
+baraak obaamaa-aan-nii aattaa-paryanta don pustake lihi-l-ii aahet
+baraak obaamaa-PL-ERG now-until two books write-PAST-3.F.P be.3.PL
+Barack Obama has written two books until now
+
+#9
+Source: {a}
+Vetted: {t}
+Judgment: g
+Phenomena: {}
+obaamaancii lokapriyataa kevall amerikaa deshaapurateets siimit naahii
+obaamaa-aan-cii lokapriyataa kevall amerikaa deshaa-puratee-ts siimit naahii
+obaamaa-PL-POSS.3.S.F popularity.F only america country-only-EMPH limited not.PL
+Obama's popularity isn't limited to America.
+
+#10
+Source: {a}
+Vetted: {t}
+Judgment: g
+Phenomena: {}
+vaahan udyog haa ameriketiil sarvaat motthaa udyog aahe
+vaahan udyog haa amerika-tiil sarvaat motthaa udyog aa-he
+automobile industry this america-LOC most big.M industry be-PRES.3.S.M
+The automobile industry is the biggest industry in America.

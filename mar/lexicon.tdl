@@ -73,51 +73,48 @@ hii_2 := 3pln_pronoun_lexeme-noun-lex &
   [ STEM < "hii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_they_n_rel" ].
 
-polis := malenounsg_lexeme-noun-lex &
+polis := malenounsg_anim_noun-lex &
   [ STEM < "polis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_police_n_rel" ].
 
-tsor := malenounsg_lexeme-noun-lex &
+tsor := malenounsg_anim_noun-lex &
   [ STEM < "tsor" >,
     SYNSEM.LKEYS.KEYREL.PRED "_thief_n_rel" ].
 
-kutraa := malenounsg_lexeme-noun-lex &
+kutraa := malenounsg_anim_noun-lex &
   [ STEM < "kutraa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_dog_n_rel" ].
 
-mul := malenounsg_lexeme-noun-lex &
+mul := malenounsg_anim_noun-lex &
   [ STEM < "mul" >,
     SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
 
-bhaarat := malenounsg_lexeme-noun-lex &
+bhaarat := malenounsg_anim_noun-lex &
   [ STEM < "bhaarat" >,
     SYNSEM.LKEYS.KEYREL.PRED "_india_n_rel" ].
 
-baadzaar := malenounsg_lexeme-noun-lex &
+baadzaar := malenounsg_inam_noun-lex &
   [ STEM < "baadzaar" >,
     SYNSEM.LKEYS.KEYREL.PRED "_market_n_rel" ].
 
-ghaar := malenounsg_lexeme-noun-lex &
+ghaar := malenounsg_anim_noun-lex &
   [ STEM < "ghaar" >,
     SYNSEM.LKEYS.KEYREL.PRED "_home_n_rel" ].
 
-mulgaa := malenounsg_lexeme-noun-lex &
+mulgaa := malenounsg_anim_noun-lex &
   [ STEM < "mulgaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
 
-kaam := malenounsg_lexeme-noun-lex &
-  [ STEM < "kaam" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_work_n_rel" ].
 
-tsaal := malenounsg_lexeme-noun-lex &
+tsaal := malenounsg_inam_noun-lex &
   [ STEM < "tsaal" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gait_n_rel" ].
 
-gaadii := femalenounsg_lexeme-noun-lex &
+gaadii := femnounsg_inam_noun-lex &
   [ STEM < "gaadii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_train_n_rel" ].
 
-baatmii := femalenounsg_lexeme-noun-lex &
+baatmii := femnounsg_inam_noun-lex &
   [ STEM < "baatmii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_news_n_rel" ].
 
@@ -129,9 +126,26 @@ Miitaa := female_proper_noun_lexeme-noun-lex &
   [ STEM < "Miitaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_Miitaa_n_rel" ].
 
-dukhkha := neuternounsg_lexeme-noun-lex &
+dukhkha := neutersg_inam_noun-lex &
   [ STEM < "dukhkha" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sadness_n_rel" ].
+
+kaam := neutersg_inam_noun-lex &
+  [ STEM < "kaam" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_work_n_rel" ].
+
+dzhaadd := neutersg_inam_noun-lex &
+  [ STEM < "dzhaadd" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_tree_n_rel" ].
+
+baaii := femnounsg_anim_noun-lex &
+  [ STEM < "baaii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_woman_n_rel" ].
+
+reddio := neutersg_inam_noun-lex &
+  [ STEM < "reddio" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_radio_n_rel" ].
+
 
 ;;; Verbs
 
@@ -159,7 +173,7 @@ ge := intrans_verb_lxm-verb-lex &
   [ STEM < "ge" >,
     SYNSEM.LKEYS.KEYREL.PRED "_went_v_rel" ].
 
-tsa := intrans_verb_lxm-verb-lex &
+tsal := intrans_verb_lxm-verb-lex &
   [ STEM < "tsa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_walk_v_rel" ].
 
@@ -174,6 +188,10 @@ dzaa := intrans_verb_lxm-verb-lex &
 d := irreg_trans_verb1-verb-lex &
   [ STEM < "d" >,
     SYNSEM.LKEYS.KEYREL.PRED "_give_v_rel" ].
+
+aaik := trans_verb_lxm-verb-lex &
+  [ STEM < "aaik" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hear_v_rel" ].
 
 ;;; Auxiliaries
 
@@ -192,56 +210,40 @@ ho := tobecome_aux_verb_lexeme-aux-lex &
 ;;; Determiners
 
 to_2 := male_sg_dist_dem_determiner-lex &
-  [STEM < "to" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_that_det_rel" ].
+  [STEM < "to" > ].
 
-tii_2 := fem_sg_dist_dem_determiner-lex &
-  [ STEM < "tii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "that_det_rel" ].
+tii_3 := fem_sg_dist_dem_determiner-lex &
+  [ STEM < "tii" > ].
 
-te_2 := neutral_sg_dist_dem_determiner-lex &
-  [ STEM < "te" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_that_det_rel" ].
+te_4 := neutral_sg_dist_dem_determiner-lex &
+  [ STEM < "te" > ].
 
-haa_2 := male_sg_dist_dem_determiner-lex &
-  [ STEM < "haa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_this_det_rel" ]. 
+haa_2 := male_sg_prox_dem_determiner-lex &
+  [ STEM < "haa" > ]. 
 
-hii_2 := fem_sg_dist_dem_determiner-lex &
-  [ STEM < "hii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_this_det_rel" ].
+hii_4 := fem_sg_prox_dem_determiner-lex &
+  [ STEM < "hii" > ].
 
-he_2 := neutral_sg_dist_dem_determiner-lex &
-  [ STEM < "he" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_this_det_rel" ].
+he_4 := neutral_sg_prox_dem_determiner-lex &
+  [ STEM < "he" > ].
 
-te_3 := male_pl_prox_dem_determiner-lex &
-  [ STEM < "te" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_these_det_rel" ].
+te_3 := male_pl_dist_dem_determiner-lex &
+  [ STEM < "te" > ].
 
-tyaa_2 := fem_pl_prox_dem_determiner-lex &
-  [ STEM < "tyaa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_these_det_rel" ].
+tyaa_2 := fem_pl_dist_dem_determiner-lex &
+  [ STEM < "tyaa" > ].
 
-tii_4 := neutral_pl_prox_determiner-lex &
-  [ STEM < "tii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_these_det_rel" ].
+tii_4 := neutral_pl_dist_dem_determiner-lex &
+  [ STEM < "tii" > ].
 
-he_3 := male_pl_dist_dem_determiner-lex &
-  [ STEM < "he" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_those_det_rel" ].
+he_3 := male_pl_prox_dem_determiner-lex &
+  [ STEM < "he" > ].
 
-hyaa_3 := fem_pl_dist_dem_determiner-lex &
-  [ STEM < "hyaa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_those_det_rel" ].
+hyaa_3 := fem_pl_prox_dem_determiner-lex &
+  [ STEM < "hyaa" > ].
 
-hii_3 := neutral_pl_dist_dem_determiner-lex &
-  [ STEM < "hii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_those_det_rel" ].
-
-;;;haa_2 := determiner_lxm-determiner-lex &
-;;;  [ STEM < "haa" >,
-;;;    SYNSEM.LKEYS.KEYREL.PRED "_those_q_rel" ].
+hii_3 := neutral_pl_prox_dem_determiner-lex &
+  [ STEM < "hii" > ].
 
 kaa := qpart-lex-item &
   [ STEM < "kaa" > ].
@@ -276,8 +278,8 @@ motth := infl-adjective-lex &
   [ STEM < "motth" >,
     SYNSEM.LKEYS.KEYREL.PRED "_big_adj_rel" ].
 
-dzuun := infl-adjective-lex &
-  [ STEM < "dzuun" >,
+dzun := infl-adjective-lex &
+  [ STEM < "dzun" >,
     SYNSEM.LKEYS.KEYREL.PRED "old_adj_rel" ].
 
 ;;; Adverbs, 2014/02/04, AVB, AB
@@ -286,3 +288,11 @@ lawkar := adverb-lex &
   [ STEM < "lawkar" >,
     SYNSEM.LKEYS.KEYREL.PRED "_early_adv_rel" ].
 
+manda := adverb-lex &
+  [ STEM < "manda" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_slow_adv_rel" ].
+
+
+itha := adverb-lex & 
+  [ STEM < "itha" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_here_adv_rel" ].

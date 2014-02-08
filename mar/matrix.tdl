@@ -1873,7 +1873,7 @@ basic-head-opt-comp-phrase := head-valence-phrase & head-only &
 	       SYNSEM [ LOCAL [ CAT [ VAL [ SUBJ #subj,
 					    COMPS < unexpressed &
 						    [ OPT +,
-						      OPT-CS #def,
+						      OPT-CS #def & activ-or-more,
 						      LOCAL.CONT.HOOK [ INDEX #index & [ COG-ST #def ],
 									ICONS-KEY #ikey,
 									CLAUSE-KEY #ckey ] ] . #comps >,

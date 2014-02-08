@@ -2,7 +2,7 @@ Language: Marathi
 Language code: mar
 Lines: translit translit-seg gloss translat
 Author: Antariksh Bothale, Andrew Baer
-Date: JRaviary 22, 2014
+Date: January 22, 2014
 Source a: Marathi by Rajeshwari Pandharipande http://books.google.com/books/about/Marathi.html?id=v5UOAAAAQAAJ
 
 #1
@@ -19,7 +19,7 @@ The policeman beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo, pro-d}
+Phenomena: {wo}
 maarto polis tsoraalaa 
 maar-t-o polis tsor-laa
 beat-PRES-3.S.M policeman.NOM thief-ACC 
@@ -29,7 +29,7 @@ The policeman beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo, pro-d}
+Phenomena: {wo}
 maarto tsoraalaa polis
 maar-t-o tsor-laa polis
 beat-PRES-3.S.M thief-ACC policeman.NOM
@@ -39,7 +39,7 @@ The policeman beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo, pro-d}
+Phenomena: {wo}
 tsoraalaa maarto polis
 tsor-laa maar-t-o polis
 thief-ACC beat-PRES-3.S.M policeman.NOM
@@ -49,7 +49,7 @@ The policeman beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo, pro-d}
+Phenomena: {wo}
 tsoraalaa polis maarto
 tsor-laa polis maar-t-o
 thief-ACC policeman.NOM beat-PRES-3.S.M
@@ -59,7 +59,7 @@ The policeman beats the thief
 Source: {author}
 Vetted: {t}
 Judgment: u
-Phenomena: {wo, pro-d}
+Phenomena: {wo}
 polis maarto tsoraalaa 
 polis maar-t-o tsor-laa 
 policeman.NOM beat-PRES-3.S.M thief-ACC
@@ -325,16 +325,6 @@ to tsor-laa zhop-l-aa
 that.S.M thief-ACC sleep-PST-3.S
 that thief slept
 
-#32
-Source: {a:288}
-Vetted: {t}
-Judgment: g
-Phenomena: {c,agr}
-polis tsoraalaa maarto
-polis tsor-laa maar-t-o
-policeman.NOM thief-ACC beat-PRES-3.S.M
-The policeman beats the thief
-
 #33
 Source: {author}
 Vetted: {t}
@@ -443,16 +433,6 @@ Phenomena: {c,agr}
 polisaalaa tsoraalaa maarto
 polis-laa tsor-laa maar-t-o
 policeman-DAT thief-ACC beat-PRES-3.S.M
-The policeman beats the thief
-
-#44
-Source: {author}
-Vetted: {t}
-Judgment: u
-Phenomena: {c}
-polis tsoraalaa maarto
-polis tsor-laa maar-t-o
-policeman.NOM thief-DAT beat-PRES-3.S.M
 The policeman beats the thief
 
 #45
@@ -715,16 +695,6 @@ to tsor zhop-l-ii
 that.S.M thief.NOM sleep-PST-3.S.F
 That thief slept
 
-#70
-Source: {author}
-Vetted: {t}
-Judgment: u
-Phenomena: {wo}
-polis tsoraalaa maarto
-polis tsor-laa maar-t-o
-policeman.NOM thief-ACC beat-PRES-3.S.M
-The policeman beats the thief
-
 #71
 Source: {a:288}
 Vetted: {t}
@@ -858,18 +828,18 @@ he beats the thief
 #84
 Source: {author}
 Vetted: {t}
-Judgment: u
+Judgment: g
 Phenomena: {wo, pro-d}
 haa maarto
 haa maar-t-o
 he.NOM beat-PRES-3.S.M
-he beats the thief
+he beats
 
 #85
 Source: {author}
 Vetted: {t}
 Judgment: g
-Phenomena: {pro-d}
+Phenomena: {wo}
 haa tsoraalaa maarto
 haa tsor-laa maar-t-o
 he.NOM thief-ACC beat-PRES-3.S.M
@@ -920,8 +890,8 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {wo,agr}
-te tsoraalaa maarte
-te tsor-laa maar-t-e
+te tsoraalaa maartaat
+te tsor-laa maar-t-aat
 they.NOM.M thief-ACC beat-PRES-3.PL.M
 they beat the thief
 
@@ -932,7 +902,7 @@ Judgment: g
 Phenomena: {wo,agr}
 tyaa tsoraalaa maartaat
 tyaa tsor-laa maar-t-aat
-they.NOM.P.F thief-ACC beat-PRES-3.PL.M
+they.NOM.P.F thief-ACC beat-PRES-3.PL
 they beat the thief
 
 #92
@@ -942,7 +912,7 @@ Judgment: u
 Phenomena: {agr}
 tyaa tsoraalaa maarto
 tyaa tsor-laa maar-t-o
-they.NOM.F thief-ACC beat-PRES-3.S.M
+they.NOM.P.F thief-ACC beat-PRES-3.S.M
 they beat the thief
 
 #93
@@ -1532,7 +1502,7 @@ Vetted: {t}
 Judgment: g
 Phenomena: {cop}
 tyaacii tsaal manda aahe
-tyaa-chii tsaal manda aa-he
+tyaa-cii tsaal manda aa-he
 he-POSS.S.F gait slow be-3.S.F
 His gait is slow
 
@@ -1656,16 +1626,35 @@ mii zhop-l-o
 I.1.S sleep-PST-1.S.M
 I(masc) slept
 
+#164
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {adj, wo}
+gaadii laal gelii
+gaadii laal ge-l-ii
+train red go-PAST-3.S.F
+(The) red train went
 
+#165
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj, wo}
+laal tsor gelaa
+laal tsor ge-l-aa
+red thief go-PAST-3.S.M
+(The) red thief went
 
-
-
-
-
-
-
-
-
+#166
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {adj}
+tii tsor aaikto
+tii tsor aaik-t-o
+that.S.F thief.M listen-PRES-3.S.M
+That thief listens
 
 
 

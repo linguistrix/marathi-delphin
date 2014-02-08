@@ -139,6 +139,8 @@ noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-mod-lex-ite
     ARG-ST < #spr >,
     INFLECTED.CASE-FLAG - ].
 
+
+
 obl-spr-noun-lex := noun-lex &
   [ SYNSEM.LOCAL.CAT.VAL.SPR < [ OPT - ] > ].
 
@@ -155,7 +157,9 @@ no-spr-noun-lex := noun-lex &
 head-spec-phrase := basic-head-spec-phrase & head-final &
   [ NON-HEAD-DTR.SYNSEM.OPT - ].
 
-common_noun_lexeme-noun-lex := noun-lex.
+anim_noun_lexeme-noun-lex := noun-lex.
+
+inanim_noun_lexeme-noun-lex := noun-lex.
 
 pronoun_lexeme-noun-lex := no-spr-noun-lex.
 
@@ -204,20 +208,29 @@ active_status_pronoun_lexeme := pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3PL,
                                        GEND N ] ].
 
-malenounsg_lexeme-noun-lex := common_noun_lexeme-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND M ].
+malenounsg_anim_noun-lex := anim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM 3SG]].
 
-femalenounsg_lexeme-noun-lex := common_noun_lexeme-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND F ].
+malenounsg_inam_noun-lex := inanim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM 3SG]].
 
-male_proper_noun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND M ].
+femnounsg_anim_noun-lex := anim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM 3SG]].
 
-female_proper_noun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND F ].
+femnounsg_inam_noun-lex := inanim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM 3SG]].
 
-neuternounsg_lexeme-noun-lex := common_noun_lexeme-noun-lex &
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.GEND N ].
+male_proper_noun_lexeme-noun-lex := anim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM 3SG]].
+
+female_proper_noun_lexeme-noun-lex := anim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM 3SG]].
+
+neutersg_anim_noun-lex := anim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM 3SG]].
+
+neutersg_inam_noun-lex := inanim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM 3SG]].
 
 ;;; Verbs
 
@@ -315,7 +328,7 @@ tobecome_aux_verb_lexeme-aux-lex := subj-raise-aux-with-pred &
 ;;;determiner_lxm-determiner-lex := determiner-lex & no-icons-lex-item &
 ;;;  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.GEND M ].
 
-dem_determiner-lex := determiner-lex-supertype &
+dem_determiner-lex := determiner-lex-supertype & non-mod-lex-item &
   [SYNSEM [LOCAL [CONT [RELS <! [ PRED "exist_q_rel" ],
 		 #altkeyrel & arg1-ev-relation & [LBL #ltop, ARG1 #index]  !> ],
    CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK [INDEX [COG-ST activ+fam], LTOP #ltop, INDEX #index]], LKEYS.ALTKEYREL #altkeyrel ]].
@@ -439,8 +452,16 @@ Case-lex-rule-super := add-only-no-ccont-rule &
 nom_lexical_rule-lex-rule := Case-lex-rule-super & const-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE nom ].
 
-acc_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
-  [ SYNSEM.LOCAL.CAT.HEAD.CASE acc ].
+anim_acc_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
+  [ DTR anim_noun_lexeme-noun-lex, SYNSEM.LOCAL.CAT.HEAD.CASE acc ].
+
+inanim_acc_lexical_rule-lex-rule := Case-lex-rule-super & const-lex-rule &
+  [ DTR inanim_noun_lexeme-noun-lex, SYNSEM.LOCAL.CAT.HEAD.CASE acc ].
+
+inanim_definite_acc_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
+  [ DTR inanim_noun_lexeme-noun-lex,
+    SYNSEM.LOCAL [CAT.HEAD.CASE acc,
+		  CONT.HOOK.INDEX.COG-ST uniq+fam+act ]]. 
 
 inst_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE ins ].
@@ -460,7 +481,7 @@ poss_f_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
 poss_n_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos ].
 
-loc_lexical_rule-lex-rule := Case-lex-rule-super & const-lex-rule &
+loc_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE loc ].
 
 voc_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &

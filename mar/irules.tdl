@@ -1,7 +1,11 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
-acc_lexical_rule-suffix :=
+anim_acc_lexical_rule-suffix :=
 %suffix (* -laa)
-acc_lexical_rule-lex-rule.
+anim_acc_lexical_rule-lex-rule.
+
+inanim_definite_acc_lexical_rule-suffix :=
+%suffix (* -laa)
+inanim_definite_acc_lexical_rule-lex-rule.
 
 inst_lexical_rule-suffix :=
 %suffix (* -ne)
@@ -34,6 +38,10 @@ poss_n_lexical_rule-lex-rule.
 voc_lexical_rule-suffix :=
 %suffix (* -aa)
 voc_lexical_rule-lex-rule.
+
+loc_lexical_rule-suffix :=
+%suffix (* -aat)
+loc_lexical_rule-lex-rule.
 
 erg_lexical_rule-suffix :=
 %suffix (* -ne)

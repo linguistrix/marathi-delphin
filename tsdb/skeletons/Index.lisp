@@ -19,7 +19,8 @@
 ;;; the list lexicographically before output.
 ;;;
 
-(((:path . "lab3") (:content . "Lab 3 Test Suite")))
+(((:path . "lab5") (:content . "Lab 5 Test Suite"))
+	((:path . "corpus") (:content . "Test Corpus")))
 
 
  
