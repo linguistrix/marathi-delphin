@@ -157,7 +157,7 @@ maag := trans_verb_lxm-verb-lex &
   [ STEM < "maag" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
 
-vicaar := trans_verb_lxm-verb-lex &
+vicaar := emb-q-inviting_verb-lex &
   [ STEM < "vicaar" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
 
@@ -177,10 +177,6 @@ tsal := intrans_verb_lxm-verb-lex &
   [ STEM < "tsa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_walk_v_rel" ].
 
-mhann := intrans_verb_lxm-verb-lex &
-  [ STEM < "mhann" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_say_v_rel" ].
-
 dzaa := intrans_verb_lxm-verb-lex &
   [ STEM < "dzaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_go_v_rel" ].
@@ -192,6 +188,10 @@ d := irreg_trans_verb1-verb-lex &
 aaik := trans_verb_lxm-verb-lex &
   [ STEM < "aaik" >,
     SYNSEM.LKEYS.KEYREL.PRED "_hear_v_rel" ].
+
+mhann :=  emb-d-inviting_verb-lex & 
+  [ STEM < "mhann" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_tell_v_rel" ].
 
 ;;; Auxiliaries
 
@@ -296,3 +296,6 @@ manda := adverb-lex &
 itha := adverb-lex & 
   [ STEM < "itha" >,
     SYNSEM.LKEYS.KEYREL.PRED "_here_adv_rel" ].
+
+kii := complementizer-lex-item & 
+  [ STEM < "kii" > ].

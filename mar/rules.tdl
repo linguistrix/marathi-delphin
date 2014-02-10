@@ -9,6 +9,8 @@ head-opt-subj := decl-head-opt-subj-phrase.
 
 comp-head := comp-head-phrase.
 
+head-comp := head-comp-phrase.
+
 subj-head := subj-head-phrase.
 
 head-spec := head-spec-phrase.

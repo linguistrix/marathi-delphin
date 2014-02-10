@@ -253,6 +253,8 @@ main-verb-lex := verb-lex & basic-verb-lex & verb_gender_pernum-rule-dtr & verb_
     INFLECTED [ VERB_TENSE_ASPECT-FLAG -,
                 VERB_GENDER_PERNUM-FLAG - ] ].
 
+
+
 aux-lex := verb-lex &
   [ SYNSEM.LOCAL.CAT.HEAD.AUX + ].
 
@@ -277,6 +279,23 @@ intrans_verb_lxm-verb-lex := intransitive-verb-lex &
 
 irreg_trans_verb1-verb-lex := trans_verb_lxm-verb-lex &
   [ INFLECTED.IRREG_INTRANS_VERB_TENSE-FLAG - ].
+
+embedded_clause_inviting_verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
+  [ ARG-ST < synsem, #arg >,
+    SYNSEM.LOCAL.CAT.VAL [ SPR < >,
+			   COMPS < #arg & 
+				   [ LOCAL [ CAT [ HEAD comp,
+						   VAL [ SPR < >,
+							 COMPS < > ],
+						   MC -],
+					     CONT.HOOK.INDEX.SF prop-or-ques]] >,
+			   SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg+nom ]].
+
+emb-d-inviting_verb-lex := embedded_clause_inviting_verb-lex & 
+  [SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CONT.HOOK.INDEX.SF prop] > ].
+			
+emb-q-inviting_verb-lex := embedded_clause_inviting_verb-lex & 
+  [SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CONT.HOOK.INDEX.SF ques] > ].			
 
 ;;; Auxiliaries
 
@@ -405,10 +424,10 @@ complementizer-lex-item := raise-sem-lex-item & basic-one-arg &
                             [ MOD < > ],
                        VAL [ SPR < >,
                              SUBJ < >,
-                             COMPS < #comp > ] ],
+                             COMPS < #comp > ],
+		       MC -],
     ARG-ST < #comp &
-             [ LOCAL.CAT [ MC +,
-                           HEAD verb,
+             [ LOCAL.CAT [ HEAD verb,
                            VAL [ SUBJ < >,
                                  COMPS < > ] ] ] > ].
 
@@ -761,8 +780,17 @@ give_d_past_lexical_rule-lex-rule := irreg_intrans_verb_tense-lex-rule-super.
 
 comp-head-phrase := basic-head-1st-comp-phrase & head-final.
 
+head-comp-phrase := basic-head-1st-comp-phrase & head-initial & 
+ [ NON-HEAD-DTR [SYNSEM.LOCAL.CAT [MC -, 				   
+				   VAL [ SPR < >,
+					  COMPS < > ] ] ] ].
+
+;;;  [ NON-HEAD-DTR [SYNSEM.LOCAL.CAT [HEAD verb,
+;;;				    VAL [ SPR < >,
+;;;					  COMPS < > ] ] ] ].
+
 subj-head-phrase := decl-head-subj-phrase & head-final &
-  [ HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
+ [ HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
 
 ; Bare NP phrase.  Consider modifying the PRED value of the quantifier relation
 ; introduced to match the semantic effect of bare NPs in your language.
@@ -957,6 +985,4 @@ neut_sg_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-ru
 neut_pl_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
   [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND N, 
 								  PERNUM PL]] > ]].
-
-
 

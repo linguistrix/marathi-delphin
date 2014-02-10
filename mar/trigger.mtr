@@ -8,3 +8,9 @@ kaa_gr := generator_rule &
 tar-marker_gr := arg0e_gtr &
   [ CONTEXT.RELS <! [ PRED "non_existing_rel" ] !>,
     FLAGS.TRIGGER "tar-marker" ].
+
+comp_gtr := generator_rule &
+[ CONTEXT [ RELS <! [ ARG2 #h & handle ],
+                    [ ARG0 #e & event ] !> ],
+  FLAGS [ EQUAL < #e, #h >,
+          TRIGGER "kii" ]].
