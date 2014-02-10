@@ -21,7 +21,8 @@ non-mod-lex-item := lex-item &
 noun :+ [ CASE case ].
 
 head :+ [ AUX bool,
-    FORM form ].
+	  FORM form,
+	  INIT bool].
 
 inflected :+ [ 
     ADJECTIVE_INFLECTION-FLAG luk,
@@ -325,6 +326,12 @@ subj-raise-aux-with-pred := subj-raise-aux & norm-sem-lex-item & trans-first-arg
 neg-aux-lex := subj-raise-aux-with-pred &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite ].
 
+sg_neg-aux-lex := neg-aux-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg ].
+
+pl_neg-aux-lex := neg-aux-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl ].
+
 tobe_aux_verb_lexeme-aux-lex := subj-raise-aux-with-pred &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite,
     INFLECTED.TOBE_AUX_INFLECTION-FLAG - ].
@@ -424,18 +431,30 @@ complementizer-lex-item := raise-sem-lex-item & basic-one-arg &
                             [ MOD < > ],
                        VAL [ SPR < >,
                              SUBJ < >,
-                             COMPS < #comp > ],
-		       MC -],
+                             COMPS < #comp > ]],
     ARG-ST < #comp &
              [ LOCAL.CAT [ HEAD verb,
                            VAL [ SUBJ < >,
                                  COMPS < > ] ] ] > ].
 
+mc_plus_complementizer-lex-item := complementizer-lex-item & 
+  [ SYNSEM.LOCAL.CAT.MC +].
+
+mc_minus_complementizer-lex-item := complementizer-lex-item & 
+  [ SYNSEM.LOCAL.CAT.MC -].
+
+; Subtypes for kaa and asa
+init_plus_complementizer-lex-item := mc_minus_complementizer-lex-item &
+  [ SYNSEM.LOCAL.CAT.HEAD.INIT +].
+init_minus_complementizer-lex-item := mc_minus_complementizer-lex-item &
+  [ SYNSEM.LOCAL.CAT.HEAD.INIT -].
+
 ; Subtype for question particles. Constrains SF to ques.
 
-qpart-lex-item := complementizer-lex-item &
+qpart-lex-item := mc_plus_complementizer-lex-item &
   [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF ques,
-                   CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite ] ].
+                   CAT [VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite,
+			HEAD.INIT -]] ].
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Lexical Rules
@@ -529,7 +548,8 @@ present_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
                 PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
     DTR.INFLECTED [ FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
                     PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
-    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE present ].
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE present,
+    DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ].
 
 past_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
   [ INFLECTED [ PAST_LEXICAL_RULE-FLAG +,
@@ -778,12 +798,13 @@ give_d_past_lexical_rule-lex-rule := irreg_intrans_verb_tense-lex-rule-super.
 ;Constraint on MC used to be part of matrix.tdl
 ;;it applies to all wo implementations, except for v2
 
-comp-head-phrase := basic-head-1st-comp-phrase & head-final.
+comp-head-phrase := basic-head-1st-comp-phrase & head-final &
+  [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.INIT -,
+    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD +nvjrcdmo ].
 
 head-comp-phrase := basic-head-1st-comp-phrase & head-initial & 
- [ NON-HEAD-DTR [SYNSEM.LOCAL.CAT [MC -, 				   
-				   VAL [ SPR < >,
-					  COMPS < > ] ] ] ].
+  [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.INIT +,
+    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD +vc ].
 
 ;;;  [ NON-HEAD-DTR [SYNSEM.LOCAL.CAT [HEAD verb,
 ;;;				    VAL [ SPR < >,

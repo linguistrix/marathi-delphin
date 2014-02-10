@@ -14,3 +14,4 @@ comp_gtr := generator_rule &
                     [ ARG0 #e & event ] !> ],
   FLAGS [ EQUAL < #e, #h >,
           TRIGGER "kii" ]].
+
