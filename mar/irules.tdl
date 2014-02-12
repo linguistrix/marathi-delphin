@@ -107,6 +107,10 @@ infinitive_lexical_rule-lex-rule.
 %suffix (* -aat)
 3plpresent_lexical_rule-lex-rule.
 
+3ns_past_tense_non-nom_arg_lexical_rule-suffix :=
+%suffix (* -a)
+past_non_nom_arg_trans_verb-lex-rule.
+
 1sgpast_masc_lexical_rule-suffix :=
 %suffix (* -o)
 1sgpast_masc_lexical_rule-lex-rule.
@@ -130,6 +134,30 @@ infinitive_lexical_rule-lex-rule.
 3sg_past_fem_lexical_rule-suffix :=
 %suffix (* -ii)
 3sg_past_fem_lexical_rule-lex-rule.
+
+erg_sgpast_fem_lexical_rule-suffix :=
+%suffix (* -ii)
+erg_sgpast_fem_lexical_rule-lex-rule.
+
+erg_sgpast_masc_lexical_rule-suffix :=
+%suffix (* -aa)
+erg_sgpast_masc_lexical_rule-lex-rule.
+
+erg_sgpast_neuter_lexical_rule-suffix :=
+%suffix (* -a)
+erg_sgpast_neuter_lexical_rule-lex-rule.
+
+erg_plpast_masc_lexical_rule-suffix :=
+%suffix (* -e)
+erg_plpast_masc_lexical_rule-lex-rule.
+
+erg_plpast_fem_lexical_rule-suffix :=
+%suffix (* -yaa)
+erg_plpast_fem_lexical_rule-lex-rule.
+
+erg_plpast_neuter_lexical_rule-suffix :=
+%suffix (* -ii)
+erg_plpast_neuter_lexical_rule-lex-rule.
 
 1pl_past_lexical_rule-suffix :=
 %suffix (* -o)

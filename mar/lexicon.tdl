@@ -3,75 +3,75 @@
 
 mii := 1st_pronoun_lexeme-noun-lex &
   [ STEM < "mii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_i_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 aamhii := 1pl_pronoun_lexeme-noun-lex &
   [ STEM < "aamhii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_we_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 aapaann := 1plincl_pronoun_lexeme-noun-lex &
   [ STEM < "aapaann" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_we_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 tuu := 2sg_pronoun_lexeme-noun-lex &
   [ STEM < "tuu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_you_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 tumhii := 2pl_pronoun_lexeme-noun-lex &
   [ STEM < "tumhii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_we_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 aapann := 2plh_pronoun_lexeme-noun-lex &
   [ STEM < "aapann" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_we_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 to_1 := 3sgm_pronoun_lexeme-noun-lex & 
   [ STEM < "to" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_he_n_1_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 haa_1 := 3sgm_pronoun_lexeme-noun-lex & 
   [ STEM < "haa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_he_n_2_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 tii_1 := 3sgf_pronoun_lexeme-noun-lex & 
   [ STEM < "tii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_she_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 hii_1 := 3sgf_pronoun_lexeme-noun-lex & 
   [ STEM < "hii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_she_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 te_1 := 3plm_pronoun_lexeme-noun-lex & 
   [ STEM < "te" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_they_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 he_1 := 3plm_pronoun_lexeme-noun-lex & 
   [ STEM < "he" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_they_n_3_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 tyaa := 3plf_pronoun_lexeme-noun-lex & 
   [ STEM < "tyaa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_they_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 hyaa := 3plf_pronoun_lexeme-noun-lex &  
   [ STEM < "hyaa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_they_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 te_2 := 3sgn_pronoun_lexeme-noun-lex & 
   [ STEM < "te" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_it_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 he_2 := 3sgn_pronoun_lexeme-noun-lex & 
   [ STEM < "he" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_it_n_3_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 tii_2 := 3pln_pronoun_lexeme-noun-lex & 
   [ STEM < "tii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_they_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 hii_2 := 3pln_pronoun_lexeme-noun-lex &
   [ STEM < "hii" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_they_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
 polis := malenounsg_anim_noun-lex &
   [ STEM < "polis" >,
@@ -124,7 +124,7 @@ ravi := male_proper_noun_lexeme-noun-lex &
 
 Miitaa := female_proper_noun_lexeme-noun-lex &
   [ STEM < "Miitaa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_Miitaa_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_miitaa_n_rel" ].
 
 dukhkha := neutersg_inam_noun-lex &
   [ STEM < "dukhkha" >,
@@ -156,6 +156,11 @@ maar := trans_verb_lxm-verb-lex &
 maag := trans_verb_lxm-verb-lex &
   [ STEM < "maag" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
+
+khaa := trans_verb_lxm-verb-lex &
+  [ STEM < "khaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
+
 
 vicaar := emb-q-inviting_verb-lex &
   [ STEM < "vicaar" >,
