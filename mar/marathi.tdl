@@ -64,18 +64,19 @@ basic-head-mod-phrase-simple :+ [ SYNSEM.LOCAL.CAT.MC #mc,
 ;;; Case
 
 case := *top*.
-abs := case.  ; abs
-ins := case.  ; inst
-abl := case.  ; abl
-pos := case.  ; poss
-loc := case.  ; loc
-voc := case.  ; voc
 erg+nom := case.
-erg := erg+nom.
 nom := erg+nom.
+non-nom := case.
+abs := non-nom.  ; abs
+ins := non-nom.  ; inst
+abl := non-nom.  ; abl
+pos := non-nom.  ; poss
+loc := non-nom.  ; loc
+voc := non-nom.  ; voc
+erg := non-nom & erg+nom.
 acc+dat := case.
-acc := acc+dat.
-dat := acc+dat.
+acc := acc+dat & non-nom.
+dat := acc+dat & non-nom.
 
 ;;; Pernum
 
@@ -359,10 +360,16 @@ dem_determiner-lex := determiner-lex-supertype & non-mod-lex-item &
 		 #altkeyrel & arg1-ev-relation & [LBL #ltop, ARG1 #index]  !> ],
    CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK [INDEX [COG-ST activ+fam], LTOP #ltop, INDEX #index]], LKEYS.ALTKEYREL #altkeyrel ]].
 
-prox_dem_determiner-lex := dem_determiner-lex & 
+nom_dem_determiner-lex := dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CAT.HEAD.CASE nom ].
+
+non_nom_dem_determiner-lex := dem_determiner-lex & 
+  [ SEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CAT.HEAD.CASE non-nom ].
+
+prox_dem_determiner-lex := nom_dem_determiner-lex & 
   [ SYNSEM.LKEYS.ALTKEYREL.PRED proximal+dem_a_rel ].
 
-dist_dem_determiner-lex := dem_determiner-lex & 
+dist_dem_determiner-lex := nom_dem_determiner-lex & 
   [ SYNSEM.LKEYS.ALTKEYREL.PRED distal+dem_a_rel ].
 
 male_sg_dist_dem_determiner-lex := dist_dem_determiner-lex & 
@@ -487,45 +494,49 @@ Case-lex-rule-super := add-only-no-ccont-rule &
                       PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
                       TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ] ] ].
 
+oblique_case-lex-rule-super := Case-lex-rule-super.
+			     
 nom_lexical_rule-lex-rule := Case-lex-rule-super & const-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE nom ].
 
-anim_acc_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
-  [ DTR anim_noun_lexeme-noun-lex, SYNSEM.LOCAL.CAT.HEAD.CASE acc ].
+anim_acc_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ DTR anim_noun_lexeme-noun-lex, 
+    SYNSEM.LOCAL.CAT.HEAD.CASE acc ].
 
 inanim_acc_lexical_rule-lex-rule := Case-lex-rule-super & const-lex-rule &
   [ DTR inanim_noun_lexeme-noun-lex, SYNSEM.LOCAL.CAT.HEAD.CASE acc ].
 
-inanim_definite_acc_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
+inanim_definite_acc_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ DTR inanim_noun_lexeme-noun-lex,
     SYNSEM.LOCAL [CAT.HEAD.CASE acc,
 		  CONT.HOOK.INDEX.COG-ST uniq+fam+act ]]. 
 
-inst_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
+inst_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE ins ].
 
-dat_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
-  [ SYNSEM.LOCAL.CAT.HEAD.CASE dat ].
+dat_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE dat].			       
 
-abl_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
+
+abl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE abl ].
 
-poss_m_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
+poss_m_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos ].
 
-poss_f_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
+poss_f_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos ].
 
-poss_n_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
+poss_n_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos ].
 
-loc_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
+loc_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE loc ].
 
-voc_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
+voc_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE voc ].
 
-erg_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
+erg_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE erg ].
 
 verb_tense_aspect-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule & verb_gender_pernum-rule-dtr &
@@ -549,7 +560,7 @@ present_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
     DTR.INFLECTED [ FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
                     PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE present,
-    DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ].
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ].
 
 past_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
   [ INFLECTED [ PAST_LEXICAL_RULE-FLAG +,
@@ -614,45 +625,48 @@ verb_gender_pernum-lex-rule-super := add-only-no-ccont-rule &
                       CASE-FLAG #case,
                       IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ] ] ].
 
-1sgpast_masc_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+past_intrans_verb-lex-rule-super := verb_gender_pernum-lex-rule-super & 
+  [ DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
+
+1sgpast_masc_lexical_rule-lex-rule := infl-lex-rule & past_intrans_verb-lex-rule-super  &
   [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 1SG,
                                                                 GEND M ] ].
 
-2sg_past_masc_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+2sg_past_masc_lexical_rule-lex-rule := infl-lex-rule & past_intrans_verb-lex-rule-super &
   [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 2SG,
                                                                 GEND M ] ].
 
-1sgpast_fem_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+1sgpast_fem_lexical_rule-lex-rule := infl-lex-rule & past_intrans_verb-lex-rule-super & 
   [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 1SG,
                                                                 GEND F ] ].
 
-3sgpast_masc_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+3sgpast_masc_lexical_rule-lex-rule := infl-lex-rule & past_intrans_verb-lex-rule-super &
   [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3SG,
                                                                 GEND M ] ].
 
-2sgpast_fem_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+2sgpast_fem_lexical_rule-lex-rule := infl-lex-rule & past_intrans_verb-lex-rule-super &
   [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 2SG,
                                                                 GEND F ] ].
 
-1pl_past_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+1pl_past_lexical_rule-lex-rule := infl-lex-rule & past_intrans_verb-lex-rule-super & 
   [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL ].
 
-3sg_past_fem_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+3sg_past_fem_lexical_rule-lex-rule := infl-lex-rule & past_intrans_verb-lex-rule-super & 
   [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3SG,
                                                                 GEND F ] ].
 
-3pl_past_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+3pl_past_lexical_rule-lex-rule := infl-lex-rule & past_intrans_verb-lex-rule-super &
   [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3PL ].
 
-2pl_past_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+2pl_past_lexical_rule-lex-rule := infl-lex-rule & past_intrans_verb-lex-rule-super &
   [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
 

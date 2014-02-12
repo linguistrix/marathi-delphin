@@ -276,30 +276,30 @@ pann4 := conj-lex &
 
 laal := non-infl-adjective-lex &
   [ STEM < "laal" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_red_adj_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_red_a_rel" ].
 
 motth := infl-adjective-lex &
   [ STEM < "motth" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_big_adj_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_big_a_rel" ].
 
 dzun := infl-adjective-lex &
   [ STEM < "dzun" >,
-    SYNSEM.LKEYS.KEYREL.PRED "old_adj_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "old_a_rel" ].
 
 ;;; Adverbs, 2014/02/04, AVB, AB
 
 lawkar := adverb-lex &
   [ STEM < "lawkar" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_early_adv_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_early_a_rel" ].
 
 manda := adverb-lex &
   [ STEM < "manda" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_slow_adv_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_slow_a_rel" ].
 
 
 itha := adverb-lex & 
   [ STEM < "itha" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_here_adv_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_here_a_rel" ].
 
 kii := init_plus_complementizer-lex-item & 
   [ STEM < "kii" > ].
