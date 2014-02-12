@@ -20,7 +20,8 @@
 ;;;
 
 (((:path . "lab5") (:content . "Lab 5 Test Suite"))
-	((:path . "corpus") (:content . "Test Corpus")))
+	((:path . "corpus") (:content . "Test Corpus"))
+		((:path . "lab6") (:content . "Lab 6 Test Suite")))
 
 
  
