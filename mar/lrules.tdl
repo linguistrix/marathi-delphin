@@ -1,6 +1,8 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
 nom_lexical_rule-lex := nom_lexical_rule-lex-rule.
 
-loc_lexical_rule-lex := loc_lexical_rule-lex-rule.
+inanim_acc_lexical_rule-lex := inanim_acc_lexical_rule-lex-rule.
+
+Loc_lexical_rule-lex := loc_lexical_rule-lex-rule.
 
 1plpresent_lexical_rule-lex := 1plpresent_lexical_rule-lex-rule.

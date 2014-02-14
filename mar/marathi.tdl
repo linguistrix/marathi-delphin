@@ -163,50 +163,54 @@ anim_noun_lexeme-noun-lex := noun-lex.
 
 inanim_noun_lexeme-noun-lex := noun-lex.
 
-pronoun_lexeme-noun-lex := no-spr-noun-lex.
+pronoun_lexeme-noun-lex := no-spr-noun-lex & 
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI + ] ].
 
-1st_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+nom_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE nom ].
+
+1st_pronoun_lexeme-noun-lex := nom_pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG ].
 
-1pl_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+1pl_pronoun_lexeme-noun-lex := nom_pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL ].
 
-1plincl_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+1plincl_pronoun_lexeme-noun-lex := nom_pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL_incl ].
 
-2sg_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+2sg_pronoun_lexeme-noun-lex := nom_pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2SG ].
 
-2pl_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+2pl_pronoun_lexeme-noun-lex := nom_pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
 
-2plh_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
+2plh_pronoun_lexeme-noun-lex := nom_pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
 
-active_status_pronoun_lexeme := pronoun_lexeme-noun-lex & 
-  [ SYNSEM.LOCAL.CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI + ]].
+;;; active_status_pronoun_lexeme := nom_pronoun_lexeme-noun-lex & 
+;;;  [ SYNSEM.LOCAL.CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI + ]].
 
-3sgm_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
+3sgm_pronoun_lexeme-noun-lex := nom_pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
                                        PERNUM 3SG ] ].
 
-3sgf_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
+3sgf_pronoun_lexeme-noun-lex := nom_pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3SG,
                                        GEND F ] ].
 
-3plm_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
+3plm_pronoun_lexeme-noun-lex := nom_pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3PL,
                                        GEND M ] ].
 
-3plf_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
+3plf_pronoun_lexeme-noun-lex := nom_pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3PL,
                                        GEND F ] ].
 
-3sgn_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
+3sgn_pronoun_lexeme-noun-lex := nom_pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3SG,
                                        GEND N ] ].
 
-3pln_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
+3pln_pronoun_lexeme-noun-lex := nom_pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3PL,
                                        GEND N ] ].
 
@@ -275,6 +279,10 @@ transitive-verb-lex := main-verb-lex & transitive-lex-item &
 trans_verb_lxm-verb-lex := transitive-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg+nom,
                            COMPS.FIRST.LOCAL.CAT.HEAD.CASE nom+acc+dat ] ].
+
+dat_arg_trans_verb_lxm-verb-lex := trans_verb_lxm-verb-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.CASE dat ].
+
 
 intrans_verb_lxm-verb-lex := intransitive-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ].
@@ -364,51 +372,58 @@ nom_dem_determiner-lex := dem_determiner-lex &
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CAT.HEAD.CASE nom ].
 
 non_nom_dem_determiner-lex := dem_determiner-lex & 
-  [ SEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CAT.HEAD.CASE non-nom ].
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CAT.HEAD.CASE non-nom ].
 
-prox_dem_determiner-lex := nom_dem_determiner-lex & 
+
+prox_dem_determiner-lex := dem_determiner-lex & 
   [ SYNSEM.LKEYS.ALTKEYREL.PRED proximal+dem_a_rel ].
 
-dist_dem_determiner-lex := nom_dem_determiner-lex & 
+dist_dem_determiner-lex := dem_determiner-lex & 
   [ SYNSEM.LKEYS.ALTKEYREL.PRED distal+dem_a_rel ].
 
-male_sg_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+prox_nom_dem_determiner-lex := nom_dem_determiner-lex & prox_dem_determiner-lex.
+
+dist_nom_dem_determiner-lex := nom_dem_determiner-lex & dist_dem_determiner-lex.  
+
+prox_non_nom_dem_determiner-lex := non_nom_dem_determiner-lex & prox_dem_determiner-lex.
+
+dist_non_nom_dem_determiner-lex := non_nom_dem_determiner-lex & dist_dem_determiner-lex.  
+
+male_sg_dist_dem_determiner-lex := dist_nom_dem_determiner-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM SG] ].
 
-male_pl_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+male_pl_dist_dem_determiner-lex := dist_nom_dem_determiner-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM PL] ].
 
-fem_sg_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+fem_sg_dist_dem_determiner-lex := dist_nom_dem_determiner-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM SG] ].
 
-fem_pl_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+fem_pl_dist_dem_determiner-lex := dist_nom_dem_determiner-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM PL] ].
 
-neutral_sg_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+neutral_sg_dist_dem_determiner-lex := dist_nom_dem_determiner-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM SG] ].
 
-neutral_pl_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+neutral_pl_dist_dem_determiner-lex := dist_nom_dem_determiner-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM PL] ].
 
-male_sg_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+male_sg_prox_dem_determiner-lex := prox_nom_dem_determiner-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM SG] ].
 
-male_pl_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+male_pl_prox_dem_determiner-lex := prox_nom_dem_determiner-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM PL] ].
 
-fem_sg_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+fem_sg_prox_dem_determiner-lex := prox_nom_dem_determiner-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM SG] ].
 
-fem_pl_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+fem_pl_prox_dem_determiner-lex := prox_nom_dem_determiner-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM PL] ].
 
-neutral_sg_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+neutral_sg_prox_dem_determiner-lex := prox_nom_dem_determiner-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM SG] ].
 
-neutral_pl_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+neutral_pl_prox_dem_determiner-lex := prox_nom_dem_determiner-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM PL] ].
-
-
 
 
 
@@ -674,6 +689,16 @@ past_nom_arg_trans_verb-lex-rule-super := infl-lex-rule & verb_gender_pernum-lex
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3SG,
                                                                 GEND F ] ].
 
+3sg_past_neuter_lexical_rule-lex-rule := infl-lex-rule & past_intrans_verb-lex-rule-super & 
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3SG,
+                                                                GEND N ] ].
+
+3pl_past_neuter_lexical_rule-lex-rule := infl-lex-rule & past_intrans_verb-lex-rule-super & 
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3PL,
+                                                                GEND N ] ].
+
 3pl_past_lexical_rule-lex-rule := infl-lex-rule & past_intrans_verb-lex-rule-super &
   [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3PL ].
@@ -686,10 +711,12 @@ erg_sgpast_fem_lexical_rule-lex-rule := past_nom_arg_trans_verb-lex-rule-super &
   [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM SG,
                                                                 GEND F ] ].
+
 erg_sgpast_masc_lexical_rule-lex-rule := past_nom_arg_trans_verb-lex-rule-super &
   [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM SG,
                                                                 GEND M ] ].
+
 erg_sgpast_neuter_lexical_rule-lex-rule := past_nom_arg_trans_verb-lex-rule-super &
   [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM SG,
@@ -737,6 +764,12 @@ erg_plpast_neuter_lexical_rule-lex-rule := past_nom_arg_trans_verb-lex-rule-supe
   [ DTR.INFLECTED.PRESENT_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND F,
                                                                 PERNUM 3SG ] ].
+
+3sgpresent_neuter_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PRESENT_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ GEND N,
+                                                                PERNUM 3SG ] ].
+
 
 2pl_future_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
   [ DTR.INFLECTED.FUTURE_LEXICAL_RULE-FLAG +,

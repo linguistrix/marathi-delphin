@@ -149,7 +149,7 @@ reddio := neutersg_inam_noun-lex &
 
 ;;; Verbs
 
-maar := trans_verb_lxm-verb-lex &
+maar := dat_arg_trans_verb_lxm-verb-lex &
   [ STEM < "maar" >,
     SYNSEM.LKEYS.KEYREL.PRED "_beat_v_rel" ].
 
@@ -253,6 +253,12 @@ hyaa_3 := fem_pl_prox_dem_determiner-lex &
 
 hii_3 := neutral_pl_prox_dem_determiner-lex &
   [ STEM < "hii" > ].
+
+tyaa_4 := dist_non_nom_dem_determiner-lex & 
+  [ STEM < "tyaa" > ].
+
+hyaa_4 := prox_non_nom_dem_determiner-lex & 
+  [ STEM < "hyaa" > ].
 
 kaa := qpart-lex-item &
   [ STEM < "kaa" > ].
