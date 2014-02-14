@@ -1,0 +1,108 @@
+LING 567, Lab 6 Note File
+Antariksh Bothale (author), Andrew Baer
+Language: Marathi (mar)
+
+Yes / No questions
+----------------------------------
+
+1. A descriptive statement of the facts of your language. 
+
+Propositions are converted into Yes / No questions by adding the particle kaa at the end of the sentence (quite similar to Japanese). The particle turns declarative sentences into interrogatives. The declarative sentence is not changed in any way beyond the addition of the question particle. The first example shows the grammatical question "did he come back yesterday?"and the second example shows the declarative sentence "he came back yesterday". The only difference between the two is the question particle. The third example shows that the question particle can only occur at the end of the sentence in positive yes/no questions. Intonation can also be used to convert a sentence into a question. Kaa is allowed to occur only at the end of the sentence. In other positions it means "Why". 
+
+2. Illustrative IGT examples from your testsuite.
+
+Source: {a:7}
+Vetted: {t}
+Judgment: g
+Phenomena: {q}
+to kaal parat aalaa kaa
+to kaal parat aa-l-aa kaa
+he yesterday back came-PST-3.S.M Q
+Did he come back yesterday?
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo}
+to kaal parat aalaa
+to kaal parat aa-l-aa
+he yesterday back came-PST-3.S.M 
+He came back yesterday
+
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {q}
+kaa to kaal parat aalaa
+kaato kaal parat aa-l-aa
+Q he yesterday back came-PST-3.S.M 
+Did he come back yesterday?
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {q, wo}
+to kaal parat kaa aalaa 
+to kaal parat kaa aa-l-aa
+he yesterday back why came-PST-3.S.M 
+Why did he come back yesterday?
+
+3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
+
+The setup provided by the customatization system was working fine but it became inadequate later when we worked on the embedded clauses and such. So here is the latest version. 
+
+4. If the analysis is not (fully) working, a description of the problems you are encountering. 
+
+The adjective analysis seems to be working well. However, there seem to be some issues with adverb positionining. 
+
+For instance, a sentence such as lawkar to aa-l-aa (early he came) is parsing, while it shouldn't be. POSTHEAD - seems to have correctly blocked to aalaa lawkar but the lawkar in lawkar to aa-l-aa seems to be behaving like a sentence adverb. Adverb positioning does not really seem to be _that_ strict (both as per the reference text and my judgment), so I have let it remain right now.
+
+
+
+Embedded clauses and questions.
+--------------------------------------------
+
+1. A descriptive statement of the facts of your language.
+
+2. Illustrative IGT examples from your testsuite.
+
+
+3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
+
+
+4. If the analysis is not (fully) working, a description of the problems you are encountering. 
+
+
+
+
+Non-verbal predicates
+------------------------------------------
+1. A descriptive statement of the facts of your language.
+
+2. Illustrative IGT examples from your testsuite.
+
+
+3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
+
+
+4. If the analysis is not (fully) working, a description of the problems you are encountering. 
+To the best of our knowledge, the analysis seems to be working as expected.
+
+
+Anything else we fixed. 
+------------------------
+
+
+Test Corpus
+------------------------
+The corpus has 10 sentences right now, collected from a few Wikipedia pages. The English translations were confirmed with another native speaker. It is in the same format as the testsuite, complete with IGT.
+
+itsdb
+-----
+
+We get 52.3% (45/86) Coverage, which is an increase over the previous test suite. (39/86). Overgeneration has reduced too. We have 5 to the previous value of 7. Number of parses have reduced for quite a few sentences. More importantly, the parses are more accurate now, in the sense that the grammar and lexicon background is actually enforcing that the agreement etc matches up (earlier, spurious sentences would parse because determiner agreement wasn't set up).
+
+The baseline comparison is as follows:
+			(G)old				New
+	Lexical	| Analyses | In | Out || Lexical | Analyses | In | Out 
+Total	3.05	   4.98	    45.9  8.7     3.06       2.72    52.3 6.3

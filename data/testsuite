@@ -1421,9 +1421,9 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {emb-d}
-ravi meetalaa mhannte kii tii dzunii gaadii aalii
-ravi meeta-laa mhann-t-e kii tii dzun-ii gaadii aa-l-ii
-Ravi meeta-DAT say-PRES-3.S.F that that old-3.S.F train come-PAST-3.S.F
+ravi miitaalaa mhannte kii tii dzunii gaadii aalii
+ravi miitaa-laa mhann-t-o kii tii dzun-ii gaadii aa-l-ii
+Ravi miitaa-DAT say-PRES-3.S.M that that old-3.S.F train come-PAST-3.S.F
 Ravi says to Meeta that that old train came
 
 #144
@@ -1431,9 +1431,9 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {emb-d}
-ravi meetalaa mhannte tii dzunii gaadii aalii
-ravi meeta-laa mhann-t-e tii dzun-ii gaadii aa-l-ii
-Ravi meeta-DAT say-PRES-3.S.F that old-3.S.F train come-PAST-3.S.F
+ravi miitaalaa mhannte tii dzunii gaadii aalii
+ravi miitaa-laa mhann-t-e tii dzun-ii gaadii aa-l-ii
+Ravi miitaa-DAT say-PRES-3.S.F that old-3.S.F train come-PAST-3.S.F
 Ravi says to Meeta that that old train came
 
 #145
@@ -1656,6 +1656,65 @@ tii tsor aaik-t-o
 that.S.F thief.M listen-PRES-3.S.M
 That thief listens
 
+#167
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-d}
+polis mhannto kii to tsoraalaa maarto
+polis mhann-t-o kii to tsor-laa maar-t-o
+police say-PRES-3.S.M that he thief-ACC beat-PRES-3.S.M
+(The) police says that he beats the thief
+
+#168
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {emb-d, agr}
+ravi mhannte kii tii dzunii gaadii aalii
+ravi mhann-t-e kii tii dzun-ii gaadii aa-l-ii
+Ravi say-PRES-3.S.F that that old-3.S.F train come-PAST-3.S.F
+Ravi says that that old train came
+
+#169
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-d}
+polis mhannto kii tyaa tsoraane ravilaa khaato
+polis mhann-t-o kii tyaa tsor-ne ravi-laa khaa-l-a
+Police say-PRES-3.S.M that.OBL thief-ERG ravi-ACC eat-PAST.3.S.N
+The Police says that that thief ate Ravi
+
+#170
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-q}
+polis vicaarto kii mii zhopto kaa
+polis vicaar-t-o kii mii zhop-t-o kaa
+police ask-PRES-3.S.M that I sleep-PRES-1.S.M Q
+(The) police asks if I sleep
+
+#171
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {emb-q}
+to zhopto kaa kii polis vicaarto 
+to zhop-t-o kaa kii polis vicaar-t-o
+he sleep-PRES-3.S.M Q that police ask-PRES-3.S.M
+(The) police asks the thief if he sleeps
+
+#172
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-q}
+tuu zhopto kaa asa polis vicaarto 
+tuu zhop-t-o kaa asa polis vicaar-t-o
+you sleep-PRES-2.S.M Q QUOT police I.DAT ask-PRES-3.S.M
+"Do you sleep?" the police asks.
 
 
 

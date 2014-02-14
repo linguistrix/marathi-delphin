@@ -208,13 +208,23 @@ naahiit := pl_neg-aux-lex &
   [ STEM < "naahiit" >,
     SYNSEM.LKEYS.KEYREL.PRED "neg_rel"].
 
-aa_2 := tobe_aux_verb_lexeme-aux-lex &
-  [ STEM < "aa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_tobe_v_rel" ].
+;;;aa_2 := tobe_aux_verb_lexeme-aux-lex &
+;;;  [ STEM < "aa" >,
+;;;    SYNSEM.LKEYS.KEYREL.PRED "_tobe_v_rel" ].
 
-ho := tobecome_aux_verb_lexeme-aux-lex &
-  [ STEM < "ho" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_tobecome_v_rel" ].
+;;;ho := tobecome_aux_verb_lexeme-aux-lex &
+;;;  [ STEM < "ho" >,
+;;;    SYNSEM.LKEYS.KEYREL.PRED "_tobecome_v_rel" ].
+
+
+aahe := noun-copula-verb-lex &
+  [ STEM < "aahe" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_be_v_id_rel" ].
+
+
+aahe_2 := copula-verb-lex &
+  [ STEM < "aahe" > ,
+    SYNSEM.LKEYS.KEYREL.PRED "_be_v_id_rel" ].
 
 ;;; Determiners
 

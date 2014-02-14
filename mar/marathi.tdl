@@ -259,10 +259,14 @@ main-verb-lex := verb-lex & basic-verb-lex & verb_gender_pernum-rule-dtr & verb_
     INFLECTED [ VERB_TENSE_ASPECT-FLAG -,
                 VERB_GENDER_PERNUM-FLAG - ] ].
 
-
+copula-verb-lex-supertype := non-mod-lex-item & verb_gender_pernum-rule-dtr &
+  [ SYNSEM.LOCAL.CAT.HEAD verb,
+    INFLECTED [ PRESENT_LEXICAL_RULE-FLAG na-or--,
+		FUTURE_LEXICAL_RULE-FLAG na-or-- ] ].
 
 aux-lex := verb-lex &
   [ SYNSEM.LOCAL.CAT.HEAD.AUX + ].
+
 
 intransitive-verb-lex := main-verb-lex & intransitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
@@ -331,6 +335,37 @@ subj-raise-aux := aux-lex & trans-first-arg-raising-lex-item &
                                 [ AUX - ] ] ] > ].
 
 subj-raise-aux-with-pred := subj-raise-aux & norm-sem-lex-item & trans-first-arg-raising-lex-item-1.
+
+
+copula-verb-lex := copula-verb-lex-supertype & trans-first-arg-raising-lex-item-2 &
+  [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj >,
+                             COMPS < #comps >,
+                             SPR < >,
+                             SPEC < > ],
+                   CONT.HOOK.XARG #xarg ],
+    ARG-ST < #subj &
+             [ LOCAL [ CONT.HOOK.INDEX #xarg,
+                       CAT [ VAL [ SPR < >,
+                                   COMPS < > ],
+                             HEAD noun ] ] ],
+             #comps &
+             [ LOCAL.CAT [ VAL [ COMPS < > ],
+                           HEAD +jp ] ] > ].
+
+noun-copula-verb-lex := copula-verb-lex-supertype & transitive-lex-item &
+  [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj >,
+			     COMPS < #comps >,
+			     SPR < >,
+			     SPEC < > ] ],
+    ARG-ST < #subj &
+	     [ LOCAL.CAT [ VAL [ SPR < >,
+				 COMPS < > ],
+			   HEAD noun ] ],
+	     #comps &
+	     [ LOCAL.CAT [ VAL [ SPR < >,
+				 COMPS < > ],
+			   HEAD noun ] ] > ].
+
 
 neg-aux-lex := subj-raise-aux-with-pred &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite ].
