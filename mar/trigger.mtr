@@ -5,10 +5,6 @@ kaa_gr := generator_rule &
   [ CONTEXT.RELS <! [ ARG0.SF ques ] !>,
     FLAGS.TRIGGER "kaa" ].
 
-asa_gr := generator_rule &
-  [ CONTEXT.RELS <! [ ARG0.SF ques ] !>,
-    FLAGS.TRIGGER "asa" ].
-
 tar-marker_gr := arg0e_gtr &
   [ CONTEXT.RELS <! [ PRED "non_existing_rel" ] !>,
     FLAGS.TRIGGER "tar-marker" ].
@@ -19,3 +15,13 @@ comp_gtr := generator_rule &
   FLAGS [ EQUAL < #e, #h >,
           TRIGGER "kii" ]].
 
+comp_gtr := generator_rule &
+[ CONTEXT [ RELS <! [ ARG2 #h & handle ],
+                    [ ARG0 #e & event ] !> ],
+  FLAGS [ EQUAL < #e, #h >,
+          TRIGGER "asa" ]].
+
+
+copula-verb_gr := arg0e_gtr &
+[ CONTEXT [ RELS <! [ PRED "~.*_a_"] !> ],
+  FLAGS.TRIGGER "aahe_2" ].

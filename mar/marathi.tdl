@@ -22,7 +22,8 @@ noun :+ [ CASE case ].
 
 head :+ [ AUX bool,
 	  FORM form,
-	  INIT bool].
+	  H-INIT bool,
+	  C-INIT bool].
 
 inflected :+ [ 
     ADJECTIVE_INFLECTION-FLAG luk,
@@ -159,6 +160,26 @@ no-spr-noun-lex := noun-lex &
 head-spec-phrase := basic-head-spec-phrase & head-final &
   [ NON-HEAD-DTR.SYNSEM.OPT - ].
 
+
+locative-pp-phrase := unary-phrase &
+  [ SYNSEM.LOCAL.CAT [ HEAD adp & [MOD <[SYNSEM.LOCAL.CAT.HEAD verb] >],
+		       VAL [ COMPS < >,
+			     SUBJ < >, 
+			     SPR < > ] ],
+    C-CONT [ HOOK [ LTOP #ltop,
+		    INDEX #index,
+		    XARG #xarg ],
+	     RELS <! arg12-ev-relation &
+		   [ PRED "_be_v_id_rel",
+		     LBL #ltop,
+		     ARG0 #index,
+		     ARG1 #xarg,
+		     ARG2 #dtr ] !>,
+	     HCONS <! !>  ],
+    ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD noun & [CASE loc],
+				  VAL.SPR < > ],
+			    CONT.HOOK [ INDEX #dtr ]]] > ].
+
 anim_noun_lexeme-noun-lex := noun-lex.
 
 inanim_noun_lexeme-noun-lex := noun-lex.
@@ -255,24 +276,37 @@ main-verb-lex := verb-lex & basic-verb-lex & verb_gender_pernum-rule-dtr & verb_
     ARG-ST.FIRST #subj &
                  [ LOCAL [ CAT.VAL [ SPR < >,
                                      COMPS < > ],
-                           CONT.HOOK.INDEX #xarg ] ],
-    INFLECTED [ VERB_TENSE_ASPECT-FLAG -,
-                VERB_GENDER_PERNUM-FLAG - ] ].
+                           CONT.HOOK.INDEX #xarg ] ]].
 
-copula-verb-lex-supertype := non-mod-lex-item & verb_gender_pernum-rule-dtr &
-  [ SYNSEM.LOCAL.CAT.HEAD verb,
-    INFLECTED [ PRESENT_LEXICAL_RULE-FLAG na-or--,
-		FUTURE_LEXICAL_RULE-FLAG na-or-- ] ].
+copula-verb-lex-supertype := non-mod-lex-item & 
+  [ SYNSEM.LOCAL.CAT [ HEAD verb,
+		       VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ]],
+    INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
+                VERB_GENDER_PERNUM-FLAG +] ].
 
 aux-lex := verb-lex &
   [ SYNSEM.LOCAL.CAT.HEAD.AUX + ].
 
+non-copula-main-verb-lex := main-verb-lex &
+  [ INFLECTED [ VERB_TENSE_ASPECT-FLAG -,
+                VERB_GENDER_PERNUM-FLAG - ] ].
 
-intransitive-verb-lex := main-verb-lex & intransitive-lex-item &
+copula-transitive-verb-lex := main-verb-lex & transitive-lex-item &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps >,
+    ARG-ST < [ LOCAL.CAT.HEAD noun ],
+             #comps &
+             [ LOCAL.CAT [ VAL [ SPR < >,
+                                 COMPS < > ],
+                           HEAD noun ] ] >,
+    INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
+                VERB_GENDER_PERNUM-FLAG + ] ].
+
+
+intransitive-verb-lex := non-copula-main-verb-lex & intransitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
     ARG-ST.FIRST.LOCAL.CAT.HEAD noun ].
 
-transitive-verb-lex := main-verb-lex & transitive-lex-item &
+transitive-verb-lex := non-copula-main-verb-lex & transitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps >,
     ARG-ST < [ LOCAL.CAT.HEAD noun ],
              #comps &
@@ -294,7 +328,7 @@ intrans_verb_lxm-verb-lex := intransitive-verb-lex &
 irreg_trans_verb1-verb-lex := trans_verb_lxm-verb-lex &
   [ INFLECTED.IRREG_INTRANS_VERB_TENSE-FLAG - ].
 
-embedded_clause_inviting_verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
+embedded_clause_inviting_verb-lex := non-copula-main-verb-lex & clausal-second-arg-trans-lex-item &
   [ ARG-ST < synsem, #arg >,
     SYNSEM.LOCAL.CAT.VAL [ SPR < >,
 			   COMPS < #arg & 
@@ -352,20 +386,9 @@ copula-verb-lex := copula-verb-lex-supertype & trans-first-arg-raising-lex-item-
              [ LOCAL.CAT [ VAL [ COMPS < > ],
                            HEAD +jp ] ] > ].
 
-noun-copula-verb-lex := copula-verb-lex-supertype & transitive-lex-item &
-  [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj >,
-			     COMPS < #comps >,
-			     SPR < >,
-			     SPEC < > ] ],
-    ARG-ST < #subj &
-	     [ LOCAL.CAT [ VAL [ SPR < >,
-				 COMPS < > ],
-			   HEAD noun ] ],
-	     #comps &
-	     [ LOCAL.CAT [ VAL [ SPR < >,
-				 COMPS < > ],
-			   HEAD noun ] ] > ].
-
+noun-copula-verb-lex := copula-transitive-verb-lex & 
+  [ SYNSEM.LOCAL [CAT.VAL [COMPS.FIRST.LOCAL.CAT.HEAD.CASE nom,
+			  SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ]]].
 
 neg-aux-lex := subj-raise-aux-with-pred &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite ].
@@ -502,16 +525,19 @@ mc_minus_complementizer-lex-item := complementizer-lex-item &
 
 ; Subtypes for kaa and asa
 init_plus_complementizer-lex-item := mc_minus_complementizer-lex-item &
-  [ SYNSEM.LOCAL.CAT.HEAD.INIT +].
+  [ SYNSEM.LOCAL.CAT.HEAD [ H-INIT +, 
+			    C-INIT - ] ].
+
 init_minus_complementizer-lex-item := mc_minus_complementizer-lex-item &
-  [ SYNSEM.LOCAL.CAT.HEAD.INIT -].
+  [ SYNSEM.LOCAL.CAT.HEAD [H-INIT -,
+			   C-INIT + ]].
 
 ; Subtype for question particles. Constrains SF to ques.
 
 qpart-lex-item := mc_plus_complementizer-lex-item &
   [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF ques,
                    CAT [VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite,
-			HEAD.INIT -]] ].
+			HEAD.H-INIT -]] ].
 
 ;;;;;;;;;;;;;;;;;;;
 ;;; Lexical Rules
@@ -521,6 +547,7 @@ qpart-lex-item := mc_plus_complementizer-lex-item &
 
 verb_gender_pernum-rule-dtr := word-or-lexrule.
 verb_tense_aspect-rule-dtr := word-or-lexrule.
+
 
 ;;; Lexical rule types
 
@@ -919,12 +946,12 @@ give_d_past_lexical_rule-lex-rule := irreg_intrans_verb_tense-lex-rule-super.
 ;;it applies to all wo implementations, except for v2
 
 comp-head-phrase := basic-head-1st-comp-phrase & head-final &
-  [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.INIT -,
-    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD +nvjrcdmo ].
+  [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.H-INIT -,
+    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.C-INIT + ].
 
 head-comp-phrase := basic-head-1st-comp-phrase & head-initial & 
-  [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.INIT +,
-    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD +vc ].
+  [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.H-INIT +,
+    NON-HEAD-DTR.SYNSEM.LOCAL.CAT [HEAD +vc & [C-INIT - ]]].
 
 ;;;  [ NON-HEAD-DTR [SYNSEM.LOCAL.CAT [HEAD verb,
 ;;;				    VAL [ SPR < >,
@@ -1075,7 +1102,7 @@ s4-bottom-coord-rule := conj-first-bottom-coord-rule & s-bottom-coord-phrase &
 ;;; Adjective Rules, 2014/02/04, AVB, AB
 
 adjective-lex := basic-adjective-lex & intersective-mod-lex &
-	      norm-ltop-lex-item &
+	      norm-ltop-lex-item & attrib-or-pred-lex-item &
   [ SYNSEM [ LOCAL [ CAT [ HEAD.MOD < [ LOCAL.CAT [ HEAD noun,
                                                     VAL.SPR cons ]]>,
 			   VAL [ SPR < >,
@@ -1127,3 +1154,4 @@ neut_pl_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-ru
   [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND N, 
 								  PERNUM PL]] > ]].
 
+;;; Locative postpositions, such as "here" and "there" 

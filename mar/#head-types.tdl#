@@ -1,4 +1,4 @@
-;;; $Id: head-types.tdl,v 1.2 2008-05-23 01:44:21 sfd Exp $
+n;;; $Id: head-types.tdl,v 1.2 2008-05-23 01:44:21 sfd Exp $
 
 ; Disjunctive type for verbs, adjectives, adverbs, adpositions, complementizers, determiners, number names and conjunctions.
 +vjrpcdmo := head.

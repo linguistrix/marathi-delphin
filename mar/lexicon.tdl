@@ -223,8 +223,7 @@ aahe := noun-copula-verb-lex &
 
 
 aahe_2 := copula-verb-lex &
-  [ STEM < "aahe" > ,
-    SYNSEM.LKEYS.KEYREL.PRED "_be_v_id_rel" ].
+  [ STEM < "aahe" > ].
 
 ;;; Determiners
 
