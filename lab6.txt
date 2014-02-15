@@ -273,7 +273,7 @@ The nominative case is used on the subject and on the NP predicate.
 
 Adjectival predicates occur as the complement of "as". A nominative noun is the subject. Depending on the adjective, it has to (if it's of the inflectional type) agree in gender and pernum with the noun. 
 
-Likewise, locational PPs are actually just nouns in the locative case. 
+Likewise, locational PPs are actually just nouns in the locative case. However, locational PPs can't be directly used to modify nouns (the man in the car).
 
 2. Illustrative IGT examples from your testsuite.
 
@@ -381,12 +381,13 @@ locative-pp-phrase := unary-phrase &
 				  VAL.SPR < > ],
 			    CONT.HOOK [ INDEX #dtr ]]] > ].
 
+The element in the MOD list has been restricted to just 'verb' so that the PP doesn't combine with NPs etc.
 
 4. If the analysis is not (fully) working, a description of the problems you are encountering. 
 
 The MRS for all the predicates are correct. But in case of the locative_pred (PPs), we can't get the grammar to generate. I imagine it is because there is no lexical entry that has this predication, but since the PP in this case isn't exactly formed from a lexical postposition but rather from a locative noun, I am not sure how to fix this.
 
-Also, we have only one entry for "to be" right now as a proof of concept. We will flesh out all the TENSE-PER-NUM-GEND combos soon.
+Also, we have only two entries for "to be" right now as a proof of concept. We will flesh out all the TENSE-PER-NUM-GEND combos soon.
 
 
 Anything else we fixed. 
@@ -394,15 +395,208 @@ Anything else we fixed.
 
 Plenty of stuff, actually. Two major breakthroughs have been that the Ergative case system with its idiosyncratic verb agreement properties has now been sorted out and that determiner CASE agreement is sorted out.
 
+In the past perfective aspect, the verb agrees with the subject of an intransitive verb, which stays in CASE nom. In case of transitive verbs, the verb agrees with the object if the object is in nominative case. If the object is Case marked, then the verb agrees with nothing and remains in the 3.S.N form.
+
+#173
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {agr}
+polisne tsoraala maarla
+polis-ne tsor-laa maar-l-a
+police-ERG thief-DAT beat-PAST-3.S.N
+The police beat the thief
+
+#174
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {agr}
+polis tsoraala maarla
+polis tsor-laa maar-l-a
+police thief-DAT beat-PAST-3.S.N
+The police beat the thief
+
+#175
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {agr}
+polisne zhop-l-aa
+polis-ne zhop-l-aa
+police-ERG sleep-PAST-3.S.M
+The police slept
+
+#176
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {agr}
+polisne maashii khaalii
+polis-ne maashii khaa-l-ii
+police-ERG maashii.3.S.F eat-PAST-3.S.F
+The police ate a fly
+
+#177
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {agr}
+polisne maashii khaalaa
+polis-ne maashii khaa-l-aa
+police-ERG maashii.3.S.F eat-PAST-3.S.M
+The police ate a fly
+
+#178
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {agr}
+polisne maashii khaalaa
+polis-ne maashii-laa khaa-l-a
+police-ERG maashii.3.S.F-ACC eat-PAST-3.S.N
+The police ate a fly
+
+Whether a noun is in the nominative or not also affects other things in the grammar, such as determiner agreement, so we went about it like this:
+
+Changing the case type hierarchy:
+
+case := *top*.
+erg+nom := case.
+non-nom := case.
+abs := non-nom.  ; abs
+ins := non-nom.  ; inst
+abl := non-nom.  ; abl
+pos := non-nom.  ; poss
+loc := non-nom.  ; loc
+voc := non-nom.  ; voc
+erg := non-nom & erg+nom.
+nom+acc+dat := case.
+nom := nom+acc+dat & erg+nom.
+acc := nom+acc+dat & non-nom.
+dat := nom+acc+dat & non-nom.
+
+The combos at the bottom are needed because the object can be in any of nom, acc, dat depending on other things.
+
+This is the super-rule for intransitive verbs in the past tense. The CASE of the SUBJ is already constrained at the verb level
+
+past_intrans_verb-lex-rule-super := verb_gender_pernum-lex-rule-super & 
+  [ DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
+
+This is the super-rule for transitive verbs in the past tense whose argument is marked for case (not nom). The case ending for this is constant as it is always 3.S.N so it was directly added to irules.tdl
+
+past_non_nom_arg_trans_verb-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR [SYNSEM.LOCAL.CAT.VAL [COMPS cons,
+			      COMPS.FIRST.LOCAL.CAT.HEAD.CASE non-nom,
+			      SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg ],
+	 INFLECTED.PAST_LEXICAL_RULE-FLAG +]].
+
+This is the super-rule for transitive verbs in the past tense whose argument is not marked for case (nom). 
+
+past_nom_arg_trans_verb-lex-rule-super := infl-lex-rule & verb_gender_pernum-lex-rule-super &
+  [ DTR.SYNSEM.LOCAL.CAT.VAL [COMPS cons,
+			      COMPS.FIRST.LOCAL.CAT.HEAD.CASE nom,
+			      SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg ]].
+
+We then provided all the suffixes that the object agreeing ending needed.
+
+erg_sgpast_fem_lexical_rule-lex-rule := past_nom_arg_trans_verb-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM SG,
+                                                                GEND F ] ].
+
+erg_sgpast_masc_lexical_rule-lex-rule := past_nom_arg_trans_verb-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM SG,
+                                                                GEND M ] ].
+
+erg_sgpast_neuter_lexical_rule-lex-rule := past_nom_arg_trans_verb-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM SG,
+                                                                GEND N ] ].
+erg_plpast_masc_lexical_rule-lex-rule := past_nom_arg_trans_verb-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM PL,
+                                                                GEND M ] ].
+
+erg_plpast_fem_lexical_rule-lex-rule := past_nom_arg_trans_verb-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM PL,
+                                                                GEND F ] ].
+erg_plpast_neuter_lexical_rule-lex-rule := past_nom_arg_trans_verb-lex-rule-super &
+  [ DTR.INFLECTED.PAST_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM PL,
+                                                                GEND N ] ].
+
+---------------
+
+Determiners change if the noun they are determining is in a non-nom case. So we added two classes that constrained the respective SPECs and then subclassed them.
+
+nom_dem_determiner-lex := dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CAT.HEAD.CASE nom ].
+
+non_nom_dem_determiner-lex := dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CAT.HEAD.CASE non-nom ].
+
+
+prox_dem_determiner-lex := dem_determiner-lex & 
+  [ SYNSEM.LKEYS.ALTKEYREL.PRED proximal+dem_a_rel ].
+
+dist_dem_determiner-lex := dem_determiner-lex & 
+  [ SYNSEM.LKEYS.ALTKEYREL.PRED distal+dem_a_rel ].
+
+prox_nom_dem_determiner-lex := nom_dem_determiner-lex & prox_dem_determiner-lex.
+
+dist_nom_dem_determiner-lex := nom_dem_determiner-lex & dist_dem_determiner-lex.  
+
+prox_non_nom_dem_determiner-lex := non_nom_dem_determiner-lex & prox_dem_determiner-lex.
+
+dist_non_nom_dem_determiner-lex := non_nom_dem_determiner-lex & dist_dem_determiner-lex.  
+
+male_sg_dist_dem_determiner-lex := dist_nom_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM SG] ].
+
+male_pl_dist_dem_determiner-lex := dist_nom_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM PL] ].
+
+fem_sg_dist_dem_determiner-lex := dist_nom_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM SG] ].
+
+fem_pl_dist_dem_determiner-lex := dist_nom_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM PL] ].
+
+neutral_sg_dist_dem_determiner-lex := dist_nom_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM SG] ].
+
+neutral_pl_dist_dem_determiner-lex := dist_nom_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM PL] ].
+
+male_sg_prox_dem_determiner-lex := prox_nom_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM SG] ].
+
+male_pl_prox_dem_determiner-lex := prox_nom_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM PL] ].
+
+fem_sg_prox_dem_determiner-lex := prox_nom_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM SG] ].
+
+fem_pl_prox_dem_determiner-lex := prox_nom_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM PL] ].
+
+neutral_sg_prox_dem_determiner-lex := prox_nom_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM SG] ].
+
+neutral_pl_prox_dem_determiner-lex := prox_nom_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM PL] ].
 
 
 
 itsdb
 -----
 
-We get 52.3% (45/86) Coverage, which is an increase over the previous test suite. (39/86). Overgeneration has reduced too. We have 5 to the previous value of 7. Number of parses have reduced for quite a few sentences. More importantly, the parses are more accurate now, in the sense that the grammar and lexicon background is actually enforcing that the agreement etc matches up (earlier, spurious sentences would parse because determiner agreement wasn't set up).
+We get 53.8% (50/93) Coverage, which is a slight increase over the previous test suite. Note that although it looks like a small increase, the previous version of the grammar had no special interpretation of the copula and therefore produced incorrect parses which still got counted as parses. Now those parses are actually semantically vald. Overgeneration is also low (only 6 on 84). 
 
 The baseline comparison is as follows:
 			(G)old				New
 	Lexical	| Analyses | In | Out || Lexical | Analyses | In | Out 
-Total	3.05	   4.98	    45.9  8.7     3.06       2.72    52.3 6.3
+Total	3.08	   2.74	    50.0  5.1     3.63       2.33    53.8 6.0

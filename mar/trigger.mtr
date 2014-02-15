@@ -24,4 +24,8 @@ comp_gtr := generator_rule &
 
 copula-verb_gr := arg0e_gtr &
 [ CONTEXT [ RELS <! [ PRED "~.*_a_"] !> ],
-  FLAGS.TRIGGER "aahe_2" ].
+  FLAGS.TRIGGER "aahe_nc" ].
+
+copula-verb_gr := arg0e_gtr &
+[ CONTEXT [ RELS <! [ PRED "~.*_a_"] !> ],
+  FLAGS.TRIGGER "aahe_nc" ].

@@ -387,9 +387,21 @@ copula-verb-lex := copula-verb-lex-supertype & trans-first-arg-raising-lex-item-
              [ LOCAL.CAT [ VAL [ COMPS < > ],
                            HEAD +jp ] ] > ].
 
+3sm_copula-verb-lex := copula-verb-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3sg ].
+
+3sp_copula-verb-lex := copula-verb-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3pl ].
+
 noun-copula-verb-lex := copula-transitive-verb-lex & 
   [ SYNSEM.LOCAL [CAT.VAL [COMPS.FIRST.LOCAL.CAT.HEAD.CASE nom,
 			  SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ]]].
+
+3sm_noun-copula-verb-lex := noun-copula-verb-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3sg ].
+
+3sp_noun-copula-verb-lex := noun-copula-verb-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3pl ].
 
 neg-aux-lex := subj-raise-aux-with-pred &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite ].

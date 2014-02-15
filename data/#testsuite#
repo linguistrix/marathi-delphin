@@ -581,8 +581,8 @@ Vetted: {t}
 Judgment: g
 Phenomena: {wo}
 te itha aahet
-te itha aahet
-they here are.3.PL
+te itha aahe
+they here are-3.PL
 They are here
 
 #59
@@ -591,8 +591,8 @@ Vetted: {t}
 Judgment: u
 Phenomena: {wo}
 te aahet itha
-te aahet itha 
-they are.3.PL here 
+te aa-het itha 
+they are-3.PL here 
 They are here
 
 #60
@@ -600,9 +600,9 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {wo}
-itha. te aahet
 itha te aahet
-here they are.3.PL
+itha te aa-het
+here they are-3.PL
 They are here
 
 #61
@@ -1021,8 +1021,8 @@ Vetted: {t}
 Judgment: g
 Phenomena: {wo, pro-d}
 itha aahet
-itha aahet
-here are.3.PL
+itha aa-het
+here are-3.PL
 They are here
 
 #104
@@ -1472,8 +1472,8 @@ Vetted: {t}
 Judgment: g
 Phenomena: {cop}
 to tsor aahe
-to tsor aahe
-he thief be.3.S.M
+to tsor aa-he
+he thief be-3.S.M
 He is (a) thief
 
 #149
@@ -1482,8 +1482,8 @@ Vetted: {t}
 Judgment: g
 Phenomena: {cop}
 tii gaadii dzunii aahe
-tii gaadii dzun-ii aahe
-that train.S.F old-S.F be.3.S.F
+tii gaadii dzun-ii aa-he
+that train.S.F old-S.F be-3.S.F
 That train is old
 
 #150
@@ -1492,8 +1492,8 @@ Vetted: {t}
 Judgment: u
 Phenomena: {cop,wo}
 tii aahe dzunii gaadii
-tii aahe dzun-ii gaadii
-that be.3.S.F old-S.F car
+tii aa-he dzun-ii gaadii
+that be-3.S.F old-S.F car
 That car is old
 
 #151
@@ -1502,8 +1502,8 @@ Vetted: {t}
 Judgment: g
 Phenomena: {cop}
 tyaacii tsaal manda aahe
-tyaa-cii tsaal manda aahe
-he-POSS.S.F gait slow be.3.S.F
+tyaa-cii tsaal manda aa-he
+he-POSS.S.F gait slow be-3.S.F
 His gait is slow
 
 #152
@@ -1512,8 +1512,8 @@ Vetted: {t}
 Judgment: u
 Phenomena: {cop}
 tyaacii aahe tsaal manda
-tyaa-cii aahe tsaal manda
-he-POSS.S.F be.3.S.F gait slow 
+tyaa-cii aa-he tsaal manda
+he-POSS.S.F be-3.S.F gait slow 
 His gait is slow
 
 #153
@@ -1681,9 +1681,9 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {emb-d}
-polis mhannto kii tyaa tsoraane ravilaa khaala
+polis mhannto kii tyaa tsoraane ravilaa khaato
 polis mhann-t-o kii tyaa tsor-ne ravi-laa khaa-l-a
-Police say-PRES-3.S.M COMP that.OBL thief-ERG ravi-ACC eat-PAST-3.S.N
+Police say-PRES-3.S.M that.OBL thief-ERG ravi-ACC eat-PAST.3.S.N
 The Police says that that thief ate Ravi
 
 #170
@@ -1713,67 +1713,30 @@ Judgment: g
 Phenomena: {emb-q}
 tuu zhopto kaa asa polis vicaarto 
 tuu zhop-t-o kaa asa polis vicaar-t-o
-you sleep-PRES-2.S.M Q QUOT police ask-PRES-3.S.M
+you sleep-PRES-2.S.M Q QUOT police I.DAT ask-PRES-3.S.M
 "Do you sleep?" the police asks.
 
 
-#173
-Source: {author}
-Vetted: {t}
-Judgment: g
-Phenomena: {agr}
-polisne tsoraala maarla
-polis-ne tsor-laa maar-l-a
-police-ERG thief-DAT beat-PAST-3.S.N
-The police beat the thief
 
-#174
-Source: {author}
-Vetted: {t}
-Judgment: u
-Phenomena: {agr}
-polis tsoraala maarla
-polis tsor-laa maar-l-a
-police thief-DAT beat-PAST-3.S.N
-The police beat the thief
 
-#175
-Source: {author}
-Vetted: {t}
-Judgment: u
-Phenomena: {agr}
-polisne zhop-l-aa
-polis-ne zhop-l-aa
-police-ERG sleep-PAST-3.S.M
-The police slept
 
-#176
-Source: {author}
-Vetted: {t}
-Judgment: g
-Phenomena: {agr}
-polisne maashii khaalii
-polis-ne maashii khaa-l-ii
-police-ERG maashii.3.S.F eat-PAST-3.S.F
-The police ate a fly
 
-#177
-Source: {author}
-Vetted: {t}
-Judgment: u
-Phenomena: {agr}
-polisne maashii khaalaa
-polis-ne maashii khaa-l-aa
-police-ERG maashii.3.S.F eat-PAST-3.S.M
-The police ate a fly
 
-#178
-Source: {author}
-Vetted: {t}
-Judgment: g
-Phenomena: {agr}
-polisne maashii khaalaa
-polis-ne maashii-laa khaa-l-a
-police-ERG maashii.3.S.F-ACC eat-PAST-3.S.N
-The police ate a fly
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -106,13 +106,17 @@ mulgaa := malenounsg_anim_noun-lex &
     SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
 
 
-tsaal := malenounsg_inam_noun-lex &
+tsaal := femnounsg_inam_noun-lex &
   [ STEM < "tsaal" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gait_n_rel" ].
 
 gaadii := femnounsg_inam_noun-lex &
   [ STEM < "gaadii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_train_n_rel" ].
+
+maashii := femnounsg_anim_noun-lex &
+  [ STEM < "maashii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_housefly_n_rel" ].
 
 baatmii := femnounsg_inam_noun-lex &
   [ STEM < "baatmii" >,
@@ -217,12 +221,20 @@ naahiit := pl_neg-aux-lex &
 ;;;    SYNSEM.LKEYS.KEYREL.PRED "_tobecome_v_rel" ].
 
 
-aahe := noun-copula-verb-lex &
+aahe := 3sm_noun-copula-verb-lex &
   [ STEM < "aahe" >,
     SYNSEM.LKEYS.KEYREL.PRED "_be_v_id_rel" ].
 
-aahe_2 := copula-verb-lex &
+aahe_nc := 3sm_copula-verb-lex &
   [ STEM < "aahe" > ].
+
+aahet := 3sp_noun-copula-verb-lex &
+  [ STEM < "aahet" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_be_v_id_rel" ].
+
+aahet_nc := 3sp_copula-verb-lex &
+  [ STEM < "aahet" > ].
+
 
 ;;; Determiners
 
