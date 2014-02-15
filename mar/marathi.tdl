@@ -162,15 +162,16 @@ head-spec-phrase := basic-head-spec-phrase & head-final &
 
 
 locative-pp-phrase := unary-phrase &
-  [ SYNSEM.LOCAL.CAT [ HEAD adp & [MOD <[SYNSEM.LOCAL.CAT.HEAD verb] >],
+  [ SYNSEM [LOCAL.CAT [ HEAD adp & [MOD <[SYNSEM.LOCAL.CAT.HEAD verb] >],
 		       VAL [ COMPS < >,
 			     SUBJ < >, 
-			     SPR < > ] ],
+			     SPR < > ] ]],
+    
     C-CONT [ HOOK [ LTOP #ltop,
 		    INDEX #index,
 		    XARG #xarg ],
 	     RELS <! arg12-ev-relation &
-		   [ PRED "_be_v_id_rel",
+		   [ PRED "_loc_p_rel",
 		     LBL #ltop,
 		     ARG0 #index,
 		     ARG1 #xarg,

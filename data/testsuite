@@ -1681,7 +1681,7 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {emb-d}
-polis mhannto kii tyaa tsoraane ravilaa khaato
+polis mhannto kii tyaa tsoraane ravilaa khaala
 polis mhann-t-o kii tyaa tsor-ne ravi-laa khaa-l-a
 Police say-PRES-3.S.M that.OBL thief-ERG ravi-ACC eat-PAST.3.S.N
 The Police says that that thief ate Ravi
@@ -1717,6 +1717,35 @@ you sleep-PRES-2.S.M Q QUOT police I.DAT ask-PRES-3.S.M
 "Do you sleep?" the police asks.
 
 
+#173
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {agr}
+polisne tsoraala maarla
+polis-ne tsor-laa maar-l-a
+police-ERG thief-DAT beat-PAST-3.S.N
+The police beat the thief
+
+#174
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {agr}
+polis tsoraala maarla
+polis tsor-laa maar-l-a
+police thief-DAT beat-PAST-3.S.N
+The police beat the thief
+
+#175
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {agr}
+polisne zhop-l-aa
+polis-ne zhop-l-aa
+police-ERG thief-DAT sleep-PAST-3.S.M
+The police beat the thief
 
 
 

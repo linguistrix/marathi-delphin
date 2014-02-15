@@ -49,14 +49,36 @@ Why did he come back yesterday?
 
 3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
 
-The setup provided by the customatization system was working fine but it became inadequate later when we worked on the embedded clauses and such. So here is the latest version. 
+The setup provided by the customatization system was working fine but it became inadequate later when we worked on the embedded clauses and such. This was tweaked a bit to make way for the rest of the machinery. Here is what we have right now.
+
+
+complementizer-lex-item := raise-sem-lex-item & basic-one-arg &
+  [ SYNSEM.LOCAL.CAT [ HEAD comp &
+                            [ MOD < > ],
+                       VAL [ SPR < >,
+                             SUBJ < >,
+                             COMPS < #comp > ]],
+    ARG-ST < #comp &
+             [ LOCAL.CAT [ HEAD verb,
+                           VAL [ SUBJ < >,
+                                 COMPS < > ] ] ] > ].
+
+mc_plus_complementizer-lex-item := complementizer-lex-item & 
+  [ SYNSEM.LOCAL.CAT.MC +].
+
+mc_minus_complementizer-lex-item := complementizer-lex-item & 
+  [ SYNSEM.LOCAL.CAT.MC -].
+
+; Subtype for question particles. Constrains SF to ques.
+
+qpart-lex-item := mc_plus_complementizer-lex-item &
+  [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF ques,
+                   CAT [VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite,
+			HEAD.H-INIT -]] ].
 
 4. If the analysis is not (fully) working, a description of the problems you are encountering. 
 
-The adjective analysis seems to be working well. However, there seem to be some issues with adverb positionining. 
-
-For instance, a sentence such as lawkar to aa-l-aa (early he came) is parsing, while it shouldn't be. POSTHEAD - seems to have correctly blocked to aalaa lawkar but the lawkar in lawkar to aa-l-aa seems to be behaving like a sentence adverb. Adverb positioning does not really seem to be _that_ strict (both as per the reference text and my judgment), so I have let it remain right now.
-
+Works fine for main clauses but does not work properly for embedded clauses. The problem is that we are constraining the MC to + for "kaa" because we do not want it to spuriously behave as a traditional complementizer. Since MC is + it does not combine at the embedded level. If we constrain MC to -, it will combine at the embedded level but simple questions won't parse as the root needs to be MC +.
 
 
 Embedded clauses and questions.
@@ -64,11 +86,9 @@ Embedded clauses and questions.
 
 1. A descriptive statement of the facts of your language.
 
-Embedded clauses are marked by the complementizers "kii" and "asa" preceding the embedded clause. "kii" is used in both declarative and interrogative clauses. "asa" is used as a quotative marker, when the subordinate clause denotes the purpose or reason of the action in the matrix clause. 
+Embedded clauses are marked by the complementizers "kii" and "asa" preceding and following the embedded clause respectively. "kii" is used in both declarative and interrogative clauses. "asa" is used as a quotative marker. Note here that a kii headed CP can't precede the matrix verb and an asa headed CP can't follow the matrix verb. Both kii and asa are obligatory (There is a bit of a mess around whether they can be omitted in casual speech, but we decided not to get into that quagmire).
 
-Both "asa" and "kii" only mark embedded clauses. However, "kii" appears as the head of a head-comp phrase and "asa" appears the complement of a comp-head phrase. 
-
-Certain verbs also frequently appear before embedded clauses. The verbs can either "invite" declarative or interrogative clauses. In our test suite, the declarative verb is "mhann" (to tell) and the interrogative verb is "vicar" (to ask). The complementizers appear immediately after the final verb of the main clause. 
+Certain verbs also frequently appear before embedded clauses. The verbs can either "invite" declarative or interrogative clauses. In our test suite, the declarative verb is "mhann" (to tell) and the interrogative verb is "vicar" (to ask).  
 
 2. Illustrative IGT examples from your testsuite.
 
@@ -81,16 +101,6 @@ tuu zhopto kaa asa polis malaa vicaarto
 tuu zhop-t-o kaa asa polis malaa vicaar-t-o
 you sleep-PRES-2.S.M Q QUOT police I.DAT ask-PRES-3.S.M
 "Do you sleep?" the police asks me.
-
-#145
-Source: {author}
-Vetted: {t}
-Judgment: g
-Phenomena: {emb-q}
-polis malaa vicaarto kii mii zhopto kaa
-polis malaa vicaar-t-o kii mii zhop-t-o kaa
-police I.DAT ask-PRES-3.S.M that I sleep-PRES-1.S.M Q
-(The) police asks me if I sleep
 
 #145
 Source: {author}
@@ -122,12 +132,43 @@ ravi miitaa-laa mhann-t-e tii dzun-ii gaadii aa-l-ii
 Ravi miitaa-DAT say-PRES-3.S.F that old-3.S.F train come-PAST-3.S.F
 Ravi says to Meeta that that old train came
 
-The final example is ungrammatical because the complementizer fails to appear following the final verb of the main clause. We added the feature INIT on HEAD to constrain whether or not a complementizer can appear before the head of the phrase. 
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {emb-d}
+ravi kii tii dzunii gaadii aalii miitaalaa mhannte 
+ravi kii tii dzun-ii gaadii aa-l-ii miitaa-laa mhann-t-e
+Ravi that that old-3.S.F train come-PAST-3.S.F miitaa-DAT say-PRES-3.S.F
+Ravi says to Meeta that that old train came
 
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {emb-d}
+ravi miitaalaa mhannte tii dzunii gaadii asa
+ravi miitaa-laa mhann-t-e tii dzun-ii gaadii aa-l-ii asa
+Ravi that old-3.S.F train come-PAST-3.S.F miitaa-DAT say-PRES-3.S.F QUOT
+Ravi says to Meeta that that old train came
+
+
+The final two examples are ungrammatical because a kii complementizer cannot appear before the verb of the main clause. 
 
 3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
 
-We created a type complementizer-lex-item that inherits from raise-sem-lex-item and basic-one-arg. It identifies the sole item on its ARG-ST list with its COMPS. It is otherwise underspecified for all its VAL features. 
+Our head-complement and complement-head rules needed to handle the following cases.
+
+HEAD-COMP:
+V CP [kii headed]
+C S [kii]
+
+COMP-HEAD:
+S C [asa]
+S C [kaa]
+CP V [asa headed]
+
+We added the features H-INIT and C-INIT on HEAD to constrain whether or not a complementizer can appear before the head of the phrase, and whether the whole CP created by that complementizer can appear after or before the matrix verb.
+
+We already had complementizer-lex-item that inherits from raise-sem-lex-item and basic-one-arg. 
 
 complementizer-lex-item := raise-sem-lex-item & basic-one-arg &
   [ SYNSEM.LOCAL.CAT [ HEAD comp &
@@ -140,21 +181,29 @@ complementizer-lex-item := raise-sem-lex-item & basic-one-arg &
                            VAL [ SUBJ < >,
                                  COMPS < > ] ] ] > ].
 
+We also used the feature MC +/- to constrain the marking of embedded clauses. Because complementizers in Marathi always mark embedded clauses, they are both marked as MC-. 
 
-We introduced the feature MC+/- to constrain the marking of embedded clauses. Because complementizers in Marathi always mark embedded clauses, they are both marked as MC-. The feature INIT+/- was introduced to constrain complementizers as occuring as the head of a head-complement phrase (+) or as complements in a comp-head phrase (-). "kii" appears as the head of a head-comp phrase and "asa" appears as the complement in a comp-head phrase. 
+mc_plus_complementizer-lex-item := complementizer-lex-item & 
+  [ SYNSEM.LOCAL.CAT.MC +].
 
-comp-head-phrase := basic-head-1st-comp-phrase & head-final &
-  [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.INIT -,
-    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD +nvjrcdmo ].
+mc_minus_complementizer-lex-item := complementizer-lex-item & 
+  [ SYNSEM.LOCAL.CAT.MC -].
 
-head-comp-phrase := basic-head-1st-comp-phrase & head-initial & 
-  [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.INIT +,
-    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD +vc ].
-
+; Subtypes for kaa and asa
 init_plus_complementizer-lex-item := mc_minus_complementizer-lex-item &
-  [ SYNSEM.LOCAL.CAT.HEAD.INIT +].
+  [ SYNSEM.LOCAL.CAT.HEAD [ H-INIT +, 
+			    C-INIT - ] ].
+
 init_minus_complementizer-lex-item := mc_minus_complementizer-lex-item &
-  [ SYNSEM.LOCAL.CAT.HEAD.INIT -].
+  [ SYNSEM.LOCAL.CAT.HEAD [H-INIT -,
+			   C-INIT + ]].
+
+; Subtype for question particles. Constrains SF to ques.
+
+qpart-lex-item := mc_plus_complementizer-lex-item &
+  [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF ques,
+                   CAT [VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite,
+			HEAD.H-INIT -]] ].
 
 kii := init_plus_complementizer-lex-item & 
   [ STEM < "kii" > ].
@@ -162,14 +211,24 @@ kii := init_plus_complementizer-lex-item &
 asa := init_minus_complementizer-lex-item & 
   [ STEM < "asa" > ].
 
-The question particle "kaa", treated as a complementizer in our grammar, is marked as INIT- because it occurs as the complement of a comp-head phrase. 
+The question particle "kaa", treated as a complementizer in our grammar, is marked as INIT - because it occurs as the complement of a head-comp phrase. 
 
 qpart-lex-item := mc_plus_complementizer-lex-item &
   [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF ques,
                    CAT [VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite,
 			HEAD.INIT -]] ]. 
 
-We introduced a new verb type, embedded_clause_inviting_verb-lex, for the verbs that take embedded clauses as complements. It specifies the one item on its COMPS list as an element that is HEAD comp and MC-. It inherits from main-verb-lex and clausal-second-arg-trans-lex-item. It constrains the case of its subj to be erg+nom.
+We also modified the head-comp and comp-head rules to constrain the H-INIT and C-INIT values of their daughters. head-comp has also been constrained to head +vc to avoid any other accidental phrase formation.
+
+comp-head-phrase := basic-head-1st-comp-phrase & head-final &
+  [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.H-INIT -,
+    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.C-INIT + ].
+
+head-comp-phrase := basic-head-1st-comp-phrase & head-initial & 
+  [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.H-INIT +,
+    NON-HEAD-DTR.SYNSEM.LOCAL.CAT [HEAD +vc & [C-INIT - ]]].
+
+We introduced a new verb type, embedded_clause_inviting_verb-lex, for the verbs that take embedded clauses as complements. It specifies the one item on its COMPS list as an element that is HEAD comp and MC -. It inherits from main-verb-lex and clausal-second-arg-trans-lex-item. It constrains the case of its subj to be erg+nom. Also, it should be pointed out here that this verb can't take another additional complement (such as He told "me" that ...). Since these go BEFORE the verb in Marathi while the clausal complements go AFTER, it's a bit complicated, and we will tackle it in the "extras" of the next lab.
 
 embedded_clause_inviting_verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
   [ ARG-ST < synsem, #arg >,
@@ -199,25 +258,25 @@ mhann :=  emb-d-inviting_verb-lex &
     SYNSEM.LKEYS.KEYREL.PRED "_tell_v_rel" ].
 
 
-
-
-
 4. If the analysis is not (fully) working, a description of the problems you are encountering. 
-To the best of our knowledge, this analysis is working. 
 
+To the best of our knowledge, this analysis is working. As discussed above, questioning the embedded clause is not working. When we do it, it parses but actually questions the matrix clauses, which isn't grammatical in marathi (for kii clauses).
 
 
 Non-verbal predicates
 ------------------------------------------
 1. A descriptive statement of the facts of your language.
 
-Marathi has a copula "aahe (is) that allows for noun, adjective and adverb predicates. The unmarked word order is subject-complement-copula. 
+Marathi has a copula "as (be)" that allows for noun, adjective and adverb predicates. The unmarked word order is subject-complement-copula. It is slightly irregular, as the "to be" verb is cursed to be, and has varying forms. We illustrate our examples using "aahe" which is PRES-3.S.M form
 
-The nominative case is always used when the predicate is a noun or NP. The verb does not inflect for case in the same way other Marathi verbs do. 
+The nominative case is used on the subject and on the NP predicate. 
 
-Adjectival predicates occur as the complement of "aahe". A nominative noun is the subject. Depending on the adjective, it may agree in gender and pernum with the noun. 
+Adjectival predicates occur as the complement of "as". A nominative noun is the subject. Depending on the adjective, it has to (if it's of the inflectional type) agree in gender and pernum with the noun. 
 
-Adverbial predicates often cause more change in case agreement than adjectives and nouns. In the test suite example, the adverb used is "manda",or slowly. The subjects walk is slow, and the subject "has" the walk, and is therefore in the possessive case. This is a frequent phenomena. 
+Likewise, locational PPs are actually just nouns in the locative case. 
+
+2. Illustrative IGT examples from your testsuite.
+
 
 #149
 Source: {author}
@@ -230,17 +289,6 @@ that train.S.F old-S.F be-3.S.F
 That train is old
 (adjectival)
 
-#151
-Source: {author}
-Vetted: {t}
-Judgment: g
-Phenomena: {cop}
-tyaacii tsaal manda aahe
-tyaa-cii tsaal manda aa-he
-he-POSS.S.F gait slow be-3.S.F
-His gait is slow
-(adverbial)
-
 #148
 Source: {author}
 Vetted: {t}
@@ -252,24 +300,102 @@ he thief be-3.S.M
 He is (a) thief 
 (noun)
 
-2. Illustrative IGT examples from your testsuite.
-
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {cop}
+to bhaarataat aahe
+to bhaarat-aat aahe
+he india-LOC be.3.S.M
+He is in India
+(PP)
 
 
 3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
 
+We defined a super-type for copulas. 
+
+copula-verb-lex-supertype := non-mod-lex-item & 
+  [ SYNSEM.LOCAL.CAT [ HEAD verb,
+		       VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ]],
+    INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
+                VERB_GENDER_PERNUM-FLAG +] ].
+
+The copula that takes APs and PPs is subclassed from that super-type.
+
+copula-verb-lex := copula-verb-lex-supertype & trans-first-arg-raising-lex-item-2 &
+  [ SYNSEM.LOCAL [ CAT.VAL [ SUBJ < #subj >,
+                             COMPS < #comps >,
+                             SPR < >,
+                             SPEC < > ],
+                   CONT.HOOK.XARG #xarg ],
+    ARG-ST < #subj &
+             [ LOCAL [ CONT.HOOK.INDEX #xarg,
+                       CAT [ VAL [ SPR < >,
+                                   COMPS < > ],
+                             HEAD noun ] ] ],
+             #comps &
+             [ LOCAL.CAT [ VAL [ COMPS < > ],
+                           HEAD +jp ] ] > ].
+
+This subclasses the transitive verb lexeme and makes its inflection flags + so that the verb does not need to inflect. 
+
+copula-transitive-verb-lex := main-verb-lex & transitive-lex-item &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps >,
+    ARG-ST < [ LOCAL.CAT.HEAD noun ],
+             #comps &
+             [ LOCAL.CAT [ VAL [ SPR < >,
+                                 COMPS < > ],
+                           HEAD noun ] ] >,
+    INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
+                VERB_GENDER_PERNUM-FLAG + ] ].
+
+
+Constrains the SUBJ and COMPS to be nominative.
+
+noun-copula-verb-lex := copula-transitive-verb-lex & 
+  [ SYNSEM.LOCAL [CAT.VAL [COMPS.FIRST.LOCAL.CAT.HEAD.CASE nom,
+			  SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ]]].
+
+
+In order to make the PPs work, we wrote a non-branching non-headed rule that takes a locative NP and forms a PP over it.
+
+locative-pp-phrase := unary-phrase &
+  [ SYNSEM [LOCAL.CAT [ HEAD adp & [MOD <[SYNSEM.LOCAL.CAT.HEAD verb] >],
+		       VAL [ COMPS < >,
+			     SUBJ < >, 
+			     SPR < > ] ],
+	    LKEYS.KEYREL.PRED "_loc_p_rel" ],
+    
+    C-CONT [ HOOK [ LTOP #ltop,
+		    INDEX #index,
+		    XARG #xarg ],
+	     RELS <! arg12-ev-relation &
+		   [ PRED "_be_v_id_rel",
+		     LBL #ltop,
+		     ARG0 #index,
+		     ARG1 #xarg,
+		     ARG2 #dtr ] !>,
+	     HCONS <! !>  ],
+    ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD noun & [CASE loc],
+				  VAL.SPR < > ],
+			    CONT.HOOK [ INDEX #dtr ]]] > ].
+
 
 4. If the analysis is not (fully) working, a description of the problems you are encountering. 
-To the best of our knowledge, the analysis seems to be working as expected.
+
+The MRS for all the predicates are correct. But in case of the locative_pred (PPs), we can't get the grammar to generate. I imagine it is because there is no lexical entry that has this predication, but since the PP in this case isn't exactly formed from a lexical postposition but rather from a locative noun, I am not sure how to fix this.
+
+Also, we have only one entry for "to be" right now as a proof of concept. We will flesh out all the TENSE-PER-NUM-GEND combos soon.
 
 
 Anything else we fixed. 
 ------------------------
 
+Plenty of stuff, actually. Two major breakthroughs have been that the Ergative case system with its idiosyncratic verb agreement properties has now been sorted out and that determiner CASE agreement is sorted out.
 
-Test Corpus
-------------------------
-The corpus has 10 sentences right now, collected from a few Wikipedia pages. The English translations were confirmed with another native speaker. It is in the same format as the testsuite, complete with IGT.
+
+
 
 itsdb
 -----
