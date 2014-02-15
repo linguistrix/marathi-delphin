@@ -55,9 +55,9 @@
 55@{author}@@@1@wo,det,tam@tsor-aa te zhop-laa@@@@0@3@thief-PL.S.M.NOM those.3.P.M sleep-PST.3.S.Mthose thieves slept@antariksh bothale, andrew baer@january 22, 2014
 56@{author}@@@1@wo,det,tam@te tsor zhop-l-e@@@@1@3@those.PL.M thief.PL.M.NOM sleep-PST-3.P.Mthose thieves slept@antariksh bothale, andrew baer@january 22, 2014
 57@{author}@@@1@c,agr@mii kutraa polis-kadduun maagi-t-le@@@@0@4@i.1.S dog.3.S.M police-ABL  ask-PST-3.PL.MI asked the policeman for a dog@antariksh bothale, andrew baer@january 22, 2014
-58@{a:125}@@@1@wo@te itha aahet@@@@1@3@they here are.3.PLThey are here@antariksh bothale, andrew baer@january 22, 2014
-59@{author}@@@1@wo@te aahet itha@@@@0@3@they are.3.PL hereThey are here@antariksh bothale, andrew baer@january 22, 2014
-60@{author}@@@1@wo@itha te aahet@@@@0@3@here they are.3.PLThey are here@antariksh bothale, andrew baer@january 22, 2014
+58@{a:125}@@@1@wo@te itha aa-het@@@@1@3@they here are-3.PLThey are here@antariksh bothale, andrew baer@january 22, 2014
+59@{author}@@@1@wo@te aa-het itha@@@@0@3@they are-3.PL hereThey are here@antariksh bothale, andrew baer@january 22, 2014
+60@{author}@@@1@wo@itha te aa-het@@@@0@3@here they are-3.PLThey are here@antariksh bothale, andrew baer@january 22, 2014
 61@{author}@@@1@wo@to tsor ho-taa@@@@1@3@he thief.NOM was-3.S.M.he was a thief@antariksh bothale, andrew baer@january 22, 2014
 62@{author}@@@1@wo@ho-taa to tsor@@@@0@3@was-3.S.M he thief.NOMhe was a thief@antariksh bothale, andrew baer@january 22, 2014
 63@{author}@@@1@wo,agr@to tsor ho@@@@0@3@he thief.NOM washe was a thief@antariksh bothale, andrew baer@january 22, 2014
@@ -99,7 +99,7 @@
 99@{author}@@@1@tam,agr@tii zhop-l-ii@@@@1@2@she.NOM.R sleep-PAST-3.S.Mshe slept@antariksh bothale, andrew baer@january 22, 2014
 100@{author}@@@1@pn,agr@tumhii zhop-l-iis@@@@0@2@you.2.P sleep-PST-2.S.Fyou slept@antariksh bothale, andrew baer@january 22, 2014
 101@{author}@@@1@agr@te tsor-laa maar-t-o@@@@0@3@he.NOM.3.P thief-ACC beat-PRES-3.S.MThey beat the thief@antariksh bothale, andrew baer@january 22, 2014
-102@{author}@@@1@wo,pro-d@itha aahet@@@@1@2@here are.3.PLThey are here@antariksh bothale, andrew baer@january 22, 2014
+102@{author}@@@1@wo,pro-d@itha aa-het@@@@1@2@here are-3.PLThey are here@antariksh bothale, andrew baer@january 22, 2014
 103@{a:7}@@@1@adv,q@to kaal parat aa-l-aa kaa@@@@1@5@he yesterday back came-PST-3.S.M QDid he come back yesterday?@antariksh bothale, andrew baer@january 22, 2014
 104@{author}@@@1@q,wo@to kaal parat kaa aa-l-aa@@@@1@5@he yesterday back why came-PST-3.S.MWhy did he come back yesterday?@antariksh bothale, andrew baer@january 22, 2014
 105@{a:10}@@@1@q,wo@to aa-l-aa naahii kaa@@@@1@4@he came-PST-3.S.M NEG QDid he not come?@antariksh bothale, andrew baer@january 22, 2014
@@ -139,16 +139,16 @@
 139@{author}@@@1@adj@dzun-ii gaadii aa-l-ii@@@@1@3@old-S.F train.S.F come-PAST-3.S.F(The) old train came@antariksh bothale, andrew baer@january 22, 2014
 140@{author}@@@1@adj@dzun-aa gaadii aa-l-ii@@@@0@3@old-S.M train.S.F come-PAST-3.S.F(The) old train came@antariksh bothale, andrew baer@january 22, 2014
 141@{author}@@@1@emb-d@polis ravi-laa mhann-t-o kii to tsor-laa maar-t-o@@@@1@7@police Ravi-DAT say-PRES-3.S.M that he thief-ACC beat-PRES-3.S.M(The) police says to Ravi that he beats the thief@antariksh bothale, andrew baer@january 22, 2014
-142@{author}@@@1@emb-d@ravi miitaa-laa mhann-t-o kii tii dzun-ii gaadii aa-l-ii@@@@1@8@Ravi miitaa-DAT say-PRES-3.S.M that that old-3.S.F train come-PAST-3.S.FRavi says to Meeta that that old train came@antariksh bothale, andrew baer@january 22, 2014
+142@{author}@@@1@emb-d@ravi miitaa-laa mhann-t-e kii tii dzun-ii gaadii aa-l-ii@@@@1@8@Ravi miitaa-DAT say-PRES-3.S.F that that old-3.S.F train come-PAST-3.S.FRavi says to Meeta that that old train came@antariksh bothale, andrew baer@january 22, 2014
 143@{author}@@@1@emb-d@ravi miitaa-laa mhann-t-e tii dzun-ii gaadii aa-l-ii@@@@0@7@Ravi miitaa-DAT say-PRES-3.S.F that old-3.S.F train come-PAST-3.S.FRavi says to Meeta that that old train came@antariksh bothale, andrew baer@january 22, 2014
 144@{author}@@@1@emb-q@polis malaa vicaar-t-o kii mii zhop-t-o kaa@@@@1@7@police I.DAT ask-PRES-3.S.M that I sleep-PRES-1.S.M Q(The) police asks me if I sleep@antariksh bothale, andrew baer@january 22, 2014
 145@{author}@@@1@emb-q@to zhop-t-o kaa kii polis tsor-laa vicaar-t-o@@@@0@7@he sleep-PRES-3.S.M Q that police thief-DAT ask-PRES-3.S.M(The) police asks the thief if he sleeps@antariksh bothale, andrew baer@january 22, 2014
 146@{author}@@@1@emb-q@tuu zhop-t-o kaa asa polis malaa vicaar-t-o@@@@1@7@you sleep-PRES-2.S.M Q QUOT police I.DAT ask-PRES-3.S.M"Do you sleep?" the police asks me.@antariksh bothale, andrew baer@january 22, 2014
-147@{author}@@@1@cop@to tsor aahe@@@@1@3@he thief be.3.S.MHe is (a) thief@antariksh bothale, andrew baer@january 22, 2014
-148@{author}@@@1@cop@tii gaadii dzun-ii aahe@@@@1@4@that train.S.F old-S.F be.3.S.FThat train is old@antariksh bothale, andrew baer@january 22, 2014
-149@{author}@@@1@cop,wo@tii aahe dzun-ii gaadii@@@@0@4@that be.3.S.F old-S.F carThat car is old@antariksh bothale, andrew baer@january 22, 2014
-150@{author}@@@1@cop@tyaa-cii tsaal manda aahe@@@@1@4@he-POSS.S.F gait slow be.3.S.FHis gait is slow@antariksh bothale, andrew baer@january 22, 2014
-151@{author}@@@1@cop@tyaa-cii aahe tsaal manda@@@@0@4@he-POSS.S.F be.3.S.F gait slowHis gait is slow@antariksh bothale, andrew baer@january 22, 2014
+147@{author}@@@1@cop@to tsor aa-he@@@@1@3@he thief be-3.S.MHe is (a) thief@antariksh bothale, andrew baer@january 22, 2014
+148@{author}@@@1@cop@tii gaadii dzun-ii aa-he@@@@1@4@that train.S.F old-S.F be-3.S.FThat train is old@antariksh bothale, andrew baer@january 22, 2014
+149@{author}@@@1@cop,wo@tii aa-he dzun-ii gaadii@@@@0@4@that be-3.S.F old-S.F carThat car is old@antariksh bothale, andrew baer@january 22, 2014
+150@{author}@@@1@cop@tyaa-cii tsaal manda aa-he@@@@1@4@he-POSS.S.F gait slow be-3.S.FHis gait is slow@antariksh bothale, andrew baer@january 22, 2014
+151@{author}@@@1@cop@tyaa-cii aa-he tsaal manda@@@@0@4@he-POSS.S.F be-3.S.F gait slowHis gait is slow@antariksh bothale, andrew baer@january 22, 2014
 152@{author}@@@1@adv@lawkar to aa-l-aa@@@@0@3@Quickly he come-PAST-3.S.MHe came quickly@antariksh bothale, andrew baer@january 22, 2014
 153@{author}@@@1@adv@to lawkar aa-l-aa@@@@1@3@He early come-PAST-3.S.MHe came quickly@antariksh bothale, andrew baer@january 22, 2014
 154@{author}@@@1@adv@to aa-l-aa lawkar@@@@0@3@He come-PAST-3.S.M earlyHe came quickly@antariksh bothale, andrew baer@january 22, 2014
@@ -163,9 +163,3 @@
 163@{author}@@@1@adj,wo@gaadii laal ge-l-ii@@@@0@3@train red go-PAST-3.S.F(The) red train went@antariksh bothale, andrew baer@january 22, 2014
 164@{author}@@@1@adj,wo@laal tsor ge-l-aa@@@@1@3@red thief go-PAST-3.S.M(The) red thief went@antariksh bothale, andrew baer@january 22, 2014
 165@{author}@@@1@adj@tii tsor aaik-t-o@@@@0@3@that.S.F thief.M listen-PRES-3.S.MThat thief listens@antariksh bothale, andrew baer@january 22, 2014
-166@{author}@@@1@emb-d@polis mhann-t-o kii to tsor-laa maar-t-o@@@@1@6@police say-PRES-3.S.M that he thief-ACC beat-PRES-3.S.M(The) police says that he beats the thief@antariksh bothale, andrew baer@january 22, 2014
-167@{author}@@@1@emb-d,agr@ravi mhann-t-e kii tii dzun-ii gaadii aa-l-ii@@@@0@7@Ravi say-PRES-3.S.F that that old-3.S.F train come-PAST-3.S.FRavi says that that old train came@antariksh bothale, andrew baer@january 22, 2014
-168@{author}@@@1@emb-d@polis mhann-t-o kii tyaa tsor-ne ravi-laa khaa-l-a@@@@1@7@Police say-PRES-3.S.M COMP that.OBL thief-ERG ravi-ACC eat-PAST-3.S.NThe Police says that that thief ate Ravi@antariksh bothale, andrew baer@january 22, 2014
-169@{author}@@@1@emb-q@polis vicaar-t-o kii mii zhop-t-o kaa@@@@1@6@police ask-PRES-3.S.M that I sleep-PRES-1.S.M Q(The) police asks if I sleep@antariksh bothale, andrew baer@january 22, 2014
-170@{author}@@@1@emb-q@to zhop-t-o kaa kii polis vicaar-t-o@@@@0@6@he sleep-PRES-3.S.M Q that police ask-PRES-3.S.M(The) police asks the thief if he sleeps@antariksh bothale, andrew baer@january 22, 2014
-171@{author}@@@1@emb-q@tuu zhop-t-o kaa asa polis vicaar-t-o@@@@1@6@you sleep-PRES-2.S.M Q QUOT police ask-PRES-3.S.M"Do you sleep?" the police asks.@antariksh bothale, andrew baer@january 22, 2014
