@@ -64,14 +64,146 @@ Embedded clauses and questions.
 
 1. A descriptive statement of the facts of your language.
 
+Embedded clauses are marked by the complementizers "kii" and "asa" preceding the embedded clause. "kii" is used in both declarative and interrogative clauses. "asa" is used as a quotative marker, when the subordinate clause denotes the purpose or reason of the action in the matrix clause. 
+
+Both "asa" and "kii" only mark embedded clauses. However, "kii" appears as the head of a head-comp phrase and "asa" appears the complement of a comp-head phrase. 
+
+Certain verbs also frequently appear before embedded clauses. The verbs can either "invite" declarative or interrogative clauses. In our test suite, the declarative verb is "mhann" (to tell) and the interrogative verb is "vicar" (to ask). The complementizers appear immediately after the final verb of the main clause. 
+
 2. Illustrative IGT examples from your testsuite.
+
+#147
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-q}
+tuu zhopto kaa asa polis malaa vicaarto 
+tuu zhop-t-o kaa asa polis malaa vicaar-t-o
+you sleep-PRES-2.S.M Q QUOT police I.DAT ask-PRES-3.S.M
+"Do you sleep?" the police asks me.
+
+#145
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-q}
+polis malaa vicaarto kii mii zhopto kaa
+polis malaa vicaar-t-o kii mii zhop-t-o kaa
+police I.DAT ask-PRES-3.S.M that I sleep-PRES-1.S.M Q
+(The) police asks me if I sleep
+
+#145
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-q}
+polis malaa vicaarto kii mii zhopto kaa
+polis malaa vicaar-t-o kii mii zhop-t-o kaa
+police I.DAT ask-PRES-3.S.M that I sleep-PRES-1.S.M Q
+(The) police asks me if I sleep
+
+#143
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-d}
+ravi miitaalaa mhannte kii tii dzunii gaadii aalii
+ravi miitaa-laa mhann-t-o kii tii dzun-ii gaadii aa-l-ii
+Ravi miitaa-DAT say-PRES-3.S.M that that old-3.S.F train come-PAST-3.S.F
+Ravi says to Meeta that that old train came
+
+#144
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {emb-d}
+ravi miitaalaa mhannte tii dzunii gaadii aalii
+ravi miitaa-laa mhann-t-e tii dzun-ii gaadii aa-l-ii
+Ravi miitaa-DAT say-PRES-3.S.F that old-3.S.F train come-PAST-3.S.F
+Ravi says to Meeta that that old train came
+
+The final example is ungrammatical because the complementizer fails to appear following the final verb of the main clause. We added the feature INIT on HEAD to constrain whether or not a complementizer can appear before the head of the phrase. 
 
 
 3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
 
+We created a type complementizer-lex-item that inherits from raise-sem-lex-item and basic-one-arg. It identifies the sole item on its ARG-ST list with its COMPS. It is otherwise underspecified for all its VAL features. 
+
+complementizer-lex-item := raise-sem-lex-item & basic-one-arg &
+  [ SYNSEM.LOCAL.CAT [ HEAD comp &
+                            [ MOD < > ],
+                       VAL [ SPR < >,
+                             SUBJ < >,
+                             COMPS < #comp > ]],
+    ARG-ST < #comp &
+             [ LOCAL.CAT [ HEAD verb,
+                           VAL [ SUBJ < >,
+                                 COMPS < > ] ] ] > ].
+
+
+We introduced the feature MC+/- to constrain the marking of embedded clauses. Because complementizers in Marathi always mark embedded clauses, they are both marked as MC-. The feature INIT+/- was introduced to constrain complementizers as occuring as the head of a head-complement phrase (+) or as complements in a comp-head phrase (-). "kii" appears as the head of a head-comp phrase and "asa" appears as the complement in a comp-head phrase. 
+
+comp-head-phrase := basic-head-1st-comp-phrase & head-final &
+  [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.INIT -,
+    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD +nvjrcdmo ].
+
+head-comp-phrase := basic-head-1st-comp-phrase & head-initial & 
+  [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.INIT +,
+    NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD +vc ].
+
+init_plus_complementizer-lex-item := mc_minus_complementizer-lex-item &
+  [ SYNSEM.LOCAL.CAT.HEAD.INIT +].
+init_minus_complementizer-lex-item := mc_minus_complementizer-lex-item &
+  [ SYNSEM.LOCAL.CAT.HEAD.INIT -].
+
+kii := init_plus_complementizer-lex-item & 
+  [ STEM < "kii" > ].
+
+asa := init_minus_complementizer-lex-item & 
+  [ STEM < "asa" > ].
+
+The question particle "kaa", treated as a complementizer in our grammar, is marked as INIT- because it occurs as the complement of a comp-head phrase. 
+
+qpart-lex-item := mc_plus_complementizer-lex-item &
+  [ SYNSEM.LOCAL [ CONT.HOOK.INDEX.SF ques,
+                   CAT [VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite,
+			HEAD.INIT -]] ]. 
+
+We introduced a new verb type, embedded_clause_inviting_verb-lex, for the verbs that take embedded clauses as complements. It specifies the one item on its COMPS list as an element that is HEAD comp and MC-. It inherits from main-verb-lex and clausal-second-arg-trans-lex-item. It constrains the case of its subj to be erg+nom.
+
+embedded_clause_inviting_verb-lex := main-verb-lex & clausal-second-arg-trans-lex-item &
+  [ ARG-ST < synsem, #arg >,
+    SYNSEM.LOCAL.CAT.VAL [ SPR < >,
+			   COMPS < #arg & 
+				   [ LOCAL [ CAT [ HEAD comp,
+						   VAL [ SPR < >,
+							 COMPS < > ],
+						   MC -],
+					     CONT.HOOK.INDEX.SF prop-or-ques]] >,
+			   SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg+nom ]].
+
+Two subtypes of embedded_clause_inviting_verb-lex were introduced, constrained by the feature SF to be prop or ques. Verbs that inherit from emb-d-inviting_verb-lex take embedded declaratives as complements. Verbs that inherit from emb-q-inviting_verb-lex take embedded questions as complements. 
+
+emb-d-inviting_verb-lex := embedded_clause_inviting_verb-lex & 
+  [SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CONT.HOOK.INDEX.SF prop] > ].
+			
+emb-q-inviting_verb-lex := embedded_clause_inviting_verb-lex & 
+  [SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CONT.HOOK.INDEX.SF ques] > ].
+
+vicaar := emb-q-inviting_verb-lex &
+  [ STEM < "vicaar" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
+
+mhann :=  emb-d-inviting_verb-lex & 
+  [ STEM < "mhann" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_tell_v_rel" ].
+
+
+
+
 
 4. If the analysis is not (fully) working, a description of the problems you are encountering. 
-
+To the best of our knowledge, this analysis is working. 
 
 
 
@@ -79,7 +211,49 @@ Non-verbal predicates
 ------------------------------------------
 1. A descriptive statement of the facts of your language.
 
+Marathi has a copula "aahe (is) that allows for noun, adjective and adverb predicates. The unmarked word order is subject-complement-copula. 
+
+The nominative case is always used when the predicate is a noun or NP. The verb does not inflect for case in the same way other Marathi verbs do. 
+
+Adjectival predicates occur as the complement of "aahe". A nominative noun is the subject. Depending on the adjective, it may agree in gender and pernum with the noun. 
+
+Adverbial predicates often cause more change in case agreement than adjectives and nouns. In the test suite example, the adverb used is "manda",or slowly. The subjects walk is slow, and the subject "has" the walk, and is therefore in the possessive case. This is a frequent phenomena. 
+
+#149
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {cop}
+tii gaadii dzunii aahe
+tii gaadii dzun-ii aa-he
+that train.S.F old-S.F be-3.S.F
+That train is old
+(adjectival)
+
+#151
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {cop}
+tyaacii tsaal manda aahe
+tyaa-cii tsaal manda aa-he
+he-POSS.S.F gait slow be-3.S.F
+His gait is slow
+(adverbial)
+
+#148
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {cop}
+to tsor aahe
+to tsor aa-he
+he thief be-3.S.M
+He is (a) thief 
+(noun)
+
 2. Illustrative IGT examples from your testsuite.
+
 
 
 3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
