@@ -28,4 +28,16 @@ copula-verb_gr := arg0e_gtr &
 
 copula-verb_gr := arg0e_gtr &
 [ CONTEXT [ RELS <! [ PRED "~.*_a_"] !> ],
-  FLAGS.TRIGGER "aahe_nc" ].
+  FLAGS.TRIGGER "aahet_nc" ].
+
+copula-verb_gr := arg0e_gtr &
+[ CONTEXT [ RELS <! [ PRED "~.*_a_"] !> ],
+  FLAGS.TRIGGER "asto_nc" ].
+
+copula-verb_gr := arg0e_gtr &
+[ CONTEXT [ RELS <! [ PRED "~.*_a_"] !> ],
+  FLAGS.TRIGGER "hotaa_nc" ].
+
+copula-verb_gr := arg0e_gtr &
+[ CONTEXT [ RELS <! [ PRED "~.*_a_"] !> ],
+  FLAGS.TRIGGER "hote_nc" ].

@@ -55,21 +55,21 @@ past_lexical_rule-suffix :=
 %suffix (* -l)
 past_lexical_rule-lex-rule.
 
-future_lexical_rule-suffix1 :=
-%suffix (* -l)
-future_lexical_rule-lex-rule.
+;future_lexical_rule-suffix1 :=
+;%suffix (* -l)
+;future_lexical_rule-lex-rule.
 
-future_lexical_rule-suffix2 :=
-%suffix (* -n)
-future_lexical_rule-lex-rule.
+;future_lexical_rule-suffix2 :=
+;%suffix (* -n)
+;future_lexical_rule-lex-rule.
 
-perfective_lexical_rule-suffix :=
-%suffix (* -l)
-perfective_lexical_rule-lex-rule.
+;perfective_lexical_rule-suffix :=
+;%suffix (* -l)
+;perfective_lexical_rule-lex-rule.
 
-imperfective_lexical_rule-suffix :=
-%suffix (* -t)
-imperfective_lexical_rule-lex-rule.
+;imperfective_lexical_rule-suffix :=
+;%suffix (* -t)
+;imperfective_lexical_rule-lex-rule.
 
 infinitive_lexical_rule-suffix :=
 %suffix (* -nna)
@@ -207,18 +207,6 @@ erg_plpast_neuter_lexical_rule-lex-rule.
 %suffix (* -tiil)
 3pl_future_lexical_rule-lex-rule.
 
-non3sg_lexical_rule-suffix :=
-%suffix (* -het)
-non3sg_lexical_rule-lex-rule.
-
-to_be_3sg_lexical_rule-suffix :=
-%suffix (* -he)
-to_be_3sg_lexical_rule-lex-rule.
-
-tobecome_3sg_lexical_rule-suffix :=
-%suffix (* -taa)
-tobecome_3sg_lexical_rule-lex-rule.
-
 give_d_present_lexical_rule-suffix :=
 %suffix (* -il)
 give_d_present_lexical_rule-lex-rule.
@@ -250,3 +238,11 @@ neut_sg_adj_lexical_rule-lex-rule.
 neut_pl_adj_lexical_rule-lex-rule-suffix :=
 %suffix (* -ii)
 neut_pl_adj_lexical_rule-lex-rule.
+
+able-perm_lexical_rule-lex-rule-rule-suffix :=
+%suffix (* -uu)
+able-perm_lexical_rule-lex-rule.
+
+pres-neg-form_lexical_rule-lex-rule-suffix :=
+%suffix (* -at)
+pres-neg-form_lexical_rule-lex-rule.

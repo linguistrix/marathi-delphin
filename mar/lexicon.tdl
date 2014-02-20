@@ -5,6 +5,10 @@ mii := 1st_pronoun_lexeme-noun-lex &
   [ STEM < "mii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
+malaa := 1st_acc_dat_pronoun_lexeme-noun-lex &
+  [ STEM < "malaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
 aamhii := 1pl_pronoun_lexeme-noun-lex &
   [ STEM < "aamhii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
@@ -105,6 +109,13 @@ mulgaa := malenounsg_anim_noun-lex &
   [ STEM < "mulgaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
 
+pramukh := malenounsg_anim_noun-lex &
+  [ STEM < "pramukh" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_chief_n_rel" ].
+
+polisaayukt := malenounsg_anim_noun-lex &
+  [ STEM < "polisaayukt" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_policechief_n_rel" ].
 
 tsaal := femnounsg_inam_noun-lex &
   [ STEM < "tsaal" >,
@@ -117,6 +128,8 @@ gaadii := femnounsg_inam_noun-lex &
 maashii := femnounsg_anim_noun-lex &
   [ STEM < "maashii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_housefly_n_rel" ].
+
+
 
 baatmii := femnounsg_inam_noun-lex &
   [ STEM < "baatmii" >,
@@ -134,9 +147,17 @@ dukhkha := neutersg_inam_noun-lex &
   [ STEM < "dukhkha" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sadness_n_rel" ].
 
+mumbaipolis := neutersg_inam_noun-lex & 
+  [ STEM < "mumbaipolis" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_mumbaipolice_n_rel" ].
+
 kaam := neutersg_inam_noun-lex &
   [ STEM < "kaam" >,
     SYNSEM.LKEYS.KEYREL.PRED "_work_n_rel" ].
+
+kaats := neutersg_inam_noun-lex &
+  [ STEM < "kaats" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_glass_n_rel" ].
 
 dzhaadd := neutersg_inam_noun-lex &
   [ STEM < "dzhaadd" >,
@@ -157,11 +178,16 @@ maar := dat_arg_trans_verb_lxm-verb-lex &
   [ STEM < "maar" >,
     SYNSEM.LKEYS.KEYREL.PRED "_beat_v_rel" ].
 
+laag := dat_arg_trans_verb_lxm-verb-lex &
+  [ STEM < "laag" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hurt_v_rel" ].
+
+
 maag := trans_verb_lxm-verb-lex &
   [ STEM < "maag" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
 
-khaa := trans_verb_lxm-verb-lex &
+khaa := acc_arg_trans_verb_lxm-verb-lex &
   [ STEM < "khaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
 
@@ -204,13 +230,13 @@ mhann :=  emb-d-inviting_verb-lex &
 
 ;;; Auxiliaries
 
-naahii := sg_neg-aux-lex &
+naahii := neg-aux-lex &
   [ STEM < "naahii" >,
     SYNSEM.LKEYS.KEYREL.PRED "neg_rel"].
 
-naahiit := pl_neg-aux-lex &
-  [ STEM < "naahiit" >,
-    SYNSEM.LKEYS.KEYREL.PRED "neg_rel"].
+;naahiit := pl_neg-aux-lex &
+;  [ STEM < "naahiit" >,
+;    SYNSEM.LKEYS.KEYREL.PRED "neg_rel"].
 
 ;;;aa_2 := tobe_aux_verb_lexeme-aux-lex &
 ;;;  [ STEM < "aa" >,
@@ -220,21 +246,49 @@ naahiit := pl_neg-aux-lex &
 ;;;  [ STEM < "ho" >,
 ;;;    SYNSEM.LKEYS.KEYREL.PRED "_tobecome_v_rel" ].
 
+shak := ability-permission-verb-lex &
+  [ STEM < "shak" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_can_v_rel"].
 
-aahe := 3sm_noun-copula-verb-lex &
+de := ability-permission-verb-lex &
+  [ STEM < "de" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_let_v_rel"].
+
+aahe := 3sm_present_noun-copula-verb-lex &
   [ STEM < "aahe" >,
     SYNSEM.LKEYS.KEYREL.PRED "_be_v_id_rel" ].
 
-aahe_nc := 3sm_copula-verb-lex &
+aahe_nc := 3sm_present_copula-verb-lex &
   [ STEM < "aahe" > ].
 
-aahet := 3sp_noun-copula-verb-lex &
+asto := 3sm_present_noun-copula-verb-lex &
+  [ STEM < "asto" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_be(habit)_v_id_rel" ].
+
+asto_nc := 3sm_present_copula-verb-lex &
+  [ STEM < "asto" > ].
+
+
+aahet := 3pm_present_noun-copula-verb-lex &
   [ STEM < "aahet" >,
     SYNSEM.LKEYS.KEYREL.PRED "_be_v_id_rel" ].
 
-aahet_nc := 3sp_copula-verb-lex &
+aahet_nc := 3pm_present_copula-verb-lex &
   [ STEM < "aahet" > ].
 
+hotaa := 3sm_past_noun-copula-verb-lex &
+  [ STEM < "hotaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_be_v_id_rel" ].
+
+hotaa_nc := 3sm_past_copula-verb-lex &
+  [ STEM < "hotaa" > ].
+
+hote := 3pm_past_noun-copula-verb-lex &
+  [ STEM < "hote" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_be_v_id_rel" ].
+
+hote_nc := 3pm_past_copula-verb-lex &
+  [ STEM < "hote" > ].
 
 ;;; Determiners
 

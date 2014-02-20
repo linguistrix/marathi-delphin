@@ -1,6 +1,12 @@
 ;;; -*- Mode: TDL; Coding: utf-8 -*-
 nom_lexical_rule-lex := nom_lexical_rule-lex-rule.
 
+acc_dat_pronoun_lexical_rule-lex := acc_dat_pronoun_lexical_rule-lex-rule.
+
 inanim_acc_lexical_rule-lex := inanim_acc_lexical_rule-lex-rule.
 
 1plpresent_lexical_rule-lex := 1plpresent_lexical_rule-lex-rule.
+
+nonfinite_verb_gender_pernum-lex := nonfinite_verb_gender_pernum-lex-rule-super.
+
+future_lexical_rule-lex := future_lexical_rule-lex-rule.
