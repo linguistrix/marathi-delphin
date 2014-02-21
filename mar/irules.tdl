@@ -27,17 +27,29 @@ abl_lexical_rule-suffix2 :=
 %suffix (* -kadduun)
 abl_lexical_rule-lex-rule.
 
-poss_m_lexical_rule-suffix :=
+poss_m_sg_lexical_rule-suffix :=
 %suffix (* -tsaa)
-poss_m_lexical_rule-lex-rule.
+poss_m_sg_lexical_rule-lex-rule.
 
-poss_f_lexical_rule-suffix :=
+poss_f_sg_lexical_rule-suffix :=
 %suffix (* -cii)
-poss_f_lexical_rule-lex-rule.
+poss_f_sg_lexical_rule-lex-rule.
 
-poss_n_lexical_rule-suffix :=
+poss_n_sg_lexical_rule-suffix :=
 %suffix (* -tse)
-poss_n_lexical_rule-lex-rule.
+poss_n_sg_lexical_rule-lex-rule.
+
+poss_m_pl_lexical_rule-suffix :=
+%suffix (* -ce)
+poss_m_pl_lexical_rule-lex-rule.
+
+poss_f_pl_lexical_rule-suffix :=
+%suffix (* -cii)
+poss_f_pl_lexical_rule-lex-rule.
+
+poss_n_pl_lexical_rule-suffix :=
+%suffix (* -cii)
+poss_n_pl_lexical_rule-lex-rule.
 
 voc_lexical_rule-suffix :=
 %suffix (* -aa)

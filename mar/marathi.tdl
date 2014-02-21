@@ -19,7 +19,8 @@ non-mod-lex-item := lex-item &
 ;;; Matrix Type Addenda
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
-noun :+ [ CASE case ].
+noun :+ [ CASE case, 
+	  POSS-PNG png ].
 
 head :+ [ AUX bool,
 	  FORM form,
@@ -200,9 +201,12 @@ possessive-det-phrase := unary-phrase &
 			 VAL [COMPS < >,
 			      SUBJ < >,
 			      SPEC [ FIRST [ LOCAL [CAT [ HEAD noun ],
-						    CONT.HOOK [ INDEX #possessee & [COG-ST uniq-or-more ], LTOP #larg ]]]]]]]],
+						    CONT.HOOK [ INDEX #possessee &
+								      [ COG-ST uniq-or-more, 
+									PNG #posspng ],
+								LTOP #larg ]]]]]]]],
 
-    ARGS  < [ SYNSEM.LOCAL [ CAT [ HEAD noun & [CASE pos],
+    ARGS  < [ SYNSEM.LOCAL [ CAT [ HEAD noun & [CASE pos, POSS-PNG #posspng ],
 				   VAL.SPR < > ],
 			     CONT [ HOOK [ INDEX #possessor ]]]] >,
     C-CONT [ HOOK [ LTOP #larg,
@@ -787,15 +791,35 @@ dat_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
 abl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE abl ].
 
-poss_m_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
-  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos ].
-;    SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3sg].
+poss_m_sg_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND M, 
+				     PERNUM sg ] ].
 
-poss_f_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
-  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos ].
+poss_f_sg_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND F, 
+				     PERNUM sg ] ].
 
-poss_n_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
-  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos ].
+poss_n_sg_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND N, 
+				     PERNUM sg ] ].
+
+
+poss_m_pl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND M, 
+				     PERNUM pl ] ].
+
+poss_f_pl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND F, 
+				     PERNUM pl ] ].
+poss_n_pl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND N, 
+				     PERNUM pl ] ].
 
 loc_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE loc ].
