@@ -37,6 +37,7 @@ inflected :+ [
     FUTURE_LEXICAL_RULE-FLAG luk,
     PAST_LEXICAL_RULE-FLAG luk,
     PLURAL-OBLIQUE-FLAG luk,
+    FORM-FLAG luk,
     CASE-FLAG luk,
     TOBE_AUX_INFLECTION-FLAG luk ].
 
@@ -50,6 +51,7 @@ infl-satisfied :+ [
     FUTURE_LEXICAL_RULE-FLAG na-or-+,
     PAST_LEXICAL_RULE-FLAG na-or-+,
     PLURAL-OBLIQUE-FLAG na-or-+,
+    FORM-FLAG na-or-+,
     CASE-FLAG na-or-+,
     TOBE_AUX_INFLECTION-FLAG na-or-+ ].
 
@@ -80,9 +82,11 @@ voc := non-nom.  ; voc
 erg := non-nom & erg+nom.
 nom+acc+dat := case.
 acc+dat := nom+acc+dat.
-nom := nom+acc+dat & erg+nom.
-acc := non-nom & acc+dat.
-dat := non-nom & acc+dat.
+nom+acc := nom+acc+dat.
+nom+dat := nom+acc+dat.
+nom := erg+nom & nom+dat & nom+acc.
+acc := non-nom & acc+dat & nom+acc.
+dat := non-nom & acc+dat & nom+dat.
 
 ;;; Pernum
 
@@ -172,10 +176,13 @@ no-spr-noun-lex := noun-lex &
 head-spec-phrase := basic-head-spec-phrase & head-final &
   [ NON-HEAD-DTR.SYNSEM.OPT - ].
 
+jr-adj-head-int-phrase := adj-head-int-phrase & 
+  [ NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD +jr ].
 
 locative-pp-phrase := unary-phrase &
-  [ SYNSEM [LOCAL.CAT [ HEAD adp & [MOD <[ LOCAL.CAT [HEAD verb, 
-						      VAL.SUBJ cons ]] >],
+  [ SYNSEM [LOCAL.CAT [ HEAD adp & [MOD < [ LOCAL.CAT [HEAD verb, 
+						      VAL.SUBJ cons ],
+					    LOCAL.CONT.HOOK.INDEX #index ] >],
 			POSTHEAD -,
 			VAL [ COMPS < >,
 			      SUBJ < >, 
@@ -350,15 +357,17 @@ verb-lex := non-mod-lex-item &
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg+nom, 
     INFLECTED [ PAST_LEXICAL_RULE-FLAG na-or--,
                 PRESENT_LEXICAL_RULE-FLAG na-or--,
-                FUTURE_LEXICAL_RULE-FLAG na-or-- ] ].
+                FUTURE_LEXICAL_RULE-FLAG na-or--] ].
 
 preinflected-verb-super-type := word-or-lexrule & 
   [ INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
-                VERB_GENDER_PERNUM-FLAG + ]  ].
+                VERB_GENDER_PERNUM-FLAG +,
+		FORM-FLAG +  ]  ].
 
 tobeinflected-verb-super-type := word-or-lexrule & 
   [ INFLECTED [ VERB_TENSE_ASPECT-FLAG -,
-                VERB_GENDER_PERNUM-FLAG - ]  ].
+                VERB_GENDER_PERNUM-FLAG -,
+		FORM-FLAG -  ]  ].
 
 non-copula-main-verb-lex := verb-lex & tobeinflected-verb-super-type & basic-verb-lex &
   [ SYNSEM.LOCAL [ CAT [ HEAD.AUX -,
@@ -420,10 +429,10 @@ trans_verb_lxm-verb-lex := transitive-verb-lex &
                            COMPS.FIRST.LOCAL.CAT.HEAD.CASE nom+acc+dat ] ].
 
 dat_arg_trans_verb_lxm-verb-lex := trans_verb_lxm-verb-lex & 
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.CASE dat ].
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.CASE nom+dat ].
 
 acc_arg_trans_verb_lxm-verb-lex := trans_verb_lxm-verb-lex & 
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.CASE acc ].
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.CASE nom+acc ].
 
 
 intrans_verb_lxm-verb-lex := intransitive-verb-lex &
@@ -667,7 +676,7 @@ complementizer-lex-item := raise-sem-lex-item & basic-one-arg &
                              SUBJ < >,
                              COMPS < #comp > ]],
     ARG-ST < #comp &
-             [ LOCAL.CAT [ HEAD verb,
+             [ LOCAL.CAT [ HEAD verb & [ FORM finite ],
                            VAL [ SUBJ < >,
                                  COMPS < > ] ] ] > ].
 
@@ -728,7 +737,7 @@ Case-lex-rule-super := add-only-no-ccont-rule &
                       PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
                       TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ] ] ].
 
-case-lex-rule-dtr := word-or-lexrule.
+case-lex-rule-dtr := lex-item.
 
 plural-oblique-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ PLURAL-OBLIQUE-FLAG +,
@@ -744,7 +753,7 @@ plural-oblique-lex-rule-super := add-only-no-ccont-rule &
     DTR noun-lex &
         [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
 		      CASE-FLAG #case_flag,
-		      PLURAL-OBLIQUE-FLAG -,
+;		      PLURAL-OBLIQUE-FLAG -,
                       PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
                       VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                       VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
@@ -836,18 +845,20 @@ verb_tense_aspect-lex-rule-super := Add-only-no-ccont-rule & verb_gender_pernum-
                 TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
                 VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
                 TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+;		FORM-FLAG #formflag,
                 CASE-FLAG #case ],
     DTR tobeinflected-verb-super-type &
         [ INFLECTED [ IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
                       TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
                       VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
                       TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+;		      FORM-FLAG #formflag,
                       CASE-FLAG #case ] ] ].
 
-present_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &  infl-lex-rule &
+present_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super & infl-lex-rule &
   [ INFLECTED [ PRESENT_LEXICAL_RULE-FLAG +,
                 FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
-                PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule],
     DTR.INFLECTED [ FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
                     PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE present,
@@ -860,8 +871,8 @@ past_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &  infl-lex-rule 
                 FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
     DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
                     FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
-    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE past].
-  ;  SYNSEM.LOCAL.CAT.HEAD.FORM finiteneg ].
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE past ].
+;    SYNSEM.LOCAL.CAT.HEAD.FORM finite ].
 
 future_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super & const-lex-rule & 
   [ INFLECTED [ FUTURE_LEXICAL_RULE-FLAG +,
@@ -869,8 +880,8 @@ future_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super & const-lex-rul
                 PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
     DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
                     PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
-    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE future].
- ;   SYNSEM.LOCAL.CAT.HEAD.FORM finiteneg ].
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE future ].
+;    SYNSEM.LOCAL.CAT.HEAD.FORM finite ].
 
 ;perfective_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
 ;  [ INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
@@ -890,34 +901,62 @@ future_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super & const-lex-rul
 ;                   FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
 ;    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.ASPECT imperfective ].
 
-infinitive_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &  infl-lex-rule &
-  [ INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
-                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
-                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
-    DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
-                    PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
-                    FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
-    SYNSEM.LOCAL.CAT.HEAD.FORM infinitive ].
 
-able-perm_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &  infl-lex-rule &
-  [ INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
-                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
-                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
-    DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
-                    PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
-                    FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
-    SYNSEM.LOCAL.CAT.HEAD.FORM able-perm ].
+nonfinite_verb_tense_aspect-lex-rule-super := Add-only-no-ccont-rule & 
+  [ SYNSEM.LOCAL.CAT [ HEAD.FORM nonfinite, VAL.COMPS.FIRST.LOCAL.CAT.HEAD.CASE acc+dat ],
+    INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                VERB_GENDER_PERNUM-FLAG +,
+		FORM-FLAG +,
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                CASE-FLAG #case ],
+    DTR tobeinflected-verb-super-type &
+        [ INFLECTED [ IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+;                      VERB_GENDER_PERNUM-FLAG -,
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                      CASE-FLAG #case ] ] ].
 
-pres-neg-form_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super & infl-lex-rule &
-  [ INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
-                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
-                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
-    DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
-                    PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
-                    FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule  ],
-    DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE present,
-    SYNSEM.LOCAL.CAT [HEAD.FORM neg-form,
-		      VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ]].
+
+infinitive_lexical_rule-lex-rule := nonfinite_verb_tense_aspect-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.FORM infinitive ].
+
+able-perm_lexical_rule-lex-rule := nonfinite_verb_tense_aspect-lex-rule-super &  infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.FORM able-perm ].
+
+pres-neg-form_lexical_rule-lex-rule := nonfinite_verb_tense_aspect-lex-rule-super & infl-lex-rule &
+  [ DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE present,
+    SYNSEM.LOCAL.CAT [ HEAD.FORM neg-form,
+		       VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ]].
+
+past-neg-form_lexical_rule-lex-rule := Add-only-no-ccont-rule & const-lex-rule &
+  [ DTR word-or-lexrule & 
+	[ INFLECTED [ VERB_GENDER_PERNUM-FLAG +,
+		      VERB_TENSE_ASPECT-FLAG +,
+		      FORM-FLAG - ] , 
+	  SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE past],
+    SYNSEM.LOCAL.CAT [ HEAD.FORM neg-form,
+		       VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg+nom ],
+    INFLECTED.FORM-FLAG + ].
+
+future-neg-form_lexical_rule-lex-rule := Add-only-no-ccont-rule & const-lex-rule &
+   [ DTR word-or-lexrule & 
+	 [ INFLECTED [ VERB_GENDER_PERNUM-FLAG +,
+		       VERB_TENSE_ASPECT-FLAG +,
+		       FORM-FLAG - ], 
+	   SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE future],
+     SYNSEM.LOCAL.CAT [ HEAD.FORM neg-form,
+			VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ],
+    INFLECTED.FORM-FLAG + ].
+
+finiteness_lexical_rule-lex-rule :=  add-only-no-ccont-rule & const-lex-rule &
+  [ DTR word-or-lexrule & [ SYNSEM.LOCAL.CAT.HEAD verb & [ FORM finite ],
+			    INFLECTED [ FORM-FLAG -,
+					 VERB_TENSE_ASPECT-FLAG +,
+					 VERB_GENDER_PERNUM-FLAG + ]],
+    INFLECTED.FORM-FLAG + ].
+
 
 verb_gender_pernum-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED [ VERB_GENDER_PERNUM-FLAG +,
@@ -928,6 +967,7 @@ verb_gender_pernum-lex-rule-super := add-only-no-ccont-rule &
                 PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
                 FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
                 CASE-FLAG #case,
+		FORM-FLAG #formflag,
                 IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ],
     DTR verb_gender_pernum-rule-dtr &
         [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
@@ -937,30 +977,8 @@ verb_gender_pernum-lex-rule-super := add-only-no-ccont-rule &
                       PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
                       FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
                       CASE-FLAG #case,
+		      FORM-FLAG - & #formflag,
                       IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ] ] ].
-
-nonfinite_verb_gender_pernum-lex-rule-super := add-only-no-ccont-rule & const-lex-rule
-  [ INFLECTED [ VERB_GENDER_PERNUM-FLAG +,
-                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
-                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
-                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
-                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
-                CASE-FLAG #case,
-                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ],
-    SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.CASE acc+dat,
-    DTR verb_gender_pernum-rule-dtr &
-        [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
-                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
-                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
-                      PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
-                      FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
-                      CASE-FLAG #case,
-                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense ],
-	  SYNSEM.LOCAL.CAT.HEAD.FORM nonfinite ]].
-
 
 past_intrans_verb-lex-rule-super := verb_gender_pernum-lex-rule-super & 
   [ DTR.SYNSEM.LOCAL.CAT.VAL.COMPS < > ].
@@ -1392,6 +1410,7 @@ adverb-lex := basic-adverb-lex & intersective-mod-lex &
 adjective_gender_num-lex-rule-super := add-only-no-ccont-rule &
   [ INFLECTED.ADJECTIVE_INFLECTION-FLAG + ,
     DTR infl-adjective-lex & [ INFLECTED.ADJECTIVE_INFLECTION-FLAG -]] .  	     
+
 
 masc_sg_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
   [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND M, 

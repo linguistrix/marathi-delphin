@@ -5,8 +5,14 @@ acc_dat_pronoun_lexical_rule-lex := acc_dat_pronoun_lexical_rule-lex-rule.
 
 inanim_acc_lexical_rule-lex := inanim_acc_lexical_rule-lex-rule.
 
-nonfinite_verb_gender_pernum-lex := nonfinite_verb_gender_pernum-lex-rule-super.
+;nonfinite_verb_gender_pernum-lex := nonfinite_verb_gender_pernum-lex-rule-super.
 
 future_lexical_rule-lex := future_lexical_rule-lex-rule.
 
 sgnoun-plural-oblique-lex := sgnoun-plural-oblique-lex-rule.
+
+future-neg-form_lexical_rule-lex := future-neg-form_lexical_rule-lex-rule.
+
+past-neg-form_lexical_rule-lex := past-neg-form_lexical_rule-lex-rule.
+
+finiteness_lexical_rule-lex := finiteness_lexical_rule-lex-rule.

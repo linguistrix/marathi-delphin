@@ -101,8 +101,8 @@ baadzaar := malenounsg_inam_noun-lex &
   [ STEM < "baadzaar" >,
     SYNSEM.LKEYS.KEYREL.PRED "_market_n_rel" ].
 
-ghaar := malenounsg_anim_noun-lex &
-  [ STEM < "ghaar" >,
+ghar := malenounsg_anim_noun-lex &
+  [ STEM < "ghar" >,
     SYNSEM.LKEYS.KEYREL.PRED "_home_n_rel" ].
 
 mulgaa := malenounsg_anim_noun-lex &
@@ -120,6 +120,10 @@ polisaayukt := malenounsg_anim_noun-lex &
 tsaal := femnounsg_inam_noun-lex &
   [ STEM < "tsaal" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gait_n_rel" ].
+
+kampani := femnounsg_inam_noun-lex &
+  [ STEM < "kampani" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_company_n_rel" ].
 
 gaadii := femnounsg_inam_noun-lex &
   [ STEM < "gaadii" >,
@@ -143,6 +147,12 @@ Miitaa := female_proper_noun_lexeme-noun-lex &
   [ STEM < "Miitaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_miitaa_n_rel" ].
 
+
+mumbai := female_proper_noun_lexeme-noun-lex &
+  [ STEM < "mumbai" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_Mumbai_n_rel" ].
+
+
 dukhkha := neutersg_inam_noun-lex &
   [ STEM < "dukhkha" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sadness_n_rel" ].
@@ -150,6 +160,11 @@ dukhkha := neutersg_inam_noun-lex &
 mumbaipolis := neuterpl_inam_noun-lex & 
   [ STEM < "mumbaipolis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_mumbaipolice_n_rel" ].
+
+kaaryaalaye := neuterpl_inam_noun-lex & 
+  [ STEM < "kaaryaalaye" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_office_n_rel" ].
+
 
 kaam := neutersg_inam_noun-lex &
   [ STEM < "kaam" >,
@@ -366,6 +381,15 @@ pann4 := conj-lex &
 laal := non-infl-adjective-lex &
   [ STEM < "laal" >,
     SYNSEM.LKEYS.KEYREL.PRED "_red_a_rel" ].
+
+anek := non-infl-adjective-lex &
+  [ STEM < "anek" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_many_a_rel" ].
+
+mukhya := non-infl-adjective-lex &
+  [ STEM < "mukhya" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_main_a_rel" ].
+
 
 motth := infl-adjective-lex &
   [ STEM < "motth" >,
