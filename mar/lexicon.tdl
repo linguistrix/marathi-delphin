@@ -147,7 +147,7 @@ dukhkha := neutersg_inam_noun-lex &
   [ STEM < "dukhkha" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sadness_n_rel" ].
 
-mumbaipolis := neutersg_inam_noun-lex & 
+mumbaipolis := neuterpl_inam_noun-lex & 
   [ STEM < "mumbaipolis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_mumbaipolice_n_rel" ].
 
@@ -230,13 +230,13 @@ mhann :=  emb-d-inviting_verb-lex &
 
 ;;; Auxiliaries
 
-naahii := neg-aux-lex &
+naahii := sg_neg-aux-lex &
   [ STEM < "naahii" >,
     SYNSEM.LKEYS.KEYREL.PRED "neg_rel"].
 
-;naahiit := pl_neg-aux-lex &
-;  [ STEM < "naahiit" >,
-;    SYNSEM.LKEYS.KEYREL.PRED "neg_rel"].
+naahiit := pl_neg-aux-lex &
+  [ STEM < "naahiit" >,
+    SYNSEM.LKEYS.KEYREL.PRED "neg_rel"].
 
 ;;;aa_2 := tobe_aux_verb_lexeme-aux-lex &
 ;;;  [ STEM < "aa" >,
@@ -260,6 +260,10 @@ aahe := 3sm_present_noun-copula-verb-lex &
 
 aahe_nc := 3sm_present_copula-verb-lex &
   [ STEM < "aahe" > ].
+
+naahii_nc := neg-copula-verb-lex &
+  [ STEM < "naahii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_neg_rel" ].
 
 asto := 3sm_present_noun-copula-verb-lex &
   [ STEM < "asto" >,

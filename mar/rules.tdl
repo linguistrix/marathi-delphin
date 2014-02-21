@@ -17,6 +17,8 @@ head-spec := head-spec-phrase.
 
 locative-pp := locative-pp-phrase.
 
+possessive-det := possessive-det-phrase.
+
 bare-np := bare-np-phrase.
 
 n1-top-coord := n1-top-coord-rule.

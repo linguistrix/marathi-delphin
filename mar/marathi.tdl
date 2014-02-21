@@ -35,6 +35,7 @@ inflected :+ [
     IRREG_INTRANS_VERB_TENSE-FLAG luk,
     FUTURE_LEXICAL_RULE-FLAG luk,
     PAST_LEXICAL_RULE-FLAG luk,
+    PLURAL-OBLIQUE-FLAG luk,
     CASE-FLAG luk,
     TOBE_AUX_INFLECTION-FLAG luk ].
 
@@ -47,6 +48,7 @@ infl-satisfied :+ [
     IRREG_INTRANS_VERB_TENSE-FLAG na-or-+,
     FUTURE_LEXICAL_RULE-FLAG na-or-+,
     PAST_LEXICAL_RULE-FLAG na-or-+,
+    PLURAL-OBLIQUE-FLAG na-or-+,
     CASE-FLAG na-or-+,
     TOBE_AUX_INFLECTION-FLAG na-or-+ ].
 
@@ -113,9 +115,9 @@ nonfinite := form.
 finite := form.
 infinitive := nonfinite.
 able-perm := nonfinite.
-neg-form := form.
-finiteneg := finite & neg-form.
-nonfiniteneg := nonfinite & neg-form.
+neg-form := nonfinite.
+;finiteneg := finite & neg-form.
+;nonfiniteneg := nonfinite & neg-form.
 ;;; Tense
 
 past := tense.
@@ -174,9 +176,9 @@ locative-pp-phrase := unary-phrase &
   [ SYNSEM [LOCAL.CAT [ HEAD adp & [MOD <[ LOCAL.CAT [HEAD verb, 
 						      VAL.SUBJ cons ]] >],
 			POSTHEAD -,
-		       VAL [ COMPS < >,
-			     SUBJ < >, 
-			     SPR < > ] ]],
+			VAL [ COMPS < >,
+			      SUBJ < >, 
+			      SPR < > ] ]],
     
     C-CONT [ HOOK [ LTOP #ltop,
 		    INDEX #index,
@@ -193,14 +195,44 @@ locative-pp-phrase := unary-phrase &
 			    CONT.HOOK [ INDEX #dtr ]]] > ].
 
 
-;possessive-det-phrase := unary-phrase &
-;  [ SYNSEM [LOCAL [CAT [ HEAD det,
-;			 VAL.SPEC.FIRST [ LOCAL [ CAT [HEAD noun ],
-;						  CONT.HOOK [INDEX.COG-ST uniq-or-more, LTOP #ltop, INDEX #index],
+possessive-det-phrase := unary-phrase &
+  [ SYNSEM [LOCAL [CAT [ HEAD det & [ MOD < > ],
+			 VAL [COMPS < >,
+			      SUBJ < >,
+			      SPEC [ FIRST [ LOCAL [CAT [ HEAD noun ],
+						    CONT.HOOK [ INDEX #possessee & [COG-ST uniq-or-more ], LTOP #ltop ]]]]]]],
+	    LKEYS.KEYREL quant-relation &
+		   [ ARG0 #possessee,
+		     RSTR #harg ]],
+
+    ARGS  < [ SYNSEM.LOCAL [ CAT [ HEAD noun & [CASE pos],
+				   VAL.SPR < > ],
+			     CONT [ HOOK [ INDEX #possessor ]]]] >,
+    C-CONT [ HOOK [ LTOP #ltop ],
+	     RELS <! [ PRED "exist_q_rel" ],
+		   arg12-ev-relation & 
+		   [ PRED "_poss_rel",
+		     LBL #ltop,		     
+		     ARG1 #possessee,
+		     ARG2 #possessor ] !>,
+	     HCONS <! qeq & [ HARG #harg,
+			      LARG #ltop ] !> ]].
+
+
+		   
+
+;    ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD noun & [CASE pos],
+;				  VAL.SPR < > ]]]> ].
+;			 VAL [SPEC < [ LOCAL.CAT.HEAD noun ] >]]]],
+
+
+;			 VAL.SPEC < [ LOCAL [ CAT [HEAD noun ],
+;						  ;CONT.HOOK [INDEX.COG-ST uniq-or-more, LTOP #ltop],
 ;						  VAL [ COMPS < >,
 ;							SUBJ < >, 
-;							SPR < > ]]]]]],    
- ;   C-CONT [ HOOK [ LTOP #ltop,
+;							SPR < > ]]]>]]],    
+
+;    C-CONT [ HOOK [ LTOP #ltop,
 ;		    INDEX #index,
 ;		    XARG #xarg ],	     	     
 ;	     RELS <! arg12-ev-relation &
@@ -210,11 +242,8 @@ locative-pp-phrase := unary-phrase &
 ;		     ARG1 #xarg,
 ;		     ARG2 #dtr ] !>,
 ;	     HCONS <! !>  ],    
- ;   ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD noun & [CASE pos],
-;				  VAL.SPR < > ],
-;			    CONT.HOOK [ INDEX #dtr ]]] > ].
 
-anim_noun_lexeme-noun-lex :=   infl-unsatisfied-noun-lex.
+anim_noun_lexeme-noun-lex := infl-unsatisfied-noun-lex.
 
 inanim_noun_lexeme-noun-lex := infl-unsatisfied-noun-lex.
 
@@ -301,6 +330,11 @@ neutersg_anim_noun-lex := anim_noun_lexeme-noun-lex &
 neutersg_inam_noun-lex := inanim_noun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM 3SG]].
 
+neuterpl_anim_noun-lex := anim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM 3PL]].
+
+neuterpl_inam_noun-lex := inanim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM 3PL]].
 
 
 ;;; Verbs
@@ -453,12 +487,14 @@ copula-verb-lex := copula-verb-lex-supertype & trans-first-arg-raising-lex-item-
                    CONT.HOOK.XARG #xarg ],
     ARG-ST < #subj &
              [ LOCAL [ CONT.HOOK.INDEX #xarg,
-                       CAT [ VAL [ SPR < >,
+                       CAT [ VAL [ SPR < >, 
                                    COMPS < > ],
                              HEAD noun ] ] ],
              #comps &
              [ LOCAL.CAT [ VAL [ COMPS < > ],
                            HEAD +jp ] ] > ].
+
+neg-copula-verb-lex := copula-verb-lex.
 
 present-verb-lex := word-or-lexrule & 
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE present ].
@@ -492,10 +528,10 @@ noun-copula-verb-lex := copula-transitive-verb-lex &
 3pm_present_noun-copula-verb-lex := noun-copula-verb-lex & present-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3pl ].
 
-3pm_past_noun-copula-verb-lex := copula-verb-lex & past-verb-lex &
+3pm_past_noun-copula-verb-lex := noun-copula-verb-lex & past-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3pl ].
 
-3sm_past_noun-copula-verb-lex := copula-verb-lex & past-verb-lex &
+3sm_past_noun-copula-verb-lex := noun-copula-verb-lex & past-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3sg ].
 
 neg-aux-lex := subj-raise-aux-with-pred & preinflected-verb-super-type &
@@ -505,6 +541,11 @@ neg-aux-lex := subj-raise-aux-with-pred & preinflected-verb-super-type &
 			  SUBJ #spec],
 		      HEAD.H-INIT - ]].
 
+sg_neg-aux-lex := neg-aux-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg ].
+
+pl_neg-aux-lex := neg-aux-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl ].
 
 tobe_aux_verb_lexeme-aux-lex := subj-raise-aux-with-pred &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite,
@@ -667,10 +708,12 @@ Case-lex-rule-super := add-only-no-ccont-rule &
                 IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
                 FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
                 PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+		PLURAL-OBLIQUE-FLAG  #plural_oblique_flag,
                 TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ],
     DTR noun-lex &
         [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
 		      CASE-FLAG -,
+		      PLURAL-OBLIQUE-FLAG + & #plural_oblique_flag,
                       PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
                       VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                       VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
@@ -678,6 +721,37 @@ Case-lex-rule-super := add-only-no-ccont-rule &
                       FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
                       PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
                       TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ] ] ].
+
+case-lex-rule-dtr := word-or-lexrule.
+
+plural-oblique-lex-rule-super := add-only-no-ccont-rule &
+  [ INFLECTED [ PLURAL-OBLIQUE-FLAG +,
+		CASE-FLAG #case_flag,
+                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ],
+    DTR noun-lex &
+        [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+		      CASE-FLAG #case_flag,
+		      PLURAL-OBLIQUE-FLAG -,
+                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+                      VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                      FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                      PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ] ] ].
+
+plnoun-plural-oblique-lex-rule := plural-oblique-lex-rule-super & infl-lex-rule &
+  [ DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl ].
+
+sgnoun-plural-oblique-lex-rule := plural-oblique-lex-rule-super & const-lex-rule &
+  [ DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg ].
 
 oblique_case-lex-rule-super := Case-lex-rule-super.
 			     
@@ -713,6 +787,7 @@ abl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
 
 poss_m_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos ].
+;    SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3sg].
 
 poss_f_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos ].
@@ -759,8 +834,8 @@ past_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &  infl-lex-rule 
                 FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
     DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
                     FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
-    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE past,
-    SYNSEM.LOCAL.CAT.HEAD.FORM finiteneg ].
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE past].
+  ;  SYNSEM.LOCAL.CAT.HEAD.FORM finiteneg ].
 
 future_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super & const-lex-rule & 
   [ INFLECTED [ FUTURE_LEXICAL_RULE-FLAG +,
@@ -768,8 +843,8 @@ future_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super & const-lex-rul
                 PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
     DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
                     PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
-    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE future,
-    SYNSEM.LOCAL.CAT.HEAD.FORM finiteneg ].
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE future].
+ ;   SYNSEM.LOCAL.CAT.HEAD.FORM finiteneg ].
 
 ;perfective_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &
 ;  [ INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
@@ -815,7 +890,7 @@ pres-neg-form_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super & infl-l
                     PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
                     FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule  ],
     DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE present,
-    SYNSEM.LOCAL.CAT [HEAD.FORM nonfiniteneg,
+    SYNSEM.LOCAL.CAT [HEAD.FORM neg-form,
 		      VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ]].
 
 verb_gender_pernum-lex-rule-super := add-only-no-ccont-rule &
@@ -1015,14 +1090,17 @@ erg_plpast_neuter_lexical_rule-lex-rule := past_nom_arg_trans_verb-lex-rule-supe
   [ DTR.INFLECTED.FUTURE_LEXICAL_RULE-FLAG +,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL ].
 
-1plpresent_lexical_rule-lex-rule := const-lex-rule & verb_gender_pernum-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL ].
+1plpresent_lexical_rule-lex-rule := infl-lex-rule  & verb_gender_pernum-lex-rule-super &
+  [ DTR.INFLECTED.PRESENT_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1PL ].
 
 2plpresent_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
+  [ DTR.INFLECTED.PRESENT_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 2PL ].
 
 3plpresent_lexical_rule-lex-rule := infl-lex-rule & verb_gender_pernum-lex-rule-super &
-  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3PL ].
+  [ DTR.INFLECTED.PRESENT_LEXICAL_RULE-FLAG +,
+    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3PL ].
 
 tobe_aux_inflection-lex-rule-super := add-only-no-ccont-rule & infl-lex-rule &
   [ INFLECTED [ TOBE_AUX_INFLECTION-FLAG +,
@@ -1123,6 +1201,7 @@ subj-head-phrase := decl-head-subj-phrase & head-final &
 
 bare-np-phrase := basic-bare-np-phrase &
   [ C-CONT.RELS <! [ PRED "exist_q_rel" ] !> ].
+;    ARGS < SYNSEM.LOCAL.CAT.HEAD.CASE nom  > ].
 
 ;;;;;;;;;;;;;;;;;;
 ;;; Coordination
@@ -1260,7 +1339,7 @@ s4-bottom-coord-rule := conj-first-bottom-coord-rule & s-bottom-coord-phrase &
 ;;; Adjective Rules, 2014/02/04, AVB, AB
 
 adjective-lex := basic-adjective-lex & intersective-mod-lex &
-	      norm-ltop-lex-item & attrib-or-pred-lex-item &
+	      norm-sem-lex-item & attrib-or-pred-lex-item &
   [ SYNSEM [ LOCAL [ CAT [ HEAD.MOD < [ LOCAL.CAT [ HEAD noun,
                                                     VAL.SPR cons ]]>,
 			   VAL [ SPR < >,

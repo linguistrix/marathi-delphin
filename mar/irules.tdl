@@ -11,6 +11,10 @@ inst_lexical_rule-suffix :=
 %suffix (* -ne)
 inst_lexical_rule-lex-rule.
 
+plnoun-plural-oblique-lex-rule-suffix :=
+%suffix (* -aan)
+plnoun-plural-oblique-lex-rule.
+
 dat_lexical_rule-suffix :=
 %suffix (* -laa)
 dat_lexical_rule-lex-rule.
@@ -47,24 +51,24 @@ erg_lexical_rule-suffix :=
 %suffix (* -ne)
 erg_lexical_rule-lex-rule.
 
-present_lexical_rule-suffix :=
-%suffix (* -t)
-present_lexical_rule-lex-rule.
+ present_lexical_rule-suffix :=
+ %suffix (* -t)
+ present_lexical_rule-lex-rule.
 
-past_lexical_rule-suffix :=
-%suffix (* -l)
-past_lexical_rule-lex-rule.
+ past_lexical_rule-suffix :=
+ %suffix (* -l)
+ past_lexical_rule-lex-rule.
 
-;future_lexical_rule-suffix1 :=
-;%suffix (* -l)
-;future_lexical_rule-lex-rule.
+ ;future_lexical_rule-suffix1 :=
+ ;%suffix (* -l)
+ ;future_lexical_rule-lex-rule.
 
-;future_lexical_rule-suffix2 :=
-;%suffix (* -n)
-;future_lexical_rule-lex-rule.
+ ;future_lexical_rule-suffix2 :=
+ ;%suffix (* -n)
+ ;future_lexical_rule-lex-rule.
 
-;perfective_lexical_rule-suffix :=
-;%suffix (* -l)
+ ;perfective_lexical_rule-suffix :=
+ ;%suffix (* -l)
 ;perfective_lexical_rule-lex-rule.
 
 ;imperfective_lexical_rule-suffix :=
@@ -102,6 +106,11 @@ infinitive_lexical_rule-lex-rule.
 3sgpresent_neuter_lexical_rule-suffix :=
 %suffix (* -a)
 3sgpresent_neuter_lexical_rule-lex-rule.
+
+1plpresent_lexical_rule-suffix :=
+%suffix (* -o)
+1plpresent_lexical_rule-lex-rule.
+
 
 2plpresent_lexical_rule-suffix :=
 %suffix (* -aa)
