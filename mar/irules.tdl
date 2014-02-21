@@ -11,9 +11,9 @@ inst_lexical_rule-suffix :=
 %suffix (* -ne)
 inst_lexical_rule-lex-rule.
 
-plnoun-plural-oblique-lex-rule-suffix :=
-%suffix (* -aan)
-plnoun-plural-oblique-lex-rule.
+;plnoun-plural-oblique-lex-rule-suffix :=
+;%suffix (* -aan)
+;plnoun-plural-oblique-lex-rule.
 
 dat_lexical_rule-suffix :=
 %suffix (* -laa)

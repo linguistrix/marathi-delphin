@@ -9,7 +9,7 @@ inanim_acc_lexical_rule-lex := inanim_acc_lexical_rule-lex-rule.
 
 future_lexical_rule-lex := future_lexical_rule-lex-rule.
 
-sgnoun-plural-oblique-lex := sgnoun-plural-oblique-lex-rule.
+;sgnoun-plural-oblique-lex := sgnoun-plural-oblique-lex-rule.
 
 future-neg-form_lexical_rule-lex := future-neg-form_lexical_rule-lex-rule.
 

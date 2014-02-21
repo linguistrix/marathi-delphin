@@ -723,12 +723,12 @@ Case-lex-rule-super := add-only-no-ccont-rule &
                 IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
                 FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
                 PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
-		PLURAL-OBLIQUE-FLAG  #plural_oblique_flag,
+;		PLURAL-OBLIQUE-FLAG  #plural_oblique_flag,
                 TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ],
     DTR noun-lex &
         [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
 		      CASE-FLAG -,
-		      PLURAL-OBLIQUE-FLAG + & #plural_oblique_flag,
+;		      PLURAL-OBLIQUE-FLAG + & #plural_oblique_flag,
                       PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
                       VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
                       VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
@@ -739,34 +739,34 @@ Case-lex-rule-super := add-only-no-ccont-rule &
 
 case-lex-rule-dtr := lex-item.
 
-plural-oblique-lex-rule-super := add-only-no-ccont-rule &
-  [ INFLECTED [ PLURAL-OBLIQUE-FLAG +,
-		CASE-FLAG #case_flag,
-                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
-                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
-                VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
-                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
-                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
-                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
-                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ],
-    DTR noun-lex &
-        [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
-		      CASE-FLAG #case_flag,
+;plural-oblique-lex-rule-super := add-only-no-ccont-rule &
+;  [ INFLECTED [ PLURAL-OBLIQUE-FLAG +,
+;		CASE-FLAG #case_flag,
+;                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+;                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+;                VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+;                VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+;                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense;,
+;                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+;                PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+;                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ],
+;    DTR noun-lex &
+;        [ INFLECTED [ TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+;		      CASE-FLAG #case_flag,
 ;		      PLURAL-OBLIQUE-FLAG -,
-                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
-                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
-                      VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
-                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
-                      FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
-                      PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
-                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ] ] ].
+;                      PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+;                      VERB_TENSE_ASPECT-FLAG #verb_tense_aspect,
+;                      VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+;                      IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+;                      FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+;                      PAST_LEXICAL_RULE-FLAG #past_lexical_rule,
+;                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection ] ] ].
 
-plnoun-plural-oblique-lex-rule := plural-oblique-lex-rule-super & infl-lex-rule &
-  [ DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl ].
+;plnoun-plural-oblique-lex-rule := plural-oblique-lex-rule-super & infl-lex-rule &
+;  [ DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl ].
 
-sgnoun-plural-oblique-lex-rule := plural-oblique-lex-rule-super & const-lex-rule &
-  [ DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg ].
+;sgnoun-plural-oblique-lex-rule := plural-oblique-lex-rule-super & const-lex-rule &
+;  [ DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg ].
 
 oblique_case-lex-rule-super := Case-lex-rule-super.
 			     
@@ -863,7 +863,8 @@ present_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super & infl-lex-rul
                     PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE present,
     SYNSEM.LOCAL.CAT.HEAD.FORM finite,
-    SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ].
+    SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom,
+			   COMPS.FIRST.LOCAL.CAT.HEAD.CASE acc+dat]].
 
 past_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &  infl-lex-rule &
   [ INFLECTED [ PAST_LEXICAL_RULE-FLAG +,
