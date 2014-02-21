@@ -200,23 +200,25 @@ possessive-det-phrase := unary-phrase &
 			 VAL [COMPS < >,
 			      SUBJ < >,
 			      SPEC [ FIRST [ LOCAL [CAT [ HEAD noun ],
-						    CONT.HOOK [ INDEX #possessee & [COG-ST uniq-or-more ], LTOP #ltop ]]]]]]],
-	    LKEYS.KEYREL quant-relation &
-		   [ ARG0 #possessee,
-		     RSTR #harg ]],
+						    CONT.HOOK [ INDEX #possessee & [COG-ST uniq-or-more ], LTOP #larg ]]]]]]]],
 
     ARGS  < [ SYNSEM.LOCAL [ CAT [ HEAD noun & [CASE pos],
 				   VAL.SPR < > ],
 			     CONT [ HOOK [ INDEX #possessor ]]]] >,
-    C-CONT [ HOOK [ LTOP #ltop ],
-	     RELS <! [ PRED "exist_q_rel" ],
+    C-CONT [ HOOK [ LTOP #larg,
+		    INDEX #possessee ],	     
+	     RELS <! 
+		   quant-relation & 
+		   [ PRED "exist_q_rel",
+		     ARG0 #possessee,
+		     RSTR #harg ],
 		   arg12-ev-relation & 
 		   [ PRED "_poss_rel",
-		     LBL #ltop,		     
+		     LBL #larg,		     
 		     ARG1 #possessee,
 		     ARG2 #possessor ] !>,
 	     HCONS <! qeq & [ HARG #harg,
-			      LARG #ltop ] !> ]].
+			      LARG #larg ] !> ]].
 
 
 		   
