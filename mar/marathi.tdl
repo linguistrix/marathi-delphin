@@ -271,6 +271,13 @@ acc_dat_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE acc+dat,
     INFLECTED.CASE-FLAG + ].
 
+oblique_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE non-nom,
+    INFLECTED.CASE-FLAG - ].
+
+3msg_pronoun_oblique_stem := oblique_pronoun_lexeme-noun-lex & 
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [PERNUM 3SG, GEND m] ].
+
 1st_pronoun_lexeme-noun-lex := nom_pronoun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 1SG ].
 
@@ -330,6 +337,13 @@ femnounsg_anim_noun-lex := anim_noun_lexeme-noun-lex &
 
 femnounsg_inam_noun-lex := inanim_noun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM 3SG]].
+
+femnounpl_anim_noun-lex := anim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM 3PL]].
+
+femnounpl_inam_noun-lex := inanim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM 3PL]].
+
 
 male_proper_noun_lexeme-noun-lex := anim_noun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM 3SG]].
@@ -802,31 +816,74 @@ abl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
 
 poss_m_sg_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg,
     SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND M, 
 				     PERNUM sg ] ].
 
 poss_f_sg_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg,
     SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND F, 
 				     PERNUM sg ] ].
 
 poss_n_sg_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg,
     SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND N, 
 				     PERNUM sg ] ].
 
 
 poss_m_pl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg,
     SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND M, 
 				     PERNUM pl ] ].
 
 poss_f_pl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg,
     SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND F, 
 				     PERNUM pl ] ].
 poss_n_pl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND N, 
+				     PERNUM pl ] ].
+
+poss_m_sg_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND M, 
+				     PERNUM sg ] ].
+
+poss_f_sg_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND F, 
+				     PERNUM sg ] ].
+
+poss_n_sg_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND N, 
+				     PERNUM sg ] ].
+
+
+poss_m_pl_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND M, 
+				     PERNUM pl ] ].
+
+poss_f_pl_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND F, 
+				     PERNUM pl ] ].
+
+poss_n_pl_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl,
     SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND N, 
 				     PERNUM pl ] ].
 
@@ -863,8 +920,7 @@ present_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super & infl-lex-rul
                     PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
     SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE present,
     SYNSEM.LOCAL.CAT.HEAD.FORM finite,
-    SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom,
-			   COMPS.FIRST.LOCAL.CAT.HEAD.CASE acc+dat]].
+    SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ]].
 
 past_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &  infl-lex-rule &
   [ INFLECTED [ PAST_LEXICAL_RULE-FLAG +,

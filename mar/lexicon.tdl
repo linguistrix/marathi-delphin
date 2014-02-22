@@ -33,6 +33,10 @@ to_1 := 3sgm_pronoun_lexeme-noun-lex &
   [ STEM < "to" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
 
+tyaa_5 := 3msg_pronoun_oblique_stem & 
+  [ STEM < "tyaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
+
 haa_1 := 3sgm_pronoun_lexeme-noun-lex & 
   [ STEM < "haa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_pron_n_rel" ].
@@ -122,6 +126,10 @@ tsaal := femnounsg_inam_noun-lex &
     SYNSEM.LKEYS.KEYREL.PRED "_gait_n_rel" ].
 
 kampani := femnounsg_inam_noun-lex &
+  [ STEM < "kampani" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_company_n_rel" ].
+
+kampani := femnounpl_inam_noun-lex &
   [ STEM < "kampani" >,
     SYNSEM.LKEYS.KEYREL.PRED "_company_n_rel" ].
 
@@ -408,6 +416,14 @@ lawkar := adverb-lex &
 manda := adverb-lex &
   [ STEM < "manda" >,
     SYNSEM.LKEYS.KEYREL.PRED "_slow_a_rel" ].
+
+kaal := adverb-lex &
+  [ STEM < "kaal" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_yesterday_a_rel" ].
+
+parat := adverb-lex &
+  [ STEM < "parat" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_again_a_rel" ].
 
 
 itha := adverb-lex & 

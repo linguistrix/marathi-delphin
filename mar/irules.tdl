@@ -51,6 +51,30 @@ poss_n_pl_lexical_rule-suffix :=
 %suffix (* -cii)
 poss_n_pl_lexical_rule-lex-rule.
 
+poss_m_sg_plspr_lexical_rule-suffix :=
+%suffix (* -aan-tsaa)
+poss_m_sg_plspr_lexical_rule-lex-rule.
+
+poss_f_sg_plspr_lexical_rule-suffix :=
+%suffix (* -aan-cii)
+poss_f_sg_plspr_lexical_rule-lex-rule.
+
+poss_n_sg_plspr_lexical_rule-suffix :=
+%suffix (* -aan-tse)
+poss_n_sg_plspr_lexical_rule-lex-rule.
+
+poss_m_pl_plspr_lexical_rule-suffix :=
+%suffix (* -aan-ce)
+poss_m_pl_plspr_lexical_rule-lex-rule.
+
+poss_f_pl_plspr_lexical_rule-suffix :=
+%suffix (* -aan-cii)
+poss_f_pl_plspr_lexical_rule-lex-rule.
+
+poss_n_pl_plspr_lexical_rule-suffix :=
+%suffix (* -aan-cii)
+poss_n_pl_plspr_lexical_rule-lex-rule.
+
 voc_lexical_rule-suffix :=
 %suffix (* -aa)
 voc_lexical_rule-lex-rule.

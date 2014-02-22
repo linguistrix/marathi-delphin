@@ -611,8 +611,8 @@ Vetted: {t}
 Judgment: g
 Phenomena: {wo}
 to tsor hotaa
-to tsor ho-taa
-he thief.NOM was-3.S.M.
+to tsor hotaa
+he thief.NOM was3.S.M.
 he was a thief
 
 #62
@@ -621,8 +621,8 @@ Vetted: {t}
 Judgment: u
 Phenomena: {wo}
 hotaa to tsor
-ho-taa to tsor 
-was-3.S.M he thief.NOM 
+hotaa to tsor 
+was3.S.M he thief.NOM 
 he was a thief
 
 #63
@@ -630,8 +630,8 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {wo,agr}
-to tsor ho
-to tsor ho
+to tsor hote
+to tsor hote
 he thief.NOM was
 he was a thief
 
@@ -1110,8 +1110,8 @@ Source: {a:159}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa gharii gelii mii badzaaraat gelo
-miitaa ghar-ii ge-l-ii mii badzaar-aat ge-l-o
+miitaa gharii gelii mii baadzaaraat gelo
+miitaa ghar-ii ge-l-ii mii baadzaar-aat ge-l-o
 Mita home-LOC go-PST-3SF I market-LOC go-PST-3.S.M
 Meeta went home and I went to the market
 
@@ -1120,8 +1120,8 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa gharii gelii aanni mii badzaaraat gelo
-miitaa ghar-ii ge-l-ii aani mii badzaar-aat ge-l-o
+miitaa gharii gelii aanni mii baadzaaraat gelo
+miitaa ghar-ii ge-l-ii aani mii baadzaar-aat ge-l-o
 Mita home-LOC go-PST-3SF and I market-LOC go-PST-3.S.M
 Meeta went home and I went to the market
 
@@ -1221,8 +1221,8 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd}
-miitaa mii badzaaraat gelo
-miitaa mii badzaar-aat ge-l-o
+miitaa mii baadzaaraat gelo
+miitaa mii baadzaar-aat ge-l-o
 Mita I market-LOC go-PST-3.S.M
 Meeta and I went to the market
 
@@ -1231,8 +1231,8 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa kimwaa ravi kimwaa mii badzaaraat gelo
-miitaa kimwaa ravi kimwaa mii badzaar-aat ge-l-o
+miitaa kimwaa ravi kimwaa mii baadzaaraat gelo
+miitaa kimwaa ravi kimwaa mii baadzaar-aat ge-l-o
 Mita or Ravi or I market-LOC go-PST-3.S.M
 Meeta Ravi or I went to the market
 
@@ -1241,8 +1241,8 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa ravi kimwaa mii badzaaraat gelo
-miitaa ravi kimwaa mii badzaar-aat ge-l-o
+miitaa ravi kimwaa mii baadzaaraat gelo
+miitaa ravi kimwaa mii baadzaar-aat ge-l-o
 Mita Ravi or I market-LOC go-PST-3.S.M
 Meeta, Ravi or I went to the market
 
@@ -1251,8 +1251,8 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd}
-miitaa kimwaa ravi mii badzaaraat gelo
-miitaa kimwaa ravi mii badzaar-aat ge-l-o
+miitaa kimwaa ravi mii baadzaaraat gelo
+miitaa kimwaa ravi mii baadzaar-aat ge-l-o
 Mita or Ravi I market-LOC go-PST-3.S.M
 Meeta, Ravi or I went to the market
 
@@ -1261,8 +1261,8 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd}
-miitaa Ravi mii badzaaraat gelo
-miitaa Ravi mii badzaar-aat ge-l-o 
+miitaa Ravi mii baadzaaraat gelo
+miitaa Ravi mii baadzaar-aat ge-l-o 
 Mita Ravi I market-LOC go-PST-3.S.M
 Meeta, Ravi or I went to the market
 
@@ -1271,8 +1271,8 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa gharii gelii pann mii badzaaraat gelo
-miitaa ghar-ii ge-l-ii pann mii badzaar-aat ge-l-o
+miitaa gharii gelii pann mii baadzaaraat gelo
+miitaa ghar-ii ge-l-ii pann mii baadzaar-aat ge-l-o
 Mita home-LOC go-PST-3SF but I market-LOC go-PST-3.S.M
 Meeta went home but I went to the market
 
@@ -1281,8 +1281,8 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd, wo}
-miitaa gharii pann gelii mii badzaaraat gelo
-miitaa ghar-ii pann ge-l-ii mii badzaar-aat ge-l-o
+miitaa gharii pann gelii mii baadzaaraat gelo
+miitaa ghar-ii pann ge-l-ii mii baadzaar-aat ge-l-o
 Mita home-LOC but go-PST-3SF I market-LOC go-PST-3.S.M
 Meeta went home but I went to the market
 
@@ -1301,8 +1301,8 @@ Source: {author}
 Vetted: {t}
 Judgment: g
 Phenomena: {crd}
-miitaa naahii pann ravi badzaaraat gelaa
-miitaa naahii pann ravi badzaar-aat ge-l-aa
+miitaa naahii pann ravi baadzaaraat gelaa
+miitaa naahii pann ravi baadzaar-aat ge-l-aa
 Mita neg but Ravi market-LOC go-PST-3.S.M
 Not Mita but Ravi went to the market
 
@@ -1311,8 +1311,8 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd}
-miitaa pann ravi badzaaraat gelo
-miitaa pann ravi badzaar-aat ge-l-o
+miitaa pann ravi baadzaaraat gelo
+miitaa pann ravi baadzaar-aat ge-l-o
 Mita but Ravi market-LOC go-PST-3.S.M
 Mita but Ravi went to the market
 
@@ -1321,8 +1321,8 @@ Source: {author}
 Vetted: {t}
 Judgment: u
 Phenomena: {crd, wo}
-miitaa naahii ravi pann badzaaraat gelo
-miitaa naahii ravi pann badzaar-aat ge-l-o
+miitaa naahii ravi pann baadzaaraat gelo
+miitaa naahii ravi pann baadzaar-aat ge-l-o
 Mita neg Ravi but market-LOC go-PST-3.S.M
 Mita but not Ravi went to the market
 
