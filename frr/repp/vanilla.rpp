@@ -1,0 +1,15 @@
+;;;
+;;; Basic repp file, partially customized according
+;;; to your choices file.
+;;;
+;;; 
+
+;; from the matrix:
+;; :[ \t!"#$%&'()\*\+,\./:;<=>?@\[\]\^_`{|}~\\]
+
+;; modified to keep periods, since they appear inside some words in the orth-seg tier
+:[ \t!"#$%&'()\*\+,/:;<=>?@\[\]\^_`{|}~\\]
+
+!^(.+)$								 \1 
+!\t								 
+!  +								 

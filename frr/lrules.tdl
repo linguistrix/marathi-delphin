@@ -1,0 +1,10 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+sg-noun-lex := sg-noun-lex-rule.
+
+1sg-nonpast-verbal-inflection-lex := 1sg-nonpast-verbal-inflection-lex-rule.
+
+nonsg-nonpast-verbal-inflection-lex := nonsg-nonpast-verbal-inflection-lex-rule.
+
+inv-lr := subj-v-inv-lrule.
+
+modal-inf := modal-infinitive-verbal-inflection-lex-rule.

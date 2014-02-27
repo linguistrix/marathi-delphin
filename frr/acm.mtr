@@ -1,0 +1,20 @@
+; accommodation from eng/ita to frr
+
+; rewrite hurt_v as make_v harm_n
+hurt := hurt-mtr.
+
+; ditch the ARG2 slot on _eat_v_rel when it's not instantiated.
+; this seems to be unnecessary on the LOGON tree but necessary in KNOPPIX+LKB. interesting.
+eat-intr := monotonic_mtr &
+[ INPUT [ RELS <! [ PRED "_eat_v_rel",
+                     LBL #lbl, ARG0 #arg0, ARG1 #arg1,
+		     ARG2 #arg2 & x ] !> ],
+  FILTER [ RELS <! [ ARG0 #arg2 ] !> ],
+  OUTPUT [ RELS <! [ PRED "_eat_v_rel",
+                     LBL #lbl, ARG0 #arg0, ARG1 #arg1 ] !> ],
+  FLAGS [ EQUAL < #arg2 > ]].
+
+; need overt pronouns
+pro1 := pro-insert-arg1-mtr.
+pro2 := pro-insert-arg2-mtr.
+pro3 := pro-insert-arg3-mtr.

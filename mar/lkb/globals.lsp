@@ -62,9 +62,9 @@
 
 ;;; Parsing
 
-(defparameter *chart-limit* 100)
+(defparameter *chart-limit* 150)
 
-(defparameter *maximum-number-of-edges* 4000)
+(defparameter *maximum-number-of-edges* 30000)
 
 (defparameter *mother-feature* NIL
   "The feature giving the mother in a grammar rule")
@@ -142,3 +142,4 @@
 ; output all complete generated results
 ; (setf *bypass-equality-check* t)
 
+(setf *translate-grid* '(:mar :eng :frr))

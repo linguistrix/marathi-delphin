@@ -1,0 +1,40 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Semantically Empty Lexical Entries
+
+skel_gr := generator_rule &
+[ CONTEXT.RELS <! [ PRED "non_existing_rel" ] !>,
+  FLAGS.TRIGGER "skel" ].
+
+wiis_adj_gr := generator_rule &
+[ CONTEXT [ HOOK.INDEX #ind, RELS <! [ PRED "~._a_", ARG0 #ind ] !> ],
+  FLAGS.TRIGGER "wiis" ].
+
+wiis_pp_gr := generator_rule &
+[ CONTEXT [ HOOK.INDEX #ind, RELS <! [ PRED "~._p_", ARG0 #ind ] !> ],
+  FLAGS.TRIGGER "wiis" ].
+
+#| haa_gr := generator_rule &
+[ CONTEXT.RELS <! [ ARG0 event & [ E.ASPECT perfective ] ] !>,
+  FLAGS.TRIGGER "haa" ]. |#
+
+dat_gtr := generator_rule &
+[ CONTEXT [ RELS <! [ ARG2 #harg & handle ],
+		    [ LBL #larg & handle, ARG0 #e & event & [ SF prop ] ] !>,
+			HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
+  FLAGS [ EQUAL < #e, #harg, #larg >,
+	  TRIGGER "dat" ] ].
+
+weder_gtr := generator_rule &
+[ CONTEXT [ RELS <! [ ARG2 #harg & handle ],
+		    [ LBL #larg & handle, ARG0 #e & event & [ SF ques ] ] !>,
+			HCONS <! qeq & [ HARG #harg, LARG #larg ] !> ],
+  FLAGS [ EQUAL < #e, #harg, #larg >,
+	  TRIGGER "weder" ] ].
+
+#|
+weder_gtr := generator_rule &
+[ CONTEXT [ RELS <! [ ARG2 #h & handle ],
+		    [ ARG0 #e & event & [ SF ques ] ] !> ],
+  FLAGS [ EQUAL < #e, #h >,
+	  TRIGGER "weder" ] ].
+	  |#

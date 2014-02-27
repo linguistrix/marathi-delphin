@@ -1,0 +1,24 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+pl-noun-suffix :=
+%suffix (* -en)
+pl-noun-lex-rule.
+
+3sg-verbal-inflection-suffix :=
+%suffix (* -t)
+3sg-verbal-inflection-lex-rule.
+
+2sg-verbal-inflection-suffix :=
+%suffix (* -st)
+2sg-verbal-inflection-lex-rule.
+
+1sg-past-verbal-inflection-suffix :=
+%suffix (* -t)
+1sg-past-verbal-inflection-lex-rule.
+
+nonsg-past-verbal-inflection-suffix :=
+%suffix (* -t)
+nonsg-past-verbal-inflection-lex-rule.
+
+perfective-verbal-inflection-suffix :=
+%suffix (* -t)
+perfective-verbal-inflection-lex-rule.

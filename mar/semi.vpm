@@ -37,18 +37,18 @@ COG-ST : COG-ST
 
 
 PNG.PERNUM : PNG.PER PNG.NUM
-  1SG <> 1st SG
-  2SG <> 2nd SG
-  3SG <> 3rd SG
-  1PL <> 1st PL
-  2PL <> 2nd PL
-  3PL <> 3rd PL
-  1st <> 1st !
-  1st << 1st *
-  2nd <> 2nd !
-  2nd << 2nd *
-  3rd <> 3rd !
-  3rd << 3rd *
+  1SG <> first SG
+  2SG <> second SG
+  3SG <> third SG
+  1PL <> first PL
+  2PL <> second PL
+  3PL <> third PL
+  1st <> first !
+  1st << second *
+  2nd <> third !
+  2nd << first *
+  3rd <> second !
+  3rd << third *
   SG <> ! SG
   SG << * SG
   PL <> ! PL

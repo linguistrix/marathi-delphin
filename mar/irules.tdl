@@ -27,6 +27,14 @@ abl_lexical_rule-suffix2 :=
 %suffix (* -kadduun)
 abl_lexical_rule-lex-rule.
 
+poss_non-nom_plspr_lexical_rule-suffix := 
+%suffix (* -aan-cyaa)
+poss_non-nom_plspr_lexical_rule-lex-rule.
+
+poss_non-nom_lexical_rule-suffix := 
+%suffix (* -cyaa)
+poss_non-nom_lexical_rule-lex-rule.
+
 poss_m_sg_lexical_rule-suffix :=
 %suffix (* -tsaa)
 poss_m_sg_lexical_rule-lex-rule.

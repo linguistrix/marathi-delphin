@@ -102,11 +102,11 @@
 
 (index-for-generator)
 
-;(mt:read-vpm (lkb-pathname (parent-directory) "semi.vpm") :semi)
+
 
 (lkb-load-lisp (this-directory) "mt.lsp" t)
 
-
+(mt:read-vpm (lkb-pathname (parent-directory) "semi.vpm") :semi)
 ;;;
 ;;; SSH 2012-03-27 This invokes trigger rules for semantically empty
 ;;; lexical entries. The trigger rules themselves should be in
