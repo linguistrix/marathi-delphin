@@ -62,9 +62,9 @@
 
 ;;; Parsing
 
-(defparameter *chart-limit* 150)
+(defparameter *chart-limit* 300)
 
-(defparameter *maximum-number-of-edges* 30000)
+(defparameter *maximum-number-of-edges* 100000)
 
 (defparameter *mother-feature* NIL
   "The feature giving the mother in a grammar rule")

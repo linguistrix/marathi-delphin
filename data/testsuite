@@ -1777,3 +1777,83 @@ polis-ne maashii-laa khaa-l-a
 police-ERG maashii.3.S.F-ACC eat-PAST-3.S.N
 The police ate a fly
 
+#179
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {modal}
+mii kaats khaauu shakto
+mii kaats khaa-uu shak-t-o
+I glass eat-CAN can-PRES-3.S.M
+I can eat glass.
+
+#180
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {modal}
+mii kaats shakto khaauu
+mii kaats shak-t-o khaa-uu
+I glass can-PRES-3.S.M eat-CAN
+I can eat glass.
+
+#181
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {modal}
+mii kaats khaa-t-o shakto 
+mii kaats khaa-t-o shak-t-o 
+I glass  eat-PRES-3.S.M can-PRES-3.S.M
+I can eat glass.
+
+#182
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {}
+mumbaii polis tsoraalaa maarto
+mumbaii polis tsor-laa maar-t-o
+Mumbai Police Thief-DAT beat-PRES-3.S.M
+The Mumbai police beats the thief
+
+#183
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {}
+mumbaii to tsoraalaa maarto
+mumbaii to tsor-laa maar-t-o
+Mumbai he Thief-DAT beat-PRES-3.S.M
+The Mumbai person beats the thief
+
+#184
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {modal}
+mii ravi-laa kaats khaauu deto
+mii ravi-laa kaats khaa-uu de-t-o
+I ravi-DAT glass eat-UU give-PRES-3.S.M
+I let Ravi eat glass
+
+#185
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {modal}
+mii ravi-laa kaats deto khaauu
+mii ravi-laa kaats de-t-o khaa-uu
+I ravi-DAT glass give-PRES-3.S.M eat-UU 
+I let Ravi eat glass
+
+#186
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {modal}
+mii ravi-laa kaats khaato deto
+mii ravi-laa kaats khaa-t-o de-t-o
+I ravi-DAT glass eat-PRES-3.S.M give-PRES-3.S.M
+I let Ravi eat glass
+

@@ -1,0 +1,328 @@
+LING 567, Lab 8 Note File
+Antariksh Bothale (Author), Andrew Baer
+Language: Marathi (mar)
+
+Changes made to the grammar for the test-corpus suite sentence
+--------------------------------------------------------------
+
+We made two additions to the grammar this week. The first is the support for compound noun phrases, while the second is support for a 'permission' verb similar to 'let' in English.
+
+1. A descriptive statement of the facts of your language. 
+
+Compound nouns are readily formed in Marathi. Compounds are usually head-final, and the non-head daughter is usually always in nominative case. Pronouns usually do not occur in compounds. We chose to implement compound nouns this time since our corpus example from last time had compound nouns which we had simple treated as single words for last week's analysis.
+
+
+2. Illustrative IGT examples from your testsuite.
+
+#182
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {}
+mumbaii polis tsoraalaa maarto
+mumbaii polis tsor-laa maar-t-o
+Mumbai Police Thief-DAT beat-PRES-3.S.M
+The Mumbai police beats the thief
+
+#183
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {}
+mumbaii to tsoraalaa maarto
+mumbaii to tsor-laa maar-t-o
+Mumbai he Thief-DAT beat-PRES-3.S.M
+The Mumbai person beats the thief
+
+The second examples is ungrammatical because it has noun-pronoun compounding.
+
+3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
+
+Almost all the work for Compound Nouns is done by the Compound Noun Phrase Rule.
+
+compound-noun-phrase := head-final &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD noun & 
+				[ MOD < > ], 
+			   VAL [ SPR #headspr,	; Copy the specifier of the HEAD-DTR 
+				 COMPS < >,
+				 SUBJ < >, 
+				 SPEC < > ]]]],
+    HEAD-DTR [ SYNSEM [ LOCAL [ CAT [ HEAD noun & 
+					   [ PRON - ], ; Block Pronouns
+				      VAL.SPR cons & #headspr ], ; Specifying cons ensures that NP NP compounds are not formed
+				CONT [ HOOK [ INDEX #headnoun ],
+				       RELS.LIST.FIRST.LBL #headlbl ]]]],     
+    NON-HEAD-DTR [ SYNSEM [ LOCAL [ CAT [ HEAD noun & 
+					       [ CASE nom, ; Allow only nominative nouns on the left
+						 PRON - ],
+					  VAL.SPR cons ], 
+				    CONT [ HOOK [ INDEX #nonheadnoun ],
+					   RELS.LIST.FIRST.LBL #nonheadlbl ]],
+			    OPT - ]],	   
+    C-CONT [ HOOK [ INDEX #headnoun,
+		    LTOP #headlbl ],
+	     RELS <! quant-relation & 
+		   [ PRED "exist_q_rel",
+		     ARG0 #nonheadnoun,
+		     RSTR #rstr ],
+		   [ PRED "compound_rel",
+		     LBL #headlbl,
+		     ARG1 #headnoun,
+		     ARG2 #nonheadnoun ] !>,
+	     HCONS <! qeq & 
+		    [ HARG #rstr,
+		      LARG #nonheadlbl  ] !> ]].
+
+
+The RELS list introduces an exist_q_rel for the left hand noun since the final phrase basically shares the Label and Index of the head noun, so the Determiner / Bare NP rule that applies to it at the end will only supply the predication for the head daughter. Apart from this, it introduces a compound_rel that specifies the two daughters.
+
+4. If the analysis is not (fully) working, a description of the problems you are encountering. 
+To the best of our knowledge, this analysis is working. It generates properly too. The only slight problem is that addding the rule has causes a lot of spurious parses to arise because all sequences of non-pronoun nouns can be picked up this rule for compounding.
+
+------------------------
+
+The second thing that we worked on was an additional test corpus sentence. As discussed with you on GoPost, we added another sentence to the test corpus, and added stuff to our grammar so as to support it. This sentence illustrates an object control verb similar to the English verb Let.
+
+1. A descriptive statement of the facts of your language. 
+
+In Marathi, a sentence conveying the meaning 'X lets Y do E' is made by using a verb that ordinarily means 'to give' as an auxiliary, that takes a VP complement indicating the action that is permitted. The verb in the VP complement needs to be in the -uu form.
+
+So the Marathi counterpart of A lets me eat glass would be "A me glass eat-UU give"
+
+2. Illustrative IGT examples from your testsuite.
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {modal}
+mii ravi-laa kaats khaauu deto
+mii ravi-laa kaats khaa-uu de-t-o
+I ravi-DAT glass eat-UU give-PRES-3.S.M
+I let Ravi eat glass
+
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {modal}
+mii ravi-laa kaats deto khaauu
+mii ravi-laa kaats de-t-o khaauu
+I ravi-DAT glass give-PRES-3.S.M eat-UU 
+I let Ravi eat glass
+
+(Word order is wrong)
+
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {modal}
+mii ravi-laa kaats khaato deto
+mii ravi-laa kaats khaa-t-o de-t-o
+I ravi-DAT glass eat-PRES-3.S.M give-PRES-3.S.M
+I let Ravi eat glass
+
+(Wrong form of the verb)
+
+3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
+
+We already had some of the machinery ready since the form of the verb needed here is the same as the form that the "can" verb needed. However, the let verb is a different kind of verb, so we could not use that type. We instead introduced a new type inhereting from the ditrans-second-arg-control-lex-item.
+
+subj-raise-ditrans-aux-with-pred := aux-lex & norm-sem-lex-item & ditrans-second-arg-control-lex-item &
+  [ SYNSEM.LOCAL [ CAT.VAL [ SPR < >,
+                             SPEC < >,
+                             COMPS < #comps1, #comps2 >,
+                             SUBJ < #subj > ],
+                   CONT.HOOK.XARG #xarg ],
+    ARG-ST < #subj &
+             [ LOCAL [ CAT [ HEAD noun,
+                             VAL [ SUBJ < >,
+                                   SPR < >,
+                                   SPEC < >,
+                                   COMPS < > ] ],
+                       CONT.HOOK.INDEX #xarg ] ],
+             #comps2 &
+             [ LOCAL.CAT [ VAL [ SUBJ < >,
+                                 COMPS < >,
+                                 SPR < >,
+                                 SPEC < > ],
+                           HEAD noun ]],
+             #comps1 &
+             [ LOCAL.CAT [ VAL [ SUBJ < [ ] >,
+                                 COMPS < >,
+                                 SPR < >,
+                                 SPEC < > ],
+                           HEAD verb &
+                                [ AUX - ] ] ] > ].
+
+
+The type for the permission verb is then inherited from this type:
+
+permission-verb-lex := subj-raise-ditrans-aux-with-pred & tobeinflected-verb-super-type & 
+[ SYNSEM.LOCAL [ CAT [ VAL [ SPR < >,
+                             SPEC < >,
+                             COMPS < [ LOCAL.CAT.HEAD.FORM able-perm,
+				       OPT - ],
+				     [ LOCAL.CAT.HEAD.CASE dat ] >,
+                             SUBJ < [ LOCAL.CAT.HEAD.CASE nom ] > ],
+		      H-INIT - ]]].
+
+This enforces that the complement be in the -uu form and also fixes the case of the other arguments.
+
+4. If the analysis is not (fully) working, a description of the problems you are encountering. 
+
+To the best of our knowledge, this analysis is working. The MRS is perfect, and it generates properly too. 
+
+
+-----------------
+
+Corpus Sentence:
+
+We addded the following sentence to the corpus:
+
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {modal}
+maadze 	   waddiil malaa kaats khaauu	detaat
+maadze 	   waddiil malaa kaats khaa-uu 	de-t-aat
+I.POSS.S.P father  I.DAT glass eat-PRES	give-PRES-3.S.P
+My father lets me eat glass
+
+Please note that the word father here shows plural agreement throughout since 'respectful' forms in Marathi are treated as syntactically plural.
+
+This sentence now parses with our grammar with the right semantics and also generates correctly.
+
+In addition to this, the compound noun analysis that we incorporated into the grammar now results in another corpus sentence parsing. We were previously treating compound nouns as single words but now we can parse the sentence as it is.
+
+Source: {a}
+Vetted: {t}
+Judgment: g
+Phenomena: {poss, compounds}
+mumbaii polisaantsaa pramukh polis aayukt asto
+mumbaii polis-aan-tsaa pramukh polis aayukt asto
+Mumbai police-PL-POSS.M.S chief police commissioner be.HABITUAL.3.S.M
+The chief of Mumbai police is the police commissioner
+
+This sentence now parses and generates correctly. Since there are loads of Nouns together, we do get a lot of spurious trees which try to combine these nouns arbitrarily.
+
+In addition, another corpus entry can now potentially parse if the analysis for the initial topic position is incorporated. This entry successfully parses if the word order is changed to the canonical one.
+
+# DOES NOT PARSE
+Source: {a}
+Vetted: {t}
+Judgment: g
+Phenomena: {}
+mumbaiitsaa kaarbhaar bruhannmumbaii mahaanagarpaalikaa tsaalavte
+mumbaii-tsaa kaarbhaar bruhannmumbaii mahaanagar paalikaa tsaalav-t-e
+mumbai-POSS.S.M workload.M bruhannmumbaii Muninicipal Corporation run-PRES-3.S.F
+Bruhanmumbai Municipality Corporation runs the city.
+
+# PARSES AFTER FIXING WORD ORDER
+bruhannmumbaii mahaanagarpaalikaa mumbaiitsaa kaarbhaar tsaalavte
+bruhannmumbaii mahaanagar paalikaa mumbaii-tsaa kaarbhaar tsaalav-t-e
+bruhannmumbaii Muninicipal Corporation mumbai-POSS.S.M workload.M run-PRES-3.S.F
+Bruhanmumbai Municipality Corporation runs the city.
+
+
+------------------------------
+
+Edits to semi.vpm file
+
+We didn't have too many random over-generations except for those that arose because all were sentences prop-or-ques by default and so they also generated the corresponding question versions. When we switched on VPM, that problem disappeared. 
+
+We did make changes to the 'names' of the PERNUM types to make them compatible. 1st was changed to 'first', and likewise for the others. This is how that section looks now. We don't think we need to make any changes to the other sections. In our grammar aspect is underspecified, so we didn't add that section at all. The tense mappings look reasonable as they are.
+
+PNG.PERNUM : PNG.PER PNG.NUM
+  1SG <> first SG
+  2SG <> second SG
+  3SG <> third SG
+  1PL <> first PL
+  2PL <> second PL
+  3PL <> third PL
+  1st <> first !
+  1st << first *
+  2nd <> second !
+  2nd << second *
+  3rd <> third !
+  3rd << third *
+  SG <> ! SG
+  SG << * SG
+  PL <> ! PL
+  PL << * PL
+  * >> ! !
+  ! << * *
+
+
+------------------
+
+Getting the MT working.
+
+AFter adding a plural lexical entry for dog(s), we could translate (rephrase) 'Dogs sleep' into our Marathi grammar automatically (without any additional changes beyond whatever was done to set up the translation).
+
+In addition, we tried to translate a few other token sentences, and quite a few of them translated correctly once we fixed our pronoun predication name (pron_rel as opposed to whatever we had earlier). With this change, we can now correctly parse the following sentences:
+
+[1] Dogs sleep --> kutrii zhop-t-aat
+[2] These dogs sleep --> hii kutrii zhop-t-aat
+[3] Those dogs sleep --> tii kutrii zhop-t-aat
+[4] I can eat glass --> mii kaats khaa-uu shak-t-o  / mii kaats khaa-uu shak-t-e  [ M / F ]
+[5] The dogs are hungry --> kutrii upaashii aahet
+
+---------------------------
+
+Additional changes to the grammar:
+
+We added another feature to the type NOUN: POSS-CASE (just like POSS-PNG). The purpose of this feature is to hold the case information about the SPEC of a determiner so that the case suffix on the possessor can agree with the SPEC.
+
+noun :+ [ CASE case, 
+	  POSS-PNG png,
+	  POSS-CASE case, 
+	  PRON bool ].
+
+The possessive rule identifies the POSS-CASE of the daughter (possessor) with the CASE of the SPEC.
+
+The feature H-INIT which was earlier under HEAD is now on CAT. This was so-that it did not get passed up the tree in headed phrases. This way, a word can be the head daughter of both comp-head and head-comp rules if it is underspecified for H-INIT. Earlier when H-INIT was under HEAD the parent VP acquired the H-INIT value of its daughter V, which was not desired.
+
+cat :+ [ H-INIT bool ].
+
+We also added a feature PRON under HEAD which is + for pronouns and - for nouns. This helps in constraining the daughters of the compound noun rule.
+
+Also, we added a type for verbs that take clausal arguments but also take another argument (such as in 'I told Kim that Sandy died').
+
+This was not needed for this lab but we added it in anticipation of next lab's translation tasks where we'd be getting sentences like "I think that you know that dogs chase cars." 
+
+Although such a sentence does not need a ditransitive verb in English, it does need one in Marathi, because the Marathi way of saying "I think" is "This to me feels", and so we need two elements on the comps list".
+
+malaa watt-t-a kii X --> I think that X
+I.DAT feel-PRES-3.S.N that X
+
+We imagine that we would have to use the argument switching trick next week to actually make this work.
+
+For the moment, this is the sentence that we can now parse with the ditransitive analsis.
+
+ravi miitaa-laa mhann-t-o kii kutrii zhop-t-aat
+ravi miita-DAT tell-PRES-3.S.M that dogs.3.P.N sleep-PRES-3.P.N
+Ravi tells mita that dogs sleep
+
+ditrans_embedded_clause_inviting_verb-lex := non-copula-main-verb-lex & clausal-third-arg-ditrans-lex-item &
+  [ ARG-ST < synsem, #receiver, #arg >,
+    SYNSEM.LOCAL.CAT [ HEAD verb,
+		       VAL [ SPR < >,
+			     COMPS < #receiver & 
+				     [ LOCAL [ CAT [ HEAD noun & [ CASE dat ],
+						     VAL [ SPR < >,
+							   COMPS < > ]]]],
+				     #arg & 
+				     [ LOCAL [ CAT [ HEAD comp,
+						     VAL [ SPR < >,
+							   COMPS < > ],
+						     MC -],
+					       CONT.HOOK.INDEX.SF prop-or-ques]] >,
+			     SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg+nom ]]].
+
+
+----------------------------------
+
+[incr tsdb] Coverage Stats
+
+
+

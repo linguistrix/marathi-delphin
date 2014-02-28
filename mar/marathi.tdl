@@ -198,7 +198,7 @@ locative-pp-phrase := unary-phrase &
 		    INDEX #index,
 		    XARG #xarg ],
 	     RELS <! arg12-ev-relation &
-		   [ PRED "_loc_p_rel",
+		   [ PRED "_in_p_rel",
 		     LBL #ltop,
 		     ARG0 #index,
 		     ARG1 #xarg,
@@ -272,31 +272,6 @@ compound-noun-phrase := head-final &
 		    [ HARG #rstr,
 		      LARG #nonheadlbl  ] !> ]].
 
- 
-		   
-
-;    ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD noun & [CASE pos],
-;				  VAL.SPR < > ]]]> ].
-;			 VAL [SPEC < [ LOCAL.CAT.HEAD noun ] >]]]],
-
-
-;			 VAL.SPEC < [ LOCAL [ CAT [HEAD noun ],
-;						  ;CONT.HOOK [INDEX.COG-ST uniq-or-more, LTOP #ltop],
-;						  VAL [ COMPS < >,
-;							SUBJ < >, 
-;							SPR < > ]]]>]]],    
-
-;    C-CONT [ HOOK [ LTOP #ltop,
-;		    INDEX #index,
-;		    XARG #xarg ],	     	     
-;	     RELS <! arg12-ev-relation &
-;		   [ PRED "_poss_q_rel",
-;		     LBL #ltop,
-;		     ARG0 #index,
-;		     ARG1 #xarg,
-;		     ARG2 #dtr ] !>,
-;	     HCONS <! !>  ],    
-
 anim_noun_lexeme-noun-lex := infl-unsatisfied-noun-lex & common-noun-lex.
 
 inanim_noun_lexeme-noun-lex := infl-unsatisfied-noun-lex & common-noun-lex.
@@ -312,6 +287,17 @@ nom_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
 acc_dat_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 
   [ SYNSEM.LOCAL.CAT.HEAD.CASE acc+dat,
     INFLECTED.CASE-FLAG + ].
+
+poss_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    INFLECTED.CASE-FLAG + ].
+
+1p-m-pl-poss-pronoun := poss_pronoun_lexeme-noun-lex & 
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ POSS-PNG [ PERNUM 3pl, GEND M ], POSS-CASE nom]],
+		     CONT [ HOOK [ INDEX [ PNG [ PERNUM 1sg ]]]]]]].
+
+1p-nonnom-poss-pronoun := poss_pronoun_lexeme-noun-lex & 
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ POSS-CASE non-nom ]]]]].
 
 oblique_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 
   [ SYNSEM.LOCAL.CAT.HEAD.CASE non-nom,
@@ -568,7 +554,7 @@ subj-raise-aux := aux-lex & trans-first-arg-raising-lex-item &
                            HEAD verb &
                                 [ AUX - ] ] ] > ].
 
-subj-raise-ditrans-aux-with-pred := aux-lex & norm-sem-lex-item & ditrans-first-arg-control-lex-item &
+subj-raise-ditrans-aux-with-pred := aux-lex & norm-sem-lex-item & ditrans-second-arg-control-lex-item &
   [ SYNSEM.LOCAL [ CAT.VAL [ SPR < >,
                              SPEC < >,
                              COMPS < #comps1, #comps2 >,
@@ -605,9 +591,7 @@ ability-verb-lex := subj-raise-aux-with-pred & tobeinflected-verb-super-type &
                              COMPS < [ LOCAL.CAT.HEAD.FORM able-perm,
 				       OPT - ] >,
                              SUBJ < [ LOCAL.CAT.HEAD.CASE nom ] > ],
-		      H-INIT - ]],
-  INFLECTED [ VERB_TENSE_ASPECT-FLAG -,
-                VERB_GENDER_PERNUM-FLAG - ]].
+		      H-INIT - ]]].
 
 permission-verb-lex := subj-raise-ditrans-aux-with-pred & tobeinflected-verb-super-type & 
 [ SYNSEM.LOCAL [ CAT [ VAL [ SPR < >,
@@ -616,9 +600,7 @@ permission-verb-lex := subj-raise-ditrans-aux-with-pred & tobeinflected-verb-sup
 				       OPT - ],
 				     [ LOCAL.CAT.HEAD.CASE dat ] >,
                              SUBJ < [ LOCAL.CAT.HEAD.CASE nom ] > ],
-		      H-INIT - ]],
-  INFLECTED [ VERB_TENSE_ASPECT-FLAG -,
-	      VERB_GENDER_PERNUM-FLAG - ]].
+		      H-INIT - ]]].
 
 
 copula-verb-lex := copula-verb-lex-supertype & trans-first-arg-raising-lex-item-2 &
@@ -677,11 +659,13 @@ noun-copula-verb-lex := copula-transitive-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3sg ].
 
 neg-aux-lex := subj-raise-aux-with-pred & preinflected-verb-super-type &
-  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM neg-form,
-    SYNSEM.LOCAL.CAT [ VAL [COMPS.FIRST [LOCAL.CAT.VAL.SUBJ #spec, 
-					 OPT -],
-			    SUBJ #spec],
-		       H-INIT - ]].
+ [ SYNSEM.LOCAL [ CAT [ VAL [ COMPS.FIRST [ LOCAL [ CAT [ HEAD.FORM neg-form, 
+							  VAL.SUBJ #spec ],
+						    CONT.HOOK.INDEX #comp ], 
+					    OPT -],
+			      SUBJ #spec],
+			H-INIT - ],		   
+		  CONT.HOOK.INDEX #comp ]].
 
 sg_neg-aux-lex := neg-aux-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg ].

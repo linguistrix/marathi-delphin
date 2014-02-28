@@ -9,6 +9,16 @@ malaa := 1st_acc_dat_pronoun_lexeme-noun-lex &
   [ STEM < "malaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
+
+maajhyaa := 1p-nonnom-poss-pronoun &
+  [ STEM < "maajhyaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+maadze := 1p-m-pl-poss-pronoun &
+  [ STEM < "maadze" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+
 aamhii := 1pl_pronoun_lexeme-noun-lex &
   [ STEM < "aamhii" >,
     SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
@@ -85,6 +95,10 @@ polis := malenounsg_anim_noun-lex &
   [ STEM < "polis" >,
     SYNSEM.LKEYS.KEYREL.PRED "_police_n_rel" ].
 
+polis_1 := malenounpl_anim_noun-lex &
+  [ STEM < "polis" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_police_n_rel" ].
+
 waddiil := malenounpl_anim_noun-lex &
   [ STEM < "waddiil" >,
     SYNSEM.LKEYS.KEYREL.PRED "_father_n_rel" ].
@@ -101,9 +115,14 @@ mul := malenounsg_anim_noun-lex &
   [ STEM < "mul" >,
     SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
 
-bhaarat := malenounsg_anim_noun-lex &
+bhaarat := malenounsg_inam_noun-lex &
   [ STEM < "bhaarat" >,
     SYNSEM.LKEYS.KEYREL.PRED "_india_n_rel" ].
+
+bagiicaa := malenounsg_inam_noun-lex &
+  [ STEM < "bagiicaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_park_n_rel" ].
+
 
 baadzaar := malenounsg_inam_noun-lex &
   [ STEM < "baadzaar" >,
@@ -156,6 +175,10 @@ gaadii := femnounsg_inam_noun-lex &
 maashii := femnounsg_anim_noun-lex &
   [ STEM < "maashii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_housefly_n_rel" ].
+
+mulgii := femnounsg_anim_noun-lex &
+  [ STEM < "mulgii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_girl_n_rel" ].
 
 
 baatmii := femnounsg_inam_noun-lex &

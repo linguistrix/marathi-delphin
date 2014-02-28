@@ -44,10 +44,10 @@ PNG.PERNUM : PNG.PER PNG.NUM
   2PL <> second PL
   3PL <> third PL
   1st <> first !
-  1st << second *
-  2nd <> third !
-  2nd << first *
-  3rd <> second !
+  1st << first *
+  2nd <> second !
+  2nd << second *
+  3rd <> third !
   3rd << third *
   SG <> ! SG
   SG << * SG

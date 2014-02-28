@@ -1,0 +1,320 @@
+23c23,25
+< 	  POSS-PNG png ].
+---
+> 	  POSS-PNG png,
+> 	  POSS-CASE case, 
+> 	  PRON bool ].
+27,28c29,31
+< 	  H-INIT bool,
+< 	  C-INIT bool].
+---
+> 	  C-INIT bool ].
+> 
+> cat :+ [ H-INIT bool ].
+156a160,162
+> common-noun-lex := word-or-lexrule & 
+>   [ SYNSEM.LOCAL.CAT.HEAD.PRON - ].
+> 
+195c201
+< 		   [ PRED "_loc_p_rel",
+---
+> 		   [ PRED "_in_p_rel",
+210c216
+< 			      SPEC [ FIRST [ LOCAL [CAT [ HEAD noun ],
+---
+> 			      SPEC [ FIRST [ LOCAL [CAT [ HEAD noun & [ CASE #posscase ] ],
+216c222,224
+<     ARGS  < [ SYNSEM.LOCAL [ CAT [ HEAD noun & [CASE pos, POSS-PNG #posspng ],
+---
+>     ARGS  < [ SYNSEM.LOCAL [ CAT [ HEAD noun & [CASE pos, 
+> 						POSS-PNG #posspng, 
+> 						POSS-CASE #posscase ],
+233a242,273
+> compound-noun-phrase := head-final &
+>   [ SYNSEM [ LOCAL [ CAT [ HEAD noun & 
+> 				[ MOD < > ], 
+> 			   VAL [ SPR #headspr,
+> 				 COMPS < >,
+> 				 SUBJ < >, 
+> 				 SPEC < > ]]]],
+>     HEAD-DTR [ SYNSEM [ LOCAL [ CAT [ HEAD noun & 
+> 					   [ PRON - ],
+> 				      VAL.SPR cons & #headspr ],
+> 				CONT [ HOOK [ INDEX #headnoun ],
+> 				       RELS.LIST.FIRST.LBL #headlbl ]]]],     
+>     NON-HEAD-DTR [ SYNSEM [ LOCAL [ CAT [ HEAD noun & 
+> 					       [ CASE nom, 
+> 						 PRON - ],
+> 					  VAL.SPR cons ],
+> 				    CONT [ HOOK [ INDEX #nonheadnoun ],
+> 					   RELS.LIST.FIRST.LBL #nonheadlbl ]],
+> 			    OPT - ]],
+>     C-CONT [ HOOK [ INDEX #headnoun,
+> 		    LTOP #headlbl ],
+> 	     RELS <! quant-relation & 
+> 		   [ PRED "exist_q_rel",
+> 		     ARG0 #nonheadnoun,
+> 		     RSTR #rstr ],
+> 		   [ PRED "compound_rel",
+> 		     LBL #headlbl,
+> 		     ARG1 #headnoun,
+> 		     ARG2 #nonheadnoun ] !>,
+> 	     HCONS <! qeq & 
+> 		    [ HARG #rstr,
+> 		      LARG #nonheadlbl  ] !> ]].
+235,259c275
+< 		   
+< 
+< ;    ARGS < [ SYNSEM.LOCAL [ CAT [ HEAD noun & [CASE pos],
+< ;				  VAL.SPR < > ]]]> ].
+< ;			 VAL [SPEC < [ LOCAL.CAT.HEAD noun ] >]]]],
+< 
+< 
+< ;			 VAL.SPEC < [ LOCAL [ CAT [HEAD noun ],
+< ;						  ;CONT.HOOK [INDEX.COG-ST uniq-or-more, LTOP #ltop],
+< ;						  VAL [ COMPS < >,
+< ;							SUBJ < >, 
+< ;							SPR < > ]]]>]]],    
+< 
+< ;    C-CONT [ HOOK [ LTOP #ltop,
+< ;		    INDEX #index,
+< ;		    XARG #xarg ],	     	     
+< ;	     RELS <! arg12-ev-relation &
+< ;		   [ PRED "_poss_q_rel",
+< ;		     LBL #ltop,
+< ;		     ARG0 #index,
+< ;		     ARG1 #xarg,
+< ;		     ARG2 #dtr ] !>,
+< ;	     HCONS <! !>  ],    
+< 
+< anim_noun_lexeme-noun-lex := infl-unsatisfied-noun-lex.
+---
+> anim_noun_lexeme-noun-lex := infl-unsatisfied-noun-lex & common-noun-lex.
+261c277
+< inanim_noun_lexeme-noun-lex := infl-unsatisfied-noun-lex.
+---
+> inanim_noun_lexeme-noun-lex := infl-unsatisfied-noun-lex & common-noun-lex.
+264c280,281
+<   [ SYNSEM.LOCAL.CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI + ] ].
+---
+>   [ SYNSEM.LOCAL [ CAT [ HEAD [ PRON + ] ],
+> 		   CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI + ]]].
+273a291,301
+> poss_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 
+>   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+>     INFLECTED.CASE-FLAG + ].
+> 
+> 1p-m-pl-poss-pronoun := poss_pronoun_lexeme-noun-lex & 
+>   [ SYNSEM [ LOCAL [ CAT [ HEAD [ POSS-PNG [ PERNUM 3pl, GEND M ], POSS-CASE nom]],
+> 		     CONT [ HOOK [ INDEX [ PNG [ PERNUM 1sg ]]]]]]].
+> 
+> 1p-nonnom-poss-pronoun := poss_pronoun_lexeme-noun-lex & 
+>   [ SYNSEM [ LOCAL [ CAT [ HEAD [ POSS-CASE non-nom ]]]]].
+> 
+334a363,369
+> malenounpl_anim_noun-lex := anim_noun_lexeme-noun-lex &
+>   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM 3PL]].
+> 
+> malenounpl_inam_noun-lex := inanim_noun_lexeme-noun-lex &
+>   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM 3PL]].
+> 
+> 
+446c481
+<   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.CASE nom+dat ].
+---
+>   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.CASE dat ].
+458c493
+< embedded_clause_inviting_verb-lex := non-copula-main-verb-lex & clausal-second-arg-trans-lex-item &
+---
+> intrans_embedded_clause_inviting_verb-lex := non-copula-main-verb-lex & clausal-second-arg-trans-lex-item &
+469,470c504,529
+< emb-d-inviting_verb-lex := embedded_clause_inviting_verb-lex & 
+<   [SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CONT.HOOK.INDEX.SF prop] > ].
+---
+> ditrans_embedded_clause_inviting_verb-lex := non-copula-main-verb-lex & clausal-third-arg-ditrans-lex-item &
+>   [ ARG-ST < synsem, #receiver, #arg >,
+>     SYNSEM.LOCAL.CAT [ HEAD verb,
+> 		       VAL [ SPR < >,
+> 			     COMPS < #receiver & 
+> 				     [ LOCAL [ CAT [ HEAD noun & [ CASE dat ],
+> 						     VAL [ SPR < >,
+> 							   COMPS < > ]]]],
+> 				     #arg & 
+> 				     [ LOCAL [ CAT [ HEAD comp,
+> 						     VAL [ SPR < >,
+> 							   COMPS < > ],
+> 						     MC -],
+> 					       CONT.HOOK.INDEX.SF prop-or-ques]] >,
+> 			     SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg+nom ]]].
+> 
+> 
+> 
+> intrans_emb-d-inviting_verb-lex := intrans_embedded_clause_inviting_verb-lex & 
+>   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.SF prop ].
+> 			
+> intrans_emb-q-inviting_verb-lex := intrans_embedded_clause_inviting_verb-lex & 
+>   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CONT.HOOK.INDEX.SF ques ].			
+> 
+> ditrans_emb-d-inviting_verb-lex := ditrans_embedded_clause_inviting_verb-lex & 
+>   [ SYNSEM.LOCAL.CAT.VAL.COMPS.REST.FIRST.LOCAL.CONT.HOOK.INDEX.SF prop ].
+472,473c531,532
+< emb-q-inviting_verb-lex := embedded_clause_inviting_verb-lex & 
+<   [SYNSEM.LOCAL.CAT.VAL.COMPS < [ LOCAL.CONT.HOOK.INDEX.SF ques] > ].			
+---
+> ditrans_emb-q-inviting_verb-lex := ditrans_embedded_clause_inviting_verb-lex & 
+>   [ SYNSEM.LOCAL.CAT.VAL.COMPS.REST.FIRST.LOCAL.CONT.HOOK.INDEX.SF ques ].			
+497a557,584
+> subj-raise-ditrans-aux-with-pred := aux-lex & norm-sem-lex-item & ditrans-second-arg-control-lex-item &
+>   [ SYNSEM.LOCAL [ CAT.VAL [ SPR < >,
+>                              SPEC < >,
+>                              COMPS < #comps1, #comps2 >,
+>                              SUBJ < #subj > ],
+>                    CONT.HOOK.XARG #xarg ],
+>     ARG-ST < #subj &
+>              [ LOCAL [ CAT [ HEAD noun,
+>                              VAL [ SUBJ < >,
+>                                    SPR < >,
+>                                    SPEC < >,
+>                                    COMPS < > ] ],
+>                        CONT.HOOK.INDEX #xarg ] ],
+>              #comps2 &
+>              [ LOCAL.CAT [ VAL [ SUBJ < >,
+>                                  COMPS < >,
+>                                  SPR < >,
+>                                  SPEC < > ],
+>                            HEAD noun ]],
+>              #comps1 &
+>              [ LOCAL.CAT [ VAL [ SUBJ < [ ] >,
+>                                  COMPS < >,
+>                                  SPR < >,
+>                                  SPEC < > ],
+>                            HEAD verb &
+>                                 [ AUX - ] ] ] > ].
+> 
+> 
+500c587,588
+< ability-permission-verb-lex := subj-raise-aux-with-pred & tobeinflected-verb-super-type & 
+---
+> 
+> ability-verb-lex := subj-raise-aux-with-pred & tobeinflected-verb-super-type & 
+506,508c594,603
+< 		      HEAD.H-INIT - ]],
+<   INFLECTED [ VERB_TENSE_ASPECT-FLAG -,
+<                 VERB_GENDER_PERNUM-FLAG - ]].
+---
+> 		      H-INIT - ]]].
+> 
+> permission-verb-lex := subj-raise-ditrans-aux-with-pred & tobeinflected-verb-super-type & 
+> [ SYNSEM.LOCAL [ CAT [ VAL [ SPR < >,
+>                              SPEC < >,
+>                              COMPS < [ LOCAL.CAT.HEAD.FORM able-perm,
+> 				       OPT - ],
+> 				     [ LOCAL.CAT.HEAD.CASE dat ] >,
+>                              SUBJ < [ LOCAL.CAT.HEAD.CASE nom ] > ],
+> 		      H-INIT - ]]].
+567,571c662,668
+<   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM neg-form,
+<     SYNSEM.LOCAL.CAT [VAL [COMPS.FIRST [LOCAL.CAT.VAL.SUBJ #spec, 
+< 					OPT -],
+< 			  SUBJ #spec],
+< 		      HEAD.H-INIT - ]].
+---
+>  [ SYNSEM.LOCAL [ CAT [ VAL [ COMPS.FIRST [ LOCAL [ CAT [ HEAD.FORM neg-form, 
+> 							  VAL.SUBJ #spec ],
+> 						    CONT.HOOK.INDEX #comp ], 
+> 					    OPT -],
+> 			      SUBJ #spec],
+> 			H-INIT - ],		   
+> 		  CONT.HOOK.INDEX #comp ]].
+705,706c802,803
+<   [ SYNSEM.LOCAL.CAT.HEAD [ H-INIT +, 
+< 			    C-INIT - ] ].
+---
+>   [ SYNSEM.LOCAL.CAT [ H-INIT +, 
+> 		       HEAD.C-INIT - ] ].
+709,710c806,807
+<   [ SYNSEM.LOCAL.CAT.HEAD [H-INIT -,
+< 			   C-INIT + ]].
+---
+>   [ SYNSEM.LOCAL.CAT [ H-INIT -,
+> 		       HEAD.C-INIT + ]].
+716,717c813,814
+<                    CAT [VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite,
+< 			HEAD.H-INIT -]] ].
+---
+>                    CAT [ VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM finite,
+> 			 H-INIT -]] ].
+817c914,928
+< poss_m_sg_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+---
+> poss_nom_lexical_rule-lex-rule-super := oblique_case-lex-rule-super & infl-lex-rule & 
+>   [ SYNSEM.LOCAL.CAT.HEAD.POSS-CASE nom ].
+> 
+> 
+> poss_non-nom_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule & 
+>   [ SYNSEM [ LOCAL [ CAT [ HEAD [ POSS-CASE non-nom,
+> 				  CASE pos ]],
+> 		     CONT.HOOK.INDEX.PNG.PERNUM sg ]]].
+> 
+> poss_non-nom_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule & 
+>   [ SYNSEM [ LOCAL [ CAT [ HEAD [ POSS-CASE non-nom,
+> 				  CASE pos ]],
+> 		     CONT.HOOK.INDEX.PNG.PERNUM pl ]]].
+> 			   
+> poss_m_sg_lexical_rule-lex-rule := poss_nom_lexical_rule-lex-rule-super &
+823c934
+< poss_f_sg_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+---
+> poss_f_sg_lexical_rule-lex-rule := poss_nom_lexical_rule-lex-rule-super &
+829c940,941
+< poss_n_sg_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+---
+> 
+> poss_n_sg_lexical_rule-lex-rule := poss_nom_lexical_rule-lex-rule-super &
+836c948
+< poss_m_pl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+---
+> poss_m_pl_lexical_rule-lex-rule := poss_nom_lexical_rule-lex-rule-super &
+842c954
+< poss_f_pl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+---
+> poss_f_pl_lexical_rule-lex-rule := poss_nom_lexical_rule-lex-rule-super &
+847c959
+< poss_n_pl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+---
+> poss_n_pl_lexical_rule-lex-rule := poss_nom_lexical_rule-lex-rule-super &
+853c965
+< poss_m_sg_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+---
+> poss_m_sg_plspr_lexical_rule-lex-rule := poss_nom_lexical_rule-lex-rule-super &
+859c971
+< poss_f_sg_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+---
+> poss_f_sg_plspr_lexical_rule-lex-rule := poss_nom_lexical_rule-lex-rule-super &
+865c977
+< poss_n_sg_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+---
+> poss_n_sg_plspr_lexical_rule-lex-rule := poss_nom_lexical_rule-lex-rule-super &
+872c984
+< poss_m_pl_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+---
+> poss_m_pl_plspr_lexical_rule-lex-rule := poss_nom_lexical_rule-lex-rule-super &
+878c990
+< poss_f_pl_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+---
+> poss_f_pl_plspr_lexical_rule-lex-rule := poss_nom_lexical_rule-lex-rule-super &
+884c996
+< poss_n_pl_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+---
+> poss_n_pl_plspr_lexical_rule-lex-rule := poss_nom_lexical_rule-lex-rule-super &
+1286c1398
+<   [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.H-INIT -,
+---
+>   [ HEAD-DTR.SYNSEM.LOCAL.CAT.H-INIT -,
+1290,1291c1402,1404
+<   [ HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD.H-INIT +,
+<     NON-HEAD-DTR.SYNSEM.LOCAL.CAT [HEAD +vc & [C-INIT - ]]].
+---
+>   [ HEAD-DTR.SYNSEM.LOCAL.CAT.H-INIT +,
+>     NON-HEAD-DTR.SYNSEM.LOCAL.CAT [ HEAD +vc, 
+> 				    HEAD.C-INIT - ]].
