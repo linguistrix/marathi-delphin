@@ -16,6 +16,19 @@ comp_gtr := generator_rule &
           TRIGGER "kii" ]].
 
 comp_gtr := generator_rule &
+[ CONTEXT [ RELS <! [ ARG3 #h & handle ],
+                    [ ARG0 #e & event ] !> ],
+  FLAGS [ EQUAL < #e, #h >,
+          TRIGGER "kii" ]].
+
+comp_gtr := generator_rule &
+[ CONTEXT [ RELS <! [ ARG3 #h & handle ],
+                    [ ARG0 #e & event ] !> ],
+  FLAGS [ EQUAL < #e, #h >,
+          TRIGGER "asa" ]].
+
+
+comp_gtr := generator_rule &
 [ CONTEXT [ RELS <! [ ARG2 #h & handle ],
                     [ ARG0 #e & event ] !> ],
   FLAGS [ EQUAL < #e, #h >,

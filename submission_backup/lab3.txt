@@ -1,0 +1,248 @@
+We have focused on the following phenomena in our testsuite:
+
+1. Tense/Aspect
+
+Tense in Marathi is inflected as a suffix on the verb prior to the inflection of gender and pernum. The language has three inflected tenses: present, future and past. Marathi has perfective and imperfective aspects, which are inflected in the same way as tense. 
+
+Present:
+#97
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {tam}
+haa zhopto
+thaa zhop-t-o
+he.NOM.P sleep-PRES-3.S.M
+he sleeps
+
+The present tense is inflected by the -t morpheme that occurs immediately after the stem "zhop". This does vary in irregular words, but this pattern generally holds true. 
+
+Future:
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {tam,agr}
+to zhoplo
+to zhop-l-o
+he.NOM.R sleep-FUT-3.S.M
+he wil sleep
+
+The future tense is inflected at the same point as the past tense, with the morpheme -l. There is a fair amount of irregular variation with this form. Several verbs remove part of the original stem and replace it with "iin." There are few specific examples of this, but the book does mention the high amount of variance within the future tense. 
+
+Past:
+#100
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {tam,agr}
+tii zhoplii
+tii zhop-l-ii
+she.NOM.R sleep-PAST-3.S.M
+she slept
+
+The past tense is inflected with the same morpheme as the future tense, -l. 
+
+This was handled in the customization suite by creating those three tenses in the "Tense, Aspect and Mood" section. We also created a position class for verb tense and a lexical rule for each inflection within that. A position class for aspect was also created, but will be combined with the aspect class because they both obligatorily occur and do not occur together. 
+
+The perfective aspect shares the -l morpheme with the future and past tense, and the imperfective shares -t with the present tense. 
+
+#18
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {pn,agr,tam}
+hii zhoplii
+hii zhop-l-ii
+neut.3.PL.N.P sleep-PST-3.PL.N 
+neut slept
+
+This has not yet been handled in the customization suite. 
+
+2. Agreement
+
+Nouns and verbs in Marathi agree in gender, tense, aspect and case. Case is inflected on both the noun and the verb, with all other agreements being enforced on the verb only. Pronouns, however, carry morphological markers for gender and vary for pernum. There must be agreement between the pronoun and the verb. 
+
+Verbs agree with their subject nouns except in the ergative case, when the verb and the object nouns agree. We have not been able to represent this effectively in our customization suite. 
+
+Gender agreement:
+#97
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {tam}
+haa zhopto
+thaa zhop-t-o
+he.NOM.P sleep-PRES-3.S.M
+he sleeps
+
+This is grammatical because the pronoun and the verb agree in gender. 
+
+#88
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo, pro-d,arg}
+haa tsoraalaa maartii
+haa tsor-laa maar-t-ii
+he.NOM thief-ACC beat-PRES-3.S.F
+he beats the thief
+
+This is ungrammatical because the subject pronoun disagrees with the verb, which is marked as female with the morpheme -ii.
+
+#7
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo, det,agr}
+to tsor zhoplaa 
+to tsor zhop-l-aa 
+that.S.M thief.NOM sleep-PST-3.S.M
+That thief slept
+
+This is grammatical because the word "Thief" is a male noun, despite carrying no morphological markers for gender. 
+
+Pernum:
+The information for pernum is placed primarily on the verb, though pronouns do carry the information as well. Nouns can carry pernum information, but it is irregular and inconsistent. Verbs and subject pronouns must agree. 
+
+#90
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo,agr}
+te tsoraalaa maarte
+te tsor-laa maar-t-e
+they.NOM.M thief-ACC beat-PRES-3.S.M
+they beat the thief
+
+This is grammatical because "te" is a plural pronoun, and the verb is marked as such.
+
+#102
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo,agr}
+te tsoraalaa maarto
+tyaa tsor-laa maar-t-o
+he.NOM.M thief-ACC beat-PRES-3.S.M
+he beat the thief
+
+This is ungrammatical because the pernum of the pronoun and the verb disagree.
+
+Case agreement:
+Case was covered heavily in the previous write-up. Marathi has eight cases, all of which are inflected on both the subject noun and the verb. Samples and the full example set are available in the test suite and the last lab. 
+
+ 
+We created a multiple inheritance noun hierarchy to handle agreement in verbs and nouns. Nouns can inherit from 3sg_noun_lexeme, 2sg_noun_lexeme, 1sg_noun_lexeme, 3pl_noun_lexeme, f_noun_lexeme, m_noun_lexeme, and so on, each enforcing one aspect of agreement. Common_noun_lexeme allows for an optional determiner, and pronoun_lexeme does not allow for determiners. Pronouns inherit from pronoun_lexeme and all other relevant lexical types. Commoun nouns inherit from common_noun_lexeme and other relevant types. Verbs inherit from only intransitive and transitive types. No other types are necessary as of now. 
+
+Case is inflected using a noun position class and a lexical rule for each case. It is the only inflectional rule for nouns in our grammar. Verb inflection is handled by position classes for tense and gender. The genders inflect differently depending on the tense morpheme that precedes the gender inflection, so we created a position class for gender_present, gender_past, and gender_future. 
+
+3. Negation
+Sentential negation in Marathi is complex. Currently, our grammar only handles negation via auxiliary verbs that sentence-final. This is the most common form of sentential negation in the language, though others occur. Particles that are identical to the auxiliary verb for negation can occur more freely in the sentence and serve a similar purpose. 
+
+#64
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo,neg}
+te tsor naahiit
+te tsor naahiit
+they thief.pl are not.NEG.PL
+they are not thieves
+
+The negative auxiliary "naahiit" occurs at the end of the sentence. This is grammatical. 
+
+#65
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {wo,neg}
+naahiit te tsor 
+naahiit te tsor
+not.neg.pl they thief.PL are
+they are not thieves
+
+This is ungrammatical because the negative auxiliary occurs at the end of the sentence. 
+
+We handled negation by selecting a negative auxiliary that agrees with its object in the sentential negation section of the customization suite. This created a negative auxiliary type in the lexicon, in which we placed "naahiit."
+
+4. Argument Optionality
+
+Subjects are frequently dropped in Marathi, especially pronouns in running speech when the subject is clearly defined from previous remarks. Common nouns can also be dropped in this same fashion, though utterances of this length have not yet been handled by our test suite. 
+
+#82
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo, pro-d}
+haa tsoraalaa maarto
+haa tsor-laa maar-t-o
+he.NOM thief-ACC beat-PRES-3.S.M
+he beats the thief
+
+Here, the pronoun is present and the sentence is grammatical. 
+
+#83
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo, pro-d}
+tsoraalaa maarto
+tsor-laa maar-t-o
+thief-ACC beat-PRES-3.S.M
+he beats the thief
+
+In this case, the pronoun has been dropped but the sentence remains grammatical. The subject is made clear by the 3sg masculine inflection on the noun. This would be better demonstrated by a longer, multi-sentence test instance. 
+
+Argument optionality was handled in the customization suite suite by allowing for subject dropping in the "Argument Optionality" section. Object dropping was not selected for because it is not allowed in Marathi. 
+
+5. Demonstrative/Definiteness
+
+Pronouns in Marathi are marked for proximity. 
+
+#22
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {pn,agr,tam}
+te zhople
+te zhop-l-e
+he.3.PL.M.R sleep-PST-3.PL.M 
+they(masc) slept
+
+The pronoun "te" is remote. 
+
+#18
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {pn,agr,tam}
+hii zhoplii
+hii zhop-l-ii
+neut.3.PL.N.P sleep-PST-3.PL.N 
+neut slept
+
+The pronoun "hii" is proximal. 
+
+This has not yet been handled by our customization suite. 
+
+
+Not covered:
+
+Sentential negation is going to be difficult to cover using the customization suite alone. It is highly variable in Marathi, and, as was mentioned in the previous lab, the word order can become confusing and free. SOV is the canonical word order, but the particles that can be used for negation are allowed more freely and vary in their phonology. We covered the most consistent negation, the negative auxiliary, easily. The others are more complex. 
+
+Changes:
+
+We increased the complexity of the noun hierarchy, as described in the agreement section above, to fit in better with the morphological rules we added this week. We had fully inflected forms in the lexicon before, but that is now handled by the lexical rules. Only stems are in the lexicon. 
+
+We also changed the case structure from the previous week, realizing that we did not have split ergative case in the classic sense. We used a split case that allows for the phenomena described in the previous lab. We also created several other cases, and enforced the inflection using lexical rules on both nouns and verbs. The case structure in Marathi is large and high in variance, and will surely require work during every week of this class. 
+
+The way morphology is handled has been changed as well. Morphophonology inserts irregular vowels in between the stem and the inflectional morpheme, which is difficult to account for. Insted, we have replaced the irregular vowels with hyphens and chosen consistent representations for the morphemes. 
+
+Issues:
+
+Our grammar currently will not load into the LKB. It was loading as of Thursday, but that changed after several changes were made. The error messages claim that there is disagreement between the parent types of several pronouns, though I fail to see how this is the case. Each parent type carries only one rule, and, as far as I can tell, none of them contradict. Given how bugs work, whatever the problem is will seem obvious and simple when it's found, but for now we have no parsing statistics because we have no loading grammar. 
+
+
+
+
+

@@ -1,0 +1,447 @@
+;;; -*- Mode: TDL; Coding: utf-8 -*-
+;;; Nouns
+
+söld := proper-noun-lex &
+  [ STEM < "Söld" >, SYNSEM.LKEYS.KEYREL.CARG "Sol" ].
+
+engelönd := proper-noun-lex &
+  [ STEM < "Engelönd" >, SYNSEM.LKEYS.KEYREL.CARG "England" ].
+
+soldaat := common-noun-noun-lex &
+  [ STEM < "soldaat" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_soldier_n_rel" ].
+
+stek := common-noun-noun-lex &
+  [ STEM < "stek" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_piece_n_rel" ].
+
+breev := common-noun-noun-lex &
+  [ STEM < "breev" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_letter_n_rel" ].
+
+dreeng := common-noun-noun-lex &
+  [ STEM < "dreeng" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_boy_n_rel" ].
+
+wining := common-noun-noun-lex &
+  [ STEM < "wining" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_window_n_rel" ].
+
+hün := common-noun-noun-lex &
+  [ STEM < "hün" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_dog_n_rel" ].
+
+kat := common-noun-noun-lex &
+  [ STEM < "kat" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cat_n_rel" ].
+
+aaler := common-noun-noun-lex &
+  [ STEM < "aaler" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_parent_n_rel" ].
+
+swin := common-noun-noun-lex &
+  [ STEM < "swin" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_pig_n_rel" ].
+
+kin := common-noun-noun-lex &
+  [ STEM < "kin" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cow_n_rel" ].
+
+skepper := common-noun-noun-lex &
+  [ STEM < "skepper" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_creator_n_rel" ].
+
+skeplid := common-noun-noun-lex &
+  [ STEM < "skeplid" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sailor_n_rel" ].
+
+koptein := common-noun-noun-lex &
+  [ STEM < "koptein" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_captain_n_rel" ].
+
+man := common-noun-noun-lex &
+  [ STEM < "man" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_man_n_rel" ].
+
+buurd := common-noun-noun-lex &
+  [ STEM < "buurd" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_board_n_rel" ].
+
+ik := 1sg-subj-pronoun-noun-lex &
+  [ STEM < "ik" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+dü := 2sg-subj-pronoun-noun-lex &
+  [ STEM < "dü" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+hi := 3sg-masc-subj-pronoun-noun-lex &
+  [ STEM < "hi" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+jü := 3sg-fem-subj-pronoun-noun-lex &
+  [ STEM < "jü" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+hat := 3sg-neut-subj-pronoun-noun-lex &
+  [ STEM < "hat" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+wat := 1du-subj-pronoun-noun-lex &
+  [ STEM < "wat" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+at := 2du-subj-pronoun-noun-lex &
+  [ STEM < "at" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+jat := 3du-subj-pronoun-noun-lex &
+  [ STEM < "jat" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+wü := 1pl-subj-pronoun-noun-lex &
+  [ STEM < "wü" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+i := 2pl-subj-pronoun-noun-lex &
+  [ STEM < "i" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+ja := 3pl-subj-pronoun-noun-lex &
+  [ STEM < "ja" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+lön := mass-noun-noun-lex &
+  [ STEM < "lön" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_land_n_rel" ].
+
+weeter := mass-noun-noun-lex &
+  [ STEM < "weeter" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_water_n_rel" ].
+
+glees := mass-noun-noun-lex &
+  [ STEM < "glees" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_glass_n_rel" ].
+
+jil := mass-noun-noun-lex &
+  [ STEM < "jil" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_money_n_rel" ].
+
+molk := mass-noun-noun-lex &
+  [ STEM < "molk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_milk_n_rel" ].
+
+mi := 1sg-obj-pronoun-noun-lex &
+  [ STEM < "mi" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+di_1 := 2sg-obj-pronoun-noun-lex &
+  [ STEM < "di" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+höm_1 := 3sg-masc-obj-pronoun-noun-lex &
+  [ STEM < "höm" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+höör := 3sg-fem-obj-pronoun-noun-lex &
+  [ STEM < "höör" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+höm_2 := 3sg-neut-obj-pronoun-noun-lex &
+  [ STEM < "höm" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+unk := 1du-obj-pronoun-noun-lex &
+  [ STEM < "unk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+junk := 2du-obj-pronoun-noun-lex &
+  [ STEM < "junk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+jam_1 := 3du-obj-pronoun-noun-lex &
+  [ STEM < "jam" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+üüs := 1pl-obj-pronoun-noun-lex &
+  [ STEM < "üüs" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+juu := 2pl-obj-pronoun-noun-lex &
+  [ STEM < "juu" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+jam_2 := 3pl-obj-pronoun-noun-lex &
+  [ STEM < "jam" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
+heest := neuter-noun-noun-lex &
+  [ STEM < "heest" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_train_n_rel" ].
+
+wein := neuter-noun-noun-lex &
+  [ STEM < "wein" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_car_n_rel" ].
+
+skep := neuter-noun-noun-lex &
+  [ STEM < "skep" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_ship_n_rel" ].
+
+; HACK -- for MMT exercise, pretend "guart" is "park".  it's actually "garden".
+guart := common-noun-noun-lex &
+  [ STEM < "guart" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_park_n_rel" ].
+
+hingst := common-noun-noun-lex &
+  [ STEM < "hingst" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_horse_n_rel" ].
+
+fölk := common-noun-noun-lex &
+  [ STEM < "fölk" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_foal_n_rel" ].
+
+fuul := nodet-singular-noun-noun-lex &
+  [ STEM < "fuul" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_much_n_rel" ].
+
+siir := nodet-singular-noun-noun-lex &
+  [ STEM < "siir" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_harm_n_rel" ].
+
+;;; Verbs
+
+wiis_exist := intrans-verb-verb-lex &
+  [ STEM < "wiis" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_be_v_exist_rel" ].
+
+sliip := intrans-verb-verb-lex &
+  [ STEM < "sliip" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
+
+sil := intrans-verb-verb-lex &
+  [ STEM < "sil" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_sail_v_rel" ].
+
+laap := intrans-verb-verb-lex &
+  [ STEM < "laap" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_run_v_rel" ].
+
+smile := intrans-verb-verb-lex &
+  [ STEM < "smile" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_smile_v_rel" ].
+
+kum := intrans-verb-verb-lex &
+  [ STEM < "kum" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_come_v_rel" ].
+
+snaki := intrans-verb-verb-lex &
+  [ STEM < "snaki" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_speak_v_rel" ].
+
+luki := intrans-verb-verb-lex &
+  [ STEM < "luki" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_look_v_rel" ].
+
+spreek := transitive-verb-verb-lex &
+  [ STEM < "spreek" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_speak_v_rel" ].
+
+rööp := transitive-verb-verb-lex &
+  [ STEM < "rööp" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_call_v_rel" ].
+
+skiar := transitive-verb-verb-lex &
+  [ STEM < "skiar" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cut_v_rel" ].
+
+iit := transitive-verb-verb-lex &
+  [ STEM < "iit" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
+
+iit_intr := intrans-verb-verb-lex &
+  [ STEM < "iit" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
+
+driuwe := transitive-verb-verb-lex &
+  [ STEM < "driuwe" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_chase_v_rel" ].
+
+haa_2 := transitive-verb-verb-lex &
+  [ STEM < "haa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_have_v_rel" ].
+
+bit := transitive-verb-verb-lex &
+  [ STEM < "bit" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_bite_v_rel" ].
+
+fo := transitive-verb-verb-lex &
+  [ STEM < "fo" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_get_v_rel" ].
+
+liir := transitive-verb-verb-lex &
+  [ STEM < "liir" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_learn_v_rel" ].
+
+; hack... this word actually means "give", but for the MMT exercise we pretend it is "make".
+dö := ditransitive-verb-verb-lex &
+  [ STEM < "dö" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_make_v_rel" ].
+
+;;; Auxiliaries
+
+haa := perfective-auxiliary-aux-lex &
+  [ STEM < "haa" > ].
+
+skel := obligation-auxiliary-aux-lex &
+  [ STEM < "skel" > ].
+
+wel := obligation-auxiliary-aux-lex &
+  [ STEM < "wel" > ].
+
+ken := modal-auxiliary-aux-lex &
+  [ STEM < "ken" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_can_v_rel" ].
+
+;;; Verbs with clausal complements
+
+gesi := dec-emb-clause-verb-lex &
+  [ STEM < "gesi" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_guess_v_rel" ].
+
+achtsje := dec-emb-clause-verb-lex &
+  [ STEM < "achtsje" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_think_v_rel" ].
+
+swaar := dec-emb-clause-verb-lex &
+  [ STEM < "swaar" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_swear_v_rel" ].
+
+weet := emb-clause-verb-lex &
+  [ STEM < "weet" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_know_v_rel" ].
+
+fraag := int-emb-clause-ditrans-verb-lex &
+  [ STEM < "fraag" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
+
+;;; Complementizers
+
+dat := dec-complementizer-lex-item &
+  [ STEM < "dat" > ].
+
+weder := int-complementizer-lex-item &
+  [ STEM < "weder" > ].
+
+;dit_rel := relative-adj-lex &
+dit_rel := relative-pronoun &
+  [ STEM < "dit" > ].
+
+;;; Determiners
+
+de := common-definite-determiner-lex &
+  [ STEM < "de" >,
+    SYNSEM.LKEYS.KEYREL.PRED "exist_q_rel" ].
+
+di_2 := common-definite-determiner-lex &
+  [ STEM < "di" >,
+    SYNSEM.LKEYS.KEYREL.PRED "exist_q_rel" ].
+
+en_1 := indefinite-det-determiner-lex &
+  [ STEM < "en" >,
+    SYNSEM.LKEYS.KEYREL.PRED "exist_q_rel" ].
+
+en_2 := conj-lex &
+  [ STEM < "en" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
+    CFORM "1" ].
+
+dit := neuter-definite-determiner-lex &
+  [ STEM < "dit" >,
+    SYNSEM.LKEYS.KEYREL.PRED "exist_q_rel" ].
+
+des := common-demonst-middle-determiner-lex &
+  [ STEM < "des" > ].
+
+det := neuter-demonst-middle-determiner-lex &
+  [ STEM < "det" > ].
+
+dijir := common-demonst-near-determiner-lex &
+  [ STEM < "dijir" > ].
+
+ditjir := neuter-demonst-near-determiner-lex &
+  [ STEM < "ditjir" > ].
+
+didiar := common-demonst-far-determiner-lex &
+  [ STEM < "didiar" > ].
+
+ditdiar := neuter-demonst-far-determiner-lex &
+  [ STEM < "ditdiar" > ].
+
+ek := neg-adv-lex &
+  [ STEM < "ek" >,
+    SYNSEM.LKEYS.KEYREL.PRED "neg_rel" ].
+
+aural := adverb-lex &
+  [ STEM < "aur.al" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_everywhere_a_rel" ].
+
+hurd := adverb-lex &
+  [ STEM < "hurd" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_quick_a_rel" ].
+
+jens := adverb-lex &
+  [ STEM < "jens" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_once_a_rel" ].
+
+gur := adverb-lex &
+  [ STEM < "gur" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_well_a_rel" ].
+
+miaren := adverb-lex &
+  [ STEM < "miaren" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_tomorrow_a_rel" ].
+
+wunderbar := adjective-lex &
+  [ STEM < "wunderbar" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_wonderful_a_rel" ].
+
+hol := adjective-lex &
+  [ STEM < "hol" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_hungry_a_rel" ].
+
+gurt := adjective-lex &
+  [ STEM < "gurt" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_big_a_rel" ].
+
+ön := prep-lex &
+  [ STEM < "ön" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_in_p_rel" ].
+
+bi := prep-lex &
+  [ STEM < "bi" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_by_p_rel" ].
+
+fan := prep-lex &
+  [ STEM < "fan" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_from_p_rel" ].
+
+naa := prep-lex &
+  [ STEM < "naa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_to_p_rel" ].
+
+uk-aur := prep-lex &
+  [ STEM < "uk", "aur" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_out_over_p_rel" ].
+
+wiis := copula-lex &
+  [ STEM < "wiis" > ].
+
+wiis-np-cop := strict-transitive-verb-verb-lex &
+  [ STEM < "wiis" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_be_v_id_rel" ].
+
+ja_disc := empty-adverb-lex &
+  [ STEM < "ja" > ].
+
+diar_disc := empty-adverb-lex &
+  [ STEM < "diar" > ].

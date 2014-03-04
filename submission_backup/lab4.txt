@@ -1,0 +1,710 @@
+Andrew Baer (writer), Antariksh Bothale
+Language: mar
+Lab 4
+
+The following phenomena have been illustrated in our test suite:
+
+1. Matrix yes/no questions
+
+Yes/no questions in Marathi are marked with the question particle "kaa" at the end of the sentence. The particle turns declarative sentences into interrogatives. The declarative sentence is not changed in any way beyond the addition of the question particle. The first example shows the grammatical question "did he come back yesterday?"and the second example shows the declarative sentence "he came back yesterday". The only difference between the two is the question particle. The third example shows that the question particle can only occur at the end of the sentence in positive yes/no questions. This changes with wh-questions, which is shown in the final example. 
+
+#104
+Source: {a:7}
+Vetted: {t}
+Judgment: g
+Phenomena: {q}
+to kaal parat aalaa kaa
+to kaal parat aa-l-aa kaa
+he yesterday back came-PST-3.S.M Q
+Did he come back yesterday?
+
+#162
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo}
+to kaal parat aalaa
+to kaal parat aa-l-aa
+he yesterday back came-PST-3.S.M 
+He came back yesterday
+
+#163
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {q}
+kaa to kaal parat aalaa
+kaato kaal parat aa-l-aa
+Q he yesterday back came-PST-3.S.M 
+Did he come back yesterday?
+
+#105
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {q, wo}
+to kaal parat kaa aalaa 
+to kaal parat kaa aa-l-aa
+he yesterday back why came-PST-3.S.M 
+Why did he come back yesterday?
+
+This phenomena was represented in the customization suite by creating a seperate question particle "kaa" in the Matrix Yes/No Question section. The particle is selected to occur only in sentence-final position. 
+
+Negative yes/no questions were also addressed in the test suite, and follow similar rules to other yes/no questions. The particle "kaa" still occurs in sentence-final position, but with the negative auxiliary "naahii" immediately before it. The first example shows a grammatical negative question with "kaa" occuring after "naahii", and the second example shows an ungrammatical example with "kaa" occuring before "naahii." 
+
+#106
+Source: {a:10}
+Vetted: {t}
+Judgment: g
+Phenomena: {q, wo}
+to aalaa naahii kaa
+to aa-l-aa naahii kaa
+he came-PST-3.S.M NEG Q 
+Did he not come?
+
+#107
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {q, wo}
+to aalaa kaa naahii kaa
+to aa-l-aa kaa naahii
+he came-PST-3.S.M Q NEG	
+Did he not come?
+
+This was handled in the customization suite the same way as the other yes/no questions. "kaa" still always occurs in sentence final position. Negative questions parsed. 
+
+There was another phenomenon we documented involving leading negative questions, such as "he did not come, did he?" 
+
+#108
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {q, wo}
+to aalaa naahii naahii kaa
+to aa-l-aa naahii naahii kaa
+he came-PST-3.S.M neg neg Q 
+he did not come, did he?
+
+Antariksh, a native speaker of Marathi, pointed out that this would be seen as two seperate sentences. The sentence did not parse, because our grammar does not allow for verbs to be reduplicated. The lab did not list this as something to be tested for, but we found it interesting and thought it worth mentioning. 
+
+2. Coordination
+
+There are a variety of coordination strategies in Marathi. We documented coordination of sentences and elements within them with the Marathi equivalents of "but", "and", and "or". 
+
+"And" coordination of sentences can occur via asyndeton or monosyndeton strategies. Any number of sentences can be coordinated by either one. The monosyndeton strategy places the word "aanni" before each coordinated element except the final. The following examples illustrate the asyndeton strategy, and grammatical examples of the placement of "aanni" in the polysyndeton strategy. 
+
+#112
+Source: {a:159}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa gharii gelii mii badzaaraat gelo
+miitaa ghar-ii ge-l-ii mii badzaar-aat ge-l-o
+Mita home-LOC go-PST-3SF I market-LOC go-PST-3.S.M
+Meeta went home and I went to the market
+
+#113
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa gharii gelii aanni mii badzaaraat gelo
+miitaa ghar-ii ge-l-ii aani mii badzaar-aat ge-l-o
+Mita home-LOC go-PST-3SF and I market-LOC go-PST-3.S.M
+Meeta went home and I went to the market
+
+This was handled in the customization suite by allowing for asyndeton coordination of sentences only, and allowing "aanni" to coordinate nouns, NPs, VPs, and sentences. 
+
+"aanni" can coordinate any number of other elements as well, and this was documented in the test suite. Below are grammatical and ungrammatical examples of "aanni" coordinating nouns and VPs. The rules for "aanni" remain the same. It can appear before each coordinand, but only obligatorily occurs before the final element. The ungrammatical examples illustrate incorrect placement of "aanni" or have excluded it entirely, illustrating that juxtaposition can only be used when coordinating sentences. 
+
+#116
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+polis aanni tsor kutryaalaa maartaat 
+polis aanni tsor kutraa-laa maar-t-aat
+Policeman and thief dog-ACC beat-PRES-3.PL.M
+The policeman and the thief beat the dog
+
+#117
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd, wo}
+aanni polis tsor kutryaalaa maarto 
+aanni polis tsor kutraa-laa maar-t-o
+and policeman thief dog-ACC beat-PRES-3.S.M
+The policeman and the thief beat the dog
+
+#118
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+mii gharii aale aanni zhople
+mii ghar-ii aa-l-e aanni zhop-l-e
+I home-LOC come-PST-1.S.F and sleep-PST-1.S.F
+I came home and slept
+
+#119
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd}
+mii gharii aale zhople
+mii ghar-ii aa-l-e zhop-l-e
+I home-LOC come-PST-1.S.F sleep-PST-1.S.F
+I came home and slept
+
+These examples were handled in the customization suite by allowing "aanni" to coordinate NPs, VPs, Nouns and sentences. It was selected as a polysyndeton rule, and a second rule was created with the same word allowing for a monosyndeton strategy. 
+
+The Marathi equivalent for "or", "kimwaa", can also coordinate nouns, NPs, VPs, and sentences. "Kimwaa" carries the same rules as "aanni." It can occur before each coordinand, but only obligatorily occurs before the final element. The following examples illustrate grammatical and ungrammatical examples of "kimwaa" coordination. The ungrammatical examples show incorrect placement of "kimwaa", or leave it out entirely showing its necessity.
+
+#122
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa kimwaa mii badzaaraat gelo
+miitaa kimwaa mii badzaar-aat ge-l-o
+Mita or I market-LOC go-PST-3.S.M
+Meeta or I went to the market
+
+#123
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd}
+miitaa mii badzaaraat gelo
+miitaa mii badzaar-aat ge-l-o
+Mita I market-LOC go-PST-3.S.M
+Meeta or I went to the market
+
+#124
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa kimwaa anuu kimwaa mii badzaaraat gelo
+miitaa kimwaa anuu kimwaa mii badzaar-aat ge-l-o
+Mita or Anu or I market-LOC go-PST-3.S.M
+Meeta Anu or I went to the market
+
+#125
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa anuu kimwaa mii badzaaraat gelo
+miitaa anuu kimwaa mii badzaar-aat ge-l-o
+Mita Anu or I market-LOC go-PST-3.S.M
+Meeta, Anu or I went to the market
+
+This was handled in the customization suite by allowing "kimwaa" to coordinate nouns, NPs, VPs, and sentences, and indicating that it occurs before the coordinand. Two strategies were created for the word, one polysyndeton and one monosyndeton. 
+
+The final type of coordination we explored was "but" coordination, with the word "pann". "Paan" is monosyndeton, and is only placed before the final coordinated element. "Pann" can coordinate sentences, VPs, NPs, nouns, adjectives and adverbs. The following examples illustrate grammatical and ungrammatical examples using "pann." 
+
+#128
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa gharii gelii pann mii badzaaraat gelo
+miitaa ghar-ii ge-l-ii pann mii badzaar-aat ge-l-o
+Mita home-LOC go-PST-3SF but I market-LOC go-PST-3.S.M
+Meeta went home but I went to the market
+
+#129
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {crd, wo}
+miitaa gharii pann gelii mii badzaaraat gelo
+miitaa ghar-ii pann ge-l-ii mii badzaar-aat ge-l-o
+Mita home-LOC but go-PST-3SF I market-LOC go-PST-3.S.M
+Meeta went home but I went to the market
+
+#130
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa pann anuu naahii badzaaraat gelo
+miitaa pann anuu naahii badzaar-aat ge-l-o
+Mita but Anu neg market-LOC go-PST-3.S.M
+Meeta but not Anu went to the market
+
+This was handled in the customization suite by creating a monosyndeton coordination strategy for "pann" that allows it to coordinate nouns, NPs, VPs, and sentences and specifying that it occurs before the coordinand. 
+
+3. Attributive Adjectives
+
+Attributive adjectives in Marathi occur before the noun they modify. Not all nouns are gendered, but those that are must agree with the noun they modify. The following examples illustrate grammatical and ungrammatical examples of adjectives. The ungrammatical examples show ungrammatical word ordering and agreement. 
+
+#134
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj}
+motthaa mulgaa zhopto
+motth-aa mulgaa zhop-t-o
+big-S.M. boy sleep-PRES-3.S.M
+(The) big boy sleeps
+
+#135
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {adj,wo}
+mulgaa motthaa zhopto
+mulgaa motth-aa zhop-t-o
+boy big-S.M sleep-PRES-3.S.M
+(The) big boy sleeps
+
+#136
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj}
+motthii mulgii zhopte
+motth-ii mulgii zhop-t-e
+big-S.F girl sleep-PRES-3.S.F
+(The) big girl sleeps
+
+#138
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj}
+laal gaadii gelii
+laal gaadii ge-l-ii
+red train go-PAST-3.S.F
+(The) red train went
+
+#139
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {adj}
+motthaa mulgii zhopte
+motth-aa mulgii zhop-t-e
+big-S.M girl sleep-PRES-3.S.F
+(The) big girl sleeps
+
+The customization matrix is not able to handle adjectives, so these are not represented in our grammar yet and cannot be parsed. 
+
+4. Adverbs
+
+Manner adverbs in Marathi occur immediately before the verb they modify. Their form does not change depending on the verb they modify. The following grammatical and ungrammatical examples illustrate correct word ordering with adverbs. 
+
+#154
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adv}
+to lawkar aa-laa
+to lawkar aa-l-aa
+He quickly came-PRES-3.S.M
+He came quickly
+
+#155
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {adv}
+to aa-l-aa lawkar 
+to aa-l-aa lawkar 
+He walk-PRES-3.S.M quickly 
+He walks quickly
+
+The customization matrix cannot handle adverbs. Our grammar cannot yet parse them. 
+
+5. Embedded Clauses
+
+Embedded clauses are marked by the complementizer "kii" preceding the embedded clause. "kii" is used in both declarative and interrogative clauses. 
+
+#143
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-d}
+anuu meetalaa mhannte kii tii dzunii gaadii aalii
+anuu meeta-laa mhann-t-e kii tii dzun-ii gaadii aa-l-ii
+anu meeta-DAT say-PRES-3.S.F that that old-3.S.F train come-PAST-3.S.F
+Anu says to Meeta that that old train came
+
+#144
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {emb-d}
+anuu meetalaa mhannte tii dzunii gaadii aalii
+anuu meeta-laa mhann-t-e tii dzun-ii gaadii aa-l-ii
+anu meeta-DAT say-PRES-3.S.F that old-3.S.F train come-PAST-3.S.F
+Anu says to Meeta that that old train came
+
+#142
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-d}
+polis anuulaa mhannto kii to tsoraalaa maarto
+polis anuu-laa mhann-t-o kii to tsor-laa maar-t-o
+police anu-DAT say-PRES-3.S.M that he thief-ACC beat-PRES-3.S.M
+(The) police says to Anu that he beats the thief
+
+#145
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-q}
+polis malaa vicaarto kii mii zhopto kaa
+polis malaa vicaar-t-o kii mii zhop-t-o kaa
+police I.DAT ask-PRES-3.S.M that I sleep-PRES-1.S.M Q
+(The) police asks me if I sleep
+
+The customization suite is not equipped to handle embedded clauses, and our grammar does not parse them yet. 
+
+6. Non-verbal predicates
+
+Sentences with non-verbal predicates use the verb "as" (to be) as their copular verb. It agrees with the subject and occurs in sentence-final position. The non-verbal predicate can be a noun, adjective, or adverb. The copular verb must agree with the predicate in gender and pernum. 
+
+#149
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {cop}
+tii gaadii dzunii aahe
+tii gaadii dzun-ii aa-he
+that train.S.F old-S.F be-3.S.F
+That train is old
+
+#150
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {cop,wo}
+tii aahe dzunii gaadii
+tii aa-he dzun-ii gaadii
+that be-3.S.F old-S.F car
+That car is old
+
+#151
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {cop}
+tyaacii tsaal manda aahe
+tyaa-chii tsaal manda aa-he
+he-POSS.S.F gait slow be-3.S.F
+His gait is slow
+
+#148
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {cop}
+to tsor aahe
+to tsor aa-he
+he thief be-3.S.M
+He is (a) thief
+
+Sentences with NP predicates currently parse, but it's a hack. Non-verbal predicates are not represented in the customization, but the auxiliary verb "aahe" is present as an auxiliary. 
+
+7. Information Structure
+
+Focus in Marathi can be indicated in two primary ways. Stress, which can't be indicated in text, and movement, which is what our test suite focues on. The element in focus is moved to the sentence-initial position. The first example is a grammatical sentence where movement has been taken place. The second example shows the original sentence, in which the focus could be indicated by stress if it were spoken. 
+
+#156
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {info}
+maadza kaam tuu udyaa karshiil kaa
+maa-dza kaam tuu udyaa kar-shiil kaa
+I-POSS.3.S.N work.N you tomorrow do-FUT2.S Q
+Will you do my work tomorrow?
+
+#157
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {info}
+tuu udyaa maadza kaam karshiil kaa
+tuu udyaa maa-dza kaam kar-shiil kaa
+You tomorrow I-POSS.3.S.N work.N do-FUT.2.S Q
+Will you do my work?
+
+The only way we could think of to handle this in the customization suite was to allow transitive verbs to take a number of different cases for both their subjects and objects, but this would lead to huge overgeneration. The customization suite has an option that always puts the focused element as sentence initial, but, while that is true for our text examples, it is not true of the language as a whole. 
+
+In Marathi, the topic is generally the subject of the sentence. There is no particular marker that specifically marks the topic. Sentences can be topicalized, as shown below. 
+
+#158
+Source: {a:252}
+Vetted: {t}
+Judgment: g
+Phenomena: {info}
+tyaaacii bahiinn he bara dzhaala kii amerikelaa gelii naahii
+tyaa-cii bahiinn he bara dzhaa-la kii amerikaa-laa ge-l-ii naahii
+He-POSS.3.S.F sister this good happen-PST.3.S.N comp America-ACC go-PST-3.S.F neg
+His sister, it was good she did not go to America
+
+#159
+Source: {a:253}
+Vetted: {t}
+Judgment: g
+Phenomena: {info}
+tyaatsa naagpuurlaa dzaanna tar aawashyak hota
+tyaa-tsa naagpuur-laa dzaa-nna tar aawashyak hota
+He-POSS.3.S.N nagpur-DAT go-INF.3.S.N emph necessary was
+As for his going to Nagpur, it was necessary
+
+This is another situation where the solution appeared to be allowing certain verbs to take a wider amount of cases, but that again leads to overgeneration. 
+
+Topic can be marked the contrastive particle "tar" as well. "tar" follows the phrase or item being marked as the topic, as in the following examples.
+
+#159
+Source: {a:253}
+Vetted: {t}
+Judgment: g
+Phenomena: {info}
+tyaatsa naagpuurlaa dzaanna tar aawashyak hota
+tyaa-tsa naagpuur-laa dzaa-nna tar aawashyak hota
+He-POSS.3.S.N nagpur-DAT go-INF.3.S.N emph necessary was
+As for his going to Nagpur, it was necessary
+
+#160
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {info}
+tar tyaatsa naagpuurlaa dzaanna aawasyak hota
+tar tyaa-tsa naagpuur-laa dzaa-nna aawasyak hota
+tar he-POSS.3.S.N nagpur-DAT dzaa-INF.3.S.N necessary was
+As for his going to Napur, it was necessary
+
+A topic marker that occurs after nouns was created in the information structure section of the customization suite to handle this. 
+
+
+
+Items not covered in the starter grammar:
+
+This week several phenomena were added are not handled in the starter grammar. Adjectives, adverbs, embedded clauses, and non-verbal predicates are all present in the test suite but not in the grammar. 
+
+Adjectives:
+#134
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj}
+motthaa mulgaa zhopto
+motth-aa mulgaa zhop-t-o
+big-S.M. boy sleep-PRES-3.S.M
+(The) big boy sleeps
+
+Adverbs:
+#154
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adv}
+to lawkar aalaa
+to lawkar aa-l-aa
+He early come-PAST-3.S.M
+He came quickly
+
+Embedded Clauses:
+#142
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-d}
+polis ravilaa mhannto kii to tsoraalaa maarto
+polis ravi-laa mhann-t-o kii to tsor-laa maar-t-o
+police Ravi-DAT say-PRES-3.S.M that he thief-ACC beat-PRES-3.S.M
+(The) police says to Ravi that he beats the thief
+
+#145
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {emb-q}
+polis malaa vicaarto kii mii zhopto kaa
+polis malaa vicaar-t-o kii mii zhop-t-o kaa
+police I.DAT ask-PRES-3.S.M that I sleep-PRES-1.S.M Q
+(The) police asks me if I sleep
+
+Non-Verbal Predicates:
+#148
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {cop}
+to tsor aahe
+to tsor aa-he
+he thief be-3.S.M
+He is (a) thief
+
+#149
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {cop}
+tii gaadii dzunii aahe
+tii gaadii dzun-ii aa-he
+that train.S.F old-S.F be-3.S.F
+That train is old
+
+
+
+Test Suite Coverage
+
+Our grammar had 42.4% coverage, down from 58.2% coverage on Monday, which was after we got it to load and before we added any thing new to the test suite. 42 items parsed, and they were all items that should parse. However, several of them had far too many derivations. Item #116, a coordination example, had 80 different derivations. 
+
+#116
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+polis aanni tsor kutryaalaa maartaat 
+polis aanni tsor kutraa-laa maar-t-aat
+Policeman and thief dog-ACC beat-PRES-3.PL.M
+The policeman and the thief beat the dog
+
+Other sentences had several derivations, but none as high as 80. The second highest was example 118, with 16 derivations. 
+
+#118
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+mii gharii aale aanni zhople
+mii ghar-ii aa-l-e aanni zhop-l-e
+I home-LOC come-PST-1.S.F and sleep-PST-1.S.F
+I came home and slept
+
+Other items that did not parse had adjectives, adverbs or prepositions in them that the grammar cannot handle yet. 
+
+#104
+Source: {a:7}
+Vetted: {t}
+Judgment: g
+Phenomena: {adv,q}
+to kaal parat aalaa kaa
+to kaal parat aa-l-aa kaa
+he yesterday back came-PST-3.S.M Q
+Did he come back yesterday?
+
+The preposition "parat" is causing the sentence not to parse. 
+
+#134
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj}
+motthaa mulgaa zhopto
+motth-aa mulgaa zhop-t-o
+big-S.M. boy sleep-PRES-3.S.M
+(The) big boy sleeps
+
+The adjective "motthaa" is causing the sentence not to parse. 
+
+These are all things that should parse later on when adjectives and prepositions are added to the grammar. 
+
+The more concerning non-parsing sentences were due to nouns and verbs that do have lexical entries not inflecting correctly. 
+
+#37
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {c,agr}
+mul dukhkha dzhaala
+mul dukhkha dzhaa-l-a
+boy sadness.3.S.N happen-PST-3.S.N
+The boy became sad
+
+"dzhaa-l-a" should be parsing, but it is not. It was initially spelled wrong in the grammar, but I corrected that and am no longer sure why the grammar isn't able to interpret it. 
+
+#42
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {c,agr}
+mii polisaalaa kutraa maagitle
+mii polis-laa kutraa maag-t-le
+i.1.S police-DAT dog.3.S.M ask-PST-3.PL.M
+I asked the policeman for a dog
+
+Magg-t-la should also be parsing, but is not. 
+
+#112
+Source: {a:159}
+Vetted: {t}
+Judgment: g
+Phenomena: {crd}
+miitaa gharii gelii mii badzaaraat gelo
+miitaa ghar-ii ge-l-ii mii badzaar-aat ge-l-o
+Mita home-LOC go-PST-3SF I market-LOC go-PST-3.S.M
+Meeta went home and I went to the market
+
+badzaar-aat is not parsing, but is in the lexicon and should be inflecting as per the locative_lexical_rule.
+
+I think there is something in the lexical rules that is causing this not to parse. I've gone over them a few times, and I can't seem to see what it is. Last week I fixed a bug simply by deleting and recreating the entire noun hierarchy, so maybe that needs to be done again to the lexical rules. 
+
+
+
+Changes to the Grammar
+
+The biggest changes to the grammar were the additions described above in the test suite section. Additions were made for information structure, coordination, and yes/no questions.
+
+The following lexical items were added to the grammar:
+
+ghaar- home
+ge- go
+miitaa- proper noun
+ravi- proper noun
+aa- come
+kaam- work
+mulgii- girl
+mulgaa- boy
+
+A position class was added for irregular verbs. The lexical rule within that class deals with the verb "dila" (gave). The stem is listed simply a "d", because the "i" is phonologically inflected and that vowel changes depending on the tense of the verb. 
+
+The noun hierarchy was redone and simplified. There are no longer supertypes for gender, that information is now placed lower down on the hierarchy. The only two supertypes are pronoun_lexeme and common_noun_lexeme. They only specify for determiner impossibility or optionality, respectively. Their are now types for singular male nouns and singular female nouns that only inherit from common noun, and do not inherit their pernum and gender from elsewhere. Pronouns also put gender and pernum information on their individual lexical entries and do not inherit those features from elsewhere. 
+
+A new class of irregular verbs was created, also to handle "dila." 
+
+Transitive verbs are now specified as taking nominative subjects and either accusative or dative objects. 
+
+Object dropping has been removed from the grammar, because having it there was a mistake to begin with. Objects cannot be dropped in Marathi. 
+
+The project for the weekend will be to make the verb lexical rules more efficient, because were running into overgeneration problems. Verbs that have not been inflected for gender are incorrectly being judged as correct. This is due to their being different position classes for inflecting gender for each case, and, because of this, none of those can obligatorily occur without clashing. All of the rules for gender will be subsumed into one position class. 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

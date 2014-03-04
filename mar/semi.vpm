@@ -34,7 +34,7 @@ COG-ST : COG-ST
   fam-or-less <> fam-or-less
   uniq-or-more <> uniq-or-more
   activ-or-less <> activ-or-less
-
+;  activ-or-more << type-id
 
 PNG.PERNUM : PNG.PER PNG.NUM
   1SG <> first SG

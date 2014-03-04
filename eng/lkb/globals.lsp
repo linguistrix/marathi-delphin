@@ -143,5 +143,3 @@
 ; (setf *bypass-equality-check* t)
 
 (setf *translate-grid* '(:eng :frr :mar))
-
-

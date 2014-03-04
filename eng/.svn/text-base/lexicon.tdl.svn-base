@@ -23,51 +23,51 @@ glass := mass-noun-lex &
 
 I := 1sg-nom-pronoun-noun-lex &
   [ STEM < "I" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 me := 1sg-acc-pronoun-noun-lex &
   [ STEM < "me" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 you := 2nd-pronoun-noun-lex &
   [ STEM < "you" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 she := 3sg-fem-nom-pronoun-noun-lex &
   [ STEM < "she" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 he := 3sg-masc-nom-pronoun-noun-lex &
   [ STEM < "he" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 her := 3sg-fem-acc-pronoun-noun-lex &
   [ STEM < "her" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 him := 3sg-masc-acc-pronoun-noun-lex &
   [ STEM < "him" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 it := 3sg-neut-pronoun-noun-lex &
   [ STEM < "it" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 we := 1pl-nom-pronoun-noun-lex &
   [ STEM < "we" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 us := 1pl-acc-pronoun-noun-lex &
   [ STEM < "us" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 they := 3pl-nom-pronoun-noun-lex &
   [ STEM < "they" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 them := 3pl-acc-pronoun-noun-lex &
   [ STEM < "them" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 ;;; Verbs
 

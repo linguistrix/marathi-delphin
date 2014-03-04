@@ -69,47 +69,47 @@ buurd := common-noun-noun-lex &
 
 ik := 1sg-subj-pronoun-noun-lex &
   [ STEM < "ik" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 dü := 2sg-subj-pronoun-noun-lex &
   [ STEM < "dü" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 hi := 3sg-masc-subj-pronoun-noun-lex &
   [ STEM < "hi" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 jü := 3sg-fem-subj-pronoun-noun-lex &
   [ STEM < "jü" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 hat := 3sg-neut-subj-pronoun-noun-lex &
   [ STEM < "hat" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 wat := 1du-subj-pronoun-noun-lex &
   [ STEM < "wat" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 at := 2du-subj-pronoun-noun-lex &
   [ STEM < "at" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 jat := 3du-subj-pronoun-noun-lex &
   [ STEM < "jat" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 wü := 1pl-subj-pronoun-noun-lex &
   [ STEM < "wü" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 i := 2pl-subj-pronoun-noun-lex &
   [ STEM < "i" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 ja := 3pl-subj-pronoun-noun-lex &
   [ STEM < "ja" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 lön := mass-noun-noun-lex &
   [ STEM < "lön" >,
@@ -133,47 +133,47 @@ molk := mass-noun-noun-lex &
 
 mi := 1sg-obj-pronoun-noun-lex &
   [ STEM < "mi" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 di_1 := 2sg-obj-pronoun-noun-lex &
   [ STEM < "di" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 höm_1 := 3sg-masc-obj-pronoun-noun-lex &
   [ STEM < "höm" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 höör := 3sg-fem-obj-pronoun-noun-lex &
   [ STEM < "höör" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 höm_2 := 3sg-neut-obj-pronoun-noun-lex &
   [ STEM < "höm" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 unk := 1du-obj-pronoun-noun-lex &
   [ STEM < "unk" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 junk := 2du-obj-pronoun-noun-lex &
   [ STEM < "junk" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 jam_1 := 3du-obj-pronoun-noun-lex &
   [ STEM < "jam" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 üüs := 1pl-obj-pronoun-noun-lex &
   [ STEM < "üüs" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 juu := 2pl-obj-pronoun-noun-lex &
   [ STEM < "juu" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 jam_2 := 3pl-obj-pronoun-noun-lex &
   [ STEM < "jam" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_pronoun_n_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
 heest := neuter-noun-noun-lex &
   [ STEM < "heest" >,
@@ -379,7 +379,7 @@ ditdiar := neuter-demonst-far-determiner-lex &
 
 ek := neg-adv-lex &
   [ STEM < "ek" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_neg_r_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "neg_rel" ].
 
 aural := adverb-lex &
   [ STEM < "aur.al" >,

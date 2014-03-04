@@ -1,0 +1,6 @@
+;pro-drop := pronoun-delete-mtr.
+;set-cogst-arg2 := pro-set-cogst-arg2-mtr.
+;pro-insert-arg2 := pro-insert-arg2-mtr.
+;hurt-rule := hurt-mtr.
+chase-rule := chase-run-behind-mtr.
+think-feel-rule := think-feels-mtr.

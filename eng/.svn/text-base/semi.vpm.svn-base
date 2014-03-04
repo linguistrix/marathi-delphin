@@ -5,8 +5,8 @@ ref-ind        <> x
 individual     <> i
 handle         <> h
 non_event      <> p
-;*              >> u
-;semarg         << u
+*              >> u
+semarg         << u
 
 SPECI : SPECI
   * <> *

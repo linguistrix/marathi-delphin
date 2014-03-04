@@ -126,6 +126,8 @@ able-perm := nonfinite.
 neg-form := nonfinite.
 ;finiteneg := finite & neg-form.
 ;nonfiniteneg := nonfinite & neg-form.
+behind := form.
+
 ;;; Tense
 
 past := tense.
@@ -182,8 +184,8 @@ no-spr-noun-lex := noun-lex &
 head-spec-phrase := basic-head-spec-phrase & head-final &
   [ NON-HEAD-DTR.SYNSEM.OPT - ].
 
-jr-adj-head-int-phrase := adj-head-int-phrase & 
-  [ NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD +jr ].
+jrp-adj-head-int-phrase := adj-head-int-phrase & 
+  [ NON-HEAD-DTR.SYNSEM.LOCAL.CAT.HEAD +jrp ].
 
 locative-pp-phrase := unary-phrase &
   [ SYNSEM [LOCAL.CAT [ HEAD adp & [MOD < [ LOCAL.CAT [HEAD verb, 
@@ -280,13 +282,19 @@ pronoun_lexeme-noun-lex := no-spr-noun-lex &
   [ SYNSEM.LOCAL [ CAT [ HEAD [ PRON + ] ],
 		   CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI + ]]].
 
-nom_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 
+nom_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & infl-satisfied-noun-lex & 
   [ SYNSEM.LOCAL.CAT.HEAD.CASE erg+nom,
     INFLECTED.CASE-FLAG + ].
 
 acc_dat_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 
   [ SYNSEM.LOCAL.CAT.HEAD.CASE acc+dat,
     INFLECTED.CASE-FLAG + ].
+
+loc_lexeme-noun-lex := common-noun-lex & infl-satisfied-noun-lex &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ CASE loc ]]]]].
+    
+behind-loc_lexeme-noun-lex := loc_lexeme-noun-lex & 
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ FORM behind ]]]]].
 
 poss_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 
   [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
@@ -297,7 +305,12 @@ poss_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex &
 		     CONT [ HOOK [ INDEX [ PNG [ PERNUM 1sg ]]]]]]].
 
 1p-nonnom-poss-pronoun := poss_pronoun_lexeme-noun-lex & 
-  [ SYNSEM [ LOCAL [ CAT [ HEAD [ POSS-CASE non-nom ]]]]].
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ POSS-CASE non-nom ]],
+		     CONT [ HOOK [ INDEX [ PNG [ PERNUM 1sg ]]]]]]].
+
+2p-nonnom-poss-pronoun := poss_pronoun_lexeme-noun-lex & 
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ POSS-CASE non-nom ]],
+		     CONT [ HOOK [ INDEX [ PNG [ PERNUM 2sg ]]]]]]].
 
 oblique_pronoun_lexeme-noun-lex := pronoun_lexeme-noun-lex & 
   [ SYNSEM.LOCAL.CAT.HEAD.CASE non-nom,
@@ -530,6 +543,12 @@ ditrans_emb-d-inviting_verb-lex := ditrans_embedded_clause_inviting_verb-lex &
 			
 ditrans_emb-q-inviting_verb-lex := ditrans_embedded_clause_inviting_verb-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.REST.FIRST.LOCAL.CONT.HOOK.INDEX.SF ques ].			
+
+
+feel-know-ditrans_emb-d-inviting_verb-lex := ditrans_emb-d-inviting_verb-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3sg, GEND N ]].
+
+
 
 ;;; Auxiliaries
 
@@ -1607,3 +1626,16 @@ neut_pl_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-ru
 								  PERNUM PL]] > ]].
 
 ;;; Locative postpositions, such as "here" and "there" 
+
+maage-lex := basic-int-mod-adposition-lex & 
+  [ SYNSEM [ LOCAL [ CAT [ HEAD [ MOD.FIRST.LOCAL.CAT [ HEAD verb,
+							VAL.SUBJ cons ]],
+			   H-INIT -,
+			   VAL [ COMPS [ FIRST [ LOCAL [ CAT [ HEAD noun &
+								    [ CASE pos,
+								      POSS-CASE loc  ],
+							       VAL [ SPR < >,
+								     COMPS < >,
+								     SUBJ < > ]]]]],
+				 SUBJ < >,
+				 SPR < > ]]]]].

@@ -1,0 +1,555 @@
+LING 567, Lab 7 Note File
+Antariksh Bothale, Andrew Baer (Author)
+Language: Marathi (mar)
+
+Modals
+----------------------------------
+
+1. A descriptive statement of the facts of your language. 
+
+The verb "shak" expresses ability in Marathi. It inflects like all regular verbs and appears after the main verb (the ability of doing which is being indicated) and the main verb occurs with the affix -uu after the stem. The main verb, in such a case, does not inflect for tense and gender.
+
+2. Illustrative IGT examples from your testsuite.
+
+#179
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {modal}
+mii kaats khaauu shakto
+mii kaats khaa-uu shak-t-o
+I glass eat-CAN can-PRES-3.S.M
+I can eat glass.
+
+#180
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {modal}
+mii kaats shakto khaauu
+mii kaats shak-t-o khaa-uu
+I glass can-PRES-3.S.M eat-CAN
+I can eat glass.
+
+#181
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {modal}
+mii kaats khaa-t-o shakto 
+mii kaats khaa-t-o shak-t-o 
+I glass  eat-CAN can-PRES-3.S.M
+I can eat glass.
+
+The second and third examples are ungrammatical because of incorrect word ordering and incorrect inflection. In #180, "shak" appears ahead of its complement. In #181, both "shak" and its complement verb inflect for gender and tense. 
+
+3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
+
+We modeled it as a subject raising auxiliary verb that appears in sentence-final position. It inflects regularly for tense and gender. It's VP complement does not inflect as a normal verb would, instead taking the suffix -uu. This suffix is only used when a verb is the complement of "shak." "Shak" identifies its subject with that of its complement, and agrees with the subject in pernum and gender. 
+
+A fair amount of modification was required to make modals not only function, but do so efficiently. 
+
+We began by adding a type for "shak" in marathi.tdl. We already had a type "subj-raise-aux-with-pred" that provided most of the constraints that "shak" needed. We added a type called "ability-permission-verb-lex" that constrained the sole element on its COMPS list to be FORM able-perm, a nonfinite form we defined specifically to handle the unique inflection on the VP complements of modals. The subtype also constrained the SUBJ to be CASE nom and INIT-. The type is VERB-TENSE-ASPECT-FLAG- and VERB-GENDER-PERNUM-FLAG-, to ensure that it is inflected for gender, pernum and tense. 
+
+;;; Form
+
+form := *top*.
+nonfinite := form.
+finite := form.
+infinitive := nonfinite.
+able-perm := nonfinite.
+neg-form := form.
+finiteneg := finite & neg-form.
+nonfiniteneg := nonfinite & neg-form.
+
+subj-raise-aux-with-pred := subj-raise-aux & norm-sem-lex-item & trans-first-arg-raising-lex-item-1.
+
+ability-permission-verb-lex := subj-raise-aux-with-pred & tobeinflected-verb-super-type & 
+[ SYNSEM.LOCAL [ CAT [VAL [ SPR < >,
+                             SPEC < >,
+                             COMPS < [ LOCAL.CAT.HEAD.FORM able-perm,
+				       OPT - ] >,
+                             SUBJ < [ LOCAL.CAT.HEAD.CASE nom ] > ],
+		      HEAD.H-INIT - ]],
+  INFLECTED [ VERB_TENSE_ASPECT-FLAG -,
+                VERB_GENDER_PERNUM-FLAG - ]].
+
+ability-permission-verb-lex also inherits from tobeinflected-verb-super-type, a new type we defined to handle copulas that do not inflect. Verbs that inherit from tobeinflected-verb-super-type need to go through the rules inflecting them for tense and pernumgender. 
+
+tobeinflected-verb-super-type := word-or-lexrule & 
+  [ INFLECTED [ VERB_TENSE_ASPECT-FLAG -,
+                VERB_GENDER_PERNUM-FLAG - ]  ].
+
+We defined a rule that inherits from nonfinite_verb_tense_aspect-lex-rule-super that adds the correct morphology to the VP complements of "shak". The complement does not inflect for tense, gender or pernum, and instead carries the suffix -uu. 
+
+able-perm_lexical_rule-lex-rule := nonfinite_verb_tense_aspect-lex-rule-super &  infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.FORM able-perm ].
+
+nonfinite_verb_tense-aspect-lex-rule-super was created to handle unique morphology on VP complements. When the non_finite_verb_tense-aspect rule or any of its sub-rules apply, they bypass the standard verb_tense_aspect rule. The morphology of VP complements does not always change, so this rule only needs to apply in certain situations. It does need to apply for all VP complements of "shak". The output of the nonfinite rule is a verb that is VERB_TENSE_ASPECT-FLAG + and VERB_GENDER_PERNUM-FLAG +.
+
+nonfinite_verb_tense_aspect-lex-rule-super := Add-only-no-ccont-rule & 
+  [ SYNSEM.LOCAL.CAT [ HEAD.FORM nonfinite, VAL.COMPS.FIRST.LOCAL.CAT.HEAD.CASE acc+dat ],
+    INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                VERB_GENDER_PERNUM-FLAG +,
+		FORM-FLAG +,
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                CASE-FLAG #case ],
+    DTR tobeinflected-verb-super-type &
+        [ INFLECTED [ IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+;                      VERB_GENDER_PERNUM-FLAG -,
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                      CASE-FLAG #case ] ] ].
+
+This all becomes much trickier when handling complements of the negative auxiliary, and it is discussed in much more detail in that section. 
+
+We also defined an irule that adds the suffix -uu. 
+
+able-perm_lexical_rule-lex-rule-rule-suffix :=
+%suffix (* -uu)
+able-perm_lexical_rule-lex-rule.
+
+We added a lexical entry for "shak" as an auxiliary verb. 
+
+shak := ability-permission-verb-lex &
+  [ STEM < "shak" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_can_v_rel"].
+
+4. If the analysis is not (fully) working, a description of the problems you are encountering. 
+To the best of our knowledge, this analysis is working. It generates properly. 
+
+Negation
+--------------------------------------------
+
+1. A descriptive statement of the facts of your language.
+
+Sentential negation in Marathi is expressed using a negative auxililary verb, "naahii"(SG)/"naahiit" (PL), with the verb agreeing with the subject in number. It appears in sentence-final position and does not inflect for tense, gender or person, instead allowing its complement verb to carry that information. Declarative sentences that are negated by "naahii" are unchanged if the verb is in the past or future tense. In the present tense, the verb that is being negated by "naahii" gets a suffix "-at" instead of its regular tense-pernumgend suffixes.
+
+In addition to this, naahii also functions as a negative copula in itself. But this version hasn't yet been dealt with.
+
+
+2. Illustrative IGT examples from your testsuite.
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {neg}
+te malaa laagat naahii
+te malaa laag-at naahii
+It me hurt-PRESNEG NOT
+It doesn't hurt me
+
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {neg}
+te malaa laagat naahii
+te malaa laag-t-a naahii
+It me hurt-PRES-3.S.N NOT
+It doesn't hurt me
+
+The second example is ungrammatical because the verb complement of "naahii" did not inflect properly. "Te malaa laag-ta" is grammatical, but "laag-t-a", because it is present tense, changes to "laag-at" when it is the complement of "naahii." 
+
+
+3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
+
+Our analysis of negatives broke our analysis of modals, leading to several adjustments in our grammar. We created new form, negform, to handle the change in suffix on present tense verbs (becoming -at). 
+
+;;; Form
+
+form := *top*.
+nonfinite := form.
+finite := form.
+infinitive := nonfinite.
+able-perm := nonfinite.
+neg-form := nonfinite.
+
+"Naahii" inherits from neg-aux-lex, which inherits from subj-raise-aux-with-pred, because it is a subject raising verb that contributes a negative predication. "Naahii" requires that its VP complement be FORM negform. It also inherits from preinflected-verb-super-type because it does not inflect for case, gender or pernum. 
+
+We also added an Inflection FLAG called FORM-FLAG
+
+preinflected-verb-super-type := word-or-lexrule & 
+  [ INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
+                VERB_GENDER_PERNUM-FLAG +,
+		FORM-FLAG +  ]  ].
+
+neg-aux-lex := subj-raise-aux-with-pred & preinflected-verb-super-type &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM neg-form,
+    SYNSEM.LOCAL.CAT [VAL [COMPS.FIRST [LOCAL.CAT.VAL.SUBJ #spec, 
+					OPT -],
+			  SUBJ #spec],
+		      HEAD.H-INIT - ]].
+
+We defined a new lexical rule for nonfinite forms. The DTR of the rule is underspecified for FORM-FLAG, but the mother is FORM-FLAG +. When needed, this rule bypasses the verb_tense_aspect rule. 
+
+nonfinite_verb_tense_aspect-lex-rule-super := Add-only-no-ccont-rule & 
+  [ SYNSEM.LOCAL.CAT [ HEAD.FORM nonfinite, VAL.COMPS.FIRST.LOCAL.CAT.HEAD.CASE acc+dat ],
+    INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                VERB_GENDER_PERNUM-FLAG +,
+		FORM-FLAG +,
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                CASE-FLAG #case ],
+    DTR tobeinflected-verb-super-type &
+        [ INFLECTED [ IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+;                      VERB_GENDER_PERNUM-FLAG -,
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+                      CASE-FLAG #case ] ] ]. 
+
+The original verb_tense_aspect_lex_rule no longer creates FORM finite VPs, because we want verbal complements of "naahii" to be FORM negform. Verbs are now given their form by other rules discussed later. It is underspecified for FORM-FLAG. It has been commented out. 
+
+verb_tense_aspect-lex-rule-super := Add-only-no-ccont-rule & verb_gender_pernum-rule-dtr &
+  [ INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
+                IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+                TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+;		FORM-FLAG #formflag,
+                CASE-FLAG #case ],
+    DTR tobeinflected-verb-super-type &
+        [ INFLECTED [ IRREG_INTRANS_VERB_TENSE-FLAG #irreg_intrans_verb_tense,
+                      TOBECOME_AUX_INFLECTION-FLAG #tobecome_aux_inflection,
+                      VERB_GENDER_PERNUM-FLAG #verb_gender_pernum,
+                      TOBE_AUX_INFLECTION-FLAG #tobe_aux_inflection,
+;		      FORM-FLAG #formflag,
+                      CASE-FLAG #case ] ] ].
+
+Because there was now nothing making verbs as finite, a counterpart to the nonfinite_verb_tense_aspect-rule was added. We created the finiteness_lexical_rule to fix the problem. This rule applies after the past_lexical_rule, future_lexical_rule, or present_lexical_rule if the verb is still FORM-FLAG - and blesses it with finiteness and turns its FORM-FLAG to +. 
+
+finiteness_lexical_rule-lex-rule :=  add-only-no-ccont-rule & const-lex-rule &
+  [ DTR word-or-lexrule & [ SYNSEM.LOCAL.CAT.HEAD verb & [ FORM finite ],
+			    INFLECTED [ FORM-FLAG -,
+					 VERB_TENSE_ASPECT-FLAG +,
+					 VERB_GENDER_PERNUM-FLAG + ]],
+    INFLECTED.FORM-FLAG + ].
+
+This was also added to lrules.tdl.
+
+finiteness_lexical_rule-lex := finiteness_lexical_rule-lex-rule.
+
+Because future and past negform VP complements of "naahii" carry the same inflection as their finite counterparts, the future-neg-form_lexical_rule and past-neg-form_lexical_rule inherit from const-lex-rule and do not change the morphology. They simply assign the FORM negform. This rule does not inherit from the nonfinite_verb_tense_aspect rule, and applies after the verb_tense_aspect_rule to make the verb FORM-FLAG +. 
+
+future-neg-form_lexical_rule-lex-rule := Add-only-no-ccont-rule & const-lex-rule &
+   [ DTR word-or-lexrule & 
+	 [ INFLECTED [ VERB_GENDER_PERNUM-FLAG +,
+		       VERB_TENSE_ASPECT-FLAG +,
+		       FORM-FLAG - ], 
+	   SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE future],
+     SYNSEM.LOCAL.CAT [ HEAD.FORM neg-form,
+			VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ],
+    INFLECTED.FORM-FLAG + ].
+
+past-neg-form_lexical_rule-lex-rule := Add-only-no-ccont-rule & const-lex-rule &
+  [ DTR word-or-lexrule & 
+	[ INFLECTED [ VERB_GENDER_PERNUM-FLAG +,
+		      VERB_TENSE_ASPECT-FLAG +,
+		      FORM-FLAG - ] , 
+	  SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE past],
+    SYNSEM.LOCAL.CAT [ HEAD.FORM neg-form,
+		       VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg+nom ],
+    INFLECTED.FORM-FLAG + ].
+
+These were also defined in lrules.tdl
+
+future-neg-form_lexical_rule-lex := future-neg-form_lexical_rule-lex-rule.
+
+past-neg-form_lexical_rule-lex := past-neg-form_lexical_rule-lex-rule.
+
+The past_lexical_rule-lex rule and future_lexical_rule-lex-rule no longer require FORM finite DTRs, instead applying the FORM after the verb_tense_aspect rule has applied. 
+
+past_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super &  infl-lex-rule &
+  [ INFLECTED [ PAST_LEXICAL_RULE-FLAG +,
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
+    DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                    FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule ],
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE past ].
+;    SYNSEM.LOCAL.CAT.HEAD.FORM finite ].
+
+future_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super & const-lex-rule & 
+  [ INFLECTED [ FUTURE_LEXICAL_RULE-FLAG +,
+                PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
+    DTR.INFLECTED [ PRESENT_LEXICAL_RULE-FLAG #present_lexical_rule,
+                    PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE future ].
+;    SYNSEM.LOCAL.CAT.HEAD.FORM finite ].
+
+The present negform VP complements and finite VPs inflect differently in present tense, so the present_lexical_rule-lex-rule itself marks its output as FORM finite. 
+
+present_lexical_rule-lex-rule := verb_tense_aspect-lex-rule-super & infl-lex-rule &
+  [ INFLECTED [ PRESENT_LEXICAL_RULE-FLAG +,
+                FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                PAST_LEXICAL_RULE-FLAG #past_lexical_rule],
+    DTR.INFLECTED [ FUTURE_LEXICAL_RULE-FLAG #future_lexical_rule,
+                    PAST_LEXICAL_RULE-FLAG #past_lexical_rule ],
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE present,
+    SYNSEM.LOCAL.CAT.HEAD.FORM finite,
+    SYNSEM.LOCAL.CAT.VAL [ SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom,
+			   COMPS.FIRST.LOCAL.CAT.HEAD.CASE acc+dat]].
+
+The pres-neg-form_lexical_rule, unlike the past-neg-form and future-neg-form rules, inherits from infl-lex-rule. Like the other neg rules, it creates a mother that is FORM neg-form. The nonfinite_tense_aspect rule is applying first and bypassing the verb_tense_aspect rule. 
+
+pres-neg-form_lexical_rule-lex-rule := nonfinite_verb_tense_aspect-lex-rule-super & infl-lex-rule &
+  [ DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX.E.TENSE present,
+    SYNSEM.LOCAL.CAT [ HEAD.FORM neg-form,
+		       VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ]].
+
+We defined an irule that inflects present tense negform VP complements of "naahii" with the suffix -at.
+
+pres-neg-form_lexical_rule-lex-rule-suffix :=
+%suffix (* -at)
+pres-neg-form_lexical_rule-lex-rule.
+
+To summarize: The nonfinite_tense_aspect rule can bypass the standard verb_tense_aspect rule in certain situation. The VP mother of the rule is VERB_TENSE_ASPECT-FLAG+ and VERB_GENDER_PERNUM-FLAG+, so it will not pass through the verb_tense_aspect rule. The verb_tense_aspect rule no longer assigns a FORM value to its mother. If the mother needs to be finite, that is applied by the finiteness rule. The future-neg and past-neg rules assign FORM negform to verbs when they are complements of "naahii". 
+
+ 
+
+Test Corpus
+------------------------------------------
+The only thing we had to add to our grammar to parse the sentence from our corpus was possessives. 
+
+#2
+Source: {a}
+Vetted: {t}
+Judgment: g
+Phenomena: {}
+anek kampanyaancii mukhya kaaryaalaye mumbaiit aahet
+anek kampani-aan-cii mukhya kaaryaalaye mumbai-aat aahet
+many mumbai-LOC compani-PL-POSS.F.S main office.PL Be.PRES.PL
+The main offices of many companies are in Mumbai
+
+Possessives
+------------------------------------------
+
+1. A descriptive statement of the facts of your language.
+
+The possessive case in Marathi is marked by a suffix on the possessor NP. This suffix agrees in gender and number with the NP being possessed. The endings are -cii (fem.sg), -tsaa (masc.sg) or -tse (neutral.sg) , -ce(masc.pl), -cii(feg.pl), -cii(neut.pl). When the stem of the possessor is plural, the suffix -aan is added before the possessive suffix -cii/tsaa/te. -aan does not create a plural noun, it just applies to noun stems that are already plural and are not in nominative (unmarked) case. The -aan suffix goes before the case marker. Singular nouns are simply marked with the suffix -cii/tsaa/te. 
+
+2. Illustrative IGT examples from your testsuite.
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {c,agr}
+polisaatsaa kutraa zhoplaa
+polis-tsaa kutraa zhop-l-aa
+polis-POSS.3.S dog.3.S sleep-PST-3.S
+The policeman's dog slept
+
+
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {cop}
+tyaacii aahe tsaal manda
+tyaa-cii aahe tsaal manda
+her-POSS.S.F be.3.S.F gait slow 
+Her gait is slow
+
+
+3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
+
+We had previously been able to parse possessives with less than satisfactory semantics simply because we had a possessive case and an irule adding the suffix.
+
+poss_m_sg_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND M, 
+				     PERNUM sg ] ].
+
+poss_f_sg_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND F, 
+				     PERNUM sg ] ].
+
+poss_n_sg_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND N, 
+				     PERNUM sg ] ].
+
+
+poss_m_pl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND M, 
+				     PERNUM pl ] ].
+
+poss_f_pl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND F, 
+				     PERNUM pl ] ].
+poss_n_pl_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM sg,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND N, 
+				     PERNUM pl ] ].
+
+poss_m_sg_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND M, 
+				     PERNUM sg ] ].
+
+poss_f_sg_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND F, 
+				     PERNUM sg ] ].
+
+poss_n_sg_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND N, 
+				     PERNUM sg ] ].
+
+
+poss_m_pl_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND M, 
+				     PERNUM pl ] ].
+
+poss_f_pl_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND F, 
+				     PERNUM pl ] ].
+
+poss_n_pl_plspr_lexical_rule-lex-rule := oblique_case-lex-rule-super & infl-lex-rule &
+  [ SYNSEM.LOCAL.CAT.HEAD.CASE pos,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM pl,
+    SYNSEM.LOCAL.CAT.HEAD.POSS-PNG [ GEND N, 
+				     PERNUM pl ] ].
+
+poss_m_sg_lexical_rule-suffix :=
+%suffix (* -tsaa)
+poss_m_sg_lexical_rule-lex-rule.
+
+poss_f_sg_lexical_rule-suffix :=
+%suffix (* -cii)
+poss_f_sg_lexical_rule-lex-rule.
+
+poss_n_sg_lexical_rule-suffix :=
+%suffix (* -tse)
+poss_n_sg_lexical_rule-lex-rule.
+
+poss_m_pl_lexical_rule-suffix :=
+%suffix (* -ce)
+poss_m_pl_lexical_rule-lex-rule.
+
+poss_f_pl_lexical_rule-suffix :=
+%suffix (* -cii)
+poss_f_pl_lexical_rule-lex-rule.
+
+poss_n_pl_lexical_rule-suffix :=
+%suffix (* -cii)
+poss_n_pl_lexical_rule-lex-rule.
+
+poss_m_sg_plspr_lexical_rule-suffix :=
+%suffix (* -aan-tsaa)
+poss_m_sg_plspr_lexical_rule-lex-rule.
+
+poss_f_sg_plspr_lexical_rule-suffix :=
+%suffix (* -aan-cii)
+poss_f_sg_plspr_lexical_rule-lex-rule.
+
+poss_n_sg_plspr_lexical_rule-suffix :=
+%suffix (* -aan-tse)
+poss_n_sg_plspr_lexical_rule-lex-rule.
+
+poss_m_pl_plspr_lexical_rule-suffix :=
+%suffix (* -aan-ce)
+poss_m_pl_plspr_lexical_rule-lex-rule.
+
+poss_f_pl_plspr_lexical_rule-suffix :=
+%suffix (* -aan-cii)
+poss_f_pl_plspr_lexical_rule-lex-rule.
+
+poss_n_pl_plspr_lexical_rule-suffix :=
+%suffix (* -aan-cii)
+poss_n_pl_plspr_lexical_rule-lex-rule.
+
+The case rules inherit from oblique_case-lex rule, which inherits from case-lex-rule-super. It is the beginning of a larger framework and is currently not doing anything in the grammar. Later, we plan to use this differentiation to correctly handle the way determiners differ based on the case of their SPECs.
+
+Because possessives behave similarly to determiners, we created a phrase structure rule that creates a determiner out of a possessive noun. 
+
+possessive-det-phrase := unary-phrase &
+  [ SYNSEM [LOCAL [CAT [ HEAD det & [ MOD < > ],
+			 VAL [COMPS < >,
+			      SUBJ < >,
+			      SPEC [ FIRST [ LOCAL [CAT [ HEAD noun ],
+						    CONT.HOOK [ INDEX #possessee &
+								      [ COG-ST uniq-or-more, 
+									PNG #posspng ],
+								LTOP #larg ]]]]]]]],
+
+    ARGS  < [ SYNSEM.LOCAL [ CAT [ HEAD noun & [CASE pos, POSS-PNG #posspng ],
+				   VAL.SPR < > ],
+			     CONT [ HOOK [ INDEX #possessor ]]]] >,
+    C-CONT [ HOOK [ LTOP #larg,
+		    INDEX #possessee ],	     
+	     RELS <! 
+		   quant-relation & 
+		   [ PRED "exist_q_rel",
+		     ARG0 #possessee,
+		     RSTR #harg ],
+		   arg12-ev-relation & 
+		   [ PRED "_poss_rel",
+		     LBL #larg,		     
+		     ARG1 #possessee,
+		     ARG2 #possessor ] !>,
+	     HCONS <! qeq & [ HARG #harg,
+			      LARG #larg ] !> ]].
+
+
+We currently do not have a working rule that places the -aan suffix on plural stems. We have seperate lexical entries that have -aan applied to them. 
+
+
+4. If the analysis is not (fully) working, a description of the problems you are encountering. 
+
+
+Anything else we fixed. 
+------------------------
+
+The biggest change this week was in the verb hierarchy. verb_lex now splits into two types: preinflected_verb_lex and tobeinflected_verb_lex. All other verbs now inherit from these two types. This allows for auxiliaries and copulas that do not inflect. 
+
+preinflected-verb-super-type := word-or-lexrule & 
+  [ INFLECTED [ VERB_TENSE_ASPECT-FLAG +,
+                VERB_GENDER_PERNUM-FLAG +,
+		FORM-FLAG +  ]  ].
+
+tobeinflected-verb-super-type := word-or-lexrule & 
+  [ INFLECTED [ VERB_TENSE_ASPECT-FLAG -,
+                VERB_GENDER_PERNUM-FLAG -,
+		FORM-FLAG -  ]  ].
+
+The copula hierarchy and aux-verb hierarchy was also sorted out a bit to suit the analysis we wanted.
+
+aux-lex := verb-lex &
+  [ SYNSEM.LOCAL.CAT.HEAD.AUX + ].
+  
+ neg-aux-lex := subj-raise-aux-with-pred & preinflected-verb-super-type &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.FORM neg-form,
+    SYNSEM.LOCAL.CAT [VAL [COMPS.FIRST [LOCAL.CAT.VAL.SUBJ #spec, 
+					OPT -],
+			  SUBJ #spec],
+		      HEAD.H-INIT - ]].
+
+
+itsdb
+-----
+
+We get 61.3%(57/93) Coverage, which is a slight increase over the previous test suite. Quite a few of the 'possessive' sentences tht were there in the suite now parse. These parses are semantically valid too. Overgeneration is also low (only 6 on 84). 
+
+The baseline comparison is as follows:
+			(G)old				New
+	Lexical	| Analyses | In | Out || Lexical | Analyses | In | Out 
+Total	3.63	   2.33	    53.8  6.0      2.48      2.55    61.3  8.3          

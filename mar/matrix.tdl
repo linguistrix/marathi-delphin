@@ -3081,9 +3081,9 @@ determiner-lex-supertype := norm-hook-lex-item & basic-zero-arg &
                                 SPR < >,
                                 SUBJ < >,
                                 COMPS < >]],
-		     CONT.HCONS < ! qeq &
+		     CONT.HCONS <! qeq &
 				 [ HARG #harg,
-				   LARG #larg ] ! > ], 
+				   LARG #larg ] !> ], 
 	     LKEYS.KEYREL quant-relation &
 		   [ ARG0 #ind,
 		     RSTR #harg ] ] ].
@@ -3418,9 +3418,9 @@ omni-mid-coord-rule := omni-coord-phrase &
 
 n-coord-phrase := coord-phrase &
   [ SYNSEM.LOCAL.CAT.VAL.SPR < [ ] >,
-    SYNSEM.LOCAL.CAT.HEAD noun,
-    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun,
-    RCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun ].
+    SYNSEM.LOCAL.CAT.HEAD noun & [ CASE #case ],
+    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun & [ CASE #case ],
+    RCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun & [ CASE #case ]].
 
 basic-n-top-coord-rule := n-coord-phrase &
   [ SYNSEM.LOCAL.CAT.VAL.SPR < [ ] >,
@@ -3433,9 +3433,9 @@ basic-n-mid-coord-rule := n-coord-phrase &
 	     HCONS <! !> ]].
 
 n-bottom-coord-phrase := bottom-coord-phrase &
-  [ SYNSEM.LOCAL.CAT [ HEAD noun,
+  [ SYNSEM.LOCAL.CAT [ HEAD noun & [ CASE #case ],
                        VAL.SPR < [ ] > ],
-    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ HEAD noun,
+    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ HEAD noun & [ CASE #case ],
                                    VAL.SPR < [ ] > ]].
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -3443,9 +3443,9 @@ n-bottom-coord-phrase := bottom-coord-phrase &
 
 np-coord-phrase := coord-phrase &
   [ SYNSEM.LOCAL.CAT.VAL.SPR < >,
-    SYNSEM.LOCAL.CAT.HEAD noun,
-    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun,
-    RCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun ].
+    SYNSEM.LOCAL.CAT.HEAD noun & [ CASE #case ],
+    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun & [ CASE #case ],
+    RCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun & [ CASE #case ]].
 
 basic-np-top-coord-rule := np-coord-phrase &
   [ SYNSEM.LOCAL.CAT.VAL.SPR < >,
@@ -3462,9 +3462,9 @@ basic-np-mid-coord-rule := np-coord-phrase &
                                         C-ARG #carg ]].
 
 np-bottom-coord-phrase := bottom-coord-phrase &
-  [ SYNSEM.LOCAL.CAT [ HEAD noun,
+  [ SYNSEM.LOCAL.CAT [ HEAD noun & [ CASE #case ],
                        VAL.SPR < > ],
-    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ HEAD noun,
+    NONCONJ-DTR.SYNSEM.LOCAL.CAT [ HEAD noun & [ CASE #case ],
                                    VAL.SPR < > ]].
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

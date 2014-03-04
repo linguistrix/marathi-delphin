@@ -26,40 +26,6 @@ ebender
 
 19fb1ac3-6708-4f32-99ab-243cbd40e30d
 
-LICENSE
-file
-
-
-
-
-2014-02-22T06:30:16.500531Z
-14a71b194dd35078ac2d08d80bab5719
-2014-02-22T06:28:29.253242Z
-28387
-ebender
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1945
-
 Version.lsp
 file
 
@@ -94,16 +60,50 @@ ebender
 
 138
 
+LICENSE
+file
+
+
+
+
+2014-02-22T06:30:16.500531Z
+14a71b194dd35078ac2d08d80bab5719
+2014-02-22T06:28:29.253242Z
+28387
+ebender
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1945
+
 lexicon.tdl
 file
+28520
 
 
 
-
-2014-02-22T06:30:16.500531Z
-dbc60226d627357426b6ddca7425bce2
-2014-02-22T06:28:29.253242Z
-28387
+2014-03-01T01:58:04.583679Z
+fcd3d2b3b1f71726a51394ab6713c8bd
+2014-03-01T02:07:05.105279Z
+28520
 ebender
 
 
@@ -126,41 +126,7 @@ ebender
 
 
 
-11143
-
-labels.tdl
-file
-
-
-
-
-2014-02-22T06:30:16.500531Z
-7c300c714d24079515fc60085aa6f6f5
-2014-02-22T06:28:29.253242Z
-28387
-ebender
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6994
+11011
 
 mtr.tdl
 file
@@ -196,14 +162,14 @@ has-props
 
 2045
 
-head-types.tdl
+labels.tdl
 file
 
 
 
 
 2014-02-22T06:30:16.500531Z
-93839b299ed665316af21dbe97b0305a
+7c300c714d24079515fc60085aa6f6f5
 2014-02-22T06:28:29.253242Z
 28387
 ebender
@@ -228,7 +194,7 @@ ebender
 
 
 
-65022
+6994
 
 irules.tdl
 file
@@ -264,14 +230,14 @@ ebender
 
 528
 
-test_sentences
+head-types.tdl
 file
 
 
 
 
 2014-02-22T06:30:16.500531Z
-d41d8cd98f00b204e9800998ecf8427e
+93839b299ed665316af21dbe97b0305a
 2014-02-22T06:28:29.253242Z
 28387
 ebender
@@ -296,7 +262,7 @@ ebender
 
 
 
-0
+65022
 
 matrix.tdl
 file
@@ -332,14 +298,14 @@ ebender
 
 123394
 
-lrules.tdl
+test_sentences
 file
 
 
 
 
 2014-02-22T06:30:16.500531Z
-6ada2476a3d6963edc4a676a175b8c5f
+d41d8cd98f00b204e9800998ecf8427e
 2014-02-22T06:28:29.253242Z
 28387
 ebender
@@ -364,13 +330,7 @@ ebender
 
 
 
-318
-
-pet
-dir
-
-ace
-dir
+0
 
 roots.tdl
 file
@@ -405,6 +365,46 @@ ebender
 
 
 858
+
+ace
+dir
+
+pet
+dir
+
+lrules.tdl
+file
+
+
+
+
+2014-02-22T06:30:16.500531Z
+6ada2476a3d6963edc4a676a175b8c5f
+2014-02-22T06:28:29.253242Z
+28387
+ebender
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+318
 
 tsdb
 dir

@@ -8,9 +8,12 @@ non_event      <> p
 *              >> u
 semarg         << u
 
-SORT : SORT
+SPECI : SPECI
   * <> *
-  semsort << *
+
+;SORT : SORT
+;  * <> *
+;  semsort << *
 
 SF : SF
   prop <> prop
@@ -60,8 +63,8 @@ PNG.GEND : PNG.GEND
   neuter <> neuter
   * <> !
 
-E.TENSE : TENSE
+E.TENSE : E.TENSE
   past <> past
-  nonpast <> pres
+  nonpast <> present
   nonpast << *
   nonpast << [e]

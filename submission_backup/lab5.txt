@@ -1,0 +1,555 @@
+LING 567, Lab 5 Note File
+Antariksh Bothale (author), Andrew Baer
+Language: Marathi (mar)
+
+Adjectival and adverbial modifiers
+----------------------------------
+
+1. A descriptive statement of the facts of your language. 
+
+Adjectival modifiers occur in the pre-head position in Marathi before the nouns they modify. Likewise, adverbs generally immediately precede the verb. However, the word order of optional arguments like adverbs is generally less rigid compared to that of main arguments. In our system, we assume that adverbs can only be in pre-head positions.
+
+2. Illustrative IGT examples from your testsuite.
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj}
+laal gaadii gelii
+laal gaadii ge-l-ii
+red train go-PAST-3.S.F
+(The) red train went
+
+Here, laal (red) modifies the noun gaadii (train).
+
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {adj, wo}
+gaadii laal gelii
+gaadii laal ge-l-ii
+train red go-PAST-3.S.F
+(The) red train went
+
+This sentence is ungrammatical since the adjective occurs after the noun it modifies.
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adv}
+to lawkar aa-laa
+to lawkar aa-l-aa
+He quickly came-PRES-3.S.M
+He came quickly
+
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {adv}
+to aa-l-aa lawkar 
+to aa-l-aa lawkar 
+He walk-PRES-3.S.M quickly 
+He walks quickly
+
+3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
+
+We addded adj-head-int phrase in the rules.tdl file to enable pre-head adjectives.
+
+adj-head-int := adj-head-int-phrase.
+
+This is the definition for the adjective lexeme. Here POSTHEAD - ensures the ordering.
+
+adjective-lex := basic-adjective-lex & intersective-mod-lex &
+	      norm-ltop-lex-item &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD.MOD < [ LOCAL.CAT [ HEAD noun,
+                                                    VAL.SPR cons ]]>,
+			   VAL [ SPR < >,
+				 SUBJ < >,
+				 COMPS < >,
+				 SPEC < > ],
+			   POSTHEAD - ]]]].
+
+Likewise, the definition for the adjective lexeme, as added in marathi.tdl is as under. Note again the restriction POSTHEAD -
+
+adverb-lex := basic-adverb-lex & intersective-mod-lex &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD.MOD < [ LOCAL.CAT.HEAD verb ]>,
+			   VAL [ SPR < >,
+				 SUBJ < >,
+				 COMPS < >,
+				 SPEC < > ],
+			   POSTHEAD - ]]]].
+
+4. If the analysis is not (fully) working, a description of the problems you are encountering. 
+
+The adjective analysis seems to be working well. However, there seem to be some issues with adverb positionining. 
+
+For instance, a sentence such as lawkar to aa-l-aa (early he came) is parsing, while it shouldn't be. POSTHEAD - seems to have correctly blocked to aalaa lawkar but the lawkar in lawkar to aa-l-aa seems to be behaving like a sentence adverb. Adverb positioning does not really seem to be _that_ strict (both as per the reference text and my judgment), so I have let it remain right now.
+
+
+
+Agreement between adjectives and head nouns.
+--------------------------------------------
+
+1. A descriptive statement of the facts of your language.
+
+In Marathi, there are two kinds of attributive adjectives (the current analysis deals only with direct adjectives, not verbal predicates behaving as adjectives)---
+Those that inflect and those that don't. Adjectives which terminate in -aa inflect for gender and number, while others do not. When they do inflect, they agree with the noun they modify in both gender and number.
+
+2. Illustrative IGT examples from your testsuite.
+
+The adjective root dzun (old) is an inflecting type, and hence agrees in gender and number with its noun.
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj}
+dzunii gaadii aalii
+dzun-ii gaadii aa-l-ii
+old-S.F train.S.F come-PAST-3.S.F
+(The) old train came
+
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {adj}
+dzunaa gaadii aalii
+dzun-aa gaadii aa-l-ii
+old-S.M train.S.F come-PAST-3.S.F
+(The) old train came
+
+The adjective root laal (red) is not of an inflecting type, and hence remains the same irrespective of the gender / number of the noun.
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj}
+laal gaadii gelii
+laal gaadii ge-l-ii
+red train go-PAST-3.S.F
+(The) red train went
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {adj, wo}
+laal tsor gelaa
+laal tsor ge-l-aa
+red thief go-PAST-3.S.M
+(The) red thief went
+
+3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
+
+The process of making adjectives agree with their nouns was one that took us quite a while (since it was the first real change we were making in the TDL files), and it is one whose results we report with considerable pride and satisfaction. 
+
+We began with creating a new INFLECTED flag for handling this. It is called INFLECTED.ADJECTIVE_INFLECTION-FLAG
+inflected :+ [ 
+    ADJECTIVE_INFLECTION-FLAG luk, ...]
+
+We then defined two kinds of adjectives, both inheriting from adjective-lex and differing in their value of INFLECTED.ADJECTIVE_INFLECTION-FLAG
+
+For adjectives which inflect. e.g. motthaa (big.M) motthii (big.F)
+infl-adjective-lex := adjective-lex & [ INFLECTED.ADJECTIVE_INFLECTION-FLAG -].
+
+Adjectives which do not inflect. e.g. laal (red)
+non-infl-adjective-lex := adjective-lex & [ INFLECTED.ADJECTIVE_INFLECTION-FLAG +].
+
+We then proceeded to make a super-rule type that takes in an infl-adjective-lex and sets its inflection flag to +.
+
+adjective_gender_num-lex-rule-super := add-only-no-ccont-rule &
+  [ INFLECTED.ADJECTIVE_INFLECTION-FLAG + ,
+    DTR infl-adjective-lex & [ INFLECTED.ADJECTIVE_INFLECTION-FLAG -]] .  	     
+
+Finally, we defined 6 lexical rules (3 Genders x 2 Numbers) that constrain the GEND and PERNUM values of the first element on the MOD list of the INFL adjectives they apply to. 
+
+masc_sg_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
+  [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND M, 
+								  PERNUM SG]] > ]].
+
+masc_pl_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
+  [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND M, 
+								  PERNUM PL]] > ]].
+
+fem_sg_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
+  [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND F, 
+								  PERNUM SG]] > ]].
+
+fem_pl_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
+  [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND F, 
+								  PERNUM PL]] > ]].
+
+neut_sg_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
+  [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND N, 
+								  PERNUM SG]] > ]].
+
+neut_pl_adj_lexical_rule-lex-rule := infl-lex-rule & adjective_gender_num-lex-rule-super &
+  [ DTR [ SYNSEM.LOCAL.CAT.HEAD.MOD < [LOCAL.CONT.HOOK.INDEX.PNG [GEND N, 
+								  PERNUM PL]] > ]].
+
+4. If the analysis is not (fully) working, a description of the problems you are encountering. 
+
+We are pleased to report that the analysis seems to be working as expected and all the sentences parse without any false +ves or -ves.
+
+
+Demonstratives and markers of definiteness
+------------------------------------------
+1. A descriptive statement of the facts of your language.
+Marathi makes the proximal / distal contrast in its demonstratives determiners and third person pronouns (these pronouns and determiners, incidentally, have the same form, but that is probably not relevant). 
+
+The determiners also have a 6 way contrast (just as with the adjectives above), and they must agree in gender and number with the nouns they specify. In total, hence, there are 12 determiners.
+
+Marathi does not have a direct counterpart of the English indefinite article "a", nor of the definite article "the". However, definitenes is usually just marked using demonstratives. There are also a few more ways of specifying definiteness that we discuss at the end of this writeup. We do not seem to have ordinary determiners.
+
+Pronouns, which behave in a fashion similar to "it", have COG-ST activ-or-more.
+
+2. Illustrative IGT examples from your testsuite.
+
+In the first and second examples, the determiner agrees with the noun, while in the third one it doesn't.
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {c,agr}
+to tsor zhop-la
+to tsor zhop-l-aa
+that.S.M thief.NOM sleep-PST-3.S
+that thief slept
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {cop}
+tii gaadii dzunii aahe
+tii gaadii dzun-ii aa-he
+that train.S.F old-S.F be-3.S.F
+That train is old
+
+Source: {author}
+Vetted: {t}
+Judgment: u
+Phenomena: {adj}
+tii tsor aaikto
+tii tsor aaik-t-o
+that.S.F thief.M listen-PRES-3.S.M
+That thief listens
+
+3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
+
+To model this, the following was added to marathi.tdl:
+
+demonstrative_a_rel := predsort.
+proximal+dem_a_rel := demonstrative_a_rel. ; close to speaker
+distal+dem_a_rel := demonstrative_a_rel.   ; away from speaker
+
+To begin with, we pasted the type definition you gave into matrix.tdl
+
+determiner-lex-supertype := norm-hook-lex-item & basic-zero-arg &
+  [ SYNSEM [ LOCAL [ CAT [ HEAD det,
+			   VAL[ SPEC.FIRST.LOCAL.CONT.HOOK [ INDEX #ind,
+				  			     LTOP #larg ],
+                                SPR < >,
+                                SUBJ < >,
+                                COMPS < >]],
+		     CONT.HCONS < ! qeq &
+				 [ HARG #harg,
+				   LARG #larg ] ! > ], 
+	     LKEYS.KEYREL quant-relation &
+		   [ ARG0 #ind,
+		     RSTR #harg ] ] ].
+
+From the customization suite, we had an a type for determiners in the marathi.tdl file:
+
+;;;determiner-lex := basic-determiner-lex & basic-zero-arg & non-mod-lex-item &
+;;;  [ SYNSEM.LOCAL.CAT.VAL [ SPR < >,
+;;;                           COMPS < >,
+;;;                           SUBJ < > ] ].
+
+We got rid of it. Seeing as we don't have indefinite determiners, we proceeded to create a demonstrative determiner lexeme type.
+
+dem_determiner-lex := determiner-lex-supertype & non-mod-lex-item &
+  [SYNSEM [LOCAL [CONT [RELS <! [ PRED "exist_q_rel" ],
+		 #altkeyrel & arg1-ev-relation & [LBL #ltop, ARG1 #index]  !> ],
+   CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK [INDEX [COG-ST activ+fam], LTOP #ltop, INDEX #index]], LKEYS.ALTKEYREL #altkeyrel ]].
+
+This definition takes care of all the tiny cross-referencing and identification of values that were asked for on the LAB5 page. It also makes the COG-ST of the determin"ee" to be activ+fam
+
+This type was then subclassed to define the proximal and distal types:
+
+prox_dem_determiner-lex := dem_determiner-lex & 
+  [ SYNSEM.LKEYS.ALTKEYREL.PRED proximal+dem_a_rel ].
+
+dist_dem_determiner-lex := dem_determiner-lex & 
+  [ SYNSEM.LKEYS.ALTKEYREL.PRED distal+dem_a_rel ].
+
+Finally, in one flourish, we created 12 different sub-types for the various proximal and distal determiners and then PERNUM/GEND permutations.
+
+male_sg_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM SG] ].
+
+male_pl_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM PL] ].
+
+fem_sg_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM SG] ].
+
+fem_pl_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM PL] ].
+
+neutral_sg_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM SG] ].
+
+neutral_pl_dist_dem_determiner-lex := dist_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM PL] ].
+
+male_sg_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM SG] ].
+
+male_pl_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM PL] ].
+
+fem_sg_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM SG] ].
+
+fem_pl_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM PL] ].
+
+neutral_sg_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM SG] ].
+
+neutral_pl_prox_dem_determiner-lex := prox_dem_determiner-lex & 
+  [ SYNSEM.LOCAL.CAT.VAL.SPEC.FIRST.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM PL] ].
+
+Corresponding lexical entries were added to lexicon.tdl
+
+to_2 := male_sg_dist_dem_determiner-lex &
+  [STEM < "to" > ].
+
+tii_3 := fem_sg_dist_dem_determiner-lex &
+  [ STEM < "tii" > ].
+
+te_4 := neutral_sg_dist_dem_determiner-lex &
+  [ STEM < "te" > ].
+
+haa_2 := male_sg_prox_dem_determiner-lex &
+  [ STEM < "haa" > ]. 
+
+hii_4 := fem_sg_prox_dem_determiner-lex &
+  [ STEM < "hii" > ].
+
+he_4 := neutral_sg_prox_dem_determiner-lex &
+  [ STEM < "he" > ].
+
+te_3 := male_pl_dist_dem_determiner-lex &
+  [ STEM < "te" > ].
+
+tyaa_2 := fem_pl_dist_dem_determiner-lex &
+  [ STEM < "tyaa" > ].
+
+tii_4 := neutral_pl_dist_dem_determiner-lex &
+  [ STEM < "tii" > ].
+
+he_3 := male_pl_prox_dem_determiner-lex &
+  [ STEM < "he" > ].
+
+hyaa_3 := fem_pl_prox_dem_determiner-lex &
+  [ STEM < "hyaa" > ].
+
+hii_3 := neutral_pl_prox_dem_determiner-lex &
+  [ STEM < "hii" > ].
+
+By the way, the pronoun hierarchy was changed a bit to account for the addition of the COG-ST information.
+
+An active_status_pronoun_lexeme was made, which inherited from pronoun lexeme and added the COG-ST information.
+
+active_status_pronoun_lexeme := pronoun_lexeme-noun-lex & 
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX [COG-ST activ-or-more, SPECI + ]].
+
+All pronouns types were then subclasses from active_status_lexeme:
+
+3sgm_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ GEND M,
+                                       PERNUM 3SG ] ].
+
+3sgf_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3SG,
+                                       GEND F ] ].
+
+3plm_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3PL,
+                                       GEND M ] ].
+
+3plf_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3PL,
+                                       GEND F ] ].
+
+3sgn_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3SG,
+                                       GEND N ] ].
+
+3pln_pronoun_lexeme-noun-lex := active_status_pronoun_lexeme &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [ PERNUM 3PL,
+                                       GEND N ] ].
+
+4. If the analysis is not (fully) working, a description of the problems you are encountering. 
+To the best of our knowledge, the analysis seems to be working as expected.
+
+
+Argument optionality
+--------------------
+
+1. A descriptive statement of the facts of your language.
+
+Both subjects and objects can be dropped in Marathi. The dropped subject is understood based on the affix on the verb. Subject are often dropped when apparent from the context, or as parts of Yes / No questions. Subject dropping is allowed even in embedded clauses.
+
+Objects can be dropped too, and are understood from previous context. 
+
+2. Illustrative IGT examples from your testsuite.
+
+Subject dropping
+
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo, pro-d}
+tsoraalaa maarto
+tsor-laa maar-t-o
+thief-ACC beat-PRES-3.S.M
+he beats the thief
+
+Object dropping 
+
+#84
+Source: {author}
+Vetted: {t}
+Judgment: g
+Phenomena: {wo, pro-d}
+haa maarto
+haa maar-t-o
+he.NOM beat-PRES-3.S.M
+he beats
+
+3. A statement of how you implemented the phenomenon, in terms of types you added/modified and particular tdl constraints. That is, I want to see actual tdl snippets with prose descriptions around them.
+
+The choices made in the customization suite worked more or less. We added head-opt-subj := decl-head-opt-subj-phrase. (as suggested by you) in rules.tdl which was missing for some reason. We then added the activ-or-more tag to the OPT-CS value of the basic-head-opt-comp-phrase in matrix.tdl. Question: If OPT-CS and COG-ST are identified with each other through the #def tag here, how does it matter which one we fill in (you suggested to fill OPT-CS instead of COG-ST).
+
+basic-head-opt-comp-phrase := head-valence-phrase & head-only &
+                              head-compositional &
+  [ INFLECTED #infl,
+    SYNSEM canonical-synsem &
+	      [ LOCAL.CAT [ VAL [ SUBJ #subj,
+				  COMPS #comps,
+				  SPR #spr,
+				  SPEC #spec ],
+			    MC #mc,
+			    POSTHEAD #ph ],
+		MODIFIED #mod ],
+    HEAD-DTR [ INFLECTED #infl & infl-satisfied,
+	       SYNSEM [ LOCAL [ CAT [ VAL [ SUBJ #subj,
+					    COMPS < unexpressed &
+						    [ OPT +,
+						      OPT-CS #def & activ-or-more,
+						      LOCAL.CONT.HOOK [ INDEX #index & [ COG-ST #def ],
+									ICONS-KEY #ikey,
+									CLAUSE-KEY #ckey ] ] . #comps >,
+					    SPR #spr,
+					    SPEC #spec ],
+				      MC #mc,
+				      POSTHEAD #ph ],
+				CONT.HOOK.INDEX event ],
+			MODIFIED #mod ] ],
+    C-CONT [ RELS <! !>,
+	     HCONS <! !>,
+	     ICONS.LIST.FIRST #ikey & non-focus & [ TARGET #index,
+						    CLAUSE #ckey ] ] ].
+
+
+The analysis of the dropped subject being in-foc seems reasonable wrt Marathi. We have not found explicit examples of where it is otherwise. If we encounter them in the text later, we would make the COG-ST part more elaborate.
+
+4. If the analysis is not (fully) working, a description of the problems you are encountering. 
+The analysis we intended is working. However, we expect to change it a bit as we encounter more elaborate analysis of how argument dropping affects cognitive structure.
+
+Anything else we fixed. 
+------------------------
+
+There were quite a few tiny threads that had to be tidied and tied up. 
+
+We removed common-noun-lexeme, and replaced it with inanimate and animate noun lexemes. This is because our language makes animacy distinctions in some cases (such as accusative case marking).
+
+anim_noun_lexeme-noun-lex := noun-lex.
+inanim_noun_lexeme-noun-lex := noun-lex.
+
+We then redefined the various person, gender, number lexeme combos with this new hierarchy and changed the lexicon to match this.
+
+malenounsg_anim_noun-lex := anim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM 3SG]].
+
+malenounsg_inam_noun-lex := inanim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM 3SG]].
+
+femnounsg_anim_noun-lex := anim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM 3SG]].
+
+femnounsg_inam_noun-lex := inanim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM 3SG]].
+
+male_proper_noun_lexeme-noun-lex := anim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM 3SG]].
+
+female_proper_noun_lexeme-noun-lex := anim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM 3SG]].
+
+neutersg_anim_noun-lex := anim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM 3SG]].
+
+neutersg_inam_noun-lex := inanim_noun_lexeme-noun-lex &
+  [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM 3SG]].
+
+The key motivation for this was that Marathi makes the following distinction:
+
+Animate nouns take -laa case marker in ACC case.
+Inanimate nouns do not.
+
+However, when inanimate nouns do take the -laa marker, it lends definiteness to the noun. That is, an indefinite reading of the inanimate noun becomes impossible if it has the -laa marker.
+
+For animate nouns, this definiteness is unmarked (and can be indicated using a definite demonstrative).
+
+To do this, we added the following:
+
+This one to attach the -laa to animate nouns.
+anim_acc_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
+  [ DTR anim_noun_lexeme-noun-lex, SYNSEM.LOCAL.CAT.HEAD.CASE acc ].
+
+This one to let inanimate nouns be ACC without -laa.
+inanim_acc_lexical_rule-lex-rule := Case-lex-rule-super & const-lex-rule &
+  [ DTR inanim_noun_lexeme-noun-lex, SYNSEM.LOCAL.CAT.HEAD.CASE acc ].
+
+This one to force inanimate nouns with the -laa to be definite. (Could you confirm if this is the write way to do it?)
+inanim_definite_acc_lexical_rule-lex-rule := Case-lex-rule-super & infl-lex-rule &
+  [ DTR inanim_noun_lexeme-noun-lex,
+    SYNSEM.LOCAL [CAT.HEAD.CASE acc,
+		  CONT.HOOK.INDEX.COG-ST uniq+fam+act ]]. 
+
+The irules file has 
+
+anim_acc_lexical_rule-suffix :=
+%suffix (* -laa)
+anim_acc_lexical_rule-lex-rule.
+
+inanim_definite_acc_lexical_rule-suffix :=
+%suffix (* -laa)
+inanim_definite_acc_lexical_rule-lex-rule.
+
+However, something is amiss. LKB is parsing the readings correctly for the -laa cases. But the bare inanimate noun without -laa isn't being seen as a potential CASE acc
+
+Test Corpus
+------------------------
+The corpus has 10 sentences right now, collected from a few Wikipedia pages. The English translations were confirmed with another native speaker. It is in the same format as the testsuite, complete with IGT.
+
+itsdb
+-----
+
+We get 52.3% (45/86) Coverage, which is an increase over the previous test suite. (39/86). Overgeneration has reduced too. We have 5 to the previous value of 7. Number of parses have reduced for quite a few sentences. More importantly, the parses are more accurate now, in the sense that the grammar and lexicon background is actually enforcing that the agreement etc matches up (earlier, spurious sentences would parse because determiner agreement wasn't set up).
+
+The baseline comparison is as follows:
+			(G)old				New
+	Lexical	| Analyses | In | Out || Lexical | Analyses | In | Out 
+Total	3.05	   4.98	    45.9  8.7     3.06       2.72    52.3 6.3

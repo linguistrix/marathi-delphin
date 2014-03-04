@@ -14,6 +14,10 @@ maajhyaa := 1p-nonnom-poss-pronoun &
   [ STEM < "maajhyaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
 
+tumcyaa := 2p-nonnom-poss-pronoun &
+  [ STEM < "tumcyaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
+
 maadze := 1p-m-pl-poss-pronoun &
   [ STEM < "maadze" >,
     SYNSEM.LKEYS.KEYREL.PRED "pron_rel" ].
@@ -152,6 +156,10 @@ kutrii := neuterpl_anim_noun-lex &
   [ STEM < "kutrii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_dog_n_rel" ].
 
+maanzara := malenounpl_anim_noun-lex &
+  [ STEM < "maanzara" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_cat_n_rel" ].
+
 tsaal := femnounsg_inam_noun-lex &
   [ STEM < "tsaal" >,
     SYNSEM.LKEYS.KEYREL.PRED "_gait_n_rel" ].
@@ -171,6 +179,14 @@ kampani_2 := femnounpl_inam_noun-lex &
 gaadii := femnounsg_inam_noun-lex &
   [ STEM < "gaadii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_train_n_rel" ].
+
+gaadii_2 := femnounsg_inam_noun-lex &
+  [ STEM < "gaadii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_car_n_rel" ].
+
+gaadii_3 := femnounpl_inam_noun-lex &
+  [ STEM < "gaadii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_car_n_rel" ].
 
 maashii := femnounsg_anim_noun-lex &
   [ STEM < "maashii" >,
@@ -262,11 +278,11 @@ khaa := acc_arg_trans_verb_lxm-verb-lex &
 
 tsaalav := acc_arg_trans_verb_lxm-verb-lex &
   [ STEM < "tsaalav" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_run_v_rel" ].
+    SYNSEM.LKEYS.KEYREL.PRED "_operate_v_rel" ].
 
-vicaar := intrans_emb-q-inviting_verb-lex &
-  [ STEM < "vicaar" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
+;vicaar := intrans_emb-q-inviting_verb-lex &
+;  [ STEM < "vicaar" >,
+;    SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
 
 vicaar_2 := ditrans_emb-q-inviting_verb-lex &
   [ STEM < "vicaar" >,
@@ -275,6 +291,10 @@ vicaar_2 := ditrans_emb-q-inviting_verb-lex &
 zhop := intrans_verb_lxm-verb-lex &
   [ STEM < "zhop" >,
     SYNSEM.LKEYS.KEYREL.PRED "_sleep_v_rel" ].
+
+dhaav := intrans_verb_lxm-verb-lex &
+  [ STEM < "dhaav" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_run_v_rel" ].
 
 aa_1 := intrans_verb_lxm-verb-lex &
   [ STEM < "aa" >,
@@ -307,6 +327,10 @@ aaik := trans_verb_lxm-verb-lex &
 mhann_2 :=  ditrans_emb-d-inviting_verb-lex & 
   [ STEM < "mhann" >,
     SYNSEM.LKEYS.KEYREL.PRED "_tell_v_rel" ].
+
+waatt :=  feel-know-ditrans_emb-d-inviting_verb-lex & 
+  [ STEM < "waatt" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_feel_v_rel" ].
 
 ;;; Auxiliaries
 
@@ -433,12 +457,12 @@ aanni1 := conj-lex &
 
 kimwaa3 := conj-lex &
   [ STEM < "kimwaa" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
+    SYNSEM.LKEYS.KEYREL.PRED "_or_coord_rel",
     CFORM "3" ].
 
 pann4 := conj-lex &
   [ STEM < "pann" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_and_coord_rel",
+    SYNSEM.LKEYS.KEYREL.PRED "_but_coord_rel",
     CFORM "4" ].
 
 ;;; Adjectives, 2014/02/04, AVB, AB
@@ -478,6 +502,10 @@ lawkar := adverb-lex &
   [ STEM < "lawkar" >,
     SYNSEM.LKEYS.KEYREL.PRED "_early_a_rel" ].
 
+pattkan := adverb-lex &
+  [ STEM < "pattkan" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_quickly_a_rel" ].
+
 manda := adverb-lex &
   [ STEM < "manda" >,
     SYNSEM.LKEYS.KEYREL.PRED "_slow_a_rel" ].
@@ -494,6 +522,13 @@ parat := adverb-lex &
 itha := adverb-lex & 
   [ STEM < "itha" >,
     SYNSEM.LKEYS.KEYREL.PRED "_here_a_rel" ].
+
+
+maage := maage-lex & 
+  [ STEM < "maage" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_behind_p_rel" ].
+
+
 
 kii := init_plus_complementizer-lex-item & 
   [ STEM < "kii" > ].
