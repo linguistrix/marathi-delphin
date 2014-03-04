@@ -603,6 +603,7 @@ subj-raise-ditrans-aux-with-pred := aux-lex & norm-sem-lex-item & ditrans-second
 
 subj-raise-aux-with-pred := subj-raise-aux & norm-sem-lex-item & trans-first-arg-raising-lex-item-1.
 
+neg-subj-raise-aux-with-pred := subj-raise-aux & norm-ltop-lex-item & single-rel-lex-item & trans-first-arg-raising-lex-item-1.
 
 ability-verb-lex := subj-raise-aux-with-pred & tobeinflected-verb-super-type & 
 [ SYNSEM.LOCAL [ CAT [VAL [ SPR < >,
@@ -677,7 +678,7 @@ noun-copula-verb-lex := copula-transitive-verb-lex &
 3sm_past_noun-copula-verb-lex := noun-copula-verb-lex & past-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CONT.HOOK.INDEX.PNG.PERNUM 3sg ].
 
-neg-aux-lex := subj-raise-aux-with-pred & preinflected-verb-super-type &
+neg-aux-lex := neg-subj-raise-aux-with-pred & preinflected-verb-super-type &
  [ SYNSEM.LOCAL [ CAT [ VAL [ COMPS.FIRST [ LOCAL [ CAT [ HEAD.FORM neg-form, 
 							  VAL.SUBJ #spec ],
 						    CONT.HOOK.INDEX #comp ], 

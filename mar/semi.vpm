@@ -21,6 +21,7 @@ SF : SF
 
 COG-ST : COG-ST
   type-id <> type-id
+;  type-id << cog-st
   uniq-id <> uniq-id
   familiar <> familiar
   activated <> activated
