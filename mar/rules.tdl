@@ -3,7 +3,9 @@
 
 jrp-adj-head-int := jrp-adj-head-int-phrase.
 
-basic-head-opt-comp := basic-head-opt-comp-phrase.
+activ-or-more-head-opt-comp := activ-or-more-head-opt-comp-phrase.
+
+type-id-head-opt-comp := type-id-head-opt-comp-phrase.
 
 head-opt-subj := decl-head-opt-subj-phrase.
 

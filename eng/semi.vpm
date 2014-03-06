@@ -65,13 +65,12 @@ PNG.PERNUM : PNG.PER PNG.NUM
   sg << * sg
   pl <> ! pl
   pl << * pl
-  *  <> !
+  *  <> ! !
 
 PNG.GEND : PNG.GEND
   neut <> neut
   fem <> fem
   masc <> masc
-  * <> *
 
 E.TENSE : E.TENSE
   present <> present

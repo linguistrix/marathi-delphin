@@ -1873,7 +1873,7 @@ basic-head-opt-comp-phrase := head-valence-phrase & head-only &
 	       SYNSEM [ LOCAL [ CAT [ VAL [ SUBJ #subj,
 					    COMPS < unexpressed &
 						    [ OPT +,
-						      OPT-CS #def & activ-or-more,
+						      OPT-CS #def,
 						      LOCAL.CONT.HOOK [ INDEX #index & [ COG-ST #def ],
 									ICONS-KEY #ikey,
 									CLAUSE-KEY #ckey ] ] . #comps >,
@@ -3418,9 +3418,9 @@ omni-mid-coord-rule := omni-coord-phrase &
 
 n-coord-phrase := coord-phrase &
   [ SYNSEM.LOCAL.CAT.VAL.SPR < [ ] >,
-    SYNSEM.LOCAL.CAT.HEAD noun & [ CASE #case ],
-    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun & [ CASE #case ],
-    RCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun & [ CASE #case ]].
+    SYNSEM.LOCAL.CAT.HEAD noun,
+    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun,
+    RCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun].
 
 basic-n-top-coord-rule := n-coord-phrase &
   [ SYNSEM.LOCAL.CAT.VAL.SPR < [ ] >,
@@ -3443,9 +3443,9 @@ n-bottom-coord-phrase := bottom-coord-phrase &
 
 np-coord-phrase := coord-phrase &
   [ SYNSEM.LOCAL.CAT.VAL.SPR < >,
-    SYNSEM.LOCAL.CAT.HEAD noun & [ CASE #case ],
-    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun & [ CASE #case ],
-    RCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun & [ CASE #case ]].
+    SYNSEM.LOCAL.CAT.HEAD noun,
+    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun,
+    RCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD noun ].
 
 basic-np-top-coord-rule := np-coord-phrase &
   [ SYNSEM.LOCAL.CAT.VAL.SPR < >,

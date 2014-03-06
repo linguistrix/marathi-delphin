@@ -12,7 +12,9 @@
 :include "head-types".
 :include "matrix".
 :include "frisian".
+:include "mt-mrs".
 :include "mtr".
+:include "acm".
 
 
 :end :type.

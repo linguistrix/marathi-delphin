@@ -279,6 +279,9 @@ intransitive-verb-lex := main-verb-lex & intransitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < >,
     ARG-ST.FIRST.LOCAL.CAT.HEAD noun ].
 
+;;; EMB 2014-03-04 Adding in argument optionality rather than intransitive
+;;; eat for purposes of MT lab.
+
 transitive-verb-lex := main-verb-lex & transitive-lex-item &
   [ SYNSEM.LOCAL.CAT.VAL.COMPS < #comps >,
     ARG-ST < [ LOCAL.CAT.HEAD noun ],
@@ -312,14 +315,24 @@ sub-obj-transitive-verb-lex := transitive-verb-lex &
 sub-obj-obj-ditransitive-verb-lex := ditransitive-verb-lex &
   [ ARG-ST < [ LOCAL.CAT.HEAD noun &
                               [ CASE sub ] ],
-             [ LOCAL.CAT.HEAD noun &
+             [ OPT -,
+	       LOCAL.CAT.HEAD noun &
                               [ CASE obj ] ],
-             [ LOCAL.CAT.HEAD noun &
+             [ OPT -,
+	       LOCAL.CAT.HEAD noun &
                               [ CASE obj ] ] > ].
 
 intrans-verb-verb-lex := sub-intransitive-verb-lex.
 
-transitive-verb-verb-lex := sub-obj-transitive-verb-lex.
+;;; EMB 2014-03-05 for MT demo
+
+transitive-verb-verb-lex-super := sub-obj-transitive-verb-lex.
+
+transitive-verb-verb-lex := sub-obj-transitive-verb-lex &
+  [ ARG-ST < [ ], [ OPT - ] > ].
+
+ini-transitive-verb-verb-lex := sub-obj-transitive-verb-lex &
+  [ ARG-ST < [ ], [ OPT-CS type-id ] > ].
 
 strict-transitive-verb-verb-lex := transitive-verb-verb-lex &
   [ ARG-ST < [ OPT - ], [ OPT - ] > ].
@@ -644,6 +657,13 @@ context1-decl-head-opt-subj-phrase := decl-head-opt-subj-phrase &
 ; the head-nexus types (together with the 6 phrase structure rules that inherit from them) seem to be the implementation of V2 word order: heads can take any number of arguments to their right but only one to their left, and MC will be na if they have not yet taken an argument to the left.
 ; we'll have to see how that interacts with alternate word order in embedded clauses.
 ; I guess I can believe it shouldn't have any effect on NP construction or PP constructions.
+
+;;; EMB 2014-03-04 Adding in argument optionality for transitive iit for
+;;; MT lab.  Restricting this rule to NP complements in the hopes of avoiding
+;;; unintended consequences.
+
+head-opt-comp-phrase := basic-head-opt-comp-phrase &
+  [ HEAD-DTR.SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD noun ].
 
 head-initial-head-nexus := head-initial &
   [ SYNSEM.LOCAL.CAT.MC na & #mc,

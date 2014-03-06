@@ -252,6 +252,10 @@ baaii := femnounsg_anim_noun-lex &
   [ STEM < "baaii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_woman_n_rel" ].
 
+maahitii := clausal-comp-noun-lex &
+  [ STEM < "maahitii" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_information_n_rel" ].
+
 reddio := neutersg_inam_noun-lex &
   [ STEM < "reddio" >,
     SYNSEM.LKEYS.KEYREL.PRED "_radio_n_rel" ].
@@ -272,7 +276,11 @@ maag := trans_verb_lxm-verb-lex &
   [ STEM < "maag" >,
     SYNSEM.LKEYS.KEYREL.PRED "_ask_v_rel" ].
 
-khaa := acc_arg_trans_verb_lxm-verb-lex &
+khaa := type-id-acc_arg-trans_verb_lxm-verb-lex &
+  [ STEM < "khaa" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
+
+khaa_2 := activ-or-more-acc_arg-trans_verb_lxm-verb-lex &
   [ STEM < "khaa" >,
     SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
 
@@ -368,6 +376,10 @@ aahe_nc := 3sm_present_copula-verb-lex &
 naahii_nc := neg-copula-verb-lex &
   [ STEM < "naahii" >,
     SYNSEM.LKEYS.KEYREL.PRED "_neg_rel" ].
+
+aahe_3 := know_aahe_clause_inviting_verb-lex & 
+  [ STEM < "aahe99" >,
+    SYNSEM.LKEYS.KEYREL.PRED "_loc_p_rel"].
 
 asto := 3sm_present_noun-copula-verb-lex &
   [ STEM < "asto" >,

@@ -242,7 +242,7 @@ luki := intrans-verb-verb-lex &
   [ STEM < "luki" >,
     SYNSEM.LKEYS.KEYREL.PRED "_look_v_rel" ].
 
-spreek := transitive-verb-verb-lex &
+spreek := strict-transitive-verb-verb-lex &
   [ STEM < "spreek" >,
     SYNSEM.LKEYS.KEYREL.PRED "_speak_v_rel" ].
 
@@ -254,13 +254,13 @@ skiar := transitive-verb-verb-lex &
   [ STEM < "skiar" >,
     SYNSEM.LKEYS.KEYREL.PRED "_cut_v_rel" ].
 
-iit := transitive-verb-verb-lex &
+iit := ini-transitive-verb-verb-lex &
   [ STEM < "iit" >,
     SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
 
-iit_intr := intrans-verb-verb-lex &
-  [ STEM < "iit" >,
-    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
+;iit_intr := intrans-verb-verb-lex &
+;  [ STEM < "iit" >,
+;    SYNSEM.LKEYS.KEYREL.PRED "_eat_v_rel" ].
 
 driuwe := transitive-verb-verb-lex &
   [ STEM < "driuwe" >,

@@ -23,6 +23,7 @@ SF : SF
   comm <> comm
   prop << *
   prop << [e]
+  * <> *
 
 COG-ST : COG-ST
   type-id <> type-id
@@ -39,13 +40,13 @@ COG-ST : COG-ST
   fam-or-less <> fam-or-less
   uniq-or-more <> uniq-or-more
   activ-or-less <> activ-or-less
-
+  * <> *
 
 PNG.PER : PNG.PER
   1st <> first
   2nd <> second
   3rd <> third
-  * <> !
+  * <> *
 
 PNG.NUM : PNG.NUM
   singular <> sg
@@ -61,10 +62,11 @@ PNG.GEND : PNG.GEND
   masculine <> masculine
   feminine <> feminine
   neuter <> neuter
-  * <> !
+  * <> *
 
 E.TENSE : E.TENSE
   past <> past
   nonpast <> present
   nonpast << *
   nonpast << [e]
+  * <> * 

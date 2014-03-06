@@ -1,4 +1,4 @@
-;;; -*- Mode: LISP; Syntax: Common-Lisp; Package: LKB; Coding: utf-8 -*-
+;; -*- Mode: LISP; Syntax: Common-Lisp; Package: LKB; Coding: utf-8 -*-
 
 ;;;
 ;;; First, load a number of LKB-specific settings; typically no need to look
@@ -90,20 +90,6 @@
 ;;; small lexica) in the hope that the generator will be used frequently.
 ;;;
 (lkb-load-lisp (this-directory) "mrsglobals.lsp" t)
-(mt:read-vpm (lkb-pathname (parent-directory) "semi.vpm") :semi)
-
-;;;
-;;; SSH 2012-03-27 This invokes trigger rules for semantically empty
-;;; lexical entries. The trigger rules themselves should be in
-;;; trigger.mtr in the grammar directory. The documentation on trigger
-;;; rules: http://moin.delph-in.net/LkbGeneration
-;;;
-(mt:read-transfer-rules
-(list
-(lkb-pathname (parent-directory) "trigger.mtr"))
-"Generation trigger rules"
-:filter nil :task :trigger :recurse nil :edges 200 :subsume nil)
-
 
 ;;;
 ;;; Matrix-derived grammars often have stable enough semantic
@@ -119,7 +105,21 @@
 
 (index-for-generator)
 
+(mt:read-vpm (lkb-pathname (parent-directory) "semi.vpm") :semi)
+
 (lkb-load-lisp (this-directory) "mt.lsp" t)
+
+;;;
+;;; SSH 2012-03-27 This invokes trigger rules for semantically empty
+;;; lexical entries. The trigger rules themselves should be in
+;;; trigger.mtr in the grammar directory. The documentation on trigger
+;;; rules: http://moin.delph-in.net/LkbGeneration
+;;;
+(mt:read-transfer-rules
+(list
+(lkb-pathname (parent-directory) "trigger.mtr"))
+"Generation trigger rules"
+:filter nil :task :trigger :recurse nil :edges 200 :subsume nil)
 
 
 ;;;

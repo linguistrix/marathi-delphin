@@ -254,7 +254,7 @@ pro-set-cogst-arg2-mtr := monotonic_mtr &
 
 chase-run-behind-mtr := monotonic_mtr &
 [ INPUT [ RELS <! [ PRED "_chase_v_rel",
-		   ;LBL #lbl,
+		   LBL #lbl,
 		   ARG0 #arg0,
 		   ARG1 #pursuer,
 		   ARG2 #pursued ] !>,

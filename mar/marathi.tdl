@@ -157,7 +157,7 @@ noun-lex := basic-noun-lex & basic-one-arg & no-hcons-lex-item & non-mod-lex-ite
                            COMPS < >,
                            SUBJ < >,
                            SPEC < > ],
-    ARG-ST < #spr >].
+    ARG-ST < #spr > ].
 
 common-noun-lex := word-or-lexrule & 
   [ SYNSEM.LOCAL.CAT.HEAD.PRON - ].
@@ -274,9 +274,17 @@ compound-noun-phrase := head-final &
 		    [ HARG #rstr,
 		      LARG #nonheadlbl  ] !> ]].
 
+type-id-head-opt-comp-phrase := basic-head-opt-comp-phrase & 
+ [ HEAD-DTR [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS [ FIRST [ OPT-CS type-id ]]]]]]]].
+
+activ-or-more-head-opt-comp-phrase := basic-head-opt-comp-phrase & 
+ [ HEAD-DTR [ SYNSEM [ LOCAL [ CAT [ VAL [ COMPS [ FIRST [ OPT-CS activ-or-more ]]]]]]]].
+						      
+
 anim_noun_lexeme-noun-lex := infl-unsatisfied-noun-lex & common-noun-lex.
 
 inanim_noun_lexeme-noun-lex := infl-unsatisfied-noun-lex & common-noun-lex.
+
 
 pronoun_lexeme-noun-lex := no-spr-noun-lex & 
   [ SYNSEM.LOCAL [ CAT [ HEAD [ PRON + ] ],
@@ -392,7 +400,6 @@ femnounpl_anim_noun-lex := anim_noun_lexeme-noun-lex &
 femnounpl_inam_noun-lex := inanim_noun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND F, PERNUM 3PL]].
 
-
 male_proper_noun_lexeme-noun-lex := anim_noun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND M, PERNUM 3SG]].
 
@@ -412,11 +419,35 @@ neuterpl_inam_noun-lex := inanim_noun_lexeme-noun-lex &
   [ SYNSEM.LOCAL.CONT.HOOK.INDEX.PNG [GEND N, PERNUM 3PL]].
 
 
+;clausal-comp-noun-lex := basic-noun-lex & basic-two-arg & non-mod-lex-item & 
+;  [ SYNSEM [ LOCAL.CAT.VAL [ SPR < #spr &
+;                                 [ LOCAL.CAT.HEAD det ] >,
+;			     COMPS < #comp & 
+;				   [ LOCAL [ CAT.HEAD comp,
+;					     CONT.HOOK [ INDEX #target, 
+;							 LTOP #larg ]]] >,
+;			     SUBJ < >,
+;			     SPEC < > ],
+;	     LKEYS.KEYREL [ ARG2 #harg ]],
+ ;   ARG-ST < #spr, #comp & [ LOCAL.CONT [ HOOK.CLAUSE-KEY #clause,
+;						 HCONS <! qeq & [ HARG #harg,
+;								  LARG #larg ] !>,
+;						 ICONS <! [ TARGET #target, 
+;							    CLAUSE #clause ] !> ]]>].
+    
+
 ;;; Verbs
 
 verb-lex := non-mod-lex-item &
   [ SYNSEM.LOCAL.CAT.HEAD verb,
     SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg+nom, 
+    INFLECTED [ PAST_LEXICAL_RULE-FLAG na-or--,
+                PRESENT_LEXICAL_RULE-FLAG na-or--,
+                FUTURE_LEXICAL_RULE-FLAG na-or--] ].
+
+no-subj-verb-lex := non-mod-lex-item &
+  [ SYNSEM.LOCAL.CAT.HEAD verb,
+
     INFLECTED [ PAST_LEXICAL_RULE-FLAG na-or--,
                 PRESENT_LEXICAL_RULE-FLAG na-or--,
                 FUTURE_LEXICAL_RULE-FLAG na-or--] ].
@@ -441,6 +472,18 @@ non-copula-main-verb-lex := verb-lex & tobeinflected-verb-super-type & basic-ver
                  [ LOCAL [ CAT.VAL [ SPR < >,
                                      COMPS < > ],
                            CONT.HOOK.INDEX #xarg ] ]].
+
+no-subj-non-copula-main-verb-lex := no-subj-verb-lex & tobeinflected-verb-super-type & basic-verb-lex &
+  [ SYNSEM.LOCAL [ CAT [ HEAD.AUX -,
+                         VAL [ SPR < >,
+                               SPEC < >,
+                               SUBJ < > ]]]].
+
+;                   CONT.HOOK.XARG #xarg ],
+;    ARG-ST.FIRST #subj &
+;                [ LOCAL [ CAT.VAL [ SPR < >,
+;                                     COMPS < > ],
+;                           CONT.HOOK.INDEX #xarg ] ]].
 
 copula-main-verb-lex := verb-lex & preinflected-verb-super-type & basic-verb-lex &
   [ SYNSEM.LOCAL [ CAT [ HEAD.AUX -,
@@ -496,6 +539,12 @@ dat_arg_trans_verb_lxm-verb-lex := trans_verb_lxm-verb-lex &
 acc_arg_trans_verb_lxm-verb-lex := trans_verb_lxm-verb-lex & 
   [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.LOCAL.CAT.HEAD.CASE nom+acc ].
 
+type-id-acc_arg-trans_verb_lxm-verb-lex := acc_arg_trans_verb_lxm-verb-lex &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.OPT-CS type-id ].
+
+activ-or-more-acc_arg-trans_verb_lxm-verb-lex := acc_arg_trans_verb_lxm-verb-lex &
+  [ SYNSEM.LOCAL.CAT.VAL.COMPS.FIRST.OPT-CS activ-or-more ].
+
 
 intrans_verb_lxm-verb-lex := intransitive-verb-lex &
   [ SYNSEM.LOCAL.CAT.VAL.SUBJ.FIRST.LOCAL.CAT.HEAD.CASE nom ].
@@ -530,6 +579,26 @@ ditrans_embedded_clause_inviting_verb-lex := non-copula-main-verb-lex & clausal-
 					       CONT.HOOK.INDEX.SF prop-or-ques]] >,
 			     SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg+nom ]]].
 
+
+know_aahe_clause_inviting_verb-lex := no-subj-verb-lex & preinflected-verb-super-type & basic-verb-lex & clausal-third-arg-ditrans-lex-item &
+  [ ARG-ST < #knower, #information, #knowledge >,
+    SYNSEM.LOCAL.CAT [ HEAD verb & [ AUX - ],
+		       VAL [ SPR < >,
+			     SUBJ < >,
+ 			     COMPS < #knower & 
+				     [ LOCAL [ CAT [ HEAD noun & [ CASE dat ],
+						     VAL [ SPR < >,
+							   COMPS < > ]]]],
+				     #information & 
+				     [ LOCAL [ CAT [ HEAD noun,
+						     VAL [ SPR < >,
+							   COMPS < > ]]]],
+				     #knowledge & 
+				     [ LOCAL [ CAT [ HEAD comp,
+						     VAL [ SPR < >,
+							   COMPS < > ],
+						     MC -],
+					       CONT.HOOK.INDEX.SF prop ]] >    ]]].
 
 
 intrans_emb-d-inviting_verb-lex := intrans_embedded_clause_inviting_verb-lex & 
@@ -1443,6 +1512,18 @@ bare-np-phrase := basic-bare-np-phrase &
 
 ;;; Coordination Strategy 1
 
+np-coord-phrase :+ 
+  [ SYNSEM.LOCAL [ CAT.HEAD.CASE #case,    
+		   CONT.HOOK.INDEX.PNG [ PERNUM 3pl ]],
+    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD.CASE #case,
+    RCOORD-DTR.SYNSEM.LOCAL [ CAT.HEAD.CASE #case ]].
+
+n-coord-phrase :+ 
+  [ SYNSEM.LOCAL [ CAT.HEAD.CASE #case,    
+		   CONT.HOOK.INDEX.PNG [ PERNUM 3pl ]],
+    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD.CASE #case,
+    RCOORD-DTR.SYNSEM.LOCAL [ CAT.HEAD.CASE #case ]].
+
 n1-top-coord-rule := basic-n-top-coord-rule & monopoly-top-coord-rule &
   [ SYNSEM.LOCAL.COORD-STRAT "1" ].
 
@@ -1464,6 +1545,17 @@ np1-bottom-coord-rule := conj-first-bottom-coord-rule & np-bottom-coord-phrase &
   [ SYNSEM.LOCAL.COORD-STRAT "1" ].
 
 ;;; Coordination Strategy 1
+
+vp-coord-phrase :+ 
+  [ SYNSEM.LOCAL.CAT.VAL.SUBJ #subj,
+    LCOORD-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ #subj,
+    RCOORD-DTR.SYNSEM.LOCAL.CAT.VAL.SUBJ #subj,
+    SYNSEM.LOCAL.CONT.HOOK.INDEX.SF #sf,
+    LCOORD-DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX.SF #sf,
+    RCOORD-DTR.SYNSEM.LOCAL.CONT.HOOK.INDEX.SF #sf,
+    SYNSEM.LOCAL.CAT.HEAD.FORM #form,
+    LCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD.FORM #form,
+    RCOORD-DTR.SYNSEM.LOCAL.CAT.HEAD.FORM #form ].
 
 vp1-top-coord-rule := basic-vp-top-coord-rule & monopoly-top-coord-rule &
   [ SYNSEM.LOCAL.COORD-STRAT "1" ].

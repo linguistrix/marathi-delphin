@@ -11,6 +11,10 @@ context1-decl-head-opt-subj := context1-decl-head-opt-subj-phrase.
 ; not need to add any further constraints, so no corresponding types
 ; appear in frisian.tdl
 
+;;; EMB 2014-03-04
+
+head-opt-comp := head-opt-comp-phrase.
+
 adj-head-int := ordinary-adj-head-int-phrase.
 head-adj-int := ordinary-head-adj-int-phrase.
 adj-head-scop := ordinary-adj-head-scop-phrase.

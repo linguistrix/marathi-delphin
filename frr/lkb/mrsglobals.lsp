@@ -94,6 +94,7 @@
 
 ;;; sweaglesw 2013-05-15, following debugging with danf
 
+(setf *variable-type-mapping* :semi)
+
 (setf *show-lnk-p* nil)
 
-(setf *variable-type-mapping* :semi)
