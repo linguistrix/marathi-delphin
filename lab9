@@ -1,0 +1,121 @@
+LING 567, Lab 9 Note File
+Antariksh Bothale, Andrew Baer (Author)
+Language: Marathi (mar)
+
+Grammar Clean Up 
+-------------------------------------------------------------------------------------
+
+The grammar clean up was more extensive in lab 8 than 9. 
+
+We needed our clause-taking verbs to be ditransitive:
+
+ditrans_embedded_clause_inviting_verb-lex := non-copula-main-verb-lex & clausal-third-arg-ditrans-lex-item &
+  [ ARG-ST < synsem, #receiver, #arg >,
+    SYNSEM.LOCAL.CAT [ HEAD verb,
+		       VAL [ SPR < >,
+			     COMPS < #receiver & 
+				     [ LOCAL [ CAT [ HEAD noun & [ CASE dat ],
+						     VAL [ SPR < >,
+							   COMPS < > ]]]],
+				     #arg & 
+				     [ LOCAL [ CAT [ HEAD comp,
+						     VAL [ SPR < >,
+							   COMPS < > ],
+						     MC -],
+					       CONT.HOOK.INDEX.SF prop-or-ques]] >,
+			     SUBJ.FIRST.LOCAL.CAT.HEAD.CASE erg+nom ]]].
+
+Sentences using these verbs were parsing, but not generating. It ended up being a problem with the ARG numbering in the trigger rule. We changed it from ARG2 to ARG3. 
+
+comp_gtr := generator_rule &
+[ CONTEXT [ RELS <! [ ARG3 #h & handle ],
+                    [ ARG0 #e & event ] !> ],
+  FLAGS [ EQUAL < #e, #h >,
+          TRIGGER "kii" ]].
+
+------------------------------------------------------------------------
+Transfer Rules Instantiated
+------------------------------------------------------------------------
+
+English
+------------------------------------------------------------------------
+We did not need to instantiate any existing rules. We developed two, which will be covered later. 
+
+Frisian
+------------------------------------------------------------------------
+Marathi expresses "hurt" through a single verb, and Frisian expresses it as "make harm", so we instantiated the transfer rule that takes "make harm" as the input and outputs "hurt".
+
+make-harm-mtr := monotonic_omtr &
+[ INPUT [ RELS <! [ PRED "_make_v_rel",
+		   LBL #lbl,
+		   ARG0 #arg0,
+		   ARG1 #arg1,
+		   ARG2 #arg2,
+		   ARG3 #arg3 ],
+		 [ PRED "_harm_n_rel",
+		   ARG0 #arg2,
+		   LBL #larg ],
+		 [ PRED "exist_q_rel",
+		   ARG0 #arg2 ]!>,
+	  HCONS <! [ LARG #larg ] !> ],
+  OUTPUT [ RELS <! [ PRED "_hurt_v_rel",
+		    LBL #lbl,
+		    ARG0 #arg0,
+		    ARG1 #arg1,
+		    ARG2 #arg3 ] !>,
+	   HCONS <! !> ]].
+
+;pro-drop := pronoun-delete-mtr.
+make-harm := make-harm-mtr.
+;chase-rule := chase-mtr.
+chase-rule := chase-run-behind-mtr.
+
+-------------------------------------------------------------------------------
+Transfer Rules Developed
+-------------------------------------------------------------------------------
+English
+-------------------------------------------------------------------------------
+We developed two transfer rules for English. 
+
+Marathi expresses "chase" as "to run behind", which clearly requires a transfer rule. It takes "chase_v_rel" as the input and outputs "run_v_rel" and "_behind_p_rel". "run_v_rel" identifies its ARG0 with the index of the sentence and its ARG1 with the pursuer. "behind_p_rel" identifies its ARG1 with the ARG0 of "run_v_rel" and its ARG2 with the pursued. 
+
+chase-run-behind-mtr := monotonic_mtr &
+[ INPUT [ RELS <! [ PRED "_chase_v_rel",
+		   LBL #lbl,
+		   ARG0 #arg0,
+		   ARG1 #pursuer,
+		   ARG2 #pursued ] !>,
+	  HCONS <! !> ],
+  OUTPUT [ RELS <! [ PRED "_run_v_rel",
+		    LBL #lbl,
+		    ARG0 #arg0,
+		    ARG1 #pursuer ],
+		  [ PRED "_behind_p_rel",
+		    LBL #lbl,
+		    ARG1 #arg0,
+		    ARG2 #pursued ] !>,
+		  
+	   HCONS <! !> ]].
+
+"Think" in Marathi is expressed as "to feel", so we created a transfer rule that changed only the predication. 
+
+think-feels-mtr := monotonic_mtr &
+[ INPUT [ RELS <! [ PRED "_think_v_rel",		   
+		   ARG0 #arg0,
+		   ARG1 #thinker,
+		   ARG2 #thought ] !>,
+	  HCONS <! !> ],
+  OUTPUT [ RELS <! [ PRED "_feel_v_rel",		    
+		     ARG0 #arg0,		     
+		     ARG2 #thinker,
+		     ARG3 #thought ] !>,
+	   
+	   HCONS <! !> ]].
+
+Though the rule exists and is instantiated, the sentences don't transfer due to other issues.
+
+
+
+
+
+
