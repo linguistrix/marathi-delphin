@@ -5,9 +5,9 @@ Language: Marathi (mar)
 Grammar Clean Up 
 -------------------------------------------------------------------------------------
 
-The grammar clean up was more extensive in lab 8 than 9. 
+The grammar clean up was more extensive in lab 8 than 9. We had anticipated some of the work that Lab 9 would need and done it in Lab 8 itself.
 
-We needed our clause-taking verbs to be ditransitive:
+We needed our clause-taking verbs to be ditransitive. This was to enable Marathi versions of sentences like "I think that..." that translate to "(he) malaa waatt-t-a kii..." (this, I.DAT feels that). 
 
 ditrans_embedded_clause_inviting_verb-lex := non-copula-main-verb-lex & clausal-third-arg-ditrans-lex-item &
   [ ARG-ST < synsem, #receiver, #arg >,
@@ -32,6 +32,7 @@ comp_gtr := generator_rule &
                     [ ARG0 #e & event ] !> ],
   FLAGS [ EQUAL < #e, #h >,
           TRIGGER "kii" ]].
+
 
 ------------------------------------------------------------------------
 Transfer Rules Instantiated

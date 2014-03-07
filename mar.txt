@@ -1,0 +1,39 @@
+kutrii zhop-t-aat
+
+kutrii gaadii-aan-cyaa maage dhaav-t-aat
+
+mii tumcyaa maage dhaav-t-o
+
+hii kutrii zhop-t-aat
+
+kutrii khaa-t-aat
+
+mii kaats khaa-uu shak-t-o
+
+he malaa laag-at naahii
+
+kutrii gaadii-aan-cyaa maage dhaav-t-aat
+
+malaa waatt-t-a kii tulaa maahiit aahe kii kutrii gaadii-aan-cyaa maage dhaav-t-aat ; Note that this WON'T parse in our grammar
+
+mii vicaar-t-o kii tulaa maahiit aahe kaa kii kutrii gaadii-aan-cyaa maage dhaav-t-aat ; Note that this WON'T parse in our grammar
+
+maanzara aanni kutrii gaadii-aan-cyaa maage dhaav-t-aat 
+
+kutrii gaadii-aan-cyaa maage dhaav-t-aat aanni maanzara kutrii-aan-cyaa maage dhaav-t-aat
+
+maanzara kutrii-aan-cyaa maage dhaav-t-aat aanni zhop-t-aat
+
+maanzara kutrii-aan-cyaa maage dhaav-t-aat kaa
+
+upaashii kutrii khaa-t-aat
+
+kutrii pattkan khaa-t-aat
+
+kutrii upaashii aahet
+
+kutrii bagiicaa-aat aahet
+
+kutrii maanzara aahet
+
+
